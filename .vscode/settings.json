@@ -1,0 +1,15 @@
+{
+  "files.exclude": {
+    "game_reviews/game_reviews/__pycache__": true,
+    "game_reviews/game_reviews/__init__.py": true,
+    ".devcontainer": true,
+    ".devcontainer/Dockerfile": true,
+    ".theia": true,
+    ".vscode": true,
+    ".gitpod.dockerfile": true,
+    ".gitpod.yml": true,
+    "game_reviews\\db.sqlite3": true,
+    "game_reviews\\manage.py": true,
+    "game_reviews/games/__init__.py": true
+  }
+}
