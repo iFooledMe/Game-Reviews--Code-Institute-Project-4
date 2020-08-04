@@ -99,7 +99,7 @@ As a user I wish to:
 ## UX
 
 ### Strategy / Business goal
-The core business goal is to drive traffic that in turn can generate revenue streams from advertising and other programs (I.e driving traffic to Amazon). Users that wish to not get advertising messages can become premium members where they pay a monthly fee.
+The core business goal is to drive traffic that in turn can generate revenue streams from advertising and other affiliate programs (I.e Amazon). Users that wish to not get advertising messages can become premium members where they pay a monthly fee.
 
 In order to get this traffic, the site of course needs to add value to the user. There are other sites existing doing some meta score presentation, but in my own opinion they always try to do too much, resulting in a bit confusing and messy experience where the overview is not that great. This site aims to be clean and simple. It is purely about gamers getting an overview of what games are available at the moment, what are they about, what genre and theme, what the professional critics think about them, what other gamers think about them etc. No more, no less. In that sense it should be clean of other clutter (except some necessary adds as part of the business model of course)
 
