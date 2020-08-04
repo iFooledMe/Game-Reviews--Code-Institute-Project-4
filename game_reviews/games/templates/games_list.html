@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Games list{% endblock page_title %}
+
+{% block main_content %}
+<h3>This is the in block header again</h3>
+<p>this is the in block content...</p>
+<p>Game title: {{ game.title }}</p>
+<p>Game description: {{ game.description }}</p>
+
+{% endblock main_content %}

@@ -3,5 +3,10 @@ from django.http import HttpResponse
 from .models import Game
 
 # Create your views here.
-def game_list_view(*args, **kwargs):
-	return HttpResponse("<h3>game list view</h3>")
+def game_list_view(request):
+	game = Game.objects.get(id=1)
+	context = {
+		'game' : game
+	}
+
+	return render(request, "games_list.html", context)
