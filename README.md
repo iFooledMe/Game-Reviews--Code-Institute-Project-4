@@ -86,6 +86,8 @@ As a user i wish to:
 ### Games information
 As a user I wish to:
 - Get a overview (list) of games (name, release date score, genre, theme, developer/publisher, short critics quotes, game description)
+- Be able to sort my games list (by release date or score)
+- Be able to filter list (by release date intervals or by genre/theme tags)
 - Get links to the reviews where I can read more
 - Get a link to sites where I can buy the game
 - Get all full details (all expanded) of a game in a games details page
