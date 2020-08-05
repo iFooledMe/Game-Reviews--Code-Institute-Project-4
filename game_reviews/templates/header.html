@@ -1,38 +1,43 @@
+<div class="col-4 col-sm-4 col-md-3 logo-container">
+	<div class="logo-top">
+		<span class="logo-text-container"><span class="large-g">G</span>AME</span>
+	</div>
+	<div class="logo-bottom">
+		review
+	</div>
+</div>
 
-	
-		
-		<div class="col-4 col-sm-4 col-md-3 logo-container">
-			<div class="logo-top"><span class="logo-text-container"><span class="large-g">G</span>AME</span></div>
-			<div class="logo-bottom">review</div>
-        </div>
+<div class="d-none d-md-block col-md-3 ">
+	<div class="slogan">What are you<br>gonna play<br>today?</div>
+</div>
 
-		<div class="d-none d-md-block col-md-3 ">
-			<div class="slogan">What are you<br>gonna play<br>today?</div>
+<div class="col-8 col-md-6 ">
+
+	<div class="row no-gutters w-100 pl-1 d-flex justify-content-between align-self-center nav-top">
+		<div class="top-search-form">
+			<input type="text" placeholder="Search..."><a href="#"><i class="fas fa-search top-search-img"></i></a>
 		</div>
-
-		<div class="col-8 col-md-6 ">
-
-			<div class="row nav-top">
-				<div class="d-none d-sm-block col-sm-8 col-xl-6 top-search-form"><input type="text" placeholder="Search..."></div>
-				<div class="col-12 col-sm-4 col-xl-6 user-info my-auto">
-						<span class="d-block d-lg-none"><i class="fas fa-user-astronaut"></i> {{ user }}</span>
-						<span class="d-none d-lg-block"> Logged in as: {{ user }}</span>
-				</div>
-			</div>
-		
-			<div class="row nav-bottom">
-				
-				
-				<ul class="list-inline h-100 mx-auto mt-2">
-					<li class="list-inline-item"><a class="mx-auto" href="">Dates</class=a></li>
-					<li class="list-inline-item"><a class="mx-auto" href="#">News</a></li>
-					<li class="list-inline-item"><a class="mx-auto" href="#">Forum</class=></li>
-					<li class="list-inline-item"><a class="mx-auto" href="#">About</class=></li>
-					<li class="list-inline-item"><a class="mx-auto" href="#">Sign In</a></li>
-				</ul>
-					
-	
-			</div>
-
+		<div class="d-block d-lg-none user-info user-info-compact">
+			<a href="#">
+				<i class="fas fa-user-astronaut"></i> 
+				{{ user }} 
+				<i class="fas fa-caret-down"></i>
+			</a>
 		</div>
+		<div class="d-none d-lg-block user-info">
+			<a href="#">
+				Logged in as: <br>
+				{{ user }} <i class="fas fa-caret-down"></i>
+			</a>	
+		</div>
+	</div>
+
+	<div class="row no-gutters w-100 d-flex justify-content-around align-self-center nav-bottom">			
+		<a class="align-self-center" href="#"><div>Home</div></a>
+		<a class="align-self-center" href="#"><div>Dates</div></a>
+		<a class="align-self-center" href="#"><div>Forum</div></a>
+		<a class="align-self-center" href="#"><div>About</div></a>
+		<a class="align-self-center" href="#"><div>Sign in</div></a>
+	</div>
+</div>
 
