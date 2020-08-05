@@ -3,26 +3,13 @@
 {% block page_title %}Games list{% endblock page_title %}
 
 {% block games_list %}
-	<div class="row">
-		<div class="col-4">
-			<h2 class="description-header">
-				All the Game Reviews in one place!
-			</h2>
-		</div>
-		<div class="col-8">
-			<p>
-				..A list of games for PC, XBOX and Playstation. 
-				All games are Meta-Rated by reviews scores from multiple Top Gaming Sites. 
-				Get the overview you need to find your next game.
-			</p>
-		</div>
-	</div>
-	<h3>This is the in block header again</h3>
-	<p>this is the in block content...</p>
+	
+		{% for game in games  %}
+		
+			<p>Game title: {{ game.title }}</p>
+			<p>Game description: {{ game.description }}</p>
+			<hr>
 
-	{% for game in games  %}
-		<p>Game title: {{ game.title }}</p>
-		<p>Game description: {{ game.description }}</p>
-		<hr>
-	{% endfor %}
+		{% endfor %}
+
 {% endblock %}

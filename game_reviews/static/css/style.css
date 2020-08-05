@@ -1,0 +1,280 @@
+/* #region C O L O R  S C H E M E ========================================== */
+/* ======================================================================== */
+:root {
+    --expression-1: #ff0000; /*Main Theme expression - Text beginnings, Score etc.*/
+    --expression-2: rgb(
+        228,
+        175,
+        78
+    ); /* Orange - Link hover bg, pop-up bg etc. */
+    --expression-3: rgb(197, 95, 95); /* Red:ish*/
+    --expression-4: #98b39b; /*Pastel green - Darker*/
+    --expression-5: #b6ccb8; /*Pastel green - Medium*/
+    --expression-6: #d1e0d1; /*Pastel green - Light */
+    --dark-1: #3b3b3b; /* Headers, Game description background etc. */
+    --dark-2: #3f4040; /*various dark backgrounds, darker and more grayish than main color dark-1*/
+    --medium-1: #a9a9a9; /* Dark Gray:ish for text */
+    --medium-2: #ababab; /* Medium Gray:ish for text */
+    --medium-3: #cccccc; /* Light gray for borders and text */
+    --medium-4: #ececec; /* Very light (faint) Gray:ish for backgrounds */
+    --light-1: #fafafa; /* Very light (White:ish) for text on dark background */
+    /*General*/
+    --body-color: var(--light-1);
+
+    --close-icon-color: var(--medium-1);
+    --close-icon-hover-color: var(--expression-3);
+    /*Forms*/
+    --form-input-select-txt-color: var(--medium-1);
+    --form-input-select-txt-hover-color: var(--dark-1);
+    --form-input-select-bg-color: var(--medium-4);
+    --form-input-select-bg-hover-color: var(--expression-2);
+    --form-input-select-border-color: var(--medium-3);
+    --form-input-placeholder-txt-color: var(--medium-3);
+    /*Header*/
+    --header-bg-color: var(--light-1);
+    --header-fg-color: var(--dark-1);
+    --logo-beginning-txt-color: var(--expression-1);
+    --logo-top-txt-color: var(--body-color);
+    --logo-bottom-txt-color: var(--dark-1);
+    --slogan-txt-color: var(--medium-2);
+    --top-search-icon-color: var(--medium-3);
+    --top-search-icon-hover-color: var(--expression-3);
+    --user-info-txt: var(--dark-1);
+    --main-menu-link-bg-color: var(--dark);
+    --main-menu-link-txt-color: var(--light-1);
+    --link-mouse-over-bg-color: var(--expression-3);
+    --link-mouse-over-txt-color: var(--medium-4);
+    /*H1 & Description*/
+    --description-h1-color: var(--dark-1);
+    --description-text-color: var(--medium-2);
+    /*Game Container*/
+    --game-title-bar-color: var(--dark-1);
+    --game-title-initial-cap-color: var(--expression-1);
+    --game-title-text-color: var(--light-1);
+    --game-date-txt-color: var(--medium-1);
+    --game-developer-txt-color: var(--medium-1);
+    --game-platform-txt-color: var(--medium-1);
+    --game-tag-bg-color: var(--expression-5);
+    --game-tag-text-color: var(--dark-1);
+    --score-bg-color: var(--dark-1);
+    --score-border-color: var(--expression-1);
+    --score-txt-color: var(--expression-1);
+    --score-header-txt-color: var(--medium-2);
+    --game-reviews-compact-bg-color: var(--expression-5);
+    --game-reviews-compact-txt-color: var(--dark-1);
+    --game-reviews-compact-bg-hover-color: var(--expression-6);
+    --game-reviews-compact-txt-hover-color: var(--dark-1);
+    --game-reviews-compact-button-bg-color: var(--expression-5);
+    --game-reviews-compact-button-bg-hover-color: var(--expression-2);
+    --game-reviews-compact-button-txt-color: var(--dark-1);
+    --game-reviews-compact-button-txt-hover-color: var(--dark-1);
+    --game-reviews-expanded-border-color: var(--light-1);
+    --game-reviews-expanded-bg-color: var(--dark-2);
+    --game-reviews-expanded-bg-hover-color: var(--expression-2);
+    --game-reviews-expanded-txt-color: var(--light-1);
+    --game-reviews-expanded-txt-hover-color: var(--dark-1);
+    --game-summary-bg-color: var(--dark-1);
+    --game-summary-txt-color: var(--light-1);
+    --game-summary-source-txt-color: var(--medium-2);
+    --game-buy-bg-color: var(--light-1);
+    --game-buy-txt-color: var(--dark-1);
+    /*Next page bar*/
+    --next-page-border-color: var(--medium-1);
+    --next-page-bg-color: var(--light-1);
+    --next-page-txt-color: var(--medium-1);
+}
+/* #endregion */
+/* ========================================================================= */
+
+/* #region S T A N D A R D  E L E M E N T S ================================ */
+/* ========================================================================= */
+body {
+    background-color: var(--body-color);
+    padding: 0;
+    margin: 0;
+}
+
+/* #endregion */
+/* ========================================================================= */
+
+/* #region N A V  B A R ==================================================== */
+/* ========================================================================= */
+
+/* **** Logotype ********************************************** */
+
+.logo-container {
+    position: relative;
+    font-family: monospace;
+    padding: 0;
+}
+
+.logo-top {
+    height: 40px;
+    border-radius: 0px 0px 0px 5px;
+    background-color: var(--header-fg-color);
+    font-size: 150%;
+    color: var(--logo-top-txt-color);
+    text-align: center;
+    letter-spacing: 15px;
+}
+
+.logo-text-container {
+    position: relative;
+    left: 5px;
+    bottom: 2px;
+}
+
+.large-g {
+    position: relative;
+    bottom: 1px;
+    font-size: 200%;
+    font-weight: bold;
+    color: var(--logo-beginning-txt-color);
+}
+
+.logo-bottom {
+    height: 40px;
+    border-right: solid;
+    border-color: var(--header-fg-color);
+    font-size: 150%;
+    font-weight: lighter;
+    text-align: center;
+    letter-spacing: 5px;
+    color: var(--logo-bottom-txt-color);
+}
+
+/* **** Slogan ********************************************** */
+
+.slogan {
+    padding-top: 5px;
+    padding-right: 10px;
+    font-size: 120%;
+    text-align: center;
+    font-family: monospace;
+    font-weight: lighter;
+    color: var(--slogan-txt-color);
+}
+
+/* **** Search and User (Nav Top) *************************** */
+.nav-top {
+    height: 40px;
+    padding-left: 0px;
+    border-left: solid;
+    border-color: var(--header-fg-color);
+}
+
+.top-search-form {
+    position: relative;
+    top: 5px;
+}
+
+.top-search-form > input {
+    height: 30px;
+    width: 90%;
+    font-size: 90%;
+    color: var(--form-input-select-txt-color);
+}
+
+.user-info {
+    text-align: right;
+    font-family: monospace;
+    color: var(--user-info-txt);
+}
+
+/* **** Nav links (Nav bottom) *************************** */
+
+.nav-bottom {
+    padding-left: 10px;
+    height: 40px;
+    border-radius: 0px 0px 5px 5px;
+    background-color: var(--header-fg-color);
+    text-align: center;
+}
+
+.nav-bottom ul li a {
+    width: 100%;
+    min-height: 40px;
+    background-color: var(--main-menu-link-bg-color);
+    font-size: 90%;
+    color: var(--main-menu-link-txt-color);
+    text-transform: uppercase;
+}
+
+.nav-bottom ul li a:hover {
+    background-color: var(--link-mouse-over-bg-color);
+    color: var(--link-mouse-over-txt-color);
+    text-decoration: none;
+}
+
+/* #endregion */
+/* ========================================================================= */
+
+/* #region T O P  I N F O ================================================== */
+/* ========================================================================= */
+
+.top-info-header {
+    padding-top: 10px;
+}
+
+.top-info-header > h2 {
+    font-size: 1.1em;
+}
+
+.top-info-text {
+    padding-top: 10px;
+    padding-right: 10px;
+    font-size: 0.8rem;
+}
+
+/* #endregion */
+/* ========================================================================= */
+
+/* #region M E D I A  Q U E R I E S ======================================== */
+/* ========================================================================= */
+
+/* **** 768px and down **** */
+@media (max-width: 768px) {
+    .nav-top {
+        padding-left: 10px;
+    }
+}
+
+/* **** 485px and down **** */
+@media (max-width: 485px) {
+    .logo-top {
+        font-size: 120%;
+    }
+
+    .large-g {
+        bottom: 1px;
+        font-size: 185%;
+    }
+
+    .logo-bottom {
+        font-size: 120%;
+    }
+
+    .logo-text-container {
+        left: 5px;
+        bottom: -10px;
+    }
+}
+
+/* **** Bootstrap xl and up **** */
+@media (min-width: 1200px) {
+    .container-fluid {
+        max-width: 80%;
+        padding: 0;
+    }
+}
+
+/* **** Custom 1600px and up **** */
+@media (min-width: 1600px) {
+    .container-fluid {
+        max-width: 70%;
+        padding: 0;
+    }
+}
+
+/* #endregion */
+/* ========================================================================= */

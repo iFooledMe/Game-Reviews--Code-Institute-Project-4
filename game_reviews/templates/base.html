@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
   	<head>
@@ -7,18 +9,32 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<link rel="stylesheet" href="{% static "css/style.css" %}">
 
+		<!-- Font Awesome CSS -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+		<!-- Custom CSS -->
 		<title>Game reviews | {% block page_title %}{% endblock  %}</title>
   	</head>
 
   	<body>
 
-	  	<div class="container">
+	  	<div class="container-fluid no-gutters p-0 mx-auto">
+			<header>
+				<nav class="row no-gutters mr-3">
+					{% include 'header.html' %}
+				</nav>
+			</header>
+			<div class="row">
+				<!--{% include 'top_info.html' %}-->
+			</div>
+			
+			<div class="row py-5 mx-auto">
+				{% block games_list %}
+				{% endblock %}
+			</div>
 
-			{% include 'header.html' %}
-	
-			{% block games_list %}
-			{% endblock %}
 
 		</div>
 
