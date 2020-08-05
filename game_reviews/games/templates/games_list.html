@@ -1,15 +1,34 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block page_title %}Games list{% endblock page_title %}
 
 {% block games_list %}
-	
-		{% for game in games  %}
-		
-			<p>Game title: {{ game.title }}</p>
-			<p>Game description: {{ game.description }}</p>
-			<hr>
 
-		{% endfor %}
+	<div class="row no-gutters mx-auto game-container">
+		<div class="game-thumb-large-container">
+			<img class="game-thumb-large-img" src="{% static "img/doom_eternal_thumb_244x300.png"%}" alt="Some dummy">
+		</div>
+	</div>
+
+	
+
+
+
+	{% for game in games  %}
+
+
+
+	{% endfor %}
+
+
+
+
+		
+		
+
+
+		
 
 {% endblock %}

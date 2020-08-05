@@ -2,6 +2,8 @@
 
 <!doctype html>
 <html lang="en">
+
+<!-- #region ==== H E A D ==================================================================================================== -->
   	<head>
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
@@ -17,30 +19,57 @@
 		<!-- Custom CSS -->
 		<title>Game reviews | {% block page_title %}{% endblock  %}</title>
   	</head>
+<!-- #endregion -->
+<!-- ============================================================================================================================= -->
 
   	<body>
 
 	  	<div class="container-fluid no-gutters p-0 mx-auto">
+
+<!-- #region ==== H E A D E R ==================================================================================================== -->
 			<header>
-				<nav class="row no-gutters">
+				<nav class="row no-gutters header-container">
 					{% include 'header.html' %}
 				</nav>
 			</header>
+<!-- #endregion -->
+<!-- ============================================================================================================================= -->
+
+<!-- #region ==== T O P  I N F O ================================================================================================= -->
 			<div class="row">
 				<!--{% include 'top_info.html' %}-->
 			</div>
-			
-			<div class="row py-5 mx-auto">
+<!-- #endregion -->
+<!-- ============================================================================================================================= -->
+
+			<div class="d-flex justify-content-between align-self-center pt-5 mx-auto">	
+<!-- #region ==== G A M E S  L I S T  ============================================================================================= -->
+				<div class="games-list-container">
 				{% block games_list %}
 				{% endblock %}
+				</div>
+<!-- #endregion -->
+<!-- ============================================================================================================================== -->	
+
+<!-- #region ==== A D  B A N N E R  R I G H T  ==================================================================================== -->
+				<div class="d-none d-md-block">
+					<img class="db-right-img" src="{% static "img/db_right.png"%}" alt="Some dummy">
+				</div>
+<!-- #endregion -->
+<!-- ============================================================================================================================== -->	
+
 			</div>
 
 
 		</div>
 
+<!-- #region ==== S C R I P T S  ================================================================================================== -->
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<!-- #endregion -->
+<!-- ============================================================================================================================== -->	
+		
   	</body>
 
 </html>
