@@ -314,7 +314,7 @@ a:hover {
 
 .game-container-expanded {
     width: 98%;
-    max-height: 300px;
+    height: 340px;
 }
 
 /* *** Thumb nail col *************************************** */
@@ -342,6 +342,24 @@ a:hover {
 /* *** Game info col *************************************** */
 .game-info {
     width: calc(100% - 244px);
+}
+
+.flex-row-2 {
+    height: 100px;
+}
+
+.flex-row-3 {
+    height: 100px;
+}
+
+.flex-row-4 {
+    height: auto;
+}
+
+.game-footer {
+    background-color: lightslategray;
+    height: 40px;
+    margin-bottom: 40px;
 }
 
 /* +++ Game title row +++ */
@@ -374,6 +392,10 @@ a:hover {
 /* +++ Date, dev, platform tags row +++ */
 
 /* +++ Tags +++ */
+.tags {
+    height: 100px;
+}
+
 .tag {
     display: inline-block;
     height: 20px;
