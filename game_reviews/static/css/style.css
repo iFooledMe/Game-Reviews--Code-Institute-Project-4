@@ -12,14 +12,14 @@
     --expression-5: #b6ccb8; /*Pastel green - Medium*/
     --expression-6: #d1e0d1; /*Pastel green - Light */
     --dark-1: #383c42; /* Headers, Game description background etc. */
-    --dark-2: #3f4040; /*various dark backgrounds, darker and more grayish than main color dark-1*/
+    --dark-2: #3e444f; /*various dark backgrounds, darker and more grayish than main color dark-1*/
     --medium-1: #a9a9a9; /* Dark Gray:ish for text */
     --medium-2: #ababab; /* Medium Gray:ish for text */
     --medium-3: #cccccc; /* Light gray for borders and text */
     --medium-4: #ececec; /* Very light (faint) Gray:ish for backgrounds */
     --light-1: #fafafa; /* Very light (White:ish) for text on dark background */
     /*General*/
-    --body-color: var(--light-1);
+    --body-color: var(--medium-4);
 
     --close-icon-color: var(--medium-1);
     --close-icon-hover-color: var(--expression-3);
@@ -48,9 +48,9 @@
     --description-h1-color: var(--dark-1);
     --description-text-color: var(--medium-2);
     /*Game Container*/
-    --game-title-bar-color: var(--dark-1);
+    --game-title-bar-color: var(--dark-2);
     --game-title-initial-cap-color: var(--expression-1);
-    --game-title-text-color: var(--light-1);
+    --game-title-text-color: var(--body-color);
     --game-date-txt-color: var(--medium-1);
     --game-developer-txt-color: var(--medium-1);
     --game-platform-txt-color: var(--medium-1);
@@ -92,6 +92,7 @@ body {
     background-color: var(--body-color);
     padding: 0;
     margin: 0;
+    font-family: monospace;
 }
 
 a {
@@ -101,6 +102,28 @@ a {
 a:hover {
     color: inherit;
     text-decoration: none;
+}
+
+/* #endregion */
+/* ========================================================================= */
+
+/* #region G E N E R I C   E L E M E N T S ================================ */
+/* ========================================================================= */
+
+/* *** Text classes *** */
+
+.invisible {
+    position: absolute;
+    font-size: 0px;
+    color: var(--game-title-bar-color);
+}
+
+.txt-bold {
+    font-weight: 700;
+}
+
+.txt-small {
+    font-size: 0.9em;
 }
 
 /* #endregion */
@@ -125,7 +148,7 @@ a:hover {
     height: 40px;
     border-radius: 0px 0px 0px 5px;
     background-color: var(--header-fg-color);
-    font-size: 150%;
+    font-size: 250%;
     color: var(--logo-top-txt-color);
     text-align: center;
     letter-spacing: 15px;
@@ -134,14 +157,14 @@ a:hover {
 .logo-text-container {
     position: relative;
     left: 5px;
-    bottom: 2px;
+    bottom: 13px;
 }
 
 .large-g {
     position: relative;
     bottom: 1px;
-    font-size: 200%;
-    font-weight: bold;
+    font-size: 150%;
+    font-weight: 600;
     color: var(--logo-beginning-txt-color);
 }
 
@@ -149,7 +172,7 @@ a:hover {
     height: 40px;
     border-right: solid;
     border-color: var(--header-fg-color);
-    font-size: 150%;
+    font-size: 200%;
     font-weight: lighter;
     text-align: center;
     letter-spacing: 5px;
@@ -195,6 +218,7 @@ a:hover {
     color: var(--form-input-select-txt-color);
     border: none;
     text-align: center;
+    border-radius: 3px;
 }
 
 .top-search-img {
@@ -231,7 +255,7 @@ a:hover {
 .nav-bottom a {
     display: block;
     min-height: 40px;
-    font-size: 90%;
+    font-size: 1.2em;
     text-transform: uppercase;
     background-color: var(--main-menu-link-bg-color);
     color: var(--main-menu-link-txt-color);
@@ -273,21 +297,98 @@ a:hover {
 /* #endregion */
 /* ========================================================================= */
 
-/* #region G A M E S  L I S T ============================================== */
+/* #region M A I N  C O N T E N T  C O N T A I N E R ======================= */
 /* ========================================================================= */
 
-.games-list-container {
+.main-content-container {
     box-sizing: border-box;
     width: 100%;
     min-height: calc(100vh - 140px);
 }
 
-.game-container {
+/* #endregion */
+/* ========================================================================= */
+
+/* #region G A M E S  L I S T ============================================== */
+/* ========================================================================= */
+
+.game-container-expanded {
     width: 98%;
-    background-color: aqua;
+    max-height: 300px;
 }
 
-.game-thumb-large-container {
+/* *** Thumb nail col *************************************** */
+.game-thumb-large {
+    position: relative;
+    max-width: 244px;
+}
+
+.pegi-overlay {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 5;
+}
+
+.pegi-overlay img {
+    max-width: 35px;
+    opacity: 0.5;
+}
+
+.pegi-overlay img:hover {
+    opacity: 1;
+}
+
+/* *** Game info col *************************************** */
+.game-info {
+    width: calc(100% - 244px);
+}
+
+/* +++ Game title row +++ */
+.game-title {
+    width: 100%;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 0px 5px 0px 0px;
+    background-color: var(--game-title-bar-color);
+    text-transform: uppercase;
+    font-family: monospace;
+}
+
+.game-title-initial-cap {
+    position: relative;
+    bottom: 14px;
+    font-size: 50px;
+    letter-spacing: 3px;
+    color: var(--game-title-initial-cap-color);
+}
+
+.game-title-text {
+    position: relative;
+    bottom: 14px;
+    font-size: 25px;
+    letter-spacing: 2px;
+    color: var(--game-title-text-color);
+}
+
+/* +++ Date, dev, platform tags row +++ */
+
+/* +++ Tags +++ */
+.tag {
+    display: inline-block;
+    height: 20px;
+    padding: 2px 5px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    background-color: var(--game-tag-bg-color);
+    color: var(--game-tag-text-color);
+}
+
+/* +++ Score +++ */
+.score {
+    height: auto;
+    background-color: lightgreen;
 }
 
 /* #endregion */
@@ -321,21 +422,21 @@ a:hover {
 /* **** 485px and down **** */
 @media (max-width: 485px) {
     .logo-top {
-        font-size: 120%;
+        font-size: 150%;
     }
 
     .large-g {
-        bottom: 1px;
+        bottom: 0px;
         font-size: 185%;
     }
 
     .logo-bottom {
-        font-size: 120%;
+        font-size: 150%;
     }
 
     .logo-text-container {
         left: 5px;
-        bottom: -10px;
+        bottom: 0px;
     }
 }
 

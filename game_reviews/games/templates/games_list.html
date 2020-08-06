@@ -2,33 +2,84 @@
 
 {% load static %}
 
-{% block page_title %}Games list{% endblock page_title %}
+{% block page_title %}Home{% endblock page_title %}
 
-{% block games_list %}
-
-	<div class="row no-gutters mx-auto game-container">
-		<div class="game-thumb-large-container">
-			<img class="game-thumb-large-img" src="{% static "img/doom_eternal_thumb_244x300.png"%}" alt="Some dummy">
-		</div>
-	</div>
-
-	
-
-
-
+{% block main_content %}
 	{% for game in games  %}
+		<div class="row no-gutters mx-auto mx-xl-0 mb-3 game-container-expanded">
+			<div class="game-thumb-large">
+				<img class="img-fluid game-thumb-large-img" src="{% static "img/doom_eternal_thumb_244x300.png"%}" alt="Some dummy">
+				<div class="pegi-overlay">
+					<a href="https://pegi.info/what-do-the-labels-mean" target="_blank">
+						<img src="{% static "img/pegi_18_60x73.png"%}" alt="{{ game.pegi }} age label">
+					</a>
+				</div>
+			</div>
+			<div class="row game-info no-gutters mx-auto">
+				<!-- #region ==== GAME TITLE ============================================================= -->
+				<div class="row w-100 mx-auto">
+					<div class="col-12 mx-auto pl-2 game-title ">
+						<div class="invisible"><h2>Doom Eternal</h2></div>
+						<span class="game-title-initial-cap">d</span><span class="game-title-text">oom eternal</span>
+					</div>
+				</div>
+				<!-- #endregion -->
 
+				<div class="row w-100 no-gutters mx-auto">
+					<!-- #region ==== RELEASE DATE & PLATFORMS ================================================ -->
+						
+					
+						<div class="col-4 text-left pl-3">
+							Release date<br>
+							<span class="txt-bold">20 mar, 2020</span>
+							<p class="pt-2 txt-small">
+								<i class="fas fa-desktop"></i> pc, 
+								<i class="fab fa-playstation"></i> ps4,
+								<i class="fab fa-xbox"></i> Xone,
+								stadia
+							</p>
+						</div>
+					<!-- #endregion -->
 
+					<!-- #region ==== DEV & PUBL ================================================ -->
+						<div class="col-4 txt-small pl-4">
+							Dev: {{ game.developer }}<br>
+							Publ: {{ game.publisher }}
+						</div>
+					<!-- #endregion -->
 
+					<!-- #region ==== TAGS ================================================ -->
+						<div class="col-4 text-left pl-3 pt-2">
+							<div class="tags">
+								<div class="tag">action</div>
+								<div class="tag">fps</div>
+								<div class="tag">singlePl</div>
+								<div class="tag">mature</div>
+							</div>
+						</div>
+					<!-- #endregion -->
+				</div>
+
+				<div class="row w-100 no-gutters mx-auto">
+					<!-- #region ==== SCORE & QUOTES ================================================ -->
+						<div class="col-12 score">
+							<div class="tags">
+								score
+							</div>
+						</div>
+					<!-- #endregion -->
+				</div>
+
+				<div class="row w-100 no-gutters mx-auto">
+					<!-- #region ==== DESCRIPTION ================================================ -->
+						<div class="col-12 score">
+							<div class="tags">
+								score
+							</div>
+						</div>
+					<!-- #endregion -->
+				</div>
+			</div>
+		</div>
 	{% endfor %}
-
-
-
-
-		
-		
-
-
-		
-
 {% endblock %}
