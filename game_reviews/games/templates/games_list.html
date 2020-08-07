@@ -5,114 +5,81 @@
 {% block page_title %}Home{% endblock page_title %}
 
 {% block main_content %}
-{% for game in games  %}
-<div class="row no-gutters mx-auto mx-xl-0 mb-3 game-container-expanded">
-	<!-- #region ================== THUMBNAIL ======================================================================== -->
-	<div class="game-thumb-large">
-			<img class="game-thumb-large-img" src="{{ game.thumb_img.url }}" alt="{{ game.title }} cover image">
-
-		
-		<div class="pegi-overlay">
-			<a href="https://pegi.info/what-do-the-labels-mean" target="_blank">
-				<img src="{% static "img/pegi_18_60x73.png"%}" alt="{{ game.pegi }} age label">
-			</a>
-		</div>
-	</div>
-	<!-- #endregion -->
-	<div class="d-flex flex-column align-items-start game-info mx-auto">
-		<!-- #region =============== GAME TITLE =========================================================== -->
-		<div class="game-title">
-			<div class="invisible">
-				<h2>{{ game.title }}</h2>
+	{% for game in games  %}
+		<div class="row no-gutters mx-auto mx-xl-0 mb-3 game-container-expanded">
+			<div class="game-thumb-large">
+				<img class="img-fluid game-thumb-large-img" src="{% static "img/doom_eternal_thumb_244x300.png"%}" alt="Some dummy">
+				<div class="pegi-overlay">
+					<a href="https://pegi.info/what-do-the-labels-mean" target="_blank">
+						<img src="{% static "img/pegi_18_60x73.png"%}" alt="{{ game.pegi }} age label">
+					</a>
+				</div>
 			</div>
-			<span class="game-title-initial-cap">{{ game.title|slice:"1" }}</span><span
-				class="game-title-text">{{game.title|slice:"1:"}}</span>
-		</div>
+			<div class="row game-info no-gutters mx-auto">
+				<!-- #region ==== GAME TITLE ============================================================= -->
+				<div class="row w-100 mx-auto">
+					<div class="col-12 mx-auto pl-2 game-title ">
+						<div class="invisible"><h2>Doom Eternal</h2></div>
+						<span class="game-title-initial-cap">d</span><span class="game-title-text">oom eternal</span>
+					</div>
+				</div>
 				<!-- #endregion -->
 
-		<div class="flex-row-2 w-100">
-			<div class="row no-gutters w-100">
-				<div class="col-8">
-					<!-- #region ==== RELEASE DATE ========================================================= -->
-					<div class="row no-gutters w-100 px-2 pt-2">
-							Released {{ game.release_date }}
-							{{ game.thumb_img }}
-					</div>
-					<!-- #endregion-->
-					<!-- #region ==== PLATFORMS ============================================================ -->
-					<div class="row no-gutters w-100 px-2 pt-2">
-						<p class="txt-small">
-							{% for platform in game.platforms.all %}
-								{% if platform.show_icon %}
-									{{ platform.logo_icon | safe }}
-								{% elif platform.show_img and platform.logo_img != null %}
-									<img class="icon_img" src="{{ platform.logo_img.url }}" alt="">
-								{% endif %} 
-							{{ platform.short_name}}
-							{% endfor %}
-						</p>
-					</div>
-					<!-- #endregion-->
-					<!-- #region ==== DEV / PUBLISHER ====================================================== -->
-					<div class="row d-none d-md-block no-gutters w-100 px-2 txt-small">
-							Dev: {{ game.developer.short_name }} |
-							Publ: {{ game.publisher.short_name }}
-					</div>
-				<!-- #endregion-->
+				<div class="row w-100 no-gutters mx-auto">
+					<!-- #region ==== RELEASE DATE & PLATFORMS ================================================ -->
+						
+					
+						<div class="col-4 text-left pl-3">
+							Release date<br>
+							<span class="txt-bold">20 mar, 2020</span>
+							<p class="pt-2 txt-small">
+								<i class="fas fa-desktop"></i> pc, 
+								<i class="fab fa-playstation"></i> ps4,
+								<i class="fab fa-xbox"></i> Xone,
+								stadia
+							</p>
+						</div>
+					<!-- #endregion -->
+
+					<!-- #region ==== DEV & PUBL ================================================ -->
+						<div class="col-4 txt-small pl-4">
+							Dev: {{ game.developer }}<br>
+							Publ: {{ game.publisher }}
+						</div>
+					<!-- #endregion -->
+
+					<!-- #region ==== TAGS ================================================ -->
+						<div class="col-4 text-left pl-3 pt-2">
+							<div class="tags">
+								<div class="tag">action</div>
+								<div class="tag">fps</div>
+								<div class="tag">singlePl</div>
+								<div class="tag">mature</div>
+							</div>
+						</div>
+					<!-- #endregion -->
 				</div>
-				<div class="col-4">
-					<!-- #region ======== TAGS ===================================================================== -->
-					<div class="tags text-right pt-2 pr-3">
-						{% for tag in game.genre_tags.all %}
-							<div  class="tag">
-								{% if tag.show_name  %}
-									<span>{{ tag.short_name | safe}}</span>
-								{% endif %}
-								{% if tag.show_icon  %}
-									<span>{{ tag.tag_icon | safe}}</span>
-								{% endif %}
+
+				<div class="row w-100 no-gutters mx-auto">
+					<!-- #region ==== SCORE & QUOTES ================================================ -->
+						<div class="col-12 score">
+							<div class="tags">
+								score
 							</div>
-						{% endfor %}
-						<br>
-						{% for tag in game.theme_tags.all %}
-							<div  class="tag">
-								{% if tag.show_name  %}
-									<span>{{ tag.short_name | safe}}</span>
-								{% endif %}
-								{% if tag.show_icon  %}
-									<span>{{ tag.tag_icon | safe}}</span>
-								{% endif %}
+						</div>
+					<!-- #endregion -->
+				</div>
+
+				<div class="row w-100 no-gutters mx-auto">
+					<!-- #region ==== DESCRIPTION ================================================ -->
+						<div class="col-12 score">
+							<div class="tags">
+								score
 							</div>
-						{% endfor %}
-						<br>
-						{% for tag in game.misc_tags.all %}
-							<div  class="tag">
-								{% if tag.show_name  %}
-									<span>{{ tag.short_name | safe}}</span>
-								{% endif %}
-								{% if tag.show_icon  %}
-									<span>{{ tag.tag_icon | safe}}</span>
-								{% endif %}
-							</div>
-						{% endfor %}
-					</div>
+						</div>
 					<!-- #endregion -->
 				</div>
 			</div>
 		</div>
-
-		<div class="flex-row-3 w-100"> 3 </div>
-
-		<div class="flex-row-4 w-100"> 4 </div>
-	</div>
-
-	<!-- #region ==== GAME FOOTER =========================================================================== -->
-	<div class="row w-100 no-gutters mx-auto mb-3 game-footer">
-		Game footer
-	</div>
-	<!-- #endregion -->
-
-</div>
-
-{% endfor %}
+	{% endfor %}
 {% endblock %}

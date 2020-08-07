@@ -10,10 +10,6 @@
     ".gitpod.yml": true,
     "game_reviews\\db.sqlite3": true,
     "game_reviews\\manage.py": true,
-    "game_reviews/games/__init__.py": true,
-    "game_reviews/games/__pycache__": true,
-    "game_reviews/games/migrations": true,
-    "game_reviews/games/**/migrations": true,
-    "game_reviews/games/**/migrations.*": true
+    "game_reviews/games/__init__.py": true
   }
 }

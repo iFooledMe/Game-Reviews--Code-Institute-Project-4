@@ -2,6 +2,11 @@
 /* ======================================================================== */
 :root {
     --expression-1: #ff0000; /*Main Theme expression - Text beginnings, Score etc.*/
+    --expression-2: rgb(
+        228,
+        175,
+        78
+    ); /* Orange - Link hover bg, pop-up bg etc. */
     --expression-3: rgb(197, 95, 95); /* Red:ish*/
     --expression-4: #98b39b; /*Pastel green - Darker*/
     --expression-5: #b6ccb8; /*Pastel green - Medium*/
@@ -15,7 +20,6 @@
     --light-1: #fafafa; /* Very light (White:ish) for text on dark background */
     /*General*/
     --body-color: var(--medium-4);
-    --body-color-txt: var(--dark-2);
 
     --close-icon-color: var(--medium-1);
     --close-icon-hover-color: var(--expression-3);
@@ -86,7 +90,6 @@
 /* ========================================================================= */
 body {
     background-color: var(--body-color);
-    color: var(--body-color-txt);
     padding: 0;
     margin: 0;
     font-family: monospace;
@@ -121,12 +124,6 @@ a:hover {
 
 .txt-small {
     font-size: 0.9em;
-}
-
-/* *** Icons / Images *** */
-
-.icon_img {
-    max-width: 17px;
 }
 
 /* #endregion */
@@ -196,7 +193,7 @@ a:hover {
 
 .game-control-img {
     width: 30px;
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
 /* **** Search and User (Nav Top) *************************** */
@@ -317,7 +314,7 @@ a:hover {
 
 .game-container-expanded {
     width: 98%;
-    max-height: auto;
+    max-height: 300px;
 }
 
 /* *** Thumb nail col *************************************** */
