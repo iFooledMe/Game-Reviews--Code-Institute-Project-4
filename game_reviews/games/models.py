@@ -1,7 +1,7 @@
 from django.db import models
 import datetime
 
-# Create your models here.
+# region ==== SUB-CLASSES =================================================================
 
 
 class Developer(models.Model):
@@ -105,6 +105,9 @@ class Platform(models.Model):
     def __str__(self):
         return self.long_name
 
+# endregion
+# ==========================================================================================
+
 
 class Game(models.Model):
     title = models.CharField(
@@ -137,3 +140,6 @@ class Game(models.Model):
     theme_tags = models.ManyToManyField(ThemeTag)
     misc_tags = models.ManyToManyField(MiscTag)
     stores = models.ManyToManyField(Store)
+
+    def __str__(self):
+        return self.title

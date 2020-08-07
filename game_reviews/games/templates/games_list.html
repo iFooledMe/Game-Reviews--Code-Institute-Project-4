@@ -8,10 +8,15 @@
 {% for game in games  %}
 <div class="row no-gutters mx-auto mx-xl-0 mb-3 game-container-expanded">
 	<div class="game-thumb-large">
-		<img class="img-fluid game-thumb-large-img" src="{% static "img/doom_eternal_thumb_244x300.png"%}" alt="Some dummy">
+		{% if  game.thumb_img %}
+			<img class="img-fluid game-thumb-large-img" src="{{ game.thumb_img.url }}" alt="{{ game.title }} - Cover image">
+		{% else %}
+			<img src="{% static "img/img_placeholder_244x300.jpg"%}" alt="Empty placeholder - Game cover image is missing">
+		{% endif %}
+		
 		<div class="pegi-overlay">
 			<a href="https://pegi.info/what-do-the-labels-mean" target="_blank">
-				<img src="{% static "img/pegi_18_60x73.png"%}" alt="{{ game.pegi }} age label">
+				<img src="{{ game.pegi.pegi_img.url }}" alt="{{ game.pegi }} age label">
 			</a>
 		</div>
 	</div>
