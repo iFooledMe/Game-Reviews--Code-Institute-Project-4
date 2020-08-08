@@ -60,19 +60,41 @@
 				<div class="col-4">
 					<!-- #region ==== TAGS ===================================================================== -->
 					<div class="tags-container pt-2">
-						<div class="mb-1 text-right">
+						<div class="mb-1  text-right">
 							{% for tag in game.genre_tags.all %}
-								<span class="tag tag-genre">{{ tag.short_name}}</span>
+							<span class="ml-1 tag tag-genre">
+								{% if tag.show_name %}
+									{{ tag.short_name }}
+								{% endif %}
+								{% if tag.show_icon %}
+									{{ tag.icon | safe }}
+								{% endif %}
+							</span>
 							{% endfor %}
 						</div>
-						<div class="mb-1 text-right">
+						<div class="mb-1 ml-1 text-right">
 							{% for tag in game.theme_tags.all %}
-								<span class="tag tag-theme">{{ tag.short_name}}</span>
+								<span class="ml-2 tag tag-theme">
+									{% if tag.show_name %}
+										{{ tag.short_name }}
+									{% endif %}
+									{% if tag.show_icon %}
+										{{ tag.icon | safe }}
+									{% endif %}
+								</span>
+								
 							{% endfor %}
 						</div>
-						<div class="mb-1 text-right">
+						<div class="mb-1  ml-1 text-right">
 							{% for tag in game.misc_tags.all %}
-								<span class="tag tag-misc">{{ tag.short_name}}</span>
+								<span class="ml-2 tag tag-misc">
+									{% if tag.show_name %}
+										{{ tag.short_name }}
+									{% endif %}
+									{% if tag.show_icon %}
+										{{ tag.icon | safe }}
+									{% endif %}
+								</span>
 							{% endfor %}
 						</div>
 					</div>

@@ -48,6 +48,7 @@ class Pegi(models.Model):
 class GenreTag(models.Model):
     long_name = models.CharField(max_length=40)
     short_name = models.CharField(max_length=40, null=True, blank=True)
+    show_name = models.BooleanField(default=True)
     icon = models.CharField(max_length=50, null=True, blank=True)
     show_icon = models.BooleanField(default=False)
     tag_category = models.CharField(max_length=40, default='genre')
@@ -59,6 +60,7 @@ class GenreTag(models.Model):
 class ThemeTag(models.Model):
     long_name = models.CharField(max_length=40)
     short_name = models.CharField(max_length=40, null=True, blank=True)
+    show_name = models.BooleanField(default=True)
     icon = models.CharField(max_length=50, null=True, blank=True)
     show_icon = models.BooleanField(default=False)
     tag_category = models.CharField(max_length=40, default='theme')
@@ -70,6 +72,7 @@ class ThemeTag(models.Model):
 class MiscTag(models.Model):
     long_name = models.CharField(max_length=40)
     short_name = models.CharField(max_length=40, null=True, blank=True)
+    show_name = models.BooleanField(default=True)
     icon = models.CharField(max_length=50, null=True, blank=True)
     show_icon = models.BooleanField(default=False)
     tag_category = models.CharField(max_length=40, default='misc')
