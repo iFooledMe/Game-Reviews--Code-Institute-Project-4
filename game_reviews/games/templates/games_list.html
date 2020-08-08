@@ -7,6 +7,7 @@
 {% block main_content %}
 {% for game in games  %}
 <div class="row no-gutters mx-auto mx-xl-0 mb-3 game-container-expanded">
+	<!-- #region ==== THUMB IMAGE ======================================================================= -->
 	<div class="game-thumb-large">
 		{% if  game.thumb_img %}
 			<img class="img-fluid game-thumb-large-img" src="{{ game.thumb_img.url }}" alt="{{ game.title }} - Cover image">
@@ -20,9 +21,10 @@
 			</a>
 		</div>
 	</div>
-	<div class="d-flex flex-column align-items-start game-info mx-auto">
+	<!-- #endregion -->
+	<div class="d-flex flex-column align-items-start mx-auto game-info ">
 
-				<!-- #region ==== GAME TITLE ============================================================= -->
+		<!-- #region ==== GAME TITLE ============================================================= -->
 		<div class="game-title">
 			<div class="invisible">
 				<h2>{{ game.title }}</h2>
@@ -30,15 +32,18 @@
 			<span class="game-title-initial-cap">{{ game.title|slice:"1" }}</span><span
 				class="game-title-text">{{game.title|slice:"1:"}}</span>
 		</div>
-				<!-- #endregion -->
+		<!-- #endregion -->
 
 		<div class="flex-row-2 w-100">
 			<div class="row no-gutters w-100">
 				<div class="col-8">
+					<!-- #region ==== RELEASE DATE ============================================================= -->
 					<div class="row no-gutters w-100 px-2 pt-2">
 							Release date<br>
 							<span class="txt-bold">20 mar, 2020</span>
 					</div>
+					<!-- #endregion -->
+					<!-- #region ==== PLATFORMS ============================================================= -->
 					<div class="row no-gutters w-100 px-2 pt-2">
 						<p class="txt-small">
 							{% for platform in game.platforms.all %}
@@ -46,21 +51,23 @@
 							{% endfor %}
 						</p>
 					</div>
+					<!-- #endregion -->
+					<!-- #region ==== DEV / PUBL ============================================================= -->
 					<div class="row d-none d-md-block no-gutters w-100 px-2 txt-small">
-							Dev: {{ game.developer }} |
-							Publ: {{ game.publisher }}
+							Dev: {{ game.developer.short_name }} |
+							Publ: {{ game.publisher.short_name }}
 					</div>
-
+					<!-- #endregion -->
 				</div>
-				<!-- #region ==== TAGS ===================================================================== -->
 				<div class="col-4">
+					<!-- #region ==== TAGS ===================================================================== -->
 					<div class="tags text-center pt-2">
-						{% for tag in game.tags.all %}
-						<div class="tag">{{ tag.tag_name}}</div>
+						{% for tag in game.genre_tags.all %}
+							<div class="genre_tag">{{ tag.short_name}}</div>
 						{% endfor %}
 					</div>
-				</div>
 				<!-- #endregion -->
+				</div>
 			</div>
 		</div>
 
