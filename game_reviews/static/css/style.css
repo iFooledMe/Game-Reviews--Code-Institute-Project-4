@@ -418,7 +418,9 @@ input:focus {
 /* #endregion --- Title row (row 1) --- */
 
 /* #region --- Date, platform, Dev, Publ, (row 2 col 1) --- */
-
+.platform-icon-image {
+    width: 15px;
+}
 /* #endregion --- Date, platform, Dev, Publ, (row 2 col 1) --- */
 
 /* #region --- Tags (row 2 col 2) --- */

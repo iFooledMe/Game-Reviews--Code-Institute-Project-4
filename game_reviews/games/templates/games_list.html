@@ -45,7 +45,12 @@
 					<div class="row no-gutters w-100 px-2 pt-2">
 						<p class="txt-small">
 							{% for platform in game.platforms.all %}
-							{{ platform.icon | safe }} {{ platform.short_name}}
+							{% if platform.show_icon %}
+								{{ platform.icon | safe }}
+							{% elif platform.show_img %}
+								<img class="platform-icon-image" src="{{ platform.img.url }}" alt="">
+							{% endif %}
+							 	{{ platform.short_name}}
 							{% endfor %}
 						</p>
 					</div>
