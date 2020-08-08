@@ -23,7 +23,6 @@
 	</div>
 	<!-- #endregion -->
 	<div class="d-flex flex-column align-items-start mx-auto game-info ">
-
 		<!-- #region ==== GAME TITLE ============================================================= -->
 		<div class="game-title">
 			<div class="invisible">
@@ -33,7 +32,6 @@
 				class="game-title-text">{{game.title|slice:"1:"}}</span>
 		</div>
 		<!-- #endregion -->
-
 		<div class="flex-row-2 w-100">
 			<div class="row no-gutters w-100">
 				<div class="col-8">
@@ -61,10 +59,22 @@
 				</div>
 				<div class="col-4">
 					<!-- #region ==== TAGS ===================================================================== -->
-					<div class="tags text-center pt-2">
-						{% for tag in game.genre_tags.all %}
-							<div class="genre_tag">{{ tag.short_name}}</div>
-						{% endfor %}
+					<div class="tags-container pt-2">
+						<div class="mb-1 text-right">
+							{% for tag in game.genre_tags.all %}
+								<span class="tag tag-genre">{{ tag.short_name}}</span>
+							{% endfor %}
+						</div>
+						<div class="mb-1 text-right">
+							{% for tag in game.theme_tags.all %}
+								<span class="tag tag-theme">{{ tag.short_name}}</span>
+							{% endfor %}
+						</div>
+						<div class="mb-1 text-right">
+							{% for tag in game.misc_tags.all %}
+								<span class="tag tag-misc">{{ tag.short_name}}</span>
+							{% endfor %}
+						</div>
 					</div>
 				<!-- #endregion -->
 				</div>
