@@ -140,6 +140,10 @@ input:focus {
     font-size: 0.9em;
 }
 
+.txt-medium {
+    font-size: 1.1em;
+}
+
 /* #endregion */
 /* ====================================================================== */
 
@@ -336,12 +340,23 @@ input:focus {
     width: calc(100% - 244px);
 }
 
-.flex-row-2 {
-    height: 100px;
+/* Title row */
+.flex-row-1 {
+    width: 100%;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 0px 5px 0px 0px;
 }
 
+/* Date, publisher, platforms, tags */
+.flex-row-2 {
+    height: 80px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+/* Score, reviews */
 .flex-row-3 {
-    height: 100px;
 }
 
 .flex-row-4 {
@@ -390,10 +405,6 @@ input:focus {
 
 /* #region --- Title row (row 1) --- */
 .game-title {
-    width: 100%;
-    height: 40px;
-    padding-left: 10px;
-    border-radius: 0px 5px 0px 0px;
     background-color: var(--game-title-bar-color);
     text-transform: uppercase;
     font-family: monospace;
@@ -455,12 +466,104 @@ input:focus {
 /* #endregion --- Tags (row 2 col 2) --- */
 
 /* #region --- Score (row 3 col 1) --- */
+.score-wrapper {
+    float: left;
+    position: relative;
+    width: 100px;
+}
+
 .score {
-    height: auto;
-    background-color: lightgreen;
+    left: -15;
+    z-index: 2;
+    overflow: visible;
+    width: 115px;
+    height: 115px;
+    position: relative;
+    left: -10px;
+    text-align: center;
+    border-style: solid;
+    border-width: thick;
+    border-radius: 50%;
+    border-color: var(--score-border-color);
+    background-color: var(--score-bg-color);
+}
+
+.score-text {
+    position: relative;
+    top: 25px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 3em;
+    color: var(--score-txt-color);
 }
 
 /* #endregion --- Score (row 3 col 1) --- */
+
+/* #region --- Reviews (row 3 col 2) --- */
+.reviews-wrapper {
+    float: rigth;
+    width: calc(100% - 90px);
+    height: 100%;
+    position: relative;
+    top: -110px;
+}
+
+/*compact*/
+.reviews-compact {
+    visibility: visible;
+    width: 100%;
+    height: 120px;
+    padding-left: 20px;
+    padding-top: 10px;
+    border-radius: 5px 5px 5px 5px;
+    background-color: var(--game-reviews-compact-bg-color);
+}
+
+.reviews-compact-text {
+    font-size: 0.9em;
+    color: var(--game-reviews-compact-txt-color);
+    height: 40px;
+    overflow: none;
+}
+
+.reviews-compact span:hover {
+    border-radius: 2px 2px 2px 2px;
+    background-color: var(--game-reviews-compact-bg-hover-color);
+    color: var(--game-reviews-compact-txt-hover-color);
+}
+
+.reviews-compact-expand-button {
+    width: 150px;
+    height: 15px;
+    position: absolute;
+    bottom: -14px;
+    right: 0px;
+}
+
+.reviews-compact-expand-button > button {
+    width: 150px;
+    height: 15px;
+    border: none;
+    border-radius: 0px 0px 3px 3px;
+    background-color: var(--game-reviews-compact-button-bg-color);
+    font-size: 80%;
+    font-weight: bold;
+    text-align: center;
+    color: var(--game-reviews-compact-button-txt-color);
+}
+
+.reviews-compact-expand-downarrow {
+    width: 50px;
+    font-size: 100%;
+    text-align: right;
+}
+
+.reviews-compact-expand-button > button:hover {
+    background-color: var(--game-reviews-compact-button-bg-hover-color);
+    font-size: 90%;
+    color: var(--game-reviews-compact-button-txt-hover-color);
+}
+/* #endregion --- Reviews */
 
 /* #endregion *** GAME INFO COL  */
 
@@ -509,6 +612,13 @@ input:focus {
     .logo-text-container {
         left: 5px;
         bottom: 0px;
+    }
+}
+
+/* **** Bootstrap lg and up **** */
+@media (min-width: 992px) {
+    .reviews-compact-text {
+        height: 60px;
     }
 }
 

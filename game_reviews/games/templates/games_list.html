@@ -24,7 +24,7 @@
 	<!-- #endregion -->
 	<div class="d-flex flex-column align-items-start mx-auto game-info ">
 		<!-- #region ==== GAME TITLE ============================================================= -->
-		<div class="game-title">
+		<div class="flex-row-1 game-title">
 			<div class="invisible">
 				<h2>{{ game.title }}</h2>
 			</div>
@@ -36,14 +36,15 @@
 			<div class="row no-gutters w-100">
 				<div class="col-8">
 					<!-- #region ==== RELEASE DATE ============================================================= -->
-					<div class="row no-gutters w-100 px-2 pt-2">
-							Release date<br>
-							<span class="txt-bold">20 mar, 2020</span>
+					<div class="row no-gutters w-100 mb-1">
+							<span class="txt-medium">
+								Release date <strong>20 mar, 2020</strong>
+							</span>
 					</div>
 					<!-- #endregion -->
 					<!-- #region ==== PLATFORMS ============================================================= -->
-					<div class="row no-gutters w-100 px-2 pt-2">
-						<p class="txt-small">
+					<div class="row no-gutters w-100 mb-1">
+						<span class="txt-small">
 							{% for platform in game.platforms.all %}
 							{% if platform.show_icon %}
 								{{ platform.icon | safe }}
@@ -52,19 +53,21 @@
 							{% endif %}
 							 	{{ platform.short_name}}
 							{% endfor %}
-						</p>
+						</span>
 					</div>
 					<!-- #endregion -->
 					<!-- #region ==== DEV / PUBL ============================================================= -->
-					<div class="row d-none d-md-block no-gutters w-100 px-2 txt-small">
+					<div class="row d-none d-md-block no-gutters w-100 mb-1 txt-small">
+						<span>
 							Dev: {{ game.developer.short_name }} |
 							Publ: {{ game.publisher.short_name }}
+						</span>
 					</div>
 					<!-- #endregion -->
 				</div>
 				<div class="col-4">
 					<!-- #region ==== TAGS ===================================================================== -->
-					<div class="tags-container pt-2">
+					<div class="tags-container">
 						<div class="mb-1  text-right">
 							{% for tag in game.genre_tags.all %}
 							<span class="ml-1 tag tag-genre">
@@ -108,7 +111,34 @@
 			</div>
 		</div>
 
-		<div class="flex-row-3 w-100"> 3 </div>
+		
+		<div class="flex-row-3 w-100">
+			<!-- #region ==== SCORE ===================================================================== -->
+			<div class="score-wrapper">
+			    <div class="score mx-auto">
+					<!--<div class="score-header"><h3>average review score</h3></div>-->
+					<span class="score-text">100%</span>
+                </div>
+			</div>
+			<!-- #endregion -->
+						<!-- #region ==== REVIEWS ===================================================================== -->
+			<div class="reviews-wrapper ml-auto">
+
+					<div class="d-flex flex-column align-content-stretch reviews-compact">
+						<div class="reviews-compact-text"><a href="https://www.ign.com/games/doom-eternal" target="_blank">
+							<strong>ign.com - 9/10 : </strong>
+							<em>"Doom Eternal is one of the best first-person shooter campaigns in years. 
+							Its brand of fun remains unmatched in FPSes."</em></a>
+						</div>
+						<div class="reviews-compact-text"><a href="https://www.pcgamer.com/doom-eternal-review/" target="_blank"><strong>pcgamer.com - 94/100 : </strong><em>"id Software returns with one of the most intense shooters ever."</em></a></div>
+						<div class=" d-none d-lg-block reviews-compact-text"><a href="https://www.gamesradar.com/doom-eternal-review/" target="_blank"><strong>gamesradar.com - 3.5/5 : </strong><em>"Screams at you to move faster and to fight harder, and you can do nothing but obey""</em></a></div>
+						<div class="reviews-compact-expand-button"><button class="expand-button" data-id="gameid-1" data-target="reviews-expanded">11 More Reviews <span class="expand downarrow"><i class="fas fa-angle-double-down"></i></span></button></div>
+					</div>
+				
+			</div>
+			<!-- #endregion -->
+		</div>
+
 
 		<div class="flex-row-4 w-100"> 4 </div>
 
