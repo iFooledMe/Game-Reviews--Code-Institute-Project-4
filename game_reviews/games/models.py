@@ -1,7 +1,7 @@
 from django.db import models
 import datetime
 
-# region ==== SUB-CLASSES =================================================================
+# region ==== SUB-CLASSES ===================================================|
 
 
 class Developer(models.Model):
@@ -109,7 +109,7 @@ class Platform(models.Model):
         return self.long_name
 
 # endregion
-# ==========================================================================================
+# ===========================================================================|
 
 
 class Game(models.Model):

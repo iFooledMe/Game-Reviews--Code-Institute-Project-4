@@ -59,8 +59,28 @@
 					<!-- #region ==== DEV / PUBL ============================================================= -->
 					<div class="row d-none d-md-block no-gutters w-100 mb-1 txt-small">
 						<span>
-							Dev: {{ game.developer.short_name }} |
-							Publ: {{ game.publisher.short_name }}
+							{% if game.developer %}
+								{% if game.developer.web_url %}
+									<a href="{{ game.developer.web_url }}" target="_blank">Dev: {{ game.developer.short_name }}</a>
+								{% else %}
+									Dev: {{ game.developer.short_name }}</a> |
+								{% endif %}
+							{% endif %}
+						</span>
+							<span>
+								{% if game.developer and game.publisher %}
+									&nbsp;|&nbsp;
+								{% endif %}
+							</span>
+						<span>
+							<!-- TODO: Figure out why publisher link does not work  -->
+							{% if game.publisher %}
+								{% if game.publisher.web_url %}
+									<a href="{{ game.developer.web_url }}" target="_blank">Dev: {{ game.publisher.short_name }}</a>
+								{% else %}
+									Dev: {{ game.publisher.short_name }}</a>
+								{% endif %}
+							{% endif %}
 						</span>
 					</div>
 					<!-- #endregion -->
