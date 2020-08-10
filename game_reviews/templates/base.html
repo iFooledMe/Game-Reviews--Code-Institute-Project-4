@@ -3,70 +3,78 @@
 <!doctype html>
 <html lang="en">
 
-<!-- #region ==== H E A D ==================================================================================================== -->
-  	<head>
-		<!-- Required meta tags -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- #region ==== H E A D ================================================================================= / -->
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	
+
+	<!-- Font Awesome CSS -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	
+	<title>Game reviews | {% block page_title %}{% endblock  %}</title>
+</head>
+<!-- #endregion -->
+<!-- ====================================================================================================== / -->
+
+<body>
+
+	<div class="container-fluid no-gutters mx-auto">
+
+		<!-- #region ==== H E A D E R ============================================================ / -->
+		<header>
+			<nav class="row no-gutters header-container">
+				{% include 'header.html' %}
+			</nav>
+		</header>
+		<!-- #endregion -->
+		<!-- ===================================================================================== / -->
+
+		<!-- #region ==== T O P  I N F O ========================================================= / -->
+		<div class="row mx-auto">
 		
-
-		<!-- Font Awesome CSS -->
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-
-		<!-- Custom CSS -->
-		<link rel="stylesheet" href="{% static 'css/style.css' %}">
-		
-		<title>Game reviews | {% block page_title %}{% endblock  %}</title>
-  	</head>
-<!-- #endregion -->
-<!-- ============================================================================================================================= -->
-
-  	<body>
-
-	  	<div class="container-fluid no-gutters p-0 mx-auto">
-
-<!-- #region ==== H E A D E R ==================================================================================================== -->
-			<header>
-				<nav class="row no-gutters header-container">
-					{% include 'header.html' %}
-				</nav>
-			</header>
-<!-- #endregion -->
-<!-- ============================================================================================================================= -->
-
-<!-- #region ==== T O P  I N F O ================================================================================================= -->
-			<div class="row">
-				<!--{% include 'top_info.html' %}-->
-			</div>
-<!-- #endregion -->
-<!-- ============================================================================================================================= -->
-
-			<div class="d-flex justify-content-between mx-auto pt-5 ">	
-<!-- #region ==== M A I N  C O N T E N T  ======================================================================================== -->
-				<div class="main-content-container">
-				{% block main_content %}
-				{% endblock %}
-				{% block content %}
-				{% endblock %}
-				</div>
-				</- #endregion -->
-<!-- ============================================================================================================================== -->	
-
-<!-- #region ==== A D  B A N N E R  R I G H T  ==================================================================================== -->
-				<div class="d-flex flex-column">
-					<div class="mr-auto">test</div>
-					<div class="ml-auto"><img class="ml-auto db-right-img pull-left" src="{% static 'img/db_right.png'%}" alt="Some dummy"></div>
-				</div>
-<!-- #endregion -->
-<!-- ============================================================================================================================== -->	
-
-			</div>
-
-
+			<!--{% include 'top_info.html' %}-->
 		</div>
+		<!-- #endregion -->
+		<!-- ===================================================================================== / -->
+
+		<!-- #region ==== M A I N  C O N T E N T ================================================= / -->
+		<div class="container">
+			<div class="d-flex flex-row mx-auto">
+		<!-- #region ==== C O N T E N T  ========================================================= / -->
+				<div class="">
+					<div class="d-flex justify-content-between mx-auto">	
+						
+						<div class="main-content-container">
+						{% block main_content %}
+						{% endblock %}
+						{% block content %}
+						{% endblock %}
+						</div>
+					</div>
+				</div>
+		<!-- #endregion -->
+		<!-- ===================================================================================== / -->	
+
+		<!-- #region ==== A D  B A N N E R  R I G H T  =========================================== / -->
+				<div class="d-none d-lg-flex flex-lg-column flex-grow-1 mx-auto pt-4 pl-lg-1 pl-xl-3 mx-auto ad-right-container">
+						<img class="db-right-img" src="{% static 'img/db_right.png' %}" alt="">
+				</div>
+		<!-- #endregion -->
+		<!-- ===================================================================================== / -->	
+			</div>
+		</div>
+		<!-- #endregion -->
+		<!-- ===================================================================================== / -->
+
+	</div>
 
 <!-- #region ==== S C R I P T S  ================================================================================================== -->
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -75,6 +83,5 @@
 <!-- #endregion -->
 <!-- ============================================================================================================================== -->	
 		
-  	</body>
-
+</body>
 </html>

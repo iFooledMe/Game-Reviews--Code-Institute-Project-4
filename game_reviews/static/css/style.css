@@ -1,9 +1,14 @@
+/* #region I M P O R T E D  F O N T S =================================== */
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/* #endregion */
+/* ====================================================================== */
 
-/* #region C O L O R  S C H E M E ======================================= */
-/* ======================================================================== */
+/* #region R O O T ====================================================== */
 :root {
+    /* #region C O L O R  S C H E M E =================================== */
+    /* ======================================================================== */
+
     --expression-1: #ff0000; /*Main Theme expression - Text beginnings, Score etc.*/
     --expression-2: rgb(
         228,
@@ -93,8 +98,10 @@
     --next-page-border-color: var(--medium-1);
     --next-page-bg-color: var(--light-1);
     --next-page-txt-color: var(--medium-1);
+    /* #endregion */
+    /* ================================================================== */
 
-    /* #region GAME CONTAINER HEIGHT CALC =================================== */
+    /* #region Game container height calc =============================== */
     /* Game Container height calculation */
     --game-thumb-h: 300px;
     --row-1-title-h: 40px;
@@ -106,7 +113,7 @@
             var(--row-3-rewiews-h) + var(--descr-pos-offset)
     );
     /* #endregion */
-    /* ====================================================================== */
+    /* ================================================================== */
 }
 /* #endregion */
 /* ====================================================================== */
@@ -713,9 +720,14 @@ txt-large {
 
 /* #region A D  C O N T A I N E R S ===================================== */
 
+.ad-right-container {
+    width: 120px;
+    height: 100%;
+}
+
 .db-right-img {
     width: 120px;
-    height: 600px;
+    display: block;
 }
 
 /* #endregion A D  C O N T A I N E R S */
@@ -758,25 +770,14 @@ txt-large {
 
 /* **** Bootstrap lg and up **** */
 @media (min-width: 992px) {
-    .reviews-compact-text {
-        height: 60px;
-    }
 }
 
 /* **** Bootstrap xl and up **** */
 @media (min-width: 1200px) {
-    /*.container-fluid {
-        max-width: 80%;
-        padding: 0;
-    }*/
 }
 
 /* **** Custom 1600px and up **** */
 @media (min-width: 1600px) {
-    /*.container-fluid {
-        max-width: 70%;
-        padding: 0;
-    }*/
 }
 
 /* #endregion M E D I A  Q U E R I E S */
