@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
 /* #region C O L O R  S C H E M E ======================================= */
 /* ======================================================================== */
 :root {
@@ -10,7 +7,7 @@
         175,
         78
     ); /* Orange - Link hover bg, pop-up bg etc. */
-    --expression-3: #c55f5f; /* Red:ish*/
+    --expression-3: rgb(197, 95, 95); /* Red:ish*/
     --expression-4: #98b39b; /*Pastel green - Darker*/
     --expression-5: #b6ccb8; /*Pastel green - Medium*/
     --expression-6: #d1e0d1; /*Pastel green - Light */
@@ -61,7 +58,7 @@
     --game-date-txt-color: var(--medium-1);
     --game-developer-txt-color: var(--medium-1);
     --game-platform-txt-color: var(--medium-1);
-    --game-tag-bg-color: var(--expression-4);
+    --game-tag-bg-color: var(--expression-5);
     --game-tag-text-color: var(--dark-1);
     --score-bg-color: var(--dark-1);
     --score-border-color: var(--expression-1);
@@ -80,44 +77,25 @@
     --game-reviews-expanded-bg-hover-color: var(--expression-2);
     --game-reviews-expanded-txt-color: var(--light-1);
     --game-reviews-expanded-txt-hover-color: var(--dark-1);
-    --game-descr-bg-color: var(--dark-1);
-    --game-descr-txt-color: var(--light-1);
-    --game-descr-capital-txt-color: var(--expression-3);
-    --game-descr-more-link-txt-color: var(--expression-3);
-    --game-descr-source-txt-color: var(--medium-1);
+    --game-summary-bg-color: var(--dark-1);
+    --game-summary-txt-color: var(--light-1);
+    --game-summary-source-txt-color: var(--medium-2);
     --game-buy-bg-color: var(--light-1);
     --game-buy-txt-color: var(--dark-1);
-    --game-footer-bg-color: var(--medium-5);
-    --game-footer-txt-color: var(--dark-2);
+    --game-footer-bg-color: var(--medium-3);
     /*Next page bar*/
     --next-page-border-color: var(--medium-1);
     --next-page-bg-color: var(--light-1);
     --next-page-txt-color: var(--medium-1);
-
-    /* #region GAME CONTAINER HEIGHT CALC =================================== */
-    /* Game Container height calculation */
-    --game-thumb-h: 300px;
-    --row-1-title-h: 40px;
-    --row-2-date-h: 80px;
-    --row-3-rewiews-h: 100px;
-    --descr-pos-offset: 12px;
-    --row-4-description-h: calc(
-        var(--game-thumb-h) - var(--row-1-title-h) - var(--row-2-date-h) -
-            var(--row-3-rewiews-h) + var(--descr-pos-offset)
-    );
-    /* #endregion */
-    /* ====================================================================== */
 }
 /* #endregion */
 /* ====================================================================== */
 
 /* #region S T A N D A R D  E L E M E N T S ============================= */
 /* ========================================================================= */
-
 body {
     background-color: var(--body-color);
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.9rem;
+    font-family: monospace;
 }
 
 a {
@@ -151,57 +129,18 @@ input:focus {
     font-size: 0px;
 }
 
-txt-xsmall {
-    font-size: 0.7em;
+.txt-bold {
+    font-weight: 700;
 }
 
 .txt-small {
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 .txt-medium {
-    font-size: 1em;
+    font-size: 1.1em;
 }
 
-txt-large {
-    font-size: 1.5em;
-}
-
-/* *** Shadow effects *** */
-.shadow-bottom-right {
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.22);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.22);
-    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.22);
-}
-
-.shadow-faint-small {
-    -webkit-box-shadow: -1px 9px 6px -4px rgba(0, 0, 0, 0.37);
-    -moz-box-shadow: -1px 9px 6px -4px rgba(0, 0, 0, 0.37);
-    box-shadow: -1px 9px 6px -4px rgba(0, 0, 0, 0.37);
-}
-
-.shadow-inside-up {
-    -webkit-box-shadow: inset 0px 43px 32px -42px rgba(0, 0, 0, 0.86);
-    -moz-box-shadow: inset 0px 43px 32px -42px rgba(0, 0, 0, 0.86);
-    box-shadow: inset 0px 43px 32px -42px rgba(0, 0, 0, 0.86);
-}
-
-/* *** Icons *** */
-.icon-downarrow {
-    display: inline-block;
-    width: 20px;
-    font-size: 1.3em;
-    position: relative;
-    top: 1px;
-}
-
-.icon-rightarrow {
-    display: inline-block;
-    width: 20px;
-    font-size: 1.3em;
-    position: relative;
-    top: 2px;
-}
 /* #endregion */
 /* ====================================================================== */
 
@@ -385,109 +324,114 @@ txt-large {
 /* #endregion */
 /* ====================================================================== */
 
-/* #region ==== G A M E S  L I S T ====================================== */
+/* #region G A M E S  L I S T =========================================== */
+/* ====================================================================== */
 
-/* #region **** GAME CONTAINER FRAME **** */
-
-/* MAIN CONTAINERS */
-
-/* Wrapper for the full game info container */
+/* #region *** FRAME **************************************************** */
 .game-container-expanded {
-    max-width: 992px;
-    margin-top: 20px;
-    border-radius: 5px 5px 0 0;
+    width: 98%;
+    height: 340px;
 }
 
-/* Wrapper for the thumb image container */
-.game-thumb-box {
+.game-info {
+    width: calc(100% - 244px);
 }
-
-/* Wrapper for the game info box */
-.game-info-box {
-}
-
-/* Wrapper for the game footer */
-.game-footer-box {
-    position: relative;
-    z-index: 0;
-    top: -20px;
-    width: 100%;
-    height: 40px;
-    background-color: var(--game-footer-bg-color);
-    color: var(--game-footer-txt-color);
-    border-radius: 0 0 5px 5px;
-}
-
-/* GAME INFO ROW CONTAINERS */
 
 /* Title row */
-.game-info-row-1 {
-    height: var(--row-1-title-h);
+.flex-row-1 {
+    width: 100%;
+    height: 40px;
     padding-left: 10px;
     border-radius: 0px 5px 0px 0px;
 }
 
 /* Date, publisher, platforms, tags */
-.game-info-row-2 {
-    height: var(--row-2-date-h);
+.flex-row-2 {
+    height: 80px;
     padding-left: 10px;
+    padding-top: 10px;
 }
 
 /* Score, reviews */
-.game-info-row-3 {
-    height: var(--row-3-rewiews-h);
-    position: relative;
+.flex-row-3 {
 }
 
-/* Game description */
-.game-info-row-4 {
-    position: relative;
-    height: var(--row-4-description-h);
+.flex-row-4 {
+    height: auto;
 }
 
-/* #endregion */
+.game-footer {
+    background-color: var(--game-footer-bg-color);
+    height: 40px;
+    margin-bottom: 40px;
+    border-radius: 0 0 5px 5px;
+}
 
-/* #region **** GAME THUMB BOX  ********* */
+/* #endregion *** FRAME */
 
-/* Game thumbnail image */
-.game-thumb-wrapper img {
-    max-width: auto;
+/* #region *** THUMB IMAGE COL ****************************************** */
+.game-thumb-large {
+    position: relative;
+    max-width: 244px;
+    border-radius: 0 0 0 3px;
+}
+
+.game-thumb-large img {
     border-radius: 5px 0 0 0;
 }
 
-/* #endregion */
-
-/* #region **** GAME INFO BOX *********** */
-
-/* #region ---- Game Title ---- */
-.game-title {
-    background-color: var(--game-title-bar-color);
-    color: var(--game-title-text-color);
-    text-transform: uppercase;
-    font-family: 'Baloo Tamma 2', cursive;
-    font-size: 1.5rem;
-    letter-spacing: 0px;
+.pegi-overlay {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 5;
 }
 
-.title-wrapper {
-    position: relative;
-    bottom: 11px;
+.pegi-overlay img {
+    max-width: 35px;
+    opacity: 0.5;
+}
+
+.pegi-overlay img:hover {
+    opacity: 1;
+}
+
+/* #endregion *** THUMB IMAGE COL */
+
+/* #region *** GAME INFO COL ******************************************** */
+
+/* #region --- Title row (row 1) --- */
+.game-title {
+    background-color: var(--game-title-bar-color);
+    text-transform: uppercase;
+    font-family: monospace;
 }
 
 .game-title-initial-cap {
-    font-size: 1.8em;
-    overflow: visible;
+    position: relative;
+    bottom: 14px;
+    font-size: 50px;
+    letter-spacing: 3px;
     color: var(--game-title-initial-cap-color);
 }
-/* #endregion */
 
-/* #region ---- Platforms ----- */
+.game-title-text {
+    position: relative;
+    bottom: 14px;
+    font-size: 25px;
+    letter-spacing: 2px;
+    color: var(--game-title-text-color);
+}
+
+/* #endregion --- Title row (row 1) --- */
+
+/* #region --- Date, platform, Dev, Publ, (row 2 col 1) --- */
 .platform-icon-image {
     width: 15px;
 }
-/* #endregion */
+/* #endregion --- Date, platform, Dev, Publ, (row 2 col 1) --- */
 
-/* #region ---- Tags ---------- */
+/* #region --- Tags (row 2 col 2) --- */
 .tags-container {
     height: 100px;
 }
@@ -515,20 +459,24 @@ txt-large {
     background-color: var(--game-tag-bg-color);
     color: var(--game-tag-text-color);
 }
-/* #endregion */
 
-/* #region ---- Score --------- */
+/* #endregion --- Tags (row 2 col 2) --- */
+
+/* #region --- Score (row 3 col 1) --- */
 .score-wrapper {
+    float: left;
+    position: relative;
     width: 100px;
 }
 
 .score {
-    z-index: 4;
-    position: relative;
-    left: -5px;
+    left: -15;
+    z-index: 2;
     overflow: visible;
     width: 115px;
     height: 115px;
+    position: relative;
+    left: -10px;
     text-align: center;
     border-style: solid;
     border-width: thick;
@@ -545,149 +493,77 @@ txt-large {
     font-size: 3em;
     color: var(--score-txt-color);
 }
-
 /* #endregion */
 
-/* #region ---- Reviews ------- */
+/* #region --- Reviews (row 3 col 2) --- */
 .reviews-wrapper {
+    float: rigth;
+    width: calc(100% - 90px);
+    height: 100%;
+    position: relative;
+    top: -110px;
+}
+
+/*compact*/
+.reviews-compact {
     display: block;
-    position: relative;
-    z-index: 3;
-    overflow: hidden;
-    padding-left: 10px;
-    border-radius: 5px 5px 0px 5px;
+    width: 100%;
+    height: 120px;
+    padding-left: 20px;
+    padding-top: 10px;
+    border-radius: 5px 5px 5px 5px;
     background-color: var(--game-reviews-compact-bg-color);
+}
+
+.reviews-compact-text {
     font-size: 0.9em;
+    color: var(--game-reviews-compact-txt-color);
+    height: 40px;
+    overflow: none;
 }
 
-.expand-button-wrapper {
-    position: relative;
-    z-index: 3;
-    text-align: right;
+.reviews-compact span:hover {
+    border-radius: 2px 2px 2px 2px;
+    background-color: var(--game-reviews-compact-bg-hover-color);
+    color: var(--game-reviews-compact-txt-hover-color);
 }
 
-.expand-button-wrapper button {
+.reviews-compact-expand-button {
     width: 150px;
-    height: 25px;
+    height: 15px;
+    position: absolute;
+    bottom: -14px;
+    right: 0px;
+}
+
+.reviews-compact-expand-button > button {
+    width: 150px;
+    height: 15px;
     border: none;
     border-radius: 0px 0px 3px 3px;
     background-color: var(--game-reviews-compact-button-bg-color);
-    font-size: 0.8em;
+    font-size: 80%;
     font-weight: bold;
     text-align: center;
     color: var(--game-reviews-compact-button-txt-color);
 }
 
-.expand-button-wrapper > button:hover {
+.reviews-compact-expand-downarrow {
+    width: 50px;
+    font-size: 100%;
+    text-align: right;
+}
+
+.reviews-compact-expand-button > button:hover {
     background-color: var(--game-reviews-compact-button-bg-hover-color);
+    font-size: 90%;
     color: var(--game-reviews-compact-button-txt-hover-color);
 }
-/* #endregion */
+/* #endregion --- Reviews */
 
-/* #region ---- Description --- */
-.description-wrapper {
-    position: relative;
-    top: -20px;
-    border-radius: 0 5px 0 0;
-    background-color: var(--game-descr-bg-color);
-    color: var(--game-descr-txt-color);
-    overflow: hidden;
-}
+/* #endregion *** GAME INFO COL  */
 
-.description-text-box {
-    position: relative;
-    top: 25px;
-    width: calc(100% - 170px);
-    font-size: 0.9em;
-    line-height: 15px;
-    text-align: justify;
-    overflow: hidden !important;
-}
-
-.description-capital {
-    position: relative;
-    left: 2px;
-    top: 1px;
-    color: var(--game-descr-capital-txt-color);
-    font-size: 1.5em;
-    font-weight: 600;
-}
-
-.description-bottom-cover {
-    position: absolute;
-    bottom: 24px;
-    background-color: var(--game-descr-bg-color);
-    width: 120%;
-    height: 5px;
-}
-
-.description-end-dots {
-    position: absolute;
-    bottom: 25px;
-    right: 0px;
-    padding-left: 5px;
-    background-color: var(--game-descr-bg-color);
-    color: var(--game-descr-capital-txt-color);
-    height: 20px;
-    font-weight: 600;
-    letter-spacing: 2px;
-}
-
-.description-read-more-link {
-    position: relative;
-    top: 1px;
-    text-transform: uppercase;
-}
-
-.description-read-more-link a {
-    color: var(--game-descr-more-link-txt-color) !important;
-}
-
-.description-source {
-    font-size: 0.7em;
-    color: var(--game-descr-source-txt-color);
-}
-
-/* #endregion */
-
-/* #region ---- Stores --- */
-
-/* #endregion */
-
-/* #region ---- Details button --- */
-.read-more-txt {
-    color: var(--game-descr-more-link-txt-color) !important;
-    letter-spacing: 2px;
-}
-
-.details-txt {
-    font-size: 1.1em;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding-left: 3px;
-}
-
-.details-button {
-    width: 300px;
-    height: 25px;
-    border: none;
-    border-radius: 0px 0px 3px 3px;
-    font-size: 80%;
-    font-weight: bold;
-    text-align: center;
-    background-color: var(--game-descr-bg-color);
-    color: var(--game-descr-txt-color);
-}
-
-.details-button:hover {
-    background-color: var(--game-reviews-compact-button-bg-hover-color);
-    color: var(--game-reviews-compact-button-txt-hover-color);
-}
-
-/* #endregion */
-
-/* #endregion */
-/* #endregion */
+/* #endregion G A M E S  L I S T */
 /* ====================================================================== */
 
 /* #region A D  C O N T A I N E R S ===================================== */
