@@ -10,7 +10,16 @@
 		<div class="d-flex flex-row align-items-stretch">
 			<!-- #region ==== THUMB BOX =============================================================== -->
 			<div class="game-thumb-wrapper">
-				<img src="panzer_corps_2_244x300.png" alt="">
+				{% if  game.thumb_img %}
+					<img class="img-fluid game-thumb-large-img" src="{{ game.thumb_img.url }}" alt="{{ game.title }} - Cover image">
+				{% else %}
+					<img src="{% static "img/img_placeholder_244x300.jpg"%}" alt="Empty placeholder - Game cover image is missing">
+				{% endif %}
+				<div class="pegi-overlay">
+					<a href="https://pegi.info/what-do-the-labels-mean" target="_blank">
+						<img src="{{ game.pegi.pegi_img.url }}" alt="{{ game.pegi }} age label">
+					</a>
+				</div>
 			</div>
 			<!-- #endregion -->
 
@@ -20,10 +29,10 @@
 				<!-- #region ==== Row 1 - Title ======================================================= -->
 				<div class="game-info-row-1 game-title">
 					<div class="invisible">
-						<h2>Game title</h2>
+						<h2>{{ game.title }}</h2>
 					</div>
 					<div class="title-wrapper">
-						<span class="game-title-initial-cap">D</span>oom Eternal
+						<span class="game-title-initial-cap">{{ game.title|slice:"1" }}</span>{{game.title|slice:"1:"}}
 					</div>
 				</div>
 				<!-- #endregion -->
@@ -32,18 +41,49 @@
 					<div class="d-flex flex-column flex-grow-1">
 						<!-- #region ++++ Date ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 						<div class="txt-medium">
-							<strong>20 mar, 2020</strong>
+							<strong>{{ game.release_date }}</strong>
 						</div>
 						<!-- #endregion -->
 						<!-- #region ++++ Plattforms ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 						<div class="txt-small">
-								PC, PS2, Xone, Statia
+							<span>
+								{% for platform in game.platforms.all %}
+								{% if platform.show_icon %}
+									{{ platform.icon | safe }}
+								{% elif platform.show_img %}
+									<img class="platform-icon-image" src="{{ platform.img.url }}" alt="">
+								{% endif %}
+									{{ platform.short_name}}
+								{% endfor %}
+							</span>
 						</div>
 						<!-- #endregion -->
 						<!-- #region ++++ Dev / Publ ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 						<div class="d-none d-md-block txt-small">
-								Dev: Some dev<br>
-								Publ: Some publisher
+						<span>
+							{% if game.developer %}
+								{% if game.developer.web_url %}
+									<a href="{{ game.developer.web_url }}" target="_blank">Dev: {{ game.developer.short_name }}</a>
+								{% else %}
+									Dev: {{ game.developer.short_name }}</a> |
+								{% endif %}
+							{% endif %}
+						</span>
+							<span>
+								{% if game.developer and game.publisher %}
+									<br>
+								{% endif %}
+							</span>
+						<span>
+							<!-- TODO: Figure out why publisher link does not work  -->
+							{% if game.publisher %}
+								{% if game.publisher.web_url %}
+									<a href="{{ game.developer.web_url }}" target="_blank">Publ: {{ game.publisher.short_name }}</a>
+								{% else %}
+									Publ: {{ game.publisher.short_name }}</a>
+								{% endif %}
+							{% endif %}
+						</span>
 						</div>
 						<!-- #endregion -->
 					
@@ -51,38 +91,42 @@
 					<!-- #region ++++++++ Tags ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 					<div class="tags-container mr-2">
 						<div class="mb-1  text-right">
+							{% for tag in game.genre_tags.all %}
 							<span class="ml-1 tag shadow-faint-small tag-genre">
-								some tag
+								{% if tag.show_name %}
+									{{ tag.short_name }}
+								{% endif %}
+								{% if tag.show_icon %}
+									{{ tag.icon | safe }}
+								{% endif %}
 							</span>
-							<span class="ml-1 tag tag-genre">
-								some tag
-							</span>
-							<span class="ml-1 tag tag-genre">
-								some tag
-							</span>
+							{% endfor %}
 						</div>
-						<div class="mb-1  text-right">
-								<span class="ml-1 tag tag-genre">
-									some tag
+						<div class="mb-1 ml-1 text-right">
+							{% for tag in game.theme_tags.all %}
+								<span class="ml-2 tag shadow-faint-small tag-theme">
+									{% if tag.show_name %}
+										{{ tag.short_name }}
+									{% endif %}
+									{% if tag.show_icon %}
+										{{ tag.icon | safe }}
+									{% endif %}
 								</span>
-								<span class="ml-1 tag tag-genre">
-									some tag
-								</span>
-								<span class="ml-1 tag tag-genre">
-									some tag
-								</span>
+								
+							{% endfor %}
 						</div>
-						<div class="mb-1  text-right">
-								<span class="ml-1 tag tag-genre">
-									some tag
+						<div class="mb-1  ml-1 text-right">
+							{% for tag in game.misc_tags.all %}
+								<span class="ml-2 tag shadow-faint-small tag-misc">
+									{% if tag.show_name %}
+										{{ tag.short_name }}
+									{% endif %}
+									{% if tag.show_icon %}
+										{{ tag.icon | safe }}
+									{% endif %}
 								</span>
-								<span class="ml-1 tag tag-genre">
-									some tag
-								</span>
-								<span class="ml-1 tag tag-genre">
-									some tag
-								</span>
-						</div>	
+							{% endfor %}
+						</div>
 					</div>
 					<!-- #endregion -->
 				</div>
@@ -117,10 +161,15 @@
 					<div class="d-flex flex-row align-content-stretch game-info-row-4  description-wrapper">
 						<div class="description-text-box pl-3">
 							<div>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<span class="description-source">(bethesda.net)</span>
-							<span class="description-capital">P</span>
-							layers once again take on the role of the Doom Slayer, an ancient warrior who battles the demonic forces of Hell, from a first-person perspective. The game continues its predecessor's emphasis on "push-forward" combat, encouraging the player to aggressively engage enemies in order to acquire health, ammo, and armor. The player has access to various firearms, such as the Combat Shotgun, Super Shotgun, Heavy Cannon, Rocket Launcher, Plasma Rifle, BFG 9000, and Ballista. Melee weapons such as a chainsaw, the "Crucible Blade" energy sword and a retractable arm-blade called the "Doomblade" can also be used. The arm-blade provides the opportunity for a larger variety of quick and violent "glory kill" executions, which drop extra health. The Super Shotgun is now equipped with the "Meat Hook", a ranged accessory which grabs on to enemies and slingshots the player towards them, functioning as a grappling hook, useful both in combat scenarios and environmental navigation. The Doom Slayer's armor now includes a shoulder-mounted Equipment Launcher with the ability to lob grenades and ice bombs. Additionally the Flame Belch is a flame thrower, which causes the enemies set on fire with it to drop armor pickups. Finally, killing enemies with the chainsaw will drop ammunition.[1] New movement mechanics such as wall-climbing, dash moves, and horizontal bars to swing from have also been introduced.[2][3]
+								<!--TODO: Link not working + handle links where there are none stored -->
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span class="description-source">
+									<a href="{{ description_src_url.url }}">({{ game.description_src }})</a>
+								</span>
+								<span class="description-capital">
+									{{ game.description|slice:"1" }}
+								</span>
+									{{ game.description|slice:"1:" }}	
 							</div>
 							<div class="description-bottom-cover"></div>
 							<div class="description-end-dots">...</div>

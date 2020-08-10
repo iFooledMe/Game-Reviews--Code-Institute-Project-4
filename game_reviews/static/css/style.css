@@ -224,7 +224,7 @@ txt-large {
     height: 40px;
     border-radius: 0px 0px 0px 5px;
     background-color: var(--header-fg-color);
-    font-size: 250%;
+    font-size: 3em;
     color: var(--logo-top-txt-color);
     text-align: center;
     letter-spacing: 15px;
@@ -233,7 +233,7 @@ txt-large {
 .logo-text-container {
     position: relative;
     left: 5px;
-    bottom: 13px;
+    bottom: 17px;
 }
 
 .large-g {
@@ -450,9 +450,29 @@ txt-large {
 /* #region **** GAME THUMB BOX  ********* */
 
 /* Game thumbnail image */
+.game-thumb-wrapper {
+    position: relative;
+}
+
 .game-thumb-wrapper img {
-    max-width: auto;
+    max-width: 244px;
     border-radius: 5px 0 0 0;
+}
+
+.pegi-overlay {
+    position: absolute;
+    left: 0px;
+    bottom: 20px;
+    z-index: 5;
+}
+
+.pegi-overlay img {
+    max-width: 35px;
+    opacity: 0.5;
+}
+
+.pegi-overlay img:hover {
+    opacity: 1;
 }
 
 /* #endregion */
@@ -464,9 +484,9 @@ txt-large {
     background-color: var(--game-title-bar-color);
     color: var(--game-title-text-color);
     text-transform: uppercase;
-    font-family: 'Baloo Tamma 2', cursive;
-    font-size: 1.5rem;
-    letter-spacing: 0px;
+    font-family: monospace;
+    font-size: 2rem;
+    letter-spacing: 4px;
 }
 
 .title-wrapper {
@@ -744,18 +764,18 @@ txt-large {
 
 /* **** Bootstrap xl and up **** */
 @media (min-width: 1200px) {
-    .container-fluid {
+    /*.container-fluid {
         max-width: 80%;
         padding: 0;
-    }
+    }*/
 }
 
 /* **** Custom 1600px and up **** */
 @media (min-width: 1600px) {
-    .container-fluid {
+    /*.container-fluid {
         max-width: 70%;
         padding: 0;
-    }
+    }*/
 }
 
 /* #endregion M E D I A  Q U E R I E S */
