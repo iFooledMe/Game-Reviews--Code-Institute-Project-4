@@ -6,7 +6,7 @@
 
 {% block main_content %}
 {% for game in games  %}
-	<div class="container-fluid game-container-expanded mx-auto p-0">
+	<div class="container-fluid w-100 game-container-expanded p-0 mx-0 ">
 		<div class="d-flex flex-row align-items-stretch">
 			<!-- #region ==== THUMB BOX =============================================================== -->
 			<div class="game-thumb-wrapper">
@@ -27,7 +27,7 @@
 			<div class="flex-grow-1 game-info-box">
 				
 				<!-- #region ==== Row 1 - Title ======================================================= -->
-				<div class="game-info-row-1 game-title">
+				<div class="game-info-row-1 shadow-bottom-right game-title">
 					<div class="invisible">
 						<h2>{{ game.title }}</h2>
 					</div>
@@ -65,7 +65,7 @@
 								{% if game.developer.web_url %}
 									<a href="{{ game.developer.web_url }}" target="_blank">Dev: {{ game.developer.short_name }}</a>
 								{% else %}
-									Dev: {{ game.developer.short_name }}</a> |
+									Dev: {{ game.developer.short_name }}</a>
 								{% endif %}
 							{% endif %}
 						</span>
@@ -90,9 +90,9 @@
 					</div>
 					<!-- #region ++++++++ Tags ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 					<div class="tags-container mr-2">
-						<div class="mb-1  text-right">
+						<div class="text-right">
 							{% for tag in game.genre_tags.all %}
-							<span class="ml-1 tag shadow-faint-small tag-genre">
+							<span class="ml-1 shadow-faint-small tag tag-genre">
 								{% if tag.show_name %}
 									{{ tag.short_name }}
 								{% endif %}
@@ -102,9 +102,9 @@
 							</span>
 							{% endfor %}
 						</div>
-						<div class="mb-1 ml-1 text-right">
+						<div class="ml-1 text-right">
 							{% for tag in game.theme_tags.all %}
-								<span class="ml-2 tag shadow-faint-small tag-theme">
+								<span class="ml-2 shadow-faint-small tag tag-theme">
 									{% if tag.show_name %}
 										{{ tag.short_name }}
 									{% endif %}
@@ -115,9 +115,9 @@
 								
 							{% endfor %}
 						</div>
-						<div class="mb-1  ml-1 text-right">
+						<div class="ml-1 text-right">
 							{% for tag in game.misc_tags.all %}
-								<span class="ml-2 tag shadow-faint-small tag-misc">
+								<span class="ml-2 shadow-faint-small tag tag-misc">
 									{% if tag.show_name %}
 										{{ tag.short_name }}
 									{% endif %}
@@ -135,21 +135,36 @@
 				<div class="d-flex flex-row game-info-row-3">
 					<!-- #region ++++++++ Score ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 					<div class="score-wrapper">
-						<div class="score shadow-bottom-right"><span class="score-text">100%</span></div>
+						<div class="score shadow-bottom-right">
+							<span class="score-text score-text-digits">67</span><br>
+							<span class="score-text score-text-sign">%</span>
+						</div>
 					</div>
 					<!-- #endregion -->
 					<!-- #region ++++++++ Reviews ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 					<div class="relative-container flex-grow-1 h-100">
 						
 						<div class="d-flex flex-column h-100 mr-2 shadow-bottom-right reviews-wrapper">
-							<div class="h-100 px-2 pt-1 txt-medium">One review ............................</div>
-							<div class="h-100 px-2 pt-1 txt-medium">An other review ............................</div>
-							<div class="h-100 px-2 pt-1 txt-medium">same same ............................</div>
+							{% for review in reviews  %}
+								{% if review.game.title == game.title and forloop.counter <= 2 %}
+									<div class="h-100 reviews-text-box">
+										<a href="{{ review.review_url }}" target="_blank">	
+											<span class="review-quote-src">
+												{{ review.review_site.site_short_name }} - 
+												{{ review.score }} / {{ review.review_site.max_score }}
+											</span>
+											"{{ review.short_quote }}
+										</a>
+										<div class="reviews-end-dots">..."</div>
+									</div>
+								{% endif %}	
+							{% endfor %}
+							
 						</div>
 						<!-- #region ++++++++ Button +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 						<div class="expand-button-wrapper mr-2">
 							<button class="expand-button" data-id="gameid-1" data-target="reviews-expanded">
-								11 More Reviews <i class="fas fa-caret-down icon-downarrow"></i>
+								More Reviews <i class="fas fa-caret-down icon-downarrow"></i>
 							</button>
 						</div>
 						<!-- #endregion -->
@@ -158,7 +173,7 @@
 				</div>
 				<!-- #endregion -->
 				<!-- #region ==== Row 4 - Description ================================================= -->
-					<div class="d-flex flex-row align-content-stretch game-info-row-4  description-wrapper">
+					<div class="d-flex flex-row align-content-stretch game-info-row-4 description-wrapper">
 						<div class="description-text-box pl-3">
 							<div>
 								<!--TODO: Link not working + handle links where there are none stored -->
@@ -172,8 +187,6 @@
 									{{ game.description|slice:"1:" }}	
 							</div>
 							<div class="description-bottom-cover"></div>
-							<div class="description-end-dots">...</div>
-							
 						</div>					
 					</div>
 				<!-- #endregion -->
@@ -182,13 +195,14 @@
 		</div>
 		<!-- #region ======== GAME FOOTER ============================================================= -->
 		<div class="d-flex flex-row shadow-inside-up game-footer-box">
+			<div class="description-end-dots">...</div>
 			<div class="d-flex flex-grow-1 stores">
 
 			
 			</div>
 			<div>
 				<button class="details-button" data-id="gameid-1" data-target="reviews-expanded">
-					<span class="read-more-txt">(...read more)</span><span class="details-txt"> Game Details <i class="fas fa-caret-right icon-rightarrow"></i></span>
+					<span class="read-more-txt">...read more</span><span class="details-txt"> Game Details <i class="fas fa-caret-right icon-rightarrow"></i></span>
 				</button>
 			</div>	
 		</div>

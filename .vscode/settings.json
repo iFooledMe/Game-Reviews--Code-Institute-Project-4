@@ -12,6 +12,15 @@
     "game_reviews/games/__init__.py": true,
     ".devcontainer": true,
     "game_reviews/games/__pycache__": true,
-    "game_reviews/games/migrations": true
+    "game_reviews/games/migrations": true,
+    "game_reviews/reviews/tests.py": true,
+    "game_reviews/games/tests.py": true,
+    "game_reviews/reviews/apps.py": true,
+    "game_reviews/reviews/__init__.py": true,
+    "game_reviews/reviews/migrations": true,
+    "game_reviews/intermediates/migrations": true,
+    "game_reviews/intermediates/__init__.py": true,
+    "game_reviews/intermediates/tests.py": true,
+    "game_reviews/reviews/__pycache__": true
   }
 }

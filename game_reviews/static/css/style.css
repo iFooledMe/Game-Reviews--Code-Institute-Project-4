@@ -1,6 +1,8 @@
 /* #region I M P O R T E D  F O N T S =================================== */
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@300;400;700&display=swap');
 /* #endregion */
 /* ====================================================================== */
 
@@ -22,6 +24,7 @@
     --dark-1: #383c42; /* Headers, Game description background etc. */
     --dark-2: #3e444f; /*various dark backgrounds, darker and more grayish than main color dark-1*/
     --dark-3: #616b7d;
+    --dark-4: #4e5561;
     --medium-1: #a9a9a9; /* Dark Gray:ish for text */
     --medium-2: #ababab; /* Medium Gray:ish for text */
     --medium-3: #cccccc; /* Light gray for borders and text */
@@ -48,7 +51,7 @@
     --logo-beginning-txt-color: var(--expression-1);
     --logo-top-txt-color: var(--body-color);
     --logo-bottom-txt-color: var(--dark-1);
-    --slogan-txt-color: var(--medium-2);
+    --slogan-txt-color: var(--dark-4);
     --top-search-icon-color: var(--medium-1);
     --top-search-icon-hover-color: var(--expression-3);
     --user-info-txt: var(--dark-1);
@@ -85,6 +88,10 @@
     --game-reviews-expanded-bg-hover-color: var(--expression-2);
     --game-reviews-expanded-txt-color: var(--light-1);
     --game-reviews-expanded-txt-hover-color: var(--dark-1);
+    --game-reviews-text-box-txt-color: var(--dark-4);
+    --game-reviews-text-box-txt-color-source: var(--dark-2);
+    --game-reviews-text-box-bg-color: var(--expression-5);
+    --game-reviews-text-box-bg-color-hover: var(--expression-6);
     --game-descr-bg-color: var(--dark-1);
     --game-descr-txt-color: var(--light-1);
     --game-descr-capital-txt-color: var(--expression-3);
@@ -223,7 +230,7 @@ txt-large {
 
 .logo-container {
     position: relative;
-    font-family: monospace;
+    font-family: 'Titillium Web', sans-serif;
     padding: 0;
 }
 
@@ -231,7 +238,7 @@ txt-large {
     height: 40px;
     border-radius: 0px 0px 0px 5px;
     background-color: var(--header-fg-color);
-    font-size: 3em;
+    font-size: 2.5em;
     color: var(--logo-top-txt-color);
     text-align: center;
     letter-spacing: 15px;
@@ -240,12 +247,12 @@ txt-large {
 .logo-text-container {
     position: relative;
     left: 5px;
-    bottom: 17px;
+    bottom: 20px;
 }
 
 .large-g {
     position: relative;
-    bottom: 1px;
+    bottom: -2px;
     font-size: 150%;
     font-weight: 600;
     color: var(--logo-beginning-txt-color);
@@ -265,11 +272,9 @@ txt-large {
 /* **** Slogan ********************************************** */
 
 .slogan {
-    padding-top: 5px;
-
     font-size: 120%;
     text-align: center;
-    font-family: monospace;
+    font-family: 'Titillium Web', sans-serif;
     font-weight: lighter;
     color: var(--slogan-txt-color);
 }
@@ -331,6 +336,7 @@ txt-large {
 .nav-bottom {
     height: 40px;
     border-radius: 0px 0px 0px 5px;
+    font-family: 'Titillium Web', sans-serif;
     background-color: var(--header-fg-color);
     text-align: center;
 }
@@ -383,6 +389,12 @@ txt-large {
 /* #region M A I N  C O N T E N T  C O N T A I N E R ==================== */
 /* ========================================================================= */
 
+/* Wraps the entire container holding both main content and add */
+.main-content-section {
+    padding-right: 0px !important;
+}
+
+/* Wraps the container holding the games list */
 .main-content-container {
     box-sizing: border-box;
     width: 100%;
@@ -403,7 +415,12 @@ txt-large {
 .game-container-expanded {
     max-width: 992px;
     margin-top: 20px;
+    margin-left: auto;
     border-radius: 5px 5px 0 0;
+}
+
+.container {
+    width: 100% !important;
 }
 
 /* Wrapper for the thumb image container */
@@ -492,19 +509,20 @@ txt-large {
     background-color: var(--game-title-bar-color);
     color: var(--game-title-text-color);
     text-transform: uppercase;
-    font-family: monospace;
+    font-family: 'Titillium Web', sans-serif;
     font-size: 2rem;
     letter-spacing: 4px;
 }
 
 .title-wrapper {
     position: relative;
-    bottom: 11px;
+    bottom: 25px;
 }
 
 .game-title-initial-cap {
     font-size: 1.8em;
     overflow: visible;
+    font-weight: 500;
     color: var(--game-title-initial-cap-color);
 }
 /* #endregion */
@@ -521,12 +539,9 @@ txt-large {
 }
 
 .tag {
-    display: inline;
-    height: 20px;
-    padding: 2px 5px;
-    margin-bottom: 5px;
+    padding: 1px 5px;
     border-radius: 3px;
-    font-size: 0.9em;
+    font-size: 0.7em;
 }
 
 .tag-genre {
@@ -567,29 +582,78 @@ txt-large {
 
 .score-text {
     position: relative;
-    top: 25px;
+    top: 10px;
     text-align: center;
-    font-family: monospace;
-    font-size: 3em;
+    font-family: 'Titillium Web', sans-serif;
     color: var(--score-txt-color);
+}
+
+.score-text-digits {
+    font-weight: 700;
+    font-size: 4em;
+}
+
+.score-text-sign {
+    top: -10px;
+    font-size: 1.2em;
 }
 
 /* #endregion */
 
 /* #region ---- Reviews ------- */
+/* Wrapper */
 .reviews-wrapper {
-    display: block;
     position: relative;
+    top: -10px;
     z-index: 3;
     overflow: hidden;
+    height: 110px !important;
     padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-radius: 5px 5px 0px 5px;
     background-color: var(--game-reviews-compact-bg-color);
     font-size: 0.9em;
 }
 
+/* text box*/
+.reviews-text-box {
+    position: relative;
+    right: 5px;
+    background-color: var(--game-reviews-text-box-bg-color);
+    color: var(--game-reviews-text-box-txt-color);
+    margin: 2px 0 2px 0;
+    padding: 5px 20px 5px 5px !important;
+    overflow: hidden;
+    font-size: 0.9em;
+    font-weight: 500;
+    font-style: italic;
+    border-radius: 3px;
+    text-align: justify;
+}
+
+.reviews-text-box:hover {
+    background-color: var(--game-reviews-text-box-bg-color-hover);
+}
+
+.review-quote-src {
+    color: var(--game-reviews-text-box-txt-color-source);
+    font-size: 1.2em;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.reviews-end-dots {
+    position: absolute;
+    top: 26px;
+    right: 7px;
+    background-color: transparent;
+}
+
+/* Button */
 .expand-button-wrapper {
     position: relative;
+    top: -10px;
     z-index: 3;
     text-align: right;
 }
@@ -626,7 +690,7 @@ txt-large {
     position: relative;
     top: 25px;
     width: calc(100% - 170px);
-    font-size: 0.9em;
+    font-size: 0.85em;
     line-height: 15px;
     text-align: justify;
     overflow: hidden !important;
@@ -634,8 +698,8 @@ txt-large {
 
 .description-capital {
     position: relative;
-    left: 2px;
-    top: 1px;
+    left: 5px;
+    top: 0px;
     color: var(--game-descr-capital-txt-color);
     font-size: 1.5em;
     font-weight: 600;
@@ -651,14 +715,16 @@ txt-large {
 
 .description-end-dots {
     position: absolute;
-    bottom: 25px;
-    right: 0px;
-    padding-left: 5px;
+    z-index: 5;
+    bottom: 42px;
+    right: 145px;
+    padding-left: 0px;
     background-color: var(--game-descr-bg-color);
     color: var(--game-descr-capital-txt-color);
     height: 20px;
     font-weight: 600;
     letter-spacing: 2px;
+    text-align: left;
 }
 
 .description-read-more-link {

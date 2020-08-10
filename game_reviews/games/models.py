@@ -1,7 +1,9 @@
 from django.db import models
-import datetime
 
-# region ==== SUB-CLASSES ===================================================|
+
+# region G A M E  M O D E L L ===============================================|
+
+# region ==== SUB-CLASSES GAME ==============================================|
 
 
 class Developer(models.Model):
@@ -146,3 +148,5 @@ class Game(models.Model):
 
     def __str__(self):
         return self.title
+# endregion
+# ===========================================================================|

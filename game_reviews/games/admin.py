@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import Game, Developer, Publisher, Pegi, Store, Platform, GenreTag, ThemeTag, MiscTag
 
-# Register your models here.
 admin.site.register(Game)
 admin.site.register(Developer)
 admin.site.register(Publisher)
