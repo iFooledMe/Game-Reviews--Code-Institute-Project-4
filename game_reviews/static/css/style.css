@@ -593,11 +593,6 @@ txt-large {
     font-size: 4em;
 }
 
-.score-text-sign {
-    top: -10px;
-    font-size: 1.2em;
-}
-
 /* #endregion */
 
 /* #region ---- Reviews ------- */
@@ -677,7 +672,7 @@ txt-large {
 /* #endregion */
 
 /* #region ---- Description --- */
-.description-wrapper {
+.descr-wrapper {
     position: relative;
     top: -20px;
     border-radius: 0 5px 0 0;
@@ -686,44 +681,62 @@ txt-large {
     overflow: hidden;
 }
 
-.description-text-box {
-    position: relative;
-    top: 25px;
-    width: calc(100% - 170px);
-    font-size: 0.85em;
-    line-height: 15px;
-    text-align: justify;
-    overflow: hidden !important;
+.descr-row-1 {
+    padding-top: 25px;
 }
 
-.description-capital {
-    position: relative;
-    left: 5px;
-    top: 0px;
+.descr-row-2 {
+    overflow: hidden;
+    text-align: justify;
+    padding-top: 3px;
+    padding-left: 15px;
+    padding-right: 35px;
+    font-size: 0.85em;
+    line-height: 17px;
+}
+
+.descr-quote-sign {
+    font-size: 1.5em;
+}
+
+.descr-quote-sign-2 {
+    position: absolute;
+    right: -8px;
+    font-size: 1.1em;
+    color: var(--game-descr-txt-color);
+}
+
+.descr-capital {
     color: var(--game-descr-capital-txt-color);
     font-size: 1.5em;
     font-weight: 600;
 }
 
-.description-bottom-cover {
+.descr-bodytext {
+    position: relative;
+    right: 3px;
+}
+
+.descr-bottom-cover {
     position: absolute;
-    bottom: 24px;
+    bottom: 0px;
+    right: 10px;
     background-color: var(--game-descr-bg-color);
-    width: 120%;
+    width: 130%;
     height: 5px;
 }
 
 .description-end-dots {
     position: absolute;
     z-index: 5;
-    bottom: 42px;
-    right: 145px;
+    bottom: 46px;
+    right: 20px;
     padding-left: 0px;
     background-color: var(--game-descr-bg-color);
     color: var(--game-descr-capital-txt-color);
     height: 20px;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-align: left;
 }
 
@@ -737,8 +750,12 @@ txt-large {
     color: var(--game-descr-more-link-txt-color) !important;
 }
 
-.description-source {
-    font-size: 0.7em;
+.descr-source {
+    position: relative;
+    z-index: 5;
+    left: 100px;
+    top: 2px;
+    font-size: 0.8em;
     color: var(--game-descr-source-txt-color);
 }
 

@@ -75,10 +75,9 @@
 								{% endif %}
 							</span>
 						<span>
-							<!-- TODO: Figure out why publisher link does not work  -->
 							{% if game.publisher %}
 								{% if game.publisher.web_url %}
-									<a href="{{ game.developer.web_url }}" target="_blank">Publ: {{ game.publisher.short_name }}</a>
+									<a href="{{ game.publisher.web_url }}" target="_blank">Publ: {{ game.publisher.short_name }}</a>
 								{% else %}
 									Publ: {{ game.publisher.short_name }}</a>
 								{% endif %}
@@ -137,7 +136,6 @@
 					<div class="score-wrapper">
 						<div class="score shadow-bottom-right">
 							<span class="score-text score-text-digits">67</span><br>
-							<span class="score-text score-text-sign">%</span>
 						</div>
 					</div>
 					<!-- #endregion -->
@@ -146,18 +144,37 @@
 						
 						<div class="d-flex flex-column h-100 mr-2 shadow-bottom-right reviews-wrapper">
 							{% for review in reviews  %}
-								{% if review.game.title == game.title and forloop.counter <= 2 %}
-									<div class="h-100 reviews-text-box">
-										<a href="{{ review.review_url }}" target="_blank">	
-											<span class="review-quote-src">
-												{{ review.review_site.site_short_name }} - 
-												{{ review.score }} / {{ review.review_site.max_score }}
-											</span>
-											"{{ review.short_quote }}
-										</a>
-										<div class="reviews-end-dots">..."</div>
-									</div>
-								{% endif %}	
+								
+									{% if review.game.title == game.title %}
+										<div class="h-100 reviews-text-box">
+											<a href="{{ review.review_url }}" target="_blank">	
+												<span class="review-quote-src">
+													{{ review.review_site.site_short_name }} - 
+													{{ review.score }} / {{ review.review_site.max_score }}
+												</span>
+												"{{ review.short_quote }}
+											</a>
+											<div class="reviews-end-dots">..."</div>
+										</div>
+							
+									{% endif %}
+								
+								
+								
+									{% if review.game.title == game.title %}
+										<div class="d-none d-md-block h-100 reviews-text-box">
+											<a href="{{ review.review_url }}" target="_blank">	
+												<span class="review-quote-src">
+													{{ review.review_site.site_short_name }} - 
+													{{ review.score }} / {{ review.review_site.max_score }}
+												</span>
+												"{{ review.short_quote }}
+											</a>
+											<div class="reviews-end-dots">..."</div>
+										</div>
+									{% endif %}	
+								
+								
 							{% endfor %}
 							
 						</div>
@@ -173,29 +190,27 @@
 				</div>
 				<!-- #endregion -->
 				<!-- #region ==== Row 4 - Description ================================================= -->
-					<div class="d-flex flex-row align-content-stretch game-info-row-4 description-wrapper">
-						<div class="description-text-box pl-3">
-							<div>
-								<!--TODO: Link not working + handle links where there are none stored -->
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<span class="description-source">
-									<a href="{{ description_src_url.url }}">({{ game.description_src }})</a>
-								</span>
-								<span class="description-capital">
-									{{ game.description|slice:"1" }}
-								</span>
-									{{ game.description|slice:"1:" }}	
-							</div>
-							<div class="description-bottom-cover"></div>
-						</div>					
+					<div class="d-flex flex-column align-content-stretch game-info-row-4 descr-wrapper">
+						<div class="descr-row-1">
+							<span class="descr-source">
+								<a href="{{ game.description_src_url }}" target="_blank">({{ game.description_src }})</a>
+							</span>
+						</div>
+						<div class="flex-grow-1 descr-row-2">
+							<span class="descr-quote-sign">"</span>
+							<span class="descr-capital">{{ game.description|slice:"1" }}</span>
+							<span class="descr-bodytext">{{ game.description|slice:"1:" }}</span>
+							<div class="descr-bottom-cover"></div>
+						</div>
 					</div>
+					
 				<!-- #endregion -->
 			</div>
 			<!-- #endregion -->
 		</div>
 		<!-- #region ======== GAME FOOTER ============================================================= -->
 		<div class="d-flex flex-row shadow-inside-up game-footer-box">
-			<div class="description-end-dots">...</div>
+			<div class="description-end-dots">...<span class="descr-quote-sign-2">"</span></div>
 			<div class="d-flex flex-grow-1 stores">
 
 			
