@@ -21,6 +21,8 @@
     "game_reviews/intermediates/migrations": true,
     "game_reviews/intermediates/__init__.py": true,
     "game_reviews/intermediates/tests.py": true,
-    "game_reviews/reviews/__pycache__": true
+    "game_reviews/reviews/__pycache__": true,
+    ".gitignore": true,
+    "requirements.txt": true
   }
 }

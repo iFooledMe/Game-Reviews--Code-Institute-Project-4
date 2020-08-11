@@ -46,29 +46,25 @@
 		<!-- ===================================================================================== / -->
 
 		<!-- #region ==== M A I N  C O N T E N T ================================================= / -->
-		<div class="container w-100 p-0 mx-0 mx-lg-auto main-content-section">
+		<div class="container-fluid p-0 main-content-container">
 			<div class="d-flex flex-row">
-		<!-- #region ==== C O N T E N T  ========================================================= / -->
-				<div>
-					<div class="d-flex justify-content-between mx-auto flex-grow-1">	
-						
-						<div class="main-content-container">
-						{% block main_content %}
-						{% endblock %}
-						{% block content %}
-						{% endblock %}
-						</div>
-					</div>
+				<!-- #region ==== C O N T E N T  ========================================================= / -->	
+				<div class="flex-grow-0 mx-auto main-content-wrapper">
+					{% block main_content %}
+					{% endblock %}
+					{% block content %}
+					{% endblock %}
 				</div>
-		<!-- #endregion -->
-		<!-- ===================================================================================== / -->	
 
-		<!-- #region ==== A D  B A N N E R  R I G H T  =========================================== / -->
-				<div class="d-none d-lg-flex flex-lg-column  pt-4 pl-lg-1 pl-xl-3 ad-right-container">
+				<!-- #endregion -->
+				<!-- ===================================================================================== / -->	
+
+				<!-- #region ==== A D  B A N N E R  R I G H T  =========================================== / -->
+				<div class="d-none d-lg-block main-right-container">
 						<img class="db-right-img" src="{% static 'img/db_right.png' %}" alt="">
 				</div>
-		<!-- #endregion -->
-		<!-- ===================================================================================== / -->	
+				<!-- #endregion -->
+				<!-- ===================================================================================== / -->	
 			</div>
 		</div>
 		<!-- #endregion -->

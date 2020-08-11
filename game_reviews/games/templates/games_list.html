@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load review_tags %}
 
 {% block page_title %}Home{% endblock page_title %}
 
@@ -140,43 +141,22 @@
 					</div>
 					<!-- #endregion -->
 					<!-- #region ++++++++ Reviews ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-					<div class="relative-container flex-grow-1 h-100">
-						
+					<div class="relative-container flex-grow-1 h-100">			
 						<div class="d-flex flex-column h-100 mr-2 shadow-bottom-right reviews-wrapper">
-							{% for review in reviews  %}
-								
-									{% if review.game.title == game.title %}
-										<div class="h-100 reviews-text-box">
-											<a href="{{ review.review_url }}" target="_blank">	
-												<span class="review-quote-src">
-													{{ review.review_site.site_short_name }} - 
-													{{ review.score }} / {{ review.review_site.max_score }}
-												</span>
-												"{{ review.short_quote }}
-											</a>
-											<div class="reviews-end-dots">..."</div>
-										</div>
-							
-									{% endif %}
-								
-								
-								
-									{% if review.game.title == game.title %}
-										<div class="d-none d-md-block h-100 reviews-text-box">
-											<a href="{{ review.review_url }}" target="_blank">	
-												<span class="review-quote-src">
-													{{ review.review_site.site_short_name }} - 
-													{{ review.score }} / {{ review.review_site.max_score }}
-												</span>
-												"{{ review.short_quote }}
-											</a>
-											<div class="reviews-end-dots">..."</div>
-										</div>
-									{% endif %}	
-								
-								
-							{% endfor %}
-							
+							{% for review in game.review_set.all  %}
+								{% if forloop.counter <= 2 %}		
+									<div class="h-100 reviews-text-box">
+										<a href="{{ review.review_url }}" target="_blank">	
+											<span class="review-quote-src">
+												{{ review.review_site.site_short_name }} - 
+												{{ review.score.normalize }} / {{ review.review_site.max_score }}
+											</span>
+											"{{ review.short_quote }}
+										</a>
+										<div class="reviews-end-dots">..."</div>
+									</div>
+								{% endif %}	
+							{% endfor %}	
 						</div>
 						<!-- #region ++++++++ Button +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 						<div class="expand-button-wrapper mr-2">

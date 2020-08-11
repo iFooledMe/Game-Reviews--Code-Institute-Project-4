@@ -390,14 +390,11 @@ txt-large {
 /* ========================================================================= */
 
 /* Wraps the entire container holding both main content and add */
-.main-content-section {
-    padding-right: 0px !important;
+.main-content-container {
 }
 
 /* Wraps the container holding the games list */
-.main-content-container {
-    box-sizing: border-box;
-    width: 100%;
+.main-content-wrapper {
     min-height: calc(100vh - 140px);
 }
 
@@ -803,14 +800,16 @@ txt-large {
 
 /* #region A D  C O N T A I N E R S ===================================== */
 
-.ad-right-container {
+.main-right-container {
+    margin-top: 20px;
+    margin-left: 10px;
     width: 120px;
     height: 100%;
+    padding-right: 300px;
 }
 
 .db-right-img {
     width: 120px;
-    display: block;
 }
 
 /* #endregion A D  C O N T A I N E R S */
