@@ -4,7 +4,7 @@ from games.models import Game
 
 # region R E I E W  M O D E L ===============================================|
 
-# region ==== SUB-CLASSES REVIW =============================================|
+# region ==== SUB-CLASSES REVIEW ============================================|
 class ReviewSite(models.Model):
     site_name = models.CharField(max_length=50)
     site_short_name = models.CharField(max_length=50)
@@ -39,7 +39,9 @@ class Review(models.Model):
     review_date = models.DateField(null=True, blank=True)
     review_url = models.URLField(max_length=255, null=True, blank=True)
     score = models.DecimalField(
-        max_digits=3, decimal_places=1, null=True, blank=True)
+        max_digits=4, decimal_places=1, null=True, blank=True)
+    max_score = models.DecimalField(
+        max_digits=4, decimal_places=1, null=True, blank=True)
     short_quote = models.TextField(
         max_length=500, null=True, blank=True)
     long_quote = models.TextField(

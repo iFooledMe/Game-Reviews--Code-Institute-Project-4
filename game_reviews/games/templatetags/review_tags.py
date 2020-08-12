@@ -16,8 +16,14 @@ def review_tags(n, _game_id,  *args, **kwargs):
 
 
 @register.simple_tag
-def review_tags(n, _pk,  *args, **kwargs):
+def review_tags2(n, _pk,  *args, **kwargs):
     pk = _pk
     print(game)
     reviews = Review.objects.filter(game__id=game_id)
     return reviews[0:n]
+
+
+@register.filter
+def get_score(dictionary, key):
+    return "test"
+    # return dictionary.get(key)

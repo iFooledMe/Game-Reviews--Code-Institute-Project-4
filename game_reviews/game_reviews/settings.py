@@ -74,6 +74,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':  {
+                'templatetags': 'games.templatetags.review_tags',
+                'admin.urls': 'django.contrib.admin.templatetags.admin_urls',
+            }
         },
     },
 ]

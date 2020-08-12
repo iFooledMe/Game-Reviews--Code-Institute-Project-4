@@ -23,6 +23,7 @@
     "game_reviews/intermediates/tests.py": true,
     "game_reviews/reviews/__pycache__": true,
     ".gitignore": true,
-    "requirements.txt": true
+    "requirements.txt": true,
+    "game_reviews/games/apps.py": true
   }
 }

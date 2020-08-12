@@ -12,11 +12,7 @@
     /* ======================================================================== */
 
     --expression-1: #ff0000; /*Main Theme expression - Text beginnings, Score etc.*/
-    --expression-2: rgb(
-        228,
-        175,
-        78
-    ); /* Orange - Link hover bg, pop-up bg etc. */
+    --expression-2: #e89e3c; /* Orange - Link hover bg, pop-up bg etc. */
     --expression-3: #c55f5f; /* Red:ish*/
     --expression-4: #98b39b; /*Pastel green - Darker*/
     --expression-5: #b6ccb8; /*Pastel green - Medium*/
@@ -69,7 +65,7 @@
     --game-date-txt-color: var(--medium-1);
     --game-developer-txt-color: var(--medium-1);
     --game-platform-txt-color: var(--medium-1);
-    --game-tag-bg-color: var(--expression-4);
+    --game-tag-bg-color: var(--medium-3);
     --game-tag-text-color: var(--dark-1);
     --score-bg-color: var(--dark-1);
     --score-border-color: var(--expression-1);
@@ -513,11 +509,13 @@ txt-large {
 
 .title-wrapper {
     position: relative;
-    bottom: 25px;
+    bottom: 26px;
 }
 
 .game-title-initial-cap {
-    font-size: 1.8em;
+    position: relative;
+    bottom: -2px;
+    font-size: 1.85em;
     overflow: visible;
     font-weight: 500;
     color: var(--game-title-initial-cap-color);
@@ -594,12 +592,15 @@ txt-large {
 
 /* #region ---- Reviews ------- */
 /* Wrapper */
+
+/* #region -Compact- */
 .reviews-wrapper {
+    display: flex !important;
     position: relative;
     top: -10px;
     z-index: 3;
     overflow: hidden;
-    height: 110px !important;
+    height: 110px;
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -641,8 +642,26 @@ txt-large {
     right: 7px;
     background-color: transparent;
 }
+/* #endregion */
 
-/* Button */
+/* #region -Expanded- */
+.reviews-wrapper-expanded {
+    display: none !important;
+    position: relative;
+    top: -10px;
+    z-index: 3;
+    overflow: hidden;
+    max-height: 110px !important;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px 5px 0px 5px;
+    background-color: var(--game-reviews-compact-bg-color);
+    font-size: 0.9em;
+}
+/* #endregion */
+
+/* #region -Button- */
 .expand-button-wrapper {
     position: relative;
     top: -10px;
@@ -666,6 +685,7 @@ txt-large {
     background-color: var(--game-reviews-compact-button-bg-hover-color);
     color: var(--game-reviews-compact-button-txt-hover-color);
 }
+/* #endregion */
 /* #endregion */
 
 /* #region ---- Description --- */
@@ -749,7 +769,6 @@ txt-large {
 
 .descr-source {
     position: relative;
-    z-index: 5;
     left: 100px;
     top: 2px;
     font-size: 0.8em;
