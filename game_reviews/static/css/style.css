@@ -591,16 +591,26 @@ txt-large {
 /* #endregion */
 
 /* #region ---- Reviews ------- */
-/* Wrapper */
 
 /* #region -Compact- */
-.reviews-wrapper {
-    display: flex !important;
+.reviews-container-compact {
     position: relative;
-    top: -10px;
-    z-index: 3;
-    overflow: hidden;
+    top: -7px;
+    width: 100%;
+    z-index: 3 !important;
+}
+
+.rc-compact {
+    display: none;
     height: 110px;
+}
+
+.rc-expanded {
+    display: block;
+    height: auto;
+}
+
+.reviews-quotes {
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -611,6 +621,7 @@ txt-large {
 
 /* text box*/
 .reviews-text-box {
+    height: 45px;
     position: relative;
     right: 5px;
     background-color: var(--game-reviews-text-box-bg-color);
@@ -644,28 +655,9 @@ txt-large {
 }
 /* #endregion */
 
-/* #region -Expanded- */
-.reviews-wrapper-expanded {
-    display: none !important;
-    position: relative;
-    top: -10px;
-    z-index: 3;
-    overflow: hidden;
-    max-height: 110px !important;
-    padding-left: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 5px 5px 0px 5px;
-    background-color: var(--game-reviews-compact-bg-color);
-    font-size: 0.9em;
-}
-/* #endregion */
-
 /* #region -Button- */
 .expand-button-wrapper {
-    position: relative;
-    top: -10px;
-    z-index: 3;
+    z-index: inherit;
     text-align: right;
 }
 
@@ -696,6 +688,7 @@ txt-large {
     background-color: var(--game-descr-bg-color);
     color: var(--game-descr-txt-color);
     overflow: hidden;
+    z-index: 0;
 }
 
 .descr-row-1 {
