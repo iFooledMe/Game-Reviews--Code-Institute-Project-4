@@ -148,6 +148,11 @@ input:focus {
     outline-width: 1px;
 }
 
+button:focus {
+    outline-color: transparent;
+    outline-width: 0px;
+}
+
 /* #endregion */
 /* ====================================================================== */
 
@@ -593,7 +598,7 @@ txt-large {
 /* #region ---- Reviews ------- */
 
 /* #region -Compact- */
-.reviews-container-compact {
+.reviews-container {
     position: relative;
     top: -7px;
     width: 100%;
@@ -601,13 +606,15 @@ txt-large {
 }
 
 .rc-compact {
-    display: none;
+    display: block;
     height: 110px;
+    z-index: 1;
 }
 
 .rc-expanded {
-    display: block;
+    display: none;
     height: auto;
+    z-index: 3;
 }
 
 .reviews-quotes {

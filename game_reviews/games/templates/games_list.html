@@ -145,60 +145,61 @@
 					{% endfor %}
 					<!-- #endregion -->
 					<!-- #region ++++++++ Reviews ++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-					<!-- #region - Compact view - -->	
-					<div class="reviews-container-compact rc-compact">
-						<div class="d-flex flex-column mr-2 shadow-bottom-right reviews-quotes">
-							{% for review in game.review_set.all  %}
-								{% if forloop.counter <= 2 %}		
-									<div class="reviews-text-box">
-										<a href="{{ review.review_url }}" target="_blank">	
-											<span class="review-quote-src">
-												{{ review.review_site.site_short_name }} - 
-												{{ review.score.normalize }} / {{ review.review_site.max_score }}
-											</span>
-											"{{ review.short_quote }}
-										</a>
-										<div class="reviews-end-dots">..."</div>
-									</div>
-								{% endif %}	
-							{% endfor %}	
+					<div id="game_{{ game.id }}">	
+						<!-- #region - Compact view - -->	
+						<div class="reviews-container rc-compact">
+							<div class="d-flex flex-column mr-2 shadow-bottom-right reviews-quotes">
+								{% for review in game.review_set.all  %}
+									{% if forloop.counter <= 2 %}		
+										<div class="reviews-text-box">
+											<a href="{{ review.review_url }}" target="_blank">	
+												<span class="review-quote-src">
+													{{ review.review_site.site_short_name }} - 
+													{{ review.score.normalize }} / {{ review.review_site.max_score }}
+												</span>
+												"{{ review.short_quote }}
+											</a>
+											<div class="reviews-end-dots">..."</div>
+										</div>
+									{% endif %}	
+								{% endfor %}	
+							</div>
+							<!-- #region ++++++++ Button +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+							<div class="expand-button-wrapper mr-2">
+								<button class="expand-button shadow-bottom-right" data-id="game_{{ game.id }}" data-targetopen="rc-expanded" data-targetclose="rc-compact">
+									More Reviews <i class="fas fa-caret-down icon-downarrow"></i>
+								</button>
+							</div>
+							<!-- #endregion -->
 						</div>
-						<!-- #region ++++++++ Button +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-						<div class="expand-button-wrapper mr-2">
-							<button class="expand-button" data-id="gameid-1" data-target="reviews-expanded">
-								More Reviews <i class="fas fa-caret-down icon-downarrow"></i>
-							</button>
-						</div>
-						<!-- #endregion -->
-					</div>
-					<!-- #endregion -->	
-					<!-- #region - Expanded view - -->	
-					<div class="reviews-container-compact rc-expanded">
-						<div class="d-flex flex-column mr-2 shadow-bottom-right reviews-quotes">
-							{% for review in game.review_set.all  %}
-								{% if forloop.counter %}		
-									<div class="reviews-text-box">
-										<a href="{{ review.review_url }}" target="_blank">	
-											<span class="review-quote-src">
-												{{ review.review_site.site_short_name }} - 
-												{{ review.score.normalize }} / {{ review.review_site.max_score }}
-											</span>
-											"{{ review.short_quote }}
-										</a>
-										<div class="reviews-end-dots">..."</div>
-									</div>
-								{% endif %}	
-							{% endfor %}	
-						</div>
-						<!-- #region ++++++++ Button +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-						<div class="expand-button-wrapper mr-2">
-							<button class="expand-button" data-id="gameid-1" data-target="reviews-expanded">
-								More Reviews <i class="fas fa-caret-down icon-downarrow"></i>
-							</button>
-						</div>
-						<!-- #endregion -->
-					</div>						
-						
+						<!-- #endregion -->	
+						<!-- #region - Expanded view - -->	
+						<div class="reviews-container rc-expanded" id="game_{{ game.id }}">
+							<div class="d-flex flex-column mr-2 shadow-bottom-right reviews-quotes">
+								{% for review in game.review_set.all  %}
+									{% if forloop.counter %}		
+										<div class="reviews-text-box">
+											<a href="{{ review.review_url }}" target="_blank">	
+												<span class="review-quote-src">
+													{{ review.review_site.site_short_name }} - 
+													{{ review.score.normalize }} / {{ review.review_site.max_score }}
+												</span>
+												"{{ review.short_quote }}
+											</a>
+											<div class="reviews-end-dots">..."</div>
+										</div>
+									{% endif %}	
+								{% endfor %}	
+							</div>
+							<!-- #region ++++++++ Button +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+							<div class="expand-button-wrapper mr-2">
+								<button class="expand-button shadow-bottom-right" data-id="game_{{ game.id }}" data-targetopen="rc-compact" data-targetclose="rc-expanded">
+									More Reviews <i class="fas fa-caret-down icon-downarrow"></i>
+								</button>
+							</div>
+							<!-- #endregion -->
+						</div>						
+					</div>	
 					<!-- #endregion -->
 				</div>
 				<!-- #endregion -->

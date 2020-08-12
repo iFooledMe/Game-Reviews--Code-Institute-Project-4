@@ -39,7 +39,7 @@ class Review(models.Model):
     review_date = models.DateField(null=True, blank=True)
     review_url = models.URLField(max_length=255, null=True, blank=True)
     score = models.DecimalField(
-        max_digits=4, decimal_places=1, null=True, blank=True)
+        max_digits=4, decimal_places=2, null=True, blank=True)
     max_score = models.DecimalField(
         max_digits=4, decimal_places=1, null=True, blank=True)
     short_quote = models.TextField(
