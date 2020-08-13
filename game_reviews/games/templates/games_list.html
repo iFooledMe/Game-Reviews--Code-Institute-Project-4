@@ -133,6 +133,9 @@
 				<!-- #endregion -->
 				<!-- #region ==== Row 3 - Score, Reviews ============================================== -->
 				<div class="d-flex flex-row game-info-row-3">
+					<!-- #region ++++++++ Row 3 back-cover +++++++++++++++++++++++++++++++++++++++++++++ -->
+					<div class="row-3-backcover"></div>
+					<!-- #endregion -->
 					<!-- #region ++++++++ Score ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->				
 					{% for key in game_scores %}
 						{% if key == game.id  %}
@@ -145,7 +148,7 @@
 					{% endfor %}
 					<!-- #endregion -->
 					<!-- #region ++++++++ Reviews ++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-					<div id="game_{{ game.id }}">	
+					<div id="reviews_game_{{ game.id }}">	
 						<!-- #region - Compact view - -->	
 						<div class="reviews-container rc-compact">
 							<div class="d-flex flex-column mr-2 shadow-bottom-right reviews-quotes">
@@ -166,7 +169,10 @@
 							</div>
 							<!-- #region ++++++++ Button +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 							<div class="expand-button-wrapper mr-2">
-								<button class="expand-button shadow-bottom-right" data-id="game_{{ game.id }}" data-targetopen="rc-expanded" data-targetclose="rc-compact">
+								<button class="expand-button shadow-bottom-right" 
+										data-id="reviews_game_{{ game.id }}" 
+										data-targetopenone="rc-expanded" 
+										data-targetcloseone="rc-compact">
 									More Reviews <i class="fas fa-caret-down icon-downarrow"></i>
 								</button>
 							</div>
@@ -193,8 +199,11 @@
 							</div>
 							<!-- #region ++++++++ Button +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 							<div class="expand-button-wrapper mr-2">
-								<button class="expand-button shadow-bottom-right" data-id="game_{{ game.id }}" data-targetopen="rc-compact" data-targetclose="rc-expanded">
-									More Reviews <i class="fas fa-caret-down icon-downarrow"></i>
+								<button class="expand-button shadow-bottom-right" 
+										data-id="reviews_game_{{ game.id }}" 
+										data-targetopenone="rc-compact" 
+										data-targetcloseone="rc-expanded">
+									Close <i class="fas fa-caret-up icon-downarrow"></i>
 								</button>
 							</div>
 							<!-- #endregion -->
@@ -203,37 +212,104 @@
 					<!-- #endregion -->
 				</div>
 				<!-- #endregion -->
+				<!-- #endregion -->
 				<!-- #region ==== Row 4 - Description ================================================= -->
-					<div class="d-flex flex-column align-content-stretch game-info-row-4 descr-wrapper">
-						<div class="descr-row-1">
-							<span class="descr-source">
-								<a href="{{ game.description_src_url }}" target="_blank">({{ game.description_src }})</a>
-							</span>
-						</div>
-						<div class="flex-grow-1 descr-row-2">
-							<span class="descr-quote-sign">"</span>
-							<span class="descr-capital">{{ game.description|slice:"1" }}</span>
-							<span class="descr-bodytext">{{ game.description|slice:"1:" }}</span>
-							<div class="descr-bottom-cover"></div>
+				<div class="game-info-row-4" id="description_game_{{ game.id }}">		
+					<!-- #region *** Description Compact *** -->
+					<!-- #region Compact content -->
+					<div class="dw-compact">
+						<div class="descr-background">	
+							<div class="d-flex flex-column align-content-stretch descr-wrapper dw-compact">
+								<div class="descr-row-1">
+									<span class="descr-source">
+										<a href="{{ game.description_src_url }}" target="_blank">({{ game.description_src }})</a>
+									</span>
+								</div>
+								<div class="flex-grow-1 descr-row-2">
+									<span class="descr-quote-sign">"</span>
+									<span class="descr-capital">{{ game.description|slice:"1" }}</span>
+									<span class="descr-bodytext">{{ game.description|slice:"1:" }}</span>
+									
+								</div>
+							</div>
 						</div>
 					</div>
+					<div class="descr-bottom-cover"></div>
+					<!-- #endregion -->				
+					<!-- #region Compact buttons -->
+					<div class="footer-buttons-container rm-btn-compact">
+						<button class="expand-button read-more-button shadow-inside-up" 
+								data-id="description_game_{{ game.id }}" 		
+								data-targetcloseone="dw-compact"
+								data-targetcloseTwo="rm-btn-compact"
+								data-targetopenone="dw-expanded" 
+								data-targetopenTwo="rm-btn-expanded">
+							...Read more <i class="fas fa-caret-down icon-downarrow"></i>
+						</button>
+						<button class="details-button" data-id="gameid-1" data-target="reviews-expanded">
+							<span class="details-txt"> Game Details <i class="fas fa-caret-right icon-rightarrow"></i></span>
+						</button>
+					</div>
+					<!-- #endregion-->
+					<!-- #endregion -->
 					
+					<!-- #region *** Description Expanded *** -->
+					<!-- #region Expanded content -->
+					<div class="dw-expanded">
+						<div class="descr-background">
+							<div class="d-flex flex-column align-content-stretch descr-wrapper">
+								<div class="descr-row-1">
+									<span class="descr-source">
+										<a href="{{ game.description_src_url }}" target="_blank">({{ game.description_src }})</a>
+									</span>
+								</div>
+								<div class="flex-grow-1 descr-row-2">
+									<span class="descr-quote-sign">"</span>
+									<span class="descr-capital">{{ game.description|slice:"1" }}</span>
+									<span class="descr-bodytext">{{ game.description|slice:"1:" }}</span>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- #endregion -->
+					<!-- #region Expanded buttons -->
+					<div class="footer-buttons-container rm-btn-expanded">
+						<button class="expand-button read-more-button shadow-inside-up" 
+								data-id="description_game_{{ game.id }}" 
+								data-targetcloseone="dw-expanded"
+								data-targetcloseTwo="rm-btn-expanded"
+								data-targetopenone="dw-compact" 
+								data-targetopenTwo="rm-btn-compact">
+							Close <i class="fas fa-caret-up icon-downarrow"></i>
+						</button>
+						<button class="details-button" data-id="gameid-1" data-target="reviews-expanded">
+							<span class="details-txt"> Game Details <i class="fas fa-caret-right icon-rightarrow"></i></span>
+						</button>
+					</div>
+					<!-- #endregion-->						
+					<!-- #endregion -->
+
+					<!-- #endregion -->
+				</div>	
 				<!-- #endregion -->
 			</div>
 			<!-- #endregion -->
 		</div>
 		<!-- #region ======== GAME FOOTER ============================================================= -->
 		<div class="d-flex flex-row shadow-inside-up game-footer-box">
+			<!-- #region description end dots -->
 			<div class="description-end-dots">...<span class="descr-quote-sign-2">"</span></div>
+			<!-- #endregion -->
+			<!-- #region Stores -->
 			<div class="d-flex flex-grow-1 stores">
 
 			
 			</div>
-			<div>
-				<button class="details-button" data-id="gameid-1" data-target="reviews-expanded">
-					<span class="read-more-txt">...read more</span><span class="details-txt"> Game Details <i class="fas fa-caret-right icon-rightarrow"></i></span>
-				</button>
-			</div>	
+			<!-- #endregion -->
+			<!-- #region Details/Read more buttons -->
+
+			<!-- #endregion -->	
 		</div>
 		<!-- #endregion -->
 	</div>

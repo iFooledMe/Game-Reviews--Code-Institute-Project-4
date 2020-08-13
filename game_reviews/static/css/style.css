@@ -91,8 +91,18 @@
     --game-descr-bg-color: var(--dark-1);
     --game-descr-txt-color: var(--light-1);
     --game-descr-capital-txt-color: var(--expression-3);
-    --game-descr-more-link-txt-color: var(--expression-3);
     --game-descr-source-txt-color: var(--medium-1);
+
+    --game-descr-details-button-bg-color: var(--game-descr-bg-color);
+    --game-descr-details-button-txt-color: var(--medium-4);
+    --game-descr-details-button-bg-color-hover: var(--expression-2);
+    --game-descr-details-button-txt-color-hover: var(--dark-1);
+
+    --game-descr-more-button-bg-color: var(--medium-3);
+    --game-descr-more-button-txt-color: var(--expression-3);
+    --game-descr-more-button-bg-color-hover: var(--expression-2);
+    --game-descr-more-button-txt-color-hover: var(--dark-1);
+
     --game-buy-bg-color: var(--light-1);
     --game-buy-txt-color: var(--dark-1);
     --game-footer-bg-color: var(--medium-5);
@@ -110,7 +120,7 @@
     --row-1-title-h: 40px;
     --row-2-date-h: 80px;
     --row-3-rewiews-h: 100px;
-    --descr-pos-offset: 12px;
+    --descr-pos-offset: -0px;
     --row-4-description-h: calc(
         var(--game-thumb-h) - var(--row-1-title-h) - var(--row-2-date-h) -
             var(--row-3-rewiews-h) + var(--descr-pos-offset)
@@ -123,7 +133,6 @@
 
 /* #region S T A N D A R D  E L E M E N T S ============================= */
 /* ========================================================================= */
-
 body {
     background-color: var(--body-color);
     font-family: 'Roboto', sans-serif;
@@ -152,7 +161,6 @@ button:focus {
     outline-color: transparent;
     outline-width: 0px;
 }
-
 /* #endregion */
 /* ====================================================================== */
 
@@ -160,6 +168,10 @@ button:focus {
 /* ========================================================================= */
 
 /* *** Text classes *** */
+
+.relative-container {
+    position: relative;
+}
 
 .invisible {
     position: absolute;
@@ -465,7 +477,10 @@ txt-large {
 /* Game description */
 .game-info-row-4 {
     position: relative;
-    height: var(--row-4-description-h);
+}
+
+.game-info-row-4-expanded {
+    position: relative;
 }
 
 /* #endregion */
@@ -475,6 +490,7 @@ txt-large {
 /* Game thumbnail image */
 .game-thumb-wrapper {
     position: relative;
+    background-color: var(--game-descr-bg-color);
 }
 
 .game-thumb-wrapper img {
@@ -485,7 +501,7 @@ txt-large {
 .pegi-overlay {
     position: absolute;
     left: 0px;
-    bottom: 20px;
+    top: 257px;
     z-index: 5;
 }
 
@@ -566,7 +582,7 @@ txt-large {
 }
 
 .score {
-    z-index: 4;
+    z-index: 10;
     position: relative;
     left: -5px;
     overflow: visible;
@@ -597,26 +613,28 @@ txt-large {
 
 /* #region ---- Reviews ------- */
 
-/* #region -Compact- */
+/* #region Review containers */
 .reviews-container {
     position: relative;
     top: -7px;
     width: 100%;
-    z-index: 3 !important;
+    z-index: 5 !important;
 }
 
 .rc-compact {
     display: block;
     height: 110px;
-    z-index: 1;
+    z-index: 5;
 }
 
 .rc-expanded {
     display: none;
     height: auto;
-    z-index: 3;
+    z-index: 5;
 }
+/* #endregion */
 
+/* #region Reviews content*/
 .reviews-quotes {
     padding-left: 10px;
     padding-top: 5px;
@@ -662,7 +680,7 @@ txt-large {
 }
 /* #endregion */
 
-/* #region -Button- */
+/* #region - Button - */
 .expand-button-wrapper {
     z-index: inherit;
     text-align: right;
@@ -687,17 +705,49 @@ txt-large {
 /* #endregion */
 /* #endregion */
 
+/* #region - Row 3 backcover - */
+.row-3-backcover {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 20px;
+    background-color: var(--game-descr-bg-color);
+    border-radius: 0 5px 0 0;
+}
+/* #endregion */
+
 /* #region ---- Description --- */
+
+/* #region Description containers */
 .descr-wrapper {
     position: relative;
     top: -20px;
     border-radius: 0 5px 0 0;
     background-color: var(--game-descr-bg-color);
     color: var(--game-descr-txt-color);
-    overflow: hidden;
-    z-index: 0;
+    z-index: 2;
 }
 
+.dw-compact {
+    overflow: hidden;
+    z-index: 2;
+    height: 92px;
+}
+
+.dw-expanded {
+    display: none;
+    z-index: 2;
+    max-height: 300px;
+    padding-bottom: 20px;
+}
+
+.descr-background {
+    background-color: var(--game-descr-bg-color);
+}
+
+/* #endregion */
+
+/* #region Description content */
 .descr-row-1 {
     padding-top: 25px;
 }
@@ -736,10 +786,11 @@ txt-large {
 
 .descr-bottom-cover {
     position: absolute;
-    bottom: 0px;
-    right: 10px;
+    z-index: 4;
+    bottom: 20px;
+    right: 0px;
     background-color: var(--game-descr-bg-color);
-    width: 130%;
+    width: 100%;
     height: 5px;
 }
 
@@ -769,46 +820,83 @@ txt-large {
 
 .descr-source {
     position: relative;
+    z-index: 4;
     left: 100px;
     top: 2px;
     font-size: 0.8em;
     color: var(--game-descr-source-txt-color);
 }
-
+/* #endregion */
 /* #endregion */
 
 /* #region ---- Stores --- */
 
 /* #endregion */
 
-/* #region ---- Details button --- */
+/* #region ---- Details/More buttons --- */
+.footer-buttons-container {
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    z-index: 2;
+}
+
 .read-more-txt {
-    color: var(--game-descr-more-link-txt-color) !important;
     letter-spacing: 2px;
 }
 
-.details-txt {
+.details-button {
+    position: relative;
+    z-index: 2;
+    width: 200px;
+    height: 25px;
+    border: none;
+    border-radius: 0px 0px 3px 3px;
     font-size: 1.1em;
     text-transform: uppercase;
     letter-spacing: 2px;
     padding-left: 3px;
-}
-
-.details-button {
-    width: 300px;
-    height: 25px;
-    border: none;
-    border-radius: 0px 0px 3px 3px;
     font-size: 80%;
     font-weight: bold;
     text-align: center;
-    background-color: var(--game-descr-bg-color);
-    color: var(--game-descr-txt-color);
+    background-color: var(--game-descr-details-button-bg-color);
+    color: var(--game-descr-details-button-txt-color);
+}
+
+.read-more-button {
+    position: relative;
+    z-index: 1;
+    top: -3px;
+    right: -5px;
+    width: 135px;
+    height: 25px;
+    border: none;
+    border-radius: 0px 0px 3px 3px;
+    font-size: 0.9em;
+    letter-spacing: 2px;
+    padding-left: 3px;
+    font-size: 80%;
+    font-weight: bold;
+    text-align: center;
+    background-color: var(--game-descr-more-button-bg-color);
+    color: var(--game-descr-more-button-txt-color);
+}
+
+.rm-btn-compact {
+}
+
+.rm-btn-expanded {
+    display: none;
 }
 
 .details-button:hover {
-    background-color: var(--game-reviews-compact-button-bg-hover-color);
-    color: var(--game-reviews-compact-button-txt-hover-color);
+    background-color: var(--game-descr-details-button-bg-color-hover);
+    color: var(--game-descr-details-button-txt-color-hover);
+}
+
+.read_more-button:hover {
+    background-color: var(--game-descr-more-button-bg-color-hover);
+    color: var(--game-descr-more-button-txt-color-hover);
 }
 
 /* #endregion */
