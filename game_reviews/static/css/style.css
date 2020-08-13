@@ -148,13 +148,18 @@ a:hover {
     text-decoration: none;
 }
 
-input {
-    background-color: var(--form-input-bg-color);
+input,
+select {
+    background-color: var(--form-input-bg-color) !important;
+    color: var(--form-input-select-txt-color) !important;
 }
 
-input:focus {
-    outline-color: var(--input-outline-color);
-    outline-width: 1px;
+input:focus,
+select:focus,
+input:active,
+select:active {
+    outline-color: var(--input-outline-color) !important;
+    outline-width: 1px !important;
 }
 
 button:focus {
@@ -404,6 +409,7 @@ txt-large {
 
 /* Wraps the entire container holding both main content and add */
 .main-content-container {
+    max_width: 1122px;
 }
 
 /* Wraps the container holding the games list */
@@ -411,6 +417,21 @@ txt-large {
     min-height: calc(100vh - 140px);
 }
 
+/* #endregion */
+/* ====================================================================== */
+
+/* #region M A I N  C O N T E N T  C O N T A I N E R ==================== */
+.filter-row {
+    margin-top: 40px;
+}
+
+.filter-select {
+    width: 100%;
+}
+
+.filter-filter {
+    width: 182px;
+}
 /* #endregion */
 /* ====================================================================== */
 
@@ -427,10 +448,6 @@ txt-large {
     margin-top: 20px;
     margin-left: auto;
     border-radius: 5px 5px 0 0;
-}
-
-.container {
-    width: 100% !important;
 }
 
 /* Wrapper for the thumb image container */
@@ -908,15 +925,10 @@ txt-large {
 /* #region A D  C O N T A I N E R S ===================================== */
 
 .main-right-container {
-    margin-top: 20px;
-    margin-left: 10px;
-    width: 120px;
-    height: 100%;
-    padding-right: 300px;
+    width: 130px;
 }
 
 .db-right-img {
-    width: 120px;
 }
 
 /* #endregion A D  C O N T A I N E R S */

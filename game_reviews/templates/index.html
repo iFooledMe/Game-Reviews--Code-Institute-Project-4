@@ -4,22 +4,76 @@
 
 {% block main_content %}
 
+
+
 <div class="d-flex flex-row">
-	<!-- #region ==== C O N T E N T  ========================================================= / -->	
-	<div class="flex-grow-0 mx-auto main-content-wrapper">
+	
+	
+		
+	<div class="mx-auto main-content-wrapper">
+
+
+	<!-- #region ==== F I L T E R  R O W  ================================================== / -->
+	<form  action="">
+		<div class="d-flex flex-row w-100 justify-content-between filter-row">	
+			<div>
+				<select class="form-control filter-select" id="drop-sort">
+					<option value="date" selected>Sort: Release date (Desc)</option>
+					<option value="date">Release date (Asc)</option>
+					<option value="score">Avg. Score (high on top)</option>
+					<option value="score">Avg. Score (low on top)</option>
+					<option value="title">Title (A-Z)</option>
+					<option value="title">Title (Z-A)</option>
+					<option value="title">----------------------------------------</option>
+				</select>
+			</div>
+			<div>
+				<select class="form-control flex-grow-1 filter-select" id="drop-date">
+					<option value="date" selected>Show: All Time</option>
+					<option value="date">New Today</option>
+					<option value="score">This Week</option>
+					<option value="score">Last Month</option>
+					<option value="title">Last 3 Month</option>
+					<option value="title">Last 6 Month</option>
+					<option value="title">Last Year</option>
+					<option value="title">----------------------------------------</option>
+				</select>
+			</div>
+			<div>
+				<select class="form-control flex-grow-1 filter-select" id="drop-size">
+					<option value="date" selected>List-Size: Large</option>
+					<option value="date">List-Size: Compact</option>
+					<option value="title">----------------------------------------</option>
+				</select>
+			</div>
+			<div>
+				<select class="form-control flex-grow-1 filter-select" id="drop-filter">
+					<option value="date" selected>Filter</option>
+					<option value="title">----------------------------------------</option>
+					<option value="date"></option>
+					<option value="date"></option>
+				</select>
+			</div>
+		</div>
+	</form>
+	
+	<!-- #endregion -->
+	<!-- =================================================================================== / -->
+	
+	<!-- #region ==== G A M E S  L I S T  ================================================== / -->
 		{% block games_list %}
 		{% endblock %}
 
 	</div>
 	<!-- #endregion -->
-	<!-- ===================================================================================== / -->	
+	<!-- =================================================================================== / -->	
 
-	<!-- #region ==== A D  B A N N E R  R I G H T  =========================================== / -->
+	<!-- #region ==== A D  B A N N E R  R I G H T  ========================================= / -->
 	<div class="d-none d-lg-block main-right-container">
 			<img class="db-right-img" src="{% static 'img/db_right.png' %}" alt="">
 	</div>
 	<!-- #endregion -->
-	<!-- ===================================================================================== / -->	
+	<!-- =================================================================================== / -->	
 			
 			
 </div>
