@@ -24,6 +24,10 @@
     "game_reviews/reviews/__pycache__": true,
     ".gitignore": true,
     "requirements.txt": true,
-    "game_reviews/games/apps.py": true
+    "game_reviews/games/apps.py": true,
+    "game_reviews/home/migrations": true,
+    "game_reviews/home/__init__.py": true,
+    "game_reviews/home/apps.py": true,
+    "game_reviews/home/tests.py": true
   }
 }

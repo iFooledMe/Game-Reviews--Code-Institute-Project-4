@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+ <h1>Wha????</h1>
+
+{% block main_content %}
+
+<div class="d-flex flex-row">
+	<!-- #region ==== C O N T E N T  ========================================================= / -->	
+	<div class="flex-grow-0 mx-auto main-content-wrapper">
+		{% block games_list %}
+		{% endblock %}
+
+	</div>
+	<!-- #endregion -->
+	<!-- ===================================================================================== / -->	
+
+	<!-- #region ==== A D  B A N N E R  R I G H T  =========================================== / -->
+	<div class="d-none d-lg-block main-right-container">
+			<img class="db-right-img" src="{% static 'img/db_right.png' %}" alt="">
+	</div>
+	<!-- #endregion -->
+	<!-- ===================================================================================== / -->	
+			
+			
+</div>
+{% endblock %}
+
