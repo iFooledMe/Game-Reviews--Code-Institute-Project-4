@@ -1,0 +1,53 @@
+	
+<form class="form-inline" id="SortShowForm" method="POST" action=".">
+	<div class="row w-100 mx-auto filter-row">
+		{% csrf_token %}
+		{% for form in search_show_form  %}
+		<div class="col-12 col-sm-6 col-md-3 mb-1 mx-auto">
+			{{ form }}
+		</div>
+		{% endfor %}
+		<div class="col-12 col-sm-6 col-md-3 relative-container" id="list-filter">	
+			<button type="button" class="btn btn-sm filter-button" data-toggle="modal" data-target="#exampleModal">
+				<div class="d-flex flex-row justify-content-between">
+					<div>Filter</div>
+					<div><i class="fas fa-chevron-down filter-button-icon"></i></div>
+				</div>
+			</button>
+		</div>
+	</div>
+
+	<!-- #Region ==== Delete log Modal ============================ -->
+
+
+	<!-- Modal -->
+	<div class="modal fade modal-wrapper" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Apply filter to the list</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				{% for tag in genre_tags_filter  %}
+					{{ tag }}
+				{% endfor %}
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-sm btn-primary">Apply filter</button>
+			</div>
+			</div>
+		</div>
+	</div>
+		<!-- #endregion -->
+</form>
+
+
+
+
+
+
+

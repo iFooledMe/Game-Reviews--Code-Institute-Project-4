@@ -140,6 +140,8 @@ class Game(models.Model):
         Pegi,
         null=True, blank=True,
         on_delete=models.SET_NULL)
+    avg_score = models.DecimalField(
+        max_digits=4, decimal_places=2, null=True, blank=True)
     platforms = models.ManyToManyField(Platform)
     genre_tags = models.ManyToManyField(GenreTag)
     theme_tags = models.ManyToManyField(ThemeTag)
@@ -148,5 +150,10 @@ class Game(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def average_score(self):
+        average_value = 99
+        return average_value
 # endregion
 # ===========================================================================|

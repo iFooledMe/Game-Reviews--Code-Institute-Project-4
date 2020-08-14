@@ -136,15 +136,11 @@
 					<div class="row-3-backcover"></div>
 					<!-- #endregion -->
 					<!-- #region ++++++++ Score ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->				
-					{% for key in game_scores %}
-						{% if key == game.id  %}
-							<div class="score-wrapper">	
-								<div class="score shadow-bottom-right">
-									<span class="score-text score-text-digits">{{ key }}</span><br>
-								</div>
-							</div>
-						{% endif %}
-					{% endfor %}
+					<div class="score-wrapper">	
+						<div class="score shadow-bottom-right">
+							<span class="score-text score-text-digits">{{ game.avg_score.normalize }}</span><br>
+						</div>
+					</div>
 					<!-- #endregion -->
 					<!-- #region ++++++++ Reviews ++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 					<div id="reviews_game_{{ game.id }}">	

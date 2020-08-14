@@ -37,7 +37,7 @@
     --form-input-select-txt-hover-color: var(--dark-1);
     --form-input-select-bg-color: var(--medium-4);
     --form-input-select-bg-hover-color: var(--expression-2);
-    --form-input-select-border-color: var(--medium-3);
+    --form-input-select-border-color: var(--dark-4);
     --form-input-placeholder-txt-color: var(--medium-3);
     --input-outline-color: var(--medium-3);
     --form-input-bg-color: var(--medium-5);
@@ -58,6 +58,10 @@
     /*H1 & Description*/
     --description-h1-color: var(--dark-1);
     --description-text-color: var(--medium-2);
+    /* Filter */
+    --filter-bg-color: var(--body-color);
+    --filter-txt-color: var(--dark-1);
+    --filter-border-color: var(--form-input-select-border-color);
     /*Game Container*/
     --game-title-bar-color: var(--dark-2);
     --game-title-initial-cap-color: var(--expression-1);
@@ -174,10 +178,6 @@ button:focus {
 
 /* *** Text classes *** */
 
-.relative-container {
-    position: relative;
-}
-
 .invisible {
     position: absolute;
     font-size: 0px;
@@ -234,6 +234,20 @@ txt-large {
     position: relative;
     top: 2px;
 }
+
+/* *** Positional *** */
+.relative-container {
+    position: relative;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
 /* #endregion */
 /* ====================================================================== */
 
@@ -420,18 +434,70 @@ txt-large {
 /* #endregion */
 /* ====================================================================== */
 
-/* #region M A I N  C O N T E N T  C O N T A I N E R ==================== */
+/* #region G A M E S  L I S T  F I L T E R S  F O R M==================== */
 .filter-row {
+    position: relative;
     margin-top: 40px;
 }
 
-.filter-select {
+.filter-button {
+    background-color: var(--form-input-bg-color) !important;
+    color: var(--form-input-select-txt-color) !important;
+    border: 1px solid var(--form-input-select-border-color) !important;
     width: 100%;
 }
 
-.filter-filter {
-    width: 182px;
+.filter-button-icon {
+    font-size: 0.7em;
 }
+
+.filter-popup-box {
+    position: absolute;
+    right: 15px;
+    top: 40px;
+    display: none;
+    z-index: 15;
+    min-height: 300px;
+    width: 400px;
+    background-color: var(--filter-bg-color);
+    border: 1px solid var(--filter-border-color);
+    border-radius: 5px;
+}
+
+.tag-filter-object {
+    display: inline-flex;
+}
+
+/* **** Filter Modal *********************************************** */
+.modal-wrapper {
+    text-align: left;
+}
+
+.modal-wrapper div h3 {
+    color: #ff7043;
+    text-align: center;
+    font-weight: 500;
+    margin: auto;
+}
+
+.modal-body p strong {
+    color: #ff7043;
+}
+
+.modal-header {
+    padding-top: 20px;
+    border: none;
+}
+
+.modal-footer {
+    margin: auto;
+    border: none;
+}
+
+.modal-footer button {
+    width: 200px;
+}
+
 /* #endregion */
 /* ====================================================================== */
 

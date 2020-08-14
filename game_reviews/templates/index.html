@@ -14,49 +14,7 @@
 
 
 	<!-- #region ==== F I L T E R  R O W  ================================================== / -->
-	<form  action="">
-		<div class="d-flex flex-row w-100 justify-content-between filter-row">	
-			<div>
-				<select class="form-control filter-select" id="drop-sort">
-					<option value="date" selected>Sort: Release date (Desc)</option>
-					<option value="date">Release date (Asc)</option>
-					<option value="score">Avg. Score (high on top)</option>
-					<option value="score">Avg. Score (low on top)</option>
-					<option value="title">Title (A-Z)</option>
-					<option value="title">Title (Z-A)</option>
-					<option value="title">----------------------------------------</option>
-				</select>
-			</div>
-			<div>
-				<select class="form-control flex-grow-1 filter-select" id="drop-date">
-					<option value="date" selected>Show: All Time</option>
-					<option value="date">New Today</option>
-					<option value="score">This Week</option>
-					<option value="score">Last Month</option>
-					<option value="title">Last 3 Month</option>
-					<option value="title">Last 6 Month</option>
-					<option value="title">Last Year</option>
-					<option value="title">----------------------------------------</option>
-				</select>
-			</div>
-			<div>
-				<select class="form-control flex-grow-1 filter-select" id="drop-size">
-					<option value="date" selected>List-Size: Large</option>
-					<option value="date">List-Size: Compact</option>
-					<option value="title">----------------------------------------</option>
-				</select>
-			</div>
-			<div>
-				<select class="form-control flex-grow-1 filter-select" id="drop-filter">
-					<option value="date" selected>Filter</option>
-					<option value="title">----------------------------------------</option>
-					<option value="date"></option>
-					<option value="date"></option>
-				</select>
-			</div>
-		</div>
-	</form>
-	
+		{% include "games_filter.html" %}
 	<!-- #endregion -->
 	<!-- =================================================================================== / -->
 	
