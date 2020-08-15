@@ -4,14 +4,15 @@ from django.forms import ModelForm
 from . models import GenreTag, ThemeTag, MiscTag
 
 GAME_SORT_CHOICES = [
-    ('Order by...', 'Order by...'),
-    ('Order by date (Desc)', 'Sort by date (Desc)'),
+    ('Order by date (Asc)', 'Order by...'),
     ('Order by date (Asc)', 'Sort by date (Asc)'),
-    ('Order by score (Desc)', 'Sort by score (Desc)'),
+    ('Order by date (Desc)', 'Sort by date (Desc)'),
     ('Order by score (Asc)', 'Sort by score (Asc)'),
+    ('Order by score (Desc)', 'Sort by score (Desc)'),
 ]
 
 GAME_TIME_CHOICES = [
+    ('Show all time', 'Show by release date...'),
     ('Show all time', 'Show all time'),
     ('Show last week', 'Show last week'),
     ('Show last month', 'Show last month'),
@@ -21,7 +22,7 @@ GAME_TIME_CHOICES = [
 ]
 
 GAME_VIEW_CHOISES = [
-    ('Show default', 'Show default'),
+    ('Show default', 'Show default list...'),
     ('Show compact list', 'Show compact list'),
     ('Show expanded list', 'Show expanded list'),
 ]

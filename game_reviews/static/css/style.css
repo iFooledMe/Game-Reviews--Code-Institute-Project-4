@@ -115,6 +115,14 @@
     --next-page-border-color: var(--medium-1);
     --next-page-bg-color: var(--light-1);
     --next-page-txt-color: var(--medium-1);
+
+    /* Modal */
+    --modal-header-bg-color: var(--dark-2);
+    --modal-header-txt-color: var(--body-color);
+    --modal-body-bg-color: var(--body-color);
+    --modal-body-txt-color: var(--dark-2);
+    --modal-footer-bg-color: var(--medium-3);
+    --modal-footer-txt-color: var();
     /* #endregion */
     /* ================================================================== */
 
@@ -173,10 +181,10 @@ button:focus {
 /* #endregion */
 /* ====================================================================== */
 
-/* #region G E N E R I C   E L E M E N T S ============================== */
-/* ========================================================================= */
+/* #region G E N E R I C   C L A S S E S ================================ */
+/* ====================================================================== */
 
-/* *** Text classes *** */
+/* #region *** Text classes *** */
 
 .invisible {
     position: absolute;
@@ -199,7 +207,9 @@ txt-large {
     font-size: 1.5em;
 }
 
-/* *** Shadow effects *** */
+/* #endregion */
+
+/* #region *** Shadow effects *** */
 .shadow-bottom-right {
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.22);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.22);
@@ -217,8 +227,9 @@ txt-large {
     -moz-box-shadow: inset 0px 43px 32px -42px rgba(0, 0, 0, 0.86);
     box-shadow: inset 0px 43px 32px -42px rgba(0, 0, 0, 0.86);
 }
+/* #endregion */
 
-/* *** Icons *** */
+/* #region *** Icons *** */
 .icon-downarrow {
     display: inline-block;
     width: 20px;
@@ -234,8 +245,9 @@ txt-large {
     position: relative;
     top: 2px;
 }
+/* #endregion */
 
-/* *** Positional *** */
+/* #region *** Positional *** */
 .relative-container {
     position: relative;
 }
@@ -247,6 +259,50 @@ txt-large {
 .float-right {
     float: right;
 }
+/* #endregion */
+
+/* #region **** Clean Modal *** */
+.modal-wrapper {
+    text-align: left;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.modal-header {
+    background-color: var(--modal-header-bg-color);
+    color: var(--modal-header-txt-color);
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    margin: auto;
+    border: none;
+}
+
+.modal-close-x {
+    color: inherit;
+}
+
+.modal-close-x:hover {
+    color: inherit !important;
+}
+
+.modal-body {
+    background-color: var(--modal-body-bg-color);
+    color: var(--modal-body-txt-color);
+}
+
+.modal-footer {
+    background-color: var(--modal-footer-bg-color);
+    color: var(--modal-footer-txt-color);
+    width: 100%;
+    padding-right: 40px;
+}
+
+.modal-footer button {
+    width: 200px;
+}
+/* #endregion */
 
 /* #endregion */
 /* ====================================================================== */
@@ -398,6 +454,33 @@ txt-large {
 /* #endregion */
 /* ====================================================================== */
 
+/* #region A U T H E N T I C A T I O N ================================== */
+/* ====================================================================== */
+.asteriskField {
+    display: none;
+}
+
+.auth-col {
+    width: 65%;
+}
+
+.login-button-wrapper {
+    display: inline-flex;
+    width: 60%;
+    float: right;
+}
+
+.logout-button-wrapper {
+    width: 100%;
+}
+
+.auth-button {
+    width: 100%;
+}
+
+/* #endregion */
+/* ====================================================================== */
+
 /* #region T O P  I N F O =============================================== */
 /* ========================================================================= */
 
@@ -434,7 +517,7 @@ txt-large {
 /* #endregion */
 /* ====================================================================== */
 
-/* #region G A M E S  L I S T  F I L T E R S  F O R M==================== */
+/* #region G A M E S  L I S T  F I L T E R S  F O R M =================== */
 .filter-row {
     position: relative;
     margin-top: 40px;
@@ -464,38 +547,17 @@ txt-large {
     border-radius: 5px;
 }
 
-.tag-filter-object {
+.tag-checkboxes-wrapper {
     display: inline-flex;
 }
 
-/* **** Filter Modal *********************************************** */
-.modal-wrapper {
+.tag-checkbox ul li {
+    list-style: none;
     text-align: left;
 }
 
-.modal-wrapper div h3 {
-    color: #ff7043;
-    text-align: center;
-    font-weight: 500;
-    margin: auto;
-}
-
-.modal-body p strong {
-    color: #ff7043;
-}
-
-.modal-header {
-    padding-top: 20px;
-    border: none;
-}
-
-.modal-footer {
-    margin: auto;
-    border: none;
-}
-
-.modal-footer button {
-    width: 200px;
+tag-checkbox ul li label {
+    margin-left: 10px;
 }
 
 /* #endregion */
@@ -1035,12 +1097,25 @@ txt-large {
     }
 }
 
+/* **** Bootstrap md and up **** */
+@media (min-width: 768px) {
+    .auth-col {
+        width: 50%;
+    }
+}
+
 /* **** Bootstrap lg and up **** */
 @media (min-width: 992px) {
+    .auth-col {
+        width: 30%;
+    }
 }
 
 /* **** Bootstrap xl and up **** */
 @media (min-width: 1200px) {
+    .auth-col {
+        width: 20%;
+    }
 }
 
 /* **** Custom 1600px and up **** */

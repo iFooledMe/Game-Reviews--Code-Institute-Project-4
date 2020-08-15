@@ -12,16 +12,18 @@ from reviews.models import Review
 # Create your views here.
 
 
-def game_list_view(request):
-    if request.method == "POST":
-        sort_in = request.POST.get('sort')
-        sort_out = order_by(sort_in)
-        print(sort_out)
-        test = '-release_date'
-        return HttpResponseRedirect(request.path_info)
-    games = Game.objects.all().order_by('-release_date')
-    update_avg_score(games)
+def game_list_view(request, *args, **kwargs):
+    sort_in = request.GET.get('sort', 'none')
 
+    sort_out = '-release_date'
+    if sort_in != 'none':
+        sort_out = order_by(sort_in)
+        print('order_by function triggered')
+
+    print('Sort In: ' + str(sort_in))
+    print('Sort out: ' + str(sort_out))
+    games = Game.objects.all().order_by(sort_out)
+    update_avg_score(games)
     search_show_form = GameSortShowForms()
     genre_tags_filter = GameFilterGenreForm()
 
@@ -35,10 +37,15 @@ def game_list_view(request):
 
 
 def order_by(sort_in):
-    if sort_in == 'Sort by date (Desc)':
+
+    if sort_in == 'Order by date (Desc)':
         return 'release_date'
-    elif sort_in == 'Sort by date (Asc)':
+    elif sort_in == 'Order by date (Asc)':
         return '-release_date'
+    elif sort_in == 'Order by score (Desc)':
+        return 'avg_score'
+    elif sort_in == 'Order by score (Asc)':
+        return '-avg_score'
     else:
         return 'release_date'
 
