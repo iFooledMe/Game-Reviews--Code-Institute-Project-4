@@ -92,7 +92,14 @@
 	<!-- #region Compact navbar -->
 	<div class="w-100 d-flex d-md-none flex-row justify-content-end align-self-center shadow-bottom-right nav-bottom">			
 		<div class="d-flex flex-column justify-content-center nav-link-wrapper nav-link-wrapper-compact">
-		 	<a class="align-self-center" href="{% url 'game_list' %}">Menu <i class="far fa-caret-square-down nav-icon"></i></a>
+			<a 	class="align-self-center" 
+				data-toggle="collapse" 
+				href="#collapse-menu" 
+				role="button" 
+				aria-expanded="false" 
+				aria-controls="collapseMenu">
+    			Menu <i class="far fa-caret-square-down nav-icon"></i>
+  			</a>
 		</div>
 	</div>
 	<!-- #endregion -->

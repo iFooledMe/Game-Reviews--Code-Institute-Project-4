@@ -53,8 +53,8 @@
     --user-info-txt: var(--dark-1);
     --main-menu-link-bg-color: var(--dark);
     --main-menu-link-txt-color: var(--light-1);
-    --link-mouse-over-bg-color: var(--expression-3);
-    --link-mouse-over-txt-color: var(--medium-4);
+    --link-mouse-over-bg-color: var(--expression-2);
+    --link-mouse-over-txt-color: var(--dark-2);
     /*H1 & Description*/
     --description-h1-color: var(--dark-1);
     --description-text-color: var(--medium-2);
@@ -205,6 +205,10 @@ txt-xsmall {
 
 txt-large {
     font-size: 1.5em;
+}
+
+.txt-align-right {
+    text-align: right;
 }
 
 /* #endregion */
@@ -462,28 +466,32 @@ txt-large {
 }
 
 .nav-link-wrapper {
-    width: 70px;
+    width: 90px;
     text-align: center;
     color: var(--medium-3);
     font-size: 1.2em;
+    letter-spacing: 2px;
     text-transform: uppercase;
     font-family: 'Titillium Web', sans-serif;
 }
 
-.nav-link-wrapper-compact {
-    width: 100px;
+.hover-me div:hover {
+    background-color: var(--link-mouse-over-bg-color);
+    color: var(--link-mouse-over-txt-color);
+    text-decoration: none;
 }
 
 .nav-icon {
     padding-left: 5px;
 }
 
-.nav-link-wrapper:hover {
-    background-color: var(--link-mouse-over-bg-color);
-    color: var(--link-mouse-over-txt-color);
-    text-decoration: none;
+.collapse-menu {
+    padding: 20px;
+    background-color: var(--main-menu-link-bg-color);
+    color: var(--medium-3);
+    border-radius: 0 0 5px 5px;
 }
-
+/* #endregion */
 /* #endregion */
 /* #endregion */
 /* #endregion */
