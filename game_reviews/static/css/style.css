@@ -245,6 +245,20 @@ txt-large {
     position: relative;
     top: 2px;
 }
+
+.auth-form-icon {
+    padding-left: 5px;
+    color: inherit;
+    font-size: 0.8em;
+}
+
+.icon-size-larger {
+    font-size: 1em;
+}
+
+.icon-size-smaller {
+    font-size: 0.8em;
+}
 /* #endregion */
 
 /* #region *** Positional *** */
@@ -308,13 +322,15 @@ txt-large {
 /* ====================================================================== */
 
 /* #region N A V  B A R ================================================= */
-/* ========================================================================= */
+/* ====================================================================== */
 
+/* #region **** Frame *************************************************** */
 .header-container {
     height: 80px;
 }
+/* #endregion */
 
-/* **** Logotype ********************************************** */
+/* #region **** Logotype ************************************************ */
 
 .logo-container {
     position: relative;
@@ -356,9 +372,9 @@ txt-large {
     letter-spacing: 5px;
     color: var(--logo-bottom-txt-color);
 }
+/* #endregion */
 
-/* **** Slogan ********************************************** */
-
+/* #region **** Slogan ************************************************** */
 .slogan {
     font-size: 120%;
     text-align: center;
@@ -371,8 +387,11 @@ txt-large {
     width: 30px;
     opacity: 0.6;
 }
+/* #endregion */
 
-/* **** Search and User (Nav Top) *************************** */
+/* #region **** Search and User (Nav Top) ******************************* */
+
+/* #region Top */
 .nav-top {
     width: 100%;
     height: 40px;
@@ -415,42 +434,58 @@ txt-large {
 .user-info {
     padding-right: 10px;
     text-align: right;
-    font-family: monospace;
-    color: var(--user-info-txt);
-}
-
-/* **** Nav links (Nav bottom) *************************** */
-
-.nav-bottom {
-    height: 40px;
-    border-radius: 0px 0px 0px 5px;
-    font-family: 'Titillium Web', sans-serif;
-    background-color: var(--header-fg-color);
-    text-align: center;
-}
-
-.nav-bottom a {
     display: block;
     min-height: 40px;
-    font-size: 1.2em;
+    font-size: 1em;
     text-transform: uppercase;
-    background-color: var(--main-menu-link-bg-color);
-    color: var(--main-menu-link-txt-color);
+    font-family: 'Titillium Web', sans-serif;
 }
 
-.nav-bottom a div {
+.user-info-dropdown {
+    height: 25px;
+    background-color: var(--body-color);
+    color: var(--dark-1);
+    border: none;
+    text-transform: none;
+    letter-spacing: 2px;
+    font-family: 'Titillium Web', sans-serif;
+}
+/* #endregion */
+
+/* #region Bottom */
+.nav-bottom {
     width: 100%;
     padding: 0 10px;
     min-height: 40px;
     background-color: var(--main-menu-link-bg-color);
+    border-radius: 0 0 5px 5px;
 }
 
-.nav-bottom a div:hover {
+.nav-link-wrapper {
+    width: 70px;
+    text-align: center;
+    color: var(--medium-3);
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.nav-link-wrapper-compact {
+    width: 100px;
+}
+
+.nav-icon {
+    padding-left: 5px;
+}
+
+.nav-link-wrapper:hover {
     background-color: var(--link-mouse-over-bg-color);
     color: var(--link-mouse-over-txt-color);
     text-decoration: none;
 }
 
+/* #endregion */
+/* #endregion */
 /* #endregion */
 /* ====================================================================== */
 
@@ -506,7 +541,7 @@ txt-large {
 
 /* Wraps the entire container holding both main content and add */
 .main-content-container {
-    max_width: 1122px;
+    max-width: 1122px;
 }
 
 /* Wraps the container holding the games list */
@@ -1053,7 +1088,7 @@ tag-checkbox ul li label {
 /* #region A D  C O N T A I N E R S ===================================== */
 
 .main-right-container {
-    width: 130px;
+    background-color: lightblue;
 }
 
 .db-right-img {
@@ -1114,7 +1149,7 @@ tag-checkbox ul li label {
 /* **** Bootstrap xl and up **** */
 @media (min-width: 1200px) {
     .auth-col {
-        width: 20%;
+        width: 25%;
     }
 }
 

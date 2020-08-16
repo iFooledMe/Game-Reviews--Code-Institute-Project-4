@@ -31,8 +31,19 @@
 			{% include "socialaccount/snippets/login_extra.html" %}
 
 			{% else %}
-				<p>{% blocktrans %}
-				<a href="{{ signup_url }}">Sign up here</a>{% endblocktrans %}</p>
+				<p>
+				{% blocktrans %}
+					<div class="logout-button-wrapper">
+						<a 	class="btn btn-sm btn-light auth-button" 
+							href="{{ signup_url }}" 
+							role="button">
+							Register for new account here 
+							<i class="fas fa-chevron-right auth-form-icon"></i>
+						</a>
+					</div>
+				{% endblocktrans %}
+				</p>
+				
 			{% endif %}
 
 			<form class="login" method="POST" action="{% url 'account_login' %}">
@@ -42,7 +53,13 @@
 				<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
 				{% endif %}
 				<a class="btn btn-sm btn-light button secondaryAction txt-small" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-				<div class="login-button-wrapper text-right"><button class="btn btn-sm btn-secondary auth-button primaryAction" type="submit">{% trans "Sign In" %}</button></div>
+				<div class="login-button-wrapper text-right">
+					<button class="btn btn-sm btn-secondary auth-button primaryAction" 
+							type="submit">{% trans "Sign In" %}
+							<i class="fas fa-chevron-right auth-form-icon"></i>
+        					<i class="far fa-user auth-form-icon"></i>
+					</button>
+				</div>
 			</form>
 	
 
