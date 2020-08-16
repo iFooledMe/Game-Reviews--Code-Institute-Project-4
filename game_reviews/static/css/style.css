@@ -178,6 +178,7 @@ button:focus {
     outline-color: transparent;
     outline-width: 0px;
 }
+
 /* #endregion */
 /* ====================================================================== */
 
@@ -261,6 +262,8 @@ txt-large {
 }
 
 .icon-size-smaller {
+    position: relative;
+    top: -2px;
     font-size: 0.8em;
 }
 /* #endregion */
@@ -321,7 +324,15 @@ txt-large {
     width: 200px;
 }
 /* #endregion */
+/* #endregion */
 
+/* #region **** Hover effects *** */
+.hower-me,
+.hover-me div:hover {
+    background-color: var(--link-mouse-over-bg-color);
+    color: var(--link-mouse-over-txt-color);
+    text-decoration: none;
+}
 /* #endregion */
 /* ====================================================================== */
 
@@ -469,16 +480,10 @@ txt-large {
     width: 90px;
     text-align: center;
     color: var(--medium-3);
-    font-size: 1.2em;
+    font-size: 1.1em;
     letter-spacing: 2px;
     text-transform: uppercase;
     font-family: 'Titillium Web', sans-serif;
-}
-
-.hover-me div:hover {
-    background-color: var(--link-mouse-over-bg-color);
-    color: var(--link-mouse-over-txt-color);
-    text-decoration: none;
 }
 
 .nav-icon {

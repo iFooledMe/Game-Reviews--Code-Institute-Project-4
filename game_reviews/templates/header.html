@@ -49,9 +49,8 @@
 							<span class="d-none d-lg-inline">{{ user }}</span> 
 						</a>
 						<div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuLink">
-							<a class="dropdown-item txt-small" href="#">Your dashboard</a>
-							<a class="dropdown-item txt-small" href="#">Account settings</a>
-							<a class="dropdown-item txt-small" href="{% url 'logout' %}">Logout</a>
+							<div class="hover-me"><a class="dropdown-item txt-small" href="#">Your dashboard <i class="fas fa-chevron-right icon-rightarrow icon-size-smaller"></i></a></div>
+							<div class="hover-me"><a class="dropdown-item txt-small" href="{% url 'logout' %}">Logout <i class="fas fa-chevron-right icon-rightarrow icon-size-smaller"></i></a></div>
 						</div>
 				</div>
 			{% else %}
@@ -69,12 +68,9 @@
 
 	<!-- #region *** Bottom - Navbar *** -->
 	<!-- #region Large navbar -->
-	<div class="w-100 d-none d-md-flex flex-row justify-content-around align-self-center shadow-bottom-right nav-bottom">			
+	<div class="w-100 d-none d-md-flex flex-row justify-content-around align-self-center shadow-bottom-right nav-bottom hover-me">			
 		<div class="d-flex flex-column justify-content-center nav-link-wrapper">
 		 	<a class="align-self-center" href="{% url 'game_list' %}">Home</a>
-		</div>
-		<div class="d-flex flex-column justify-content-center nav-link-wrapper">
-		 	<a class="align-self-center" href="#">Dates</a>
 		</div>
 		<div class="d-flex flex-column justify-content-center nav-link-wrapper">
 		 	<a class="align-self-center" href="#">Forums</a>
@@ -86,11 +82,15 @@
 		<div class="d-flex flex-column justify-content-center nav-link-wrapper">
 			<a class="align-self-center" href="{% url 'login' %}">Log In</a>			
 		</div>
+		<div class="d-flex flex-column justify-content-center nav-link-wrapper">
+			<a class="align-self-center" href="{% url 'signup' %}">Sign Up</a>			
+		</div>
+		
 		{% endif %}
 	</div>
 	<!-- #endregion -->
 	<!-- #region Compact navbar -->
-	<div class="w-100 d-flex d-md-none flex-row justify-content-end align-self-center shadow-bottom-right nav-bottom">			
+	<div class="w-100 d-flex d-md-none flex-row justify-content-end align-self-center shadow-bottom-right hover-me nav-bottom">			
 		<div class="d-flex flex-column justify-content-center nav-link-wrapper nav-link-wrapper-compact">
 			<a 	class="align-self-center" 
 				data-toggle="collapse" 
