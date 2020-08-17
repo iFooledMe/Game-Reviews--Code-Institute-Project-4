@@ -30,20 +30,22 @@ def user_profile_view(request):
 
 
 def pay_thankyou_view(request):
+
+    payment_intent_secret = request.POST['payment_intent_secret']
     payment_intent_id = request.POST['payment_intent_id']
     payment_method_id = request.POST['payment_method_id']
     stripe_plan_id = settings.STRIPE_PLAN_ANNUALY_PRICE_ID
     auto_renew = request.POST['auto-renew-check']
     stripe.api_key = settings.STRIPE_SECRET_KEY 
     
-
+    print("payment_intent_secret: " + payment_intent_secret)
     print("payment_intent_id: " + payment_intent_id)
     print("payment_method_id: " + payment_method_id) 
     print("stripe_plan_id: " + stripe_plan_id) 
     print("stripe.api_key: " + stripe.api_key) 
     print("auto_renew: " + auto_renew) 
 
-    
+    #region Non 3d-Secure
     if auto_renew == 'on':
         customer = stripe.Customer.create(
             email=request.POST['user_email'],
@@ -73,6 +75,19 @@ def pay_thankyou_view(request):
         stripe.PaymentIntent.confirm(
             payment_intent_id
         )
+    #endregion
 
-    context = {}
-    return render(request, "pay_thankyou.html", context)
+    ret = stripe.PaymentIntent.confirm(payment_intent_id)
+
+    if ret.status == 'requires_action':
+        pi = stripe.PaymentIntent.retrieve(payment_intent_id)
+        
+        context = {
+            '3dsec': True,
+            'payment_intent_secret': pi.client_secret,
+        }
+        return render(request, "pay_thankyou.html", context)
+    else:
+        context = {}
+        return render(request, "pay_thankyou.html", context)
+    

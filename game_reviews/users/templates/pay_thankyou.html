@@ -10,20 +10,24 @@
 <div class="container-fluid p-0 m-0 main-content-wrapper userprofile-container">
 	<!-- #region ==== DASHBOARD HEADER ==== -->
 	<div class="row no-gutters mt-5 mb-4 px-2">
-		<div class="col-12">
-			<h3>Thank you!
-			{% if user.userprofile.chat_alias %}
-				{{ user.userprofile.chat_alias }}
-			{% else %}
-				{{  user }}
-			{% endif %}
-			</h3>
-            <p>You are now a premium member until "some date"</p>
-		</div>
-        <div class="col-12">
-            <a class="btn btn-sm btn-secondary" role="button" href="{% url 'game_list' %}">Back to home</a>
-            <a class="btn btn-sm btn-secondary" role="button" href="{% url 'userprofile' %}">Back to Dashboard</a>
-        </div>
+		{% if 3dsec %}
+            {% include 'stripe_3dsec.html' %}
+        {% else %}
+            <div class="col-12">
+                <h3>Thank you!
+                {% if user.userprofile.chat_alias %}
+                    {{ user.userprofile.chat_alias }}
+                {% else %}
+                    {{  user }}
+                {% endif %}
+                </h3>
+                <p>You are now a premium member until "some date"</p>
+            </div>
+            <div class="col-12">
+                <a class="btn btn-sm btn-secondary" role="button" href="{% url 'game_list' %}">Back to home</a>
+                <a class="btn btn-sm btn-secondary" role="button" href="{% url 'userprofile' %}">Back to Dashboard</a>
+            </div>
+        {% endif %}
     </div>
 </div>
 
