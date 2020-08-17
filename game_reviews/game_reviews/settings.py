@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     # Custom Apps
     'games',
     'reviews',
+    'users',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -49,7 +49,7 @@
 							<span class="d-none d-lg-inline">{{ user }}</span> 
 						</a>
 						<div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuLink">
-							<div class="hover-me"><a class="dropdown-item txt-small" href="#">Your dashboard <i class="fas fa-chevron-right icon-rightarrow icon-size-smaller"></i></a></div>
+							<div class="hover-me"><a class="dropdown-item txt-small" href="{% url 'userprofile' %}">Your dashboard <i class="fas fa-chevron-right icon-rightarrow icon-size-smaller"></i></a></div>
 							<div class="hover-me"><a class="dropdown-item txt-small" href="{% url 'logout' %}">Logout <i class="fas fa-chevron-right icon-rightarrow icon-size-smaller"></i></a></div>
 						</div>
 				</div>

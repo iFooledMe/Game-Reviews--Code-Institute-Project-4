@@ -28,6 +28,10 @@
     "game_reviews/home/migrations": true,
     "game_reviews/home/__init__.py": true,
     "game_reviews/home/apps.py": true,
-    "game_reviews/home/tests.py": true
+    "game_reviews/home/tests.py": true,
+    "game_reviews/users/migrations": true,
+    "game_reviews/users/__init__.py": true,
+    "game_reviews/users/apps.py": true,
+    "game_reviews/users/tests.py": true
   }
 }
