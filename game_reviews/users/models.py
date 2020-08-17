@@ -6,6 +6,7 @@ from django.dispatch import receiver
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    is_premium = models.BooleanField(default=False)
     chat_alias = models.CharField(max_length=30, null=True, blank=True)
     image = models.ImageField(
         upload_to='users/user_images/',

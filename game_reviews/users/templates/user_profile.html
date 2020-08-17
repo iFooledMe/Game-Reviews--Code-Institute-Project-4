@@ -1,9 +1,84 @@
-{% extends 'user_profile_base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block user_profile %}
+{% block main_content %}				
 
-<h3>Welcome to your dashboard {{ user }}</h3> 
+<div class="container-fluid p-0 m-0 main-content-wrapper userprofile-container">
+	<div class="row no-gutters py-5 px-2">
+		<div class="col-12 col-md-6">
+			<h3>Welcome to your dashboard 
+			{% if user.userprofile.chat_alias %}
+				{{ user.userprofile.chat_alias }}
+			{% else %}
+				{{  user }}
+			{% endif %}
+			</h3>
+			<br>
+			<h5>Your account settings</h5>
+			<table class="table-borderless">
+				<tr>
+					<td class="info-table-col-1">
+						First name: 
+					</td>
+					<td class="info-table-col-2">
+						{{ user.first_name }}
+					</td>
+				</tr>
+				<tr>
+					<td class="info-table-col-1 ">
+						Last name: 
+					</td>
+					<td class="info-table-col-2">
+						{{ user.last_name }}
+					</td>
+				</tr>
+				<tr>
+					<td class="info-table-col-1">
+						Email: 
+					</td>
+					<td class="info-table-col-2">
+						{{ user.email }}
+					</td>
+				</tr>
+				<tr>
+					<td class="info-table-col-1">
+						Membership:
+					</td>
+					<td class="info-table-col-2">
+						{% if user.userprofile.is_premium %}
+							Premium (until 2020-12-24)
+						{% else %}
+							Basic
+						{% endif %}
+					</td>
+				</tr>
+				{% if not user.userprofile.is_premium %}
+				<tr>
+					<td colspan="2" class="info-table-col-1">
+						Premium membership let you enjoy this site<br>
+						without any ads for 
+						<strong>only $3 a year!</strong>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="info-table-col-1">
+						<button class="btn btn-secondary">Upgrade to premium now!</button>
+					</td>
+				</tr>
+				{% endif %}
+			</table> 
+		</div>
+		<div class="col-12 col-md-6 pt-4 pt-md-1 pl-md-5">
+			<h5>Your favorite games</h5>
+			<div class="py-3">Favorite games list</div> 
+			<h5>Your Activity</h5>
+			<div class="py-3">Activity list</div> 
+		</div>
+		
+	</div>
+	
+</div>
+
 
 {% endblock %}
 

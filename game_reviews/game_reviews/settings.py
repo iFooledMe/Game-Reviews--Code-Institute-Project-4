@@ -1,6 +1,9 @@
 import os
 from pathlib import Path
 
+if os.path.exists("env.py"):
+    import env
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
@@ -36,6 +39,9 @@ INSTALLED_APPS = [
     # Crispy forms
     'crispy_forms',
 
+    # Stripe
+    'stripe',
+
     # Custom Apps
     'games',
     'reviews',
@@ -43,6 +49,9 @@ INSTALLED_APPS = [
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+STRIPE_PUBLISHABLE_KEY = os.environ["STRIPE_PUBLISHABLE_KEY"]
+STRIPE_SECRET_KEY = os.environ["STRIPE_SECRET_KEY"]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

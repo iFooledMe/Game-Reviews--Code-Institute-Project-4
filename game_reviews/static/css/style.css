@@ -324,7 +324,6 @@ txt-large {
     width: 200px;
 }
 /* #endregion */
-/* #endregion */
 
 /* #region **** Hover effects *** */
 .hower-me,
@@ -333,6 +332,8 @@ txt-large {
     color: var(--link-mouse-over-txt-color);
     text-decoration: none;
 }
+/* #endregion */
+
 /* #endregion */
 /* ====================================================================== */
 
@@ -1098,6 +1099,21 @@ tag-checkbox ul li label {
 /* #endregion */
 /* ====================================================================== */
 
+/* #region ==== U S E R  P R O F I L E ================================== */
+.userprofile-container {
+}
+
+.info-table-col-1 {
+    padding-right: 15px;
+    padding-bottom: 10px;
+}
+
+.info-table-col-2 {
+    padding-bottom: 10px;
+}
+
+/* #endregion */
+
 /* #region A D  C O N T A I N E R S ===================================== */
 
 .main-right-container {
@@ -1111,7 +1127,7 @@ tag-checkbox ul li label {
 /* ====================================================================== */
 
 /* #region M E D I A  Q U E R I E S ===================================== */
-/* ========================================================================= */
+/* ====================================================================== */
 
 /* **** 767px and down **** */
 @media (max-width: 767px) {
