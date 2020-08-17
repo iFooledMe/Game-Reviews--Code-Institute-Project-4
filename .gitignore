@@ -2,5 +2,6 @@
 __pycache__
 
 .vscode/launch.json
+.vscode
 env.py
 game_reviews/game_reviews/env.py

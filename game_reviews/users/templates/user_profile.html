@@ -1,11 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_js %}
+	<script src="https://js.stripe.com/v3/"></script>
+	<script src="{% static 'js/stripes.js' %}"></script>
+	<script>
+		card('{{ stripe_publishable_key }}', '{{ user.email }}')
+	</script>
+{% endblock %}
+
 {% block main_content %}				
 
 <div class="container-fluid p-0 m-0 main-content-wrapper userprofile-container">
-	<div class="row no-gutters py-5 px-2">
-		<div class="col-12 col-md-6">
+	<!-- #region ==== DASHBOARD HEADER ==== -->
+	<div class="row no-gutters mt-5 mb-4 px-2">
+		<div class="col-12">
 			<h3>Welcome to your dashboard 
 			{% if user.userprofile.chat_alias %}
 				{{ user.userprofile.chat_alias }}
@@ -13,7 +22,15 @@
 				{{  user }}
 			{% endif %}
 			</h3>
-			<br>
+			{{ STRIPE_PUBLISHABLE_KEY }}
+		</div>
+	</div>
+	<!-- #endregion -->
+	<!-- #region ==== DASHBOARD CONTENT ====-->
+	<div class="row no-gutters px-2">
+		<!-- #region Account settings -->
+		<div class="col-12 col-md-6">
+			<!-- #region Info table -->
 			<h5>Your account settings</h5>
 			<table class="table-borderless">
 				<tr>
@@ -57,26 +74,38 @@
 					<td colspan="2" class="info-table-col-1">
 						Premium membership let you enjoy this site<br>
 						without any ads for 
-						<strong>only $3 a year!</strong>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" class="info-table-col-1">
-						<button class="btn btn-secondary">Upgrade to premium now!</button>
+						<strong>only $2.95 a year!</strong>
 					</td>
 				</tr>
 				{% endif %}
-			</table> 
+			</table>
+			<!-- #endregion --> 
+			<!-- #region Premium button and expandable card form -->
+			<button class="btn btn-sm btn-secondary premium-button" type="button" data-toggle="collapse" data-target="#credit-card-form" aria-expanded="false" aria-controls="credit-card-form">
+				Update to premium membership
+			</button>
+			<div class="collapse credit-card-form-wrapper my-3" id="credit-card-form">
+				<div class="credit-card-form">
+					<form action="." method="POST" id="payment-form">
+					{% csrf_token %}
+						<div id="card-element"></div>
+						<div id="card-errors" role="alert"></div>
+						<input class="form-control btn btn-sm btn-secondary mt-2" type="submit" value="Pay $2.95 for one years premium membership">
+				</div>
+			</div>
+			<!-- #endregion -->
 		</div>
+		<!-- #endregion -->
+		<!-- #region Favorite games / Activity col -->
 		<div class="col-12 col-md-6 pt-4 pt-md-1 pl-md-5">
 			<h5>Your favorite games</h5>
 			<div class="py-3">Favorite games list</div> 
 			<h5>Your Activity</h5>
 			<div class="py-3">Activity list</div> 
 		</div>
-		
+		<!-- #endregion -->
 	</div>
-	
+	<!-- #endregion -->
 </div>
 
 
