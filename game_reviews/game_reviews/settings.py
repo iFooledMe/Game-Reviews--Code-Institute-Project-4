@@ -52,6 +52,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 STRIPE_PUBLISHABLE_KEY = os.environ["STRIPE_PUBLISHABLE_KEY"]
 STRIPE_SECRET_KEY = os.environ["STRIPE_SECRET_KEY"]
+STRIPE_PLAN_ANNUALY_PRICE_ID = os.environ["STRIPE_PLAN_ANNUALY_PRICE_ID"]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

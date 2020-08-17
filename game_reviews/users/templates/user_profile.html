@@ -88,10 +88,24 @@
 				<div class="credit-card-form">
 					<form action="{% url 'pay_thankyou' %}" method="POST" id="payment-form">
 					{% csrf_token %}
-						<div id="card-element"></div>
-						<div id="card-errors" role="alert"></div>
-                        <input type="hidden" name="payment_intent_id" value="{{ payment_intent_id }}">
-						<input class="form-control btn btn-sm btn-secondary mt-2" id="submit-button" type="submit" value="Pay $2.95 for one years premium membership">
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="auto-renew-check" checked>
+                                <label class="form-check-label" for="auto-renew-check">
+                                    Automatically renew subscription
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div id="card-element"></div>
+                            <div id="card-errors" role="alert"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="user_email" value="{{ user.email }}">
+                            <input type="hidden" name="payment_intent_id" value="{{ payment_intent_id }}">
+						    <input class="form-control btn btn-sm btn-secondary" id="submit-button" type="submit" value="Pay $2.95 for one years premium membership">
+                        </div>
+                        
                     </form>
 				</div>
 			</div>

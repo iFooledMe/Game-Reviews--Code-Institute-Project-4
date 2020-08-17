@@ -6,6 +6,7 @@ function card(stripe_publishable_key, customer_email) {
         var stripe = Stripe(stripe_publishable_key);
         var elements = stripe.elements();
 
+        // Style form card form
         var style = {
             base: {
                 color: '#32325d',
@@ -22,6 +23,7 @@ function card(stripe_publishable_key, customer_email) {
             },
         };
 
+        // Creates card form in the element
         var card = elements.create('card', { style: style });
         card.mount('#card-element');
 
