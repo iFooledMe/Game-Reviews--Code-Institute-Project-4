@@ -1,7 +1,6 @@
 *.pyc
 __pycache__
-
-.vscode/launch.json
+.vscode/*
 .vscode
 env.py
-game_reviews/game_reviews/env.py
+db.sqlite3
