@@ -21,7 +21,7 @@ from django.conf.urls import url, include
 
 from allauth.account.views import LoginView, SignupView, LogoutView
 from games import views
-from users.views import user_profile_view
+from users.views import user_profile_view, pay_thankyou_view
 
 
 urlpatterns = [
@@ -30,6 +30,7 @@ urlpatterns = [
     path('logout', LogoutView.as_view(), name='logout'),
     path('signup', SignupView.as_view(), name='signup'),
     path('userprofile', user_profile_view, name='userprofile'),
+    path('pay_thankyou', pay_thankyou_view, name='pay_thankyou'),
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
 ]

@@ -22,7 +22,7 @@
 				{{  user }}
 			{% endif %}
 			</h3>
-			{{ STRIPE_PUBLISHABLE_KEY }}
+            <a href="{% url 'pay_thankyou' %}">Thanks!</a>
 		</div>
 	</div>
 	<!-- #endregion -->
@@ -86,11 +86,13 @@
 			</button>
 			<div class="collapse credit-card-form-wrapper my-3" id="credit-card-form">
 				<div class="credit-card-form">
-					<form action="." method="POST" id="payment-form">
+					<form action="{% url 'pay_thankyou' %}" method="POST" id="payment-form">
 					{% csrf_token %}
 						<div id="card-element"></div>
 						<div id="card-errors" role="alert"></div>
-						<input class="form-control btn btn-sm btn-secondary mt-2" type="submit" value="Pay $2.95 for one years premium membership">
+                        <input type="hidden" name="payment_intent_id" value="{{ payment_intent_id }}">
+						<input class="form-control btn btn-sm btn-secondary mt-2" id="submit-button" type="submit" value="Pay $2.95 for one years premium membership">
+                    </form>
 				</div>
 			</div>
 			<!-- #endregion -->
