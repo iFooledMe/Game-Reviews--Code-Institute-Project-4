@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import dj_database_url
 
 if os.path.exists("env.py"):
     import env
@@ -111,13 +112,16 @@ WSGI_APPLICATION = 'game_reviews.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+# }
 
+DATABASES = {
+    'default': dj_database_url.parse('postgres://siesmivvisgntm:4935f2b239837edc9c200c5448c94aba87db5272ba522405bef73560b4896db0@ec2-54-247-103-43.eu-west-1.compute.amazonaws.com:5432/d742d54fa1e7o')
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
