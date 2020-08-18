@@ -1,1 +1,1 @@
-web: gunicorn game-reviews-demo.wsgi:application
+web: gunicorn Game-Reviews--Code-Institute-Project-4.wsgi:application
