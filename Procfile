@@ -1,0 +1,1 @@
+web: gunicorn game_reviews/game-reviews.wsgi:application
