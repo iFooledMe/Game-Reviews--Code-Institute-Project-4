@@ -538,18 +538,50 @@ txt-large {
 /* #region ==== T O P  I N F O ========================================== */
 /* ========================================================================= */
 
-.top-info-header {
-    padding-top: 10px;
+.top-info-bg-image {
+    background-image: url('../img/playing_1122x365.jpg');
 }
 
-.top-info-header > h2 {
-    font-size: 1.1em;
+.bg-image-full {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 365px;
+    max-width: 1122px;
+    scale: 0.3;
 }
 
-.top-info-text {
-    padding-top: 10px;
-    padding-right: 10px;
-    font-size: 0.8rem;
+.top-info {
+    position: relative;
+    border-radius: 3px;
+    padding-top: 50px;
+    padding-right: 10%;
+    text-transform: uppercase;
+    font-family: 'Titillium Web', sans-serif;
+
+    letter-spacing: 10px;
+}
+
+.top-info-txt-1 {
+    padding-right: 30%;
+    font-size: 1.8em;
+}
+
+.top-info-txt-2 {
+    padding-right: 20%;
+    font-size: 2em;
+}
+
+.top-info-txt-3 {
+    padding-right: 10%;
+    font-size: 2.2em;
+}
+
+.top-info-close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    color: var(--medium-1);
 }
 
 /* #endregion */
