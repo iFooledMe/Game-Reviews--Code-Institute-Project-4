@@ -147,7 +147,7 @@
 						<!-- #region - Compact view - -->	
 						<div class="reviews-container rc-compact">
 							<div class="d-flex flex-column mr-2 shadow-bottom-right reviews-quotes">
-								{% for review in game.review_set.all  %}
+								{% for review in game.review_set.all %}
 									{% if forloop.counter <= 2 %}		
 										<div class="reviews-text-box">
 											<a href="{{ review.review_url }}" target="_blank">	
