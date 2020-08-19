@@ -1,1 +1,1 @@
-web: gunicorn game_reviews/game-reviews.wsgi:application
+web: gunicorn --pythonpath game_reviews.game_reviews.wsgi:application
