@@ -241,9 +241,9 @@
 								data-targetopenTwo="rm-btn-expanded">
 							...Read more <i class="fas fa-caret-down icon-downarrow"></i>
 						</button>
-						<button class="details-button" data-id="gameid-1" data-target="reviews-expanded">
+						<a href="{% url 'game_details' %}?gameid={{ game.id }}" class="details-button" role="button">
 							<span class="details-txt"> Game Details <i class="fas fa-caret-right icon-rightarrow"></i></span>
-						</button>
+						</a>
 					</div>
 					<!-- #endregion-->
 					<!-- #endregion -->
@@ -262,7 +262,6 @@
 									<span class="descr-quote-sign">"</span>
 									<span class="descr-capital">{{ game.description|slice:"1" }}</span>
 									<span class="descr-bodytext">{{ game.description|slice:"1:" }}</span>
-									
 								</div>
 							</div>
 						</div>
@@ -278,9 +277,9 @@
 								data-targetopenTwo="rm-btn-compact">
 							Close <i class="fas fa-caret-up icon-downarrow"></i>
 						</button>
-						<button class="details-button" data-id="gameid-1" data-target="reviews-expanded">
+						<a href="{% url 'game_details' %}?gameid={{ game.id }}" class="details-button" role="button">
 							<span class="details-txt"> Game Details <i class="fas fa-caret-right icon-rightarrow"></i></span>
-						</button>
+						</a>
 					</div>
 					<!-- #endregion-->						
 					<!-- #endregion -->

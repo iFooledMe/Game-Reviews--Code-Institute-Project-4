@@ -1,3 +1,5 @@
+
+# region ==== Imports ========================================================/
 import collections
 from decimal import *
 from django.shortcuts import render, redirect
@@ -8,8 +10,11 @@ from django.db.models import Sum
 from .models import Game, GenreTag, ThemeTag, MiscTag
 from .forms import GameSortShowForms, GameFilterGenreForm
 from reviews.models import Review
+# endregion
+# ============================================================================/
 
-# Create your views here.
+
+# region ==== Games List =====================================================/
 
 
 def game_list_view(request, *args, **kwargs):
@@ -62,3 +67,23 @@ def update_avg_score(games):
         max = scores_max.get('max_score__sum')
         avg_score = round((sum / max) * 100, 0)
         Game.objects.filter(pk=game.id).update(avg_score=avg_score)
+
+
+# endregion
+# ============================================================================/
+
+
+# region ==== Game Details ===================================================/
+def game_details_view(request):
+    gameid = request.GET.get('gameid', 'none')
+    if gameid != 'none':
+        game = Game.objects.filter(id=gameid)
+        context = {
+            'this_game': game
+        }
+        # return HttpResponse('<h3>Some response{}</h3>'.format(gameid))
+        return render(request, "game_details.html", context)
+    return redirect(game_list_view)
+
+# endregion
+# ============================================================================/
