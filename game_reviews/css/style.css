@@ -600,6 +600,10 @@ txt-large {
     min-height: calc(100vh - 140px);
 }
 
+/* Wraps top info image on index */
+.top-info-wrapper {
+}
+
 /* #endregion */
 /* ====================================================================== */
 
@@ -751,6 +755,15 @@ tag-checkbox ul li label {
 
 /* #region ---- Game Title ---- */
 .game-title {
+    background-color: var(--game-title-bar-color);
+    color: var(--game-title-text-color);
+    text-transform: uppercase;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 4px;
+}
+
+.game-title-details {
     background-color: var(--game-title-bar-color);
     color: var(--game-title-text-color);
     text-transform: uppercase;
@@ -1139,6 +1152,24 @@ tag-checkbox ul li label {
 /* #endregion */
 
 /* #endregion */
+/* #endregion */
+/* ====================================================================== */
+
+/* #region ==== G A M E  D E T A I L  P A G E ============================*/
+/* #region ---- Game Title ---- */
+.game-title-details {
+    background-color: var(--game-title-bar-color);
+    color: var(--game-title-text-color);
+    text-transform: uppercase;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 4px;
+}
+
+.some-class {
+    background-color: green;
+}
+
 /* #endregion */
 /* ====================================================================== */
 

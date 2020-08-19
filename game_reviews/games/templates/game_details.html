@@ -1,8 +1,38 @@
-{% block main_content %}
+{% extends 'game_details_base.html' %}
 
+{% load static %}
+
+<!-- #region ==== G A M E S  L I S T  ================================================== / -->
+{% block games_detail %}
 {% for game in this_game  %}
 
-<h3>Title: {{ game.title  }}</h3>
+
+<div class="row no-gutters mx-auto mt-5 px-3 game-details-title">
+		<div class="invisible">
+			<h2>{{ game.title }}</h2>
+		</div>
+		<div class="title-wrapper">
+			<span class="game-title-initial-cap">{{ game.title|slice:"1" }}</span>{{game.title|slice:"1:"}}
+		</div>
+</div>
+<div class="row no-gutters mx-auto mt-2 px-3">
+	
+	<div class="col-12 col-md-6">
+		<div class="row game-img-large-container">
+		{% if  game.large_cover_img %}
+			<img class="img-fluid" src="{{ game.thumb_img }}" alt="{{ game.title }} - Cover image">
+		{% else %}
+			<img src="{% static "img/img_placeholder_244x300.jpg"%}" alt="Empty placeholder - Game cover image is missing">
+		{% endif %}
+		</div>
+	</div>
+
+</div>
+
 
 {% endfor %}
+
+
 {% endblock %}
+<!-- #endregion -->
+

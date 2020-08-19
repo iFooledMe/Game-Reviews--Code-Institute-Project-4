@@ -120,6 +120,12 @@ class Game(models.Model):
     thumb_img = models.ImageField(
         upload_to='games/thumb_images/',
         max_length=255, null=True, blank=True)
+    large_cover_img = models.ImageField(
+        upload_to='games/cover_images/',
+        max_length=255, null=True, blank=True)
+    in_game_img = models.ImageField(
+        upload_to='games/ingame_images/',
+        max_length=255, null=True, blank=True)
     release_date = models.DateField(
         null=True, blank=True)
     description = models.TextField(
