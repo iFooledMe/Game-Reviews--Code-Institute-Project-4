@@ -1157,7 +1157,7 @@ tag-checkbox ul li label {
     font-family: 'Titillium Web', sans-serif;
     font-size: 2rem;
     letter-spacing: 4px;
-    border-radius: 5px 5px 0 0;
+    border-radius: 0 5px 0 0;
 }
 
 .game-img-large-container {

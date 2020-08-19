@@ -10,8 +10,8 @@
 		<div class="d-flex flex-row align-items-stretch">
 			<!-- #region ==== THUMB BOX =============================================================== -->
 			<div class="game-thumb-wrapper">
-				{% if  game.thumb_img %}
-					<img class="img-fluid game-thumb-large-img" src="{{ game.thumb_img.url }}" alt="{{ game.title }} - Cover image">
+				{% if  game.large_cover_img %}
+					<img class="img-fluid game-thumb-large-img" src="{{ game.large_cover_img }}" alt="{{ game.title }} - Cover image">
 				{% else %}
 					<img src="{% static "img/img_placeholder_244x300.jpg"%}" alt="Empty placeholder - Game cover image is missing">
 				{% endif %}

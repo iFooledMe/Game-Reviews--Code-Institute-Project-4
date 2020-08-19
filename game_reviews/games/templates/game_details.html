@@ -1,10 +1,11 @@
-{% extends 'game_details_base.html' %}
+{% extends 'base.html' %}
 
 {% load static %}
 
 <!-- #region ==== G A M E S  L I S T  ================================================== / -->
-{% block games_detail %}
+{% block main_content %}
 {% for game in this_game  %}
+
 
 
 <div class="row no-gutters mx-auto mt-5 px-3 game-details-title">
@@ -28,8 +29,7 @@
 	</div>
 
 </div>
-
-
+<img class="img-fluid" src="{{ game.thumb_img }}" alt="{{ game.title }} - Cover image">
 {% endfor %}
 
 
