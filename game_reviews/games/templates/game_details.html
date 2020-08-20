@@ -21,7 +21,7 @@
 	<div class="col-12 col-md-6">
 		<div class="row game-img-large-container">
 		{% if  game.large_cover_img %}
-			<img class="img-fluid" src="{{ game.thumb_img }}" alt="{{ game.title }} - Cover image">
+			<img class="img-fluid" src="{{ game.thumb_img }}" alt="{{ MEDIA_URL }}{{ game.title }} - Cover image">
 		{% else %}
 			<img src="{% static "img/img_placeholder_244x300.jpg"%}" alt="Empty placeholder - Game cover image is missing">
 		{% endif %}
