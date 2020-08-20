@@ -10,8 +10,8 @@
 		<div class="d-flex flex-row align-items-stretch">
 			<!-- #region ==== THUMB BOX =============================================================== -->
 			<div class="game-thumb-wrapper">
-				{% if  game.large_cover_img %}
-					<img class="img-fluid game-thumb-large-img" src="{{ game.large_cover_img }}" alt="{{ game.title }} - Cover image">
+				{% if  game.thumb_img %}
+					<img class="img-fluid game-thumb-large-img" src="{{ MEDIA_URL }}{{ game.thumb_img }}" alt="{{ game.title }} - Cover image">
 				{% else %}
 					<img src="{% static "img/img_placeholder_244x300.jpg"%}" alt="Empty placeholder - Game cover image is missing">
 				{% endif %}
@@ -111,7 +111,6 @@
 										{{ tag.icon | safe }}
 									{% endif %}
 								</span>
-								
 							{% endfor %}
 						</div>
 						<div class="ml-1 text-right">
@@ -224,7 +223,6 @@
 									<span class="descr-quote-sign">"</span>
 									<span class="descr-capital">{{ game.description|slice:"1" }}</span>
 									<span class="descr-bodytext">{{ game.description|slice:"1:" }}</span>
-									
 								</div>
 							</div>
 						</div>
@@ -233,7 +231,7 @@
 					<!-- #endregion -->				
 					<!-- #region Compact buttons -->
 					<div class="footer-buttons-container rm-btn-compact">
-						<button class="expand-button read-more-button shadow-inside-up" 
+						<button class="expand-button read-more-button shadow-inside-up hover-me" 
 								data-id="description_game_{{ game.id }}" 		
 								data-targetcloseone="dw-compact"
 								data-targetcloseTwo="rm-btn-compact"
@@ -269,7 +267,7 @@
 					<!-- #endregion -->
 					<!-- #region Expanded buttons -->
 					<div class="footer-buttons-container rm-btn-expanded">
-						<button class="expand-button read-more-button shadow-inside-up" 
+						<button class="expand-button read-more-button shadow-inside-up hover-me" 
 								data-id="description_game_{{ game.id }}" 
 								data-targetcloseone="dw-expanded"
 								data-targetcloseTwo="rm-btn-expanded"

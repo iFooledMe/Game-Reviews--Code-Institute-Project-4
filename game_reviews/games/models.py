@@ -78,6 +78,7 @@ class MiscTag(models.Model):
     icon = models.CharField(max_length=50, null=True, blank=True)
     show_icon = models.BooleanField(default=False)
     tag_category = models.CharField(max_length=40, default='misc')
+    tag_sub_category = models.CharField(max_length=40, null=True, blank=True)
 
     def __str__(self):
         return self.long_name
@@ -148,11 +149,11 @@ class Game(models.Model):
         on_delete=models.SET_NULL)
     avg_score = models.DecimalField(
         max_digits=4, decimal_places=2, null=True, blank=True)
-    platforms = models.ManyToManyField(Platform)
-    genre_tags = models.ManyToManyField(GenreTag)
-    theme_tags = models.ManyToManyField(ThemeTag)
-    misc_tags = models.ManyToManyField(MiscTag)
-    stores = models.ManyToManyField(Store)
+    platforms = models.ManyToManyField(Platform, blank=True)
+    genre_tags = models.ManyToManyField(GenreTag, blank=True)
+    theme_tags = models.ManyToManyField(ThemeTag, blank=True)
+    misc_tags = models.ManyToManyField(MiscTag, blank=True)
+    stores = models.ManyToManyField(Store, blank=True)
 
     def __str__(self):
         return self.title

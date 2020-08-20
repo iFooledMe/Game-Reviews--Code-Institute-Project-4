@@ -9,6 +9,7 @@ class ReviewSite(models.Model):
     site_name = models.CharField(max_length=50)
     site_short_name = models.CharField(max_length=50)
     site_url = models.URLField(max_length=255, null=True, blank=True)
+    site_url_name = models.CharField(max_length=50, null=True, blank=True)
     logo_img = models.ImageField(
         upload_to='review_sites/logo_images/',
         max_length=255, null=True, blank=True)

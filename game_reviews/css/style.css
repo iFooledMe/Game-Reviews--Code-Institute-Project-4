@@ -1017,6 +1017,7 @@ tag-checkbox ul li label {
 .descr-bodytext {
     position: relative;
     right: 3px;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .descr-bottom-cover {

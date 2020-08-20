@@ -2,7 +2,7 @@
 
 {% load static %}
 
-<!-- #region ==== G A M E S  L I S T  ================================================== / -->
+<!-- #region ==== G A M E S  D E T A I L S  ================================================== / -->
 {% block main_content %}
 {% for game in this_game  %}
 
@@ -16,20 +16,257 @@
 			<span class="game-title-initial-cap">{{ game.title|slice:"1" }}</span>{{game.title|slice:"1:"}}
 		</div>
 </div>
-<div class="row no-gutters mx-auto mt-2 px-3">
-	
-	<div class="col-12 col-md-6">
-		<div class="row game-img-large-container">
-		{% if  game.large_cover_img %}
-			<img class="img-fluid" src="{{ game.thumb_img }}" alt="{{ MEDIA_URL }}{{ game.title }} - Cover image">
-		{% else %}
-			<img src="{% static "img/img_placeholder_244x300.jpg"%}" alt="Empty placeholder - Game cover image is missing">
-		{% endif %}
+<div class="row no-gutters game-details-content-container">	
+	<!-- #region left-column -->
+	<div class="col-12 col-md-6 m-0 p-0">
+		<div class="d-flex flex-column mt-3 ml-0 w-100 h-100">
+			<!-- #region Image -->
+			<div class="game-img-large-container">
+				{% if  game.large_cover_img %}
+					<img class="img-fluid" src="{{ MEDIA_URL }}{{ game.large_cover_img }}" alt="{{ game.title }} - Cover image">
+				{% else %}
+					<img src="{% static "img/img_placeholder_244x300.jpg"%}" alt="Empty placeholder - Game cover image is missing">
+				{% endif %}
+			</div>
+			<!-- #endregion -->
+			<div class="mt-3 relative-container">
+				<!-- #region Score -->
+				<div class="score-wrapper score-details">	
+					<div class="score shadow-bottom-right">
+						<span class="score-text score-text-digits">{{ game.avg_score.normalize }}</span>
+					</div>
+				</div>
+			<!-- #endregion -->
+				
+				<!-- #region info table -->
+				<table class="table table-sm table-borderless details-table">
+					<!-- #region Date -->
+					<tr>
+						<td>
+							<h6>Released</h6>
+						</td>
+						<td class="details-info-text">
+							{{ game.release_date }}
+						</td>
+						<!-- #endregion -->
+					<!-- #region Tags (Rowspan) -->
+						<td rowspan="7" class="details-info-text justify-content-right">
+							<div class="my-2">
+								{% for tag in game.genre_tags.all %}
+								<a 	href="#"
+									data-toggle="tooltip" 
+									data-placement="top" 
+									title="{{ tag.long_name }}">
+									<div class="mr-1 mb-1 shadow-faint-small tag tag-genre details-tag">
+										{% if tag.show_name %}
+											{{ tag.short_name }}
+										{% endif %}
+										{% if tag.show_icon %}
+											{{ tag.icon | safe }}
+										{% endif %}
+									</div>
+								</a>
+								{% endfor %}
+							</div>
+							<div class="my-2">
+								{% for tag in game.theme_tags.all %}
+								<a 	href="#"
+									data-toggle="tooltip" 
+									data-placement="top" 
+									title="{{ tag.long_name }}">
+									<div class="mr-1 mb-1 text-right shadow-faint-small tag tag-theme details-tag ">
+										{% if tag.show_name %}
+											{{ tag.short_name }}
+										{% endif %}
+										{% if tag.show_icon %}
+											{{ tag.icon | safe }}
+										{% endif %}
+									</div>
+								</a>
+								{% endfor %}
+							</div>
+							<div class="my-2">
+								{% for tag in game.misc_tags.all %}
+									{% if tag.tag_sub_category != 'pegi' %}
+								<a 	href="#"
+								data-toggle="tooltip" 
+								data-placement="top" 
+								title="{{ tag.long_name }}">
+									<div class="mr-1 mb-1 shadow-faint-small tag tag-misc details-tag ">
+										{% if tag.show_name %}
+											{{ tag.short_name }}
+										{% endif %}
+										{% if tag.show_icon %}
+											{{ tag.icon | safe }}
+										{% endif %}
+									</div>
+								</a>
+									{% endif %}
+								{% endfor %}
+							</div>
+							<div class="my-2">
+								{% for tag in game.misc_tags.all %}
+									{% if tag.tag_sub_category == 'pegi' %}
+								<a 	href="https://pegi.info/what-do-the-labels-mean"
+									target="_blank"
+									data-toggle="tooltip" 
+									data-placement="top" 
+									title="{{ tag.long_name }}">
+									<div class="mr-1 mb-1 shadow-faint-small tag tag-misc details-tag hover-me">
+										{% if tag.show_name %}
+											{{ tag.short_name }}
+										{% endif %}
+										{% if tag.show_icon %}
+											{{ tag.icon | safe }}
+										{% endif %}
+									</div>
+								</a>
+									{% endif %}
+								{% endfor %}
+							</div>
+							
+						</td>
+					<!-- #endregion-->
+					</tr>
+					<!-- #region Platforms -->
+					<tr>
+						<td>
+							<h6>Play on</h6>
+						</td>
+						<td class="details-info-text">
+						{% for platform in game.platforms.all %}
+							{% if platform.show_icon %}
+								{{ platform.icon | safe }}
+							{% elif platform.show_img %}
+								<img class="platform-icon-image" src="{{ platform.img.url }}" alt="">
+							{% endif %}
+								{{ platform.long_name}}
+							<br>
+						{% endfor %}
+						</td>
+					</tr>
+					<!-- #endregion-->
+					<!-- #region Developer -->
+					<tr>
+						<td>
+							<h6>Developer</h6>
+						</td>
+						<td class="details-info-text">
+							{% if game.developer %}
+								{% if game.developer.web_url %}
+									<a href="{{ game.developer.web_url }}" target="_blank">{{ game.developer.long_name }}</a>
+								{% else %}
+									{{ game.developer.long_name }}</a>
+								{% endif %}
+							{% else %}
+								-
+							{% endif %}
+						</td>
+					</tr>
+					<!-- #endregion -->
+					<!-- #region Publisher-->
+					<tr>
+						<td>
+							<h6>Publisher</h6>
+						</td>
+						<td class="details-info-text">
+							{% if game.publisher %}
+								{% if game.publisher.web_url %}
+									<a href="{{ game.publisher.web_url }}" target="_blank">{{ game.publisher.long_name }}</a>
+								{% else %}
+									{{ game.publisher.long_name }}</a>
+								{% endif %}
+							{% else %}
+								-
+							{% endif %}
+						</td>
+					</tr>
+					<!-- #endregion -->
+				</table>
+			</div>
+			<!-- #endregion -->
+				<!-- #region Description-->
+				<div class="details-description-box w-100 text-justify px-3 pt-2 pb-3">
+					<span class="descr-quote-sign">"</span>
+					<span class="descr-capital">{{ game.description|slice:"1" }}</span>
+					<span class="descr-bodytext">{{ game.description|slice:"1:" }}</span>
+					<span class="descr-quote-sign">"</span>
+					<div class="text-right">
+						<span class="details-descr-source px-4 py-2 hover-me">
+							<a href="{{ game.description_src_url }}" target="_blank"><span class="text-medeium-large ">READ MORE</span><i class="fas fa-chevron-right px-2"></i> Source: {{ game.description_src }}</a>
+						</span>
+					</div>
+				</div>
+				<!-- #endregion -->
 		</div>
 	</div>
+	<!-- #endregion -->	
+	<!-- #region right-column -->
+	<div class="col-12 col-md-6 m-0 p-0">
+		<div class="d-flex flex-column mt-3 ml-0 w-100 h-100">
+			<div class="ml-0 ml-md-5 mb-3">	
+				<!-- #region Reviews -->
+				<div class="accordion" id="accordionExample">
+					{% for review in game.review_set.all %}
+					<div class="card details-review_card">
+						<div class="card-header details-review-header hover-me" id="headingOne">
+							<button class="btn text-left pb-2" type="button" data-toggle="collapse" data-target="#review_{{review.review_site.id}}" aria-expanded="true" aria-controls="review_{{review.review_site.id}}">
+								<span class="float-left">
+									<table>
+										<tr>
+											<td class="details-review-table-score-col">{{ review.score.normalize }}/{{ review.max_score.normalize }}</td>
+											<td><span class="mr-3 content-up-1">|</span></td>
+											<td>{{ review.review_site.site_short_name }} </td>
+										</tr>
+									</table>
+								</span>
+
+								<span class="float-right text-right">
+									<i class="fas fa-chevron-down details-review-icon"></i>
+								</span>
+							</button>
+						</div>
+
+						<div id="review_{{review.review_site.id}}" class="collapse" aria-labelledby="review_{{review.review_site.id}}" data-parent="#accordionExample">
+						<div class="card-body details-review-text mb-1">
+							"{{ review.short_quote|safe }}
+							<br><br>
+							{{ review.long_quote|safe }}"
+
+							<div class="mt-3 text-right review_author">
+								{{ review.author }} - {{ review.review_site.site_short_name }}, {{ review.review_date }}
+							<div class="text-right mt-4">
+								<span class="details-descr-source px-4 py-2 hover-me">
+									<a class="txt-dark" href="{{ review.review_url }}" target="_blank">
+										<span class="text-medeium-large">READ MORE</span><i class="fas fa-chevron-right px-2"></i>
+										Source: {{ review.review_site.site_url_name }}
+									</a>
+								</span>
+							</div>
+							</div>
+						</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+				<!-- #endregion -->
+
+				<!-- #region Comments & user scores -->
+				<div class="comments-user-score-container mt-3 mt-md-4">
+					<div class="comments-header">
+						Members comments and scores
+					</div>
+				
+				
+				</div>
+				<!-- #endregion -->
+
+			</div>
+		</div>
+	</div>
+	<!-- #endregion -->
 
 </div>
-<img class="img-fluid" src="{{ game.thumb_img }}" alt="{{ game.title }} - Cover image">
 {% endfor %}
 
 

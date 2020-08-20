@@ -42,13 +42,13 @@
 			<div class="row no-gutters w-100 d-block d-md-none mt-1 ml-auto">
 				<div class="col-8 w-100 offset-4 col-md-7 offset-md-5">
 					<div class="collapse collapse-menu w-100 shadow-bottom-right" id="collapse-menu">
-						<div class="d-flex flex-column w-100 justify-content-end text-right hover-me">
-							<div><a class="nav-link-wrapper pr-2" href="{% url 'game_list' %}">Home</a></div>
-							<div><a class="nav-link-wrapper pr-2" href="#">Forums</a></div>
-							<div><a class="nav-link-wrapper pr-2" href="#">About</a></div>
+						<div class="d-flex flex-column w-100 justify-content-end text-right">
+							<div class="hover-me"><a class="nav-link-wrapper pr-2" href="{% url 'game_list' %}">Home</a></div>
+							<div class="hover-me"><a class="nav-link-wrapper pr-2" href="#">Forums</a></div>
+							<div class="hover-me"><a class="nav-link-wrapper pr-2" href="#">About</a></div>
 							{% if not user.is_authenticated  %}			
-							<div><a class="nav-link-wrapper pr-2" href="{% url 'login' %}">Log In</a></div>
-							<div><a class="nav-link-wrapper pr-2" href="{% url 'signup' %}">Sign Up</a></div>				
+							<div class="hover-me"><a class="nav-link-wrapper pr-2" href="{% url 'login' %}">Log In</a></div>
+							<div class="hover-me"><a class="nav-link-wrapper pr-2" href="{% url 'signup' %}">Sign Up</a></div>				
 							{% endif %}
 						</div>
 					</div>

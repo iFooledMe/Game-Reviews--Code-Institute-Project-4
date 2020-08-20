@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // #region ==== Close/Expand Button - Close specified element class(data-target) ==========/
+    // #region ==== Close/Expand Button - Close specified element class(data-target) ===========/
     // in specified element id (data-id)
     $('.expand-button').click(function () {
         var id = '#' + $(this).data('id');
@@ -28,11 +28,18 @@ $(document).ready(function () {
         }
     });
     // #endregion
-    // ======================================================================================= /
+    // ======================================================================================== /
 
-    // #region ==== Auto submit SortShowForm on any change in the form ========================/
+    // #region ==== Auto submit SortShowForm on any change in the form =========================/
     $('.SortShowForm-auto-submit').change(function () {
         $('#SortShowForm').submit();
+    });
+    // #endregion
+    // ======================================================================================== /
+
+    // #region ==== Initialize Bootstrap ToolTip ===============================================/
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
     });
     // #endregion
     // ======================================================================================== /
