@@ -17,6 +17,8 @@
     --expression-4: #98b39b; /*Pastel green - Darker*/
     --expression-5: #b6ccb8; /*Pastel green - Medium*/
     --expression-6: #d1e0d1; /*Pastel green - Light */
+    --expression-7: #f5faf5;
+    --expression-8: #f7e2d2;
     --dark-1: #383c42; /* Headers, Game description background etc. */
     --dark-2: #3e444f; /*various dark backgrounds, darker and more grayish than main color dark-1*/
     --dark-3: #616b7d;
@@ -69,7 +71,7 @@
     --game-date-txt-color: var(--medium-1);
     --game-developer-txt-color: var(--medium-1);
     --game-platform-txt-color: var(--medium-1);
-    --game-tag-bg-color: var(--medium-3);
+    --game-tag-bg-color: var(--expression-8);
     --game-tag-text-color: var(--dark-1);
     --score-bg-color: var(--dark-1);
     --score-border-color: var(--expression-1);
@@ -174,9 +176,22 @@ select:active {
     outline-width: 1px !important;
 }
 
-button:focus {
-    outline-color: transparent;
-    outline-width: 0px;
+button:focus,
+button:active,
+button:hover,
+a:focus,
+a:active {
+    outline-color: transparent !important;
+    outline-width: 0px !important;
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+h6 {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 0.9em;
+    letter-spacing: 4px;
+    font-weight: 600;
 }
 
 /* #endregion */
@@ -204,12 +219,20 @@ txt-xsmall {
     font-size: 1em;
 }
 
+.text-medeium-large {
+    font-size: 1.1em;
+}
+
 txt-large {
     font-size: 1.5em;
 }
 
 .txt-align-right {
     text-align: right;
+}
+
+.txt-dark {
+    color: var(--dark-2);
 }
 
 /* #endregion */
@@ -280,6 +303,11 @@ txt-large {
 .float-right {
     float: right;
 }
+
+.content-up-1 {
+    position: relative;
+    top: -1px;
+}
 /* #endregion */
 
 /* #region **** Clean Modal *** */
@@ -326,12 +354,12 @@ txt-large {
 /* #endregion */
 
 /* #region **** Hover effects *** */
-.hower-me,
-.hover-me div:hover {
+.hover-me:hover {
     background-color: var(--link-mouse-over-bg-color);
     color: var(--link-mouse-over-txt-color);
     text-decoration: none;
 }
+
 /* #endregion */
 
 /* #endregion */
@@ -1010,6 +1038,7 @@ tag-checkbox ul li label {
 
 .descr-capital {
     color: var(--game-descr-capital-txt-color);
+    font-family: 'Titillium Web', sans-serif;
     font-size: 1.5em;
     font-weight: 600;
 }
@@ -1148,6 +1177,9 @@ tag-checkbox ul li label {
 /* ====================================================================== */
 
 /* #region ==== G A M E  D E T A I L  P A G E ============================*/
+.game-details-content-container {
+    border-right: solid 1px var(--game-title-bar-color);
+}
 
 .game-details-title {
     width: 100%;
@@ -1162,18 +1194,112 @@ tag-checkbox ul li label {
 }
 
 .game-img-large-container {
+    position: relative;
     width: 100%;
-    background-color: lightgreen;
 }
 
 .game-img-large-container img {
     width: 100%;
-    height: 250px;
 }
 
-.game-details-info {
-    background-color: lightpink;
-    height: 300px;
+.details-tag {
+    display: inline-block;
+    font-size: 0.85em;
+}
+
+.score-details {
+    position: absolute;
+    top: -100px;
+    right: -50px;
+}
+
+.details-table {
+    position: relative;
+    left: -5px;
+}
+
+.details-info-text {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 0.8em;
+    letter-spacing: 4px;
+}
+
+.details-description-box {
+    background-color: var(--dark-2);
+    color: var(--medium-4);
+    font-family: 'Titillium Web', sans-serif;
+    width: 100% !important;
+}
+
+.details-descr-source {
+    font-size: 0.8em;
+    color: var(--game-descr-source-txt-color);
+    border-radius: 2px;
+}
+
+.details-review_card {
+    background-color: transparent;
+    border: none;
+}
+
+.details-review-header {
+    display: block;
+    height: 35px;
+    width: 100%;
+    padding-top: 5px;
+    padding-left: 10px;
+    border-radius: 5px 0 0 0;
+    margin-bottom: 5px !important;
+    background-color: var(--expression-5);
+}
+
+.details-review-header button {
+    font-family: 'Titillium Web', sans-serif;
+    color: var(--dark-1);
+    font-size: 1em;
+    letter-spacing: 4px;
+    width: 100%;
+}
+
+.details-review-header button span {
+    position: relative;
+    bottom: 5px;
+}
+
+.details-review-header button span i {
+    position: relative;
+    right: -25px;
+    color: var(--dark-3);
+}
+
+.details-review-table-score-col {
+    width: 80px;
+}
+
+.details-review-text {
+    font-family: 'Titillium Web', sans-serif;
+    color: var(--dark-1);
+    font-size: 0.9em;
+    letter-spacing: 0px;
+    background-color: var(--medium-3);
+    border-radius: 0 0 0 5px;
+}
+
+.details-read-more-button {
+    height: 30px;
+    border-radius: 3px;
+}
+
+.details-read-more-button a {
+    position: relative;
+    top: 5px;
+}
+
+.comments-user-score-container {
+    background-color: var(--expression-7);
+    min-height: 600px;
+    border-radius: 5px 0 0 5px;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 /* #endregion */
@@ -1218,6 +1344,16 @@ tag-checkbox ul li label {
 
     .logo-bottom {
         border-right: none;
+    }
+
+    .game-img-large-container img {
+        max-width: 100% !important;
+    }
+
+    .score-details {
+        position: absolute;
+        bottom: -50px;
+        right: 50px;
     }
 }
 

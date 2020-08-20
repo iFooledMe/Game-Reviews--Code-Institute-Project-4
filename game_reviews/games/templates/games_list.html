@@ -6,7 +6,7 @@
 
 {% block games_list %}
 {% for game in games  %}
-	<div class="container-fluid w-100 game-container-expanded px-3 mx-0 ">
+	<div class="container-fluid w-100 game-container-expanded px-3 mx-0" id="top-of-game-{{ game.id }}">
 		<div class="d-flex flex-row align-items-stretch">
 			<!-- #region ==== THUMB BOX =============================================================== -->
 			<div class="game-thumb-wrapper">
@@ -24,7 +24,7 @@
 			<!-- #endregion -->
 
 			<!-- #region ==== INFO BOX ================================================================ -->
-			<div class="flex-grow-1 game-info-box">
+			<div class="flex-grow-1 game-info-box"">
 				
 				<!-- #region ==== Row 1 - Title ======================================================= -->
 				<div class="game-info-row-1 shadow-bottom-right game-title">
@@ -236,7 +236,8 @@
 								data-targetcloseone="dw-compact"
 								data-targetcloseTwo="rm-btn-compact"
 								data-targetopenone="dw-expanded" 
-								data-targetopenTwo="rm-btn-expanded">
+								data-targetopenTwo="rm-btn-expanded"
+								data-scrollto="top-of-game-{{ game.id }}">
 							...Read more <i class="fas fa-caret-down icon-downarrow"></i>
 						</button>
 						<a href="{% url 'game_details' %}?gameid={{ game.id }}" class="details-button" role="button">
@@ -272,7 +273,8 @@
 								data-targetcloseone="dw-expanded"
 								data-targetcloseTwo="rm-btn-expanded"
 								data-targetopenone="dw-compact" 
-								data-targetopenTwo="rm-btn-compact">
+								data-targetopenTwo="rm-btn-compact"
+								data-scrollto="top-of-game-{{ game.id }}">
 							Close <i class="fas fa-caret-up icon-downarrow"></i>
 						</button>
 						<a href="{% url 'game_details' %}?gameid={{ game.id }}" class="details-button" role="button">
