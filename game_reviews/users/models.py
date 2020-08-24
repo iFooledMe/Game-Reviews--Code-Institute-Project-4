@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 from games.models import Game
@@ -28,3 +29,25 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.userprofile.save()
+
+
+class UserCommentsScore(models.Model):
+    user = models.ForeignKey(
+        UserProfile,
+        null=True, blank=True,
+        on_delete=models.CASCADE)
+    game = models.ForeignKey(
+        Game,
+        null=True, blank=True,
+        on_delete=models.CASCADE)
+    comment = models.TextField(
+        max_length=300, null=True, blank=True)
+    user_score = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(10)],
+    )
+
+    def __str__(self):
+        show_name = "(" + str(self.user.id) + ")" + str(self.user) + \
+            "_(" + str(self.game.id) + ")" + str(self.game.title)
+        return show_name
