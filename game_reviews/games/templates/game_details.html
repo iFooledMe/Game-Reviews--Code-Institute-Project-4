@@ -295,7 +295,7 @@
 					{% for comment_score in all_user_comment_scores %}
 						<div class="comments-container d-flex flex-row justify-content-between my-3 mx-3">
 						<!-- #region bubble right -->
-						{% if forloop.counter|divisibleby:2 %}even
+						{% if forloop.counter|divisibleby:2 %}
 							<div class="d-flex flex-column text-center comment-box-info mx-auto">
 								<div class="txt-small">{{ comment_score.updated}}</div>
 								<div> 
