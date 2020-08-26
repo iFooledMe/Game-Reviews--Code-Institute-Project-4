@@ -3,92 +3,91 @@
 
 {% block main_content %}				
 
-<div class="container-fluid p-0 m-0 main-content-wrapper userprofile-container">
-	<!-- #region ==== DASHBOARD HEADER ==== -->
-	<div class="row no-gutters mt-5 mb-4 px-2">
-		<div class="col-12">
-			<h3>Welcome to your dashboard 
-			{% if user.userprofile.chat_alias %}
-				{{ user.userprofile.chat_alias }}
-			{% else %}
-				{{  user }}
-			{% endif %}
-			</h3>
-            <a href="{% url 'pay_thankyou' %}">Thanks!</a>
-		</div>
-	</div>
-	<!-- #endregion -->
-	<!-- #region ==== DASHBOARD CONTENT ====-->
-	<div class="row no-gutters px-2">
-		<!-- #region Account settings -->
-		<div class="col-12 col-md-6">
-			<!-- #region Info table -->
-			<h5>Your account settings</h5>
-			<table class="table-borderless">
-				<tr>
-					<td class="info-table-col-1">
-						First name: 
-					</td>
-					<td class="info-table-col-2">
-						{{ user.first_name }}
-					</td>
-				</tr>
-				<tr>
-					<td class="info-table-col-1 ">
-						Last name: 
-					</td>
-					<td class="info-table-col-2">
-						{{ user.last_name }}
-					</td>
-				</tr>
-				<tr>
-					<td class="info-table-col-1">
-						Email: 
-					</td>
-					<td class="info-table-col-2">
-						{{ user.email }}
-					</td>
-				</tr>
-				<tr>
-					<td class="info-table-col-1">
-						Membership:
-					</td>
-					<td class="info-table-col-2">
-						{% if user.userprofile.is_premium %}
-							Premium (until 2020-12-24)
-						{% else %}
-							Basic
-						{% endif %}
-					</td>
-				</tr>
-				{% if not user.userprofile.is_premium %}
-				<tr>
-					<td colspan="2" class="info-table-col-1">
-						Premium membership let you enjoy this site<br>
-						without any ads for 
-						<strong>only $2.95 a year!</strong>
-					</td>
-				</tr>
-				{% endif %}
-			</table>
-			<!-- #endregion --> 
-            <!-- #region Stripes payment -->
-            {% include 'stripe.html' %}
-            <!-- #endregion -->
-		</div>
-		<!-- #endregion -->
-		<!-- #region Favorite games / Activity col -->
-		<div class="col-12 col-md-6 pt-4 pt-md-1 pl-md-5">
-			<h5>Your favorite games</h5>
-			<div class="py-3">Favorite games list</div> 
-			<h5>Your Activity</h5>
-			<div class="py-3">Activity list</div> 
-		</div>
-		<!-- #endregion -->
-	</div>
-	<!-- #endregion -->
+<!-- #region Title -->
+<div class="row no-gutters mx-auto mt-5 px-3 py-auto pt-2 user-profile-title">
+	<h3>Dashboard - Signed in as: <span>{{  user }}</span></h3>	
 </div>
+<!-- #endregion -->
 
+<!-- #region Content -->
+<div class="row no-gutters user-profile-content-container">	
+
+	<!-- #region left-column -->
+	<div class="col-12 col-md-6 mr-3 px-4 mt-4 user-profile-col-left">
+					<!-- #region Info table -->
+		<div class="d-flex flex-column pt-2">
+			<div>
+				<h5>
+					Your account settings
+				</h5>
+			</div>
+			<div class="d-flex flex-row justify-content-between">
+				<div class="w-100">First name:</div>
+				<div class="w-100">
+					{% if user.firstname %}
+						{{ user.firstname }}
+					{% else %}
+						No first name is registered
+					{% endif %}
+				</div>
+			</div>
+			<div class="d-flex flex-row justify-content-between">
+				<div class="w-100">Last name:</div>
+				<div class="w-100">
+					{% if user.lastname %}
+						{{ user.lastname }}
+					{% else %}
+						No last name is registered
+					{% endif %}
+				</div>
+			</div>
+			<div class="d-flex flex-row justify-content-between">
+				<div class="w-100">E-mail:</div>
+				<div class="w-100">
+					{% if user.email %}
+						{{ user.email }}
+					{% else %}
+						No e-mail name is registered
+					{% endif %}
+				</div>
+			</div>
+			<div class="d-flex flex-row justify-content-between mt-5">
+				<div class="w-100">Membership:</div>
+				<div class="w-100">
+					{% if user.userprofile.is_premium %}
+						Premium (until 2020-12-24)
+					{% else %}
+						Basic
+					{% endif %}
+				</div>
+			</div>
+			{% if not user.userprofile.is_premium %}
+				<div class="d-flex flex-column p-4 mt-2 stripeform-container ">
+					<div>				
+						Upgrade to premium membership let you enjoy this site
+						without any ads! Join Today!
+					</div>
+					<div class="mt-3">
+						<strong>only $2.95 a year!</strong>
+					</div>
+					<div class="mt-3">
+						{% include 'stripe.html' %}
+					</div>
+						
+					
+				</div>
+			{% endif %}
+			<!-- #endregion -->  
+		</div>	   
+	</div>
+	<!-- #endregion -->
+
+	<!-- #region right-column -->
+	<div class="col-12 col-md-6 m-0 p-0 user-profile-col-right">
+	
+	</div>
+</div>
+<!-- #endregion -->
 
 {% endblock %}
 

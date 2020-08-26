@@ -1302,11 +1302,53 @@ tag-checkbox ul li label {
     font-family: 'Titillium Web', sans-serif;
 }
 
+.comment-box-info {
+    width: 150px;
+}
+
+.comment-box-comment {
+    width: 300px;
+}
+
+.comment-bubble {
+    min-height: 155px;
+    position: relative;
+    background-color: var(--medium-5);
+    border-radius: 5px;
+}
+
+.speech-bubble-tail {
+    position: absolute;
+    top: 40px;
+}
+
+.tail-right {
+    left: -40px;
+}
+
+.tail-left {
+    left: 300px;
+}
+
+.comment-avatar-img {
+    max-width: 75px;
+    height: 100px;
+}
+
 /* #endregion */
 /* ====================================================================== */
 
 /* #region ==== U S E R  P R O F I L E ================================== */
-.userprofile-container {
+.game-details-title {
+    width: 100%;
+    height: 40px;
+    background-color: var(--game-title-bar-color);
+    color: var(--game-title-text-color);
+    text-transform: uppercase;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    border-radius: 0 5px 0 0;
 }
 
 .info-table-col-1 {

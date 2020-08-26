@@ -125,6 +125,11 @@
     --modal-body-txt-color: var(--dark-2);
     --modal-footer-bg-color: var(--medium-3);
     --modal-footer-txt-color: var();
+
+    /* User profile */
+    --user-profile-title-bg-color: var(--dark-4);
+    --user-profile-title-txt-color: var(--light-1);
+
     /* #endregion */
     /* ================================================================== */
 
@@ -233,6 +238,10 @@ txt-large {
 
 .txt-dark {
     color: var(--dark-2);
+}
+
+.username-txt {
+    color: var(--expression-3);
 }
 
 /* #endregion */
@@ -1339,16 +1348,42 @@ tag-checkbox ul li label {
 /* ====================================================================== */
 
 /* #region ==== U S E R  P R O F I L E ================================== */
-.userprofile-container {
+.user-profile-title {
+    width: 100%;
+    height: 40px;
+    background-color: var(--user-profile-title-bg-color);
+    color: var(--user-profile-title-txt-color);
+    font-family: 'Titillium Web', sans-serif;
+    letter-spacing: 2px;
+    border-radius: 0 5px 0 0;
 }
 
-.info-table-col-1 {
-    padding-right: 15px;
-    padding-bottom: 10px;
+.user-profile-title h3 {
+    font-size: 1.3em;
 }
 
-.info-table-col-2 {
-    padding-bottom: 10px;
+.user-profile-content-container {
+    border-right: solid 1px var(--game-title-bar-color);
+    height: 70vh;
+}
+
+.user-profile-title h3 span {
+    color: var(--expression-3) !important;
+}
+
+.user-profile-col-left {
+    width: 100%;
+    background-color: var(--medium-3);
+    color: var(--dark-3);
+}
+
+.user-profile-col-right {
+}
+
+.stripeform-container {
+    max-width: 400px;
+    background-color: var(--dark-3);
+    color: var(--light-1);
 }
 
 /* #endregion */
