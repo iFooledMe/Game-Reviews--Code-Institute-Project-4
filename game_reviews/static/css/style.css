@@ -1302,6 +1302,39 @@ tag-checkbox ul li label {
     font-family: 'Titillium Web', sans-serif;
 }
 
+.comment-box-info {
+    width: 150px;
+}
+
+.comment-box-comment {
+    width: 300px;
+}
+
+.comment-bubble {
+    min-height: 155px;
+    position: relative;
+    background-color: var(--medium-5);
+    border-radius: 5px;
+}
+
+.speech-bubble-tail {
+    position: absolute;
+    top: 40px;
+}
+
+.tail-right {
+    left: -40px;
+}
+
+.tail-left {
+    left: 300px;
+}
+
+.comment-avatar-img {
+    max-width: 75px;
+    height: 100px;
+}
+
 /* #endregion */
 /* ====================================================================== */
 

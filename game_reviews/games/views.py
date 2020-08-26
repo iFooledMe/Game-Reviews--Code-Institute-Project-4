@@ -5,11 +5,13 @@ from decimal import *
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.db.models import Sum
+from django.contrib.auth import authenticate
 
 
 from .models import Game, GenreTag, ThemeTag, MiscTag
 from .forms import GameSortShowForms, GameFilterGenreForm
 from reviews.models import Review
+from users.models import UserCommentsScore
 # endregion
 # ============================================================================/
 
@@ -78,10 +80,21 @@ def game_details_view(request):
     gameid = request.GET.get('gameid', 'none')
     if gameid != 'none':
         game = Game.objects.filter(id=gameid)
+        if request.user.is_authenticated:
+            userid = request.user.id
+            session_user_comment_scores = UserCommentsScore.objects.filter(
+                game__id=gameid, user__id=userid)
+            all_user_comment_scores = UserCommentsScore.objects.filter(
+                game__id=gameid).exclude(user__id=userid)
+        else:
+            session_user_comment_scores = ""
+            all_user_comment_scores = UserCommentsScore.objects.filter(
+                game__id=gameid)
         context = {
-            'this_game': game
+            'this_game': game,
+            'all_user_comment_scores': all_user_comment_scores,
+            'session_user_comment_scores': session_user_comment_scores,
         }
-        # return HttpResponse('<h3>Some response{}</h3>'.format(gameid))
         return render(request, "game_details.html", context)
     return redirect(game_list_view)
 

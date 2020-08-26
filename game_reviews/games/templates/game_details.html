@@ -250,17 +250,114 @@
 					{% endfor %}
 				</div>
 				<!-- #endregion -->
-
 				<!-- #region Comments & user scores -->
 				<div class="comments-user-score-container mt-3 mt-md-4">
-					<div class="comments-header">
-						Members comments and scores
+					<!-- #region Current user -->
+					<div class="comments-header ml-3 pt-3">
+						<h6>Your comment and score for this game</h6>
 					</div>
-				
-				
+					{% for comment_score in session_user_comment_scores %}
+						<div class="comments-container d-flex flex-row justify-content-between my-3 mx-3">
+							<div class="d-flex flex-column text-center comment-box-info mx-auto">
+								<div class="txt-small">{{ comment_score.updated}}</div>
+								<div> 
+								{% if comment_score.user.userprofile.chat_alias %}
+									{{ comment_score.user.userprofile.chat_alias }}
+								{% else %}
+									{{ comment_score.user.username }}
+								{% endif %}
+								</div>
+								<div>
+									<img 	class="comment-avatar-img"
+											src="{{ MEDIA_URL }}{{ comment_score.user.userprofile.avatar.image }}" 
+											alt="{{ comment_score.user.userprofile.avatar.image }} - user avatar image">	
+								</div>
+								<div>
+									User score: {{ comment_score.user_score}} / 10
+								</div>
+							</div>
+
+							<div class="comment-box-comment">
+
+								<div class="comment-bubble p-2">
+									<img class="speech-bubble-tail tail-right" src="{% static 'img/speechbubble_tail_right.png'%}" alt="Retro Joystick">
+									{{ comment_score.comment}}
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+					<!-- #endregion -->
+					<!-- #region Other users -->
+					<div class="comments-header ml-3 pt-3">
+						<h6>Other members comments and score</h6>
+					</div>
+
+					{% for comment_score in all_user_comment_scores %}
+						<div class="comments-container d-flex flex-row justify-content-between my-3 mx-3">
+						<!-- #region bubble right -->
+						{% if forloop.counter|divisibleby:2 %}even
+							<div class="d-flex flex-column text-center comment-box-info mx-auto">
+								<div class="txt-small">{{ comment_score.updated}}</div>
+								<div> 
+								{% if comment_score.user.userprofile.chat_alias %}
+									{{ comment_score.user.userprofile.chat_alias }}
+								{% else %}
+									{{ comment_score.user.username }}
+								{% endif %}
+								</div>
+								<div>
+									<img 	class="comment-avatar-img"
+											src="{{ MEDIA_URL }}{{ comment_score.user.userprofile.avatar.image }}" 
+											alt="{{ comment_score.user.userprofile.avatar.image }} - user avatar image">	
+								</div>
+								<div>
+									User score: {{ comment_score.user_score}} / 10
+								</div>
+							</div>
+						
+							<div class="comment-box-comment">
+								<div class="comment-bubble p-2">
+									<img class="speech-bubble-tail tail-right" src="{% static 'img/speechbubble_tail_right.png'%}" alt="Retro Joystick">
+									{{ comment_score.comment}}
+								</div>
+							</div>
+						<!-- #endregion -->
+						<!-- #region bubble left -->
+						{% else %}
+							<div class="comment-box-comment">
+								<div class="comment-bubble p-2">
+									<img class="speech-bubble-tail tail-left" src="{% static 'img/speechbubble_tail_left.png'%}" alt="Retro Joystick">
+									{{ comment_score.comment}}
+								</div>
+							</div>
+
+							<div class="d-flex flex-column text-center comment-box-info mx-auto">
+								<div class="txt-small">{{ comment_score.updated}}</div>
+								<div> 
+								{% if comment_score.user.userprofile.chat_alias %}
+									{{ comment_score.user.userprofile.chat_alias }}
+								{% else %}
+									{{ comment_score.user.username }}
+								{% endif %}
+								</div>
+								<div>
+									<img 	class="comment-avatar-img"
+											src="{{ MEDIA_URL }}{{ comment_score.user.userprofile.avatar.image }}" 
+											alt="{{ comment_score.user.userprofile.avatar.image }} - user avatar image">	
+								</div>
+								<div>
+									User score: {{ comment_score.user_score}} / 10
+								</div>
+							</div>
+						
+						
+						{% endif %}
+						<!-- #endregion -->
+						</div>
+					{% endfor %}
+					<!-- #endregion -->	
 				</div>
 				<!-- #endregion -->
-
 			</div>
 		</div>
 	</div>

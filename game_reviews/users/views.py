@@ -38,13 +38,6 @@ def pay_thankyou_view(request):
     auto_renew = request.POST['auto-renew-check']
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
-    print("payment_intent_secret: " + payment_intent_secret)
-    print("payment_intent_id: " + payment_intent_id)
-    print("payment_method_id: " + payment_method_id)
-    print("stripe_plan_id: " + stripe_plan_id)
-    print("stripe.api_key: " + stripe.api_key)
-    print("auto_renew: " + auto_renew)
-
     # region Non 3d-Secure
     if auto_renew == 'on':
         customer = stripe.Customer.create(
