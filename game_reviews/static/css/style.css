@@ -228,7 +228,7 @@ txt-xsmall {
     font-size: 1.1em;
 }
 
-txt-large {
+.txt-large {
     font-size: 1.5em;
 }
 
@@ -287,6 +287,10 @@ txt-large {
     padding-left: 5px;
     color: inherit;
     font-size: 0.8em;
+}
+
+.icon-xl {
+    font-size: 1.3em;
 }
 
 .icon-size-larger {
@@ -568,6 +572,19 @@ txt-large {
 
 /* #region ==== S T R I P E S  P A Y ==================================== */
 .credit-card-form-wrapper {
+    background-color: var(--expression-4);
+    width: 400px;
+}
+
+.premium-button {
+    width: 400px !important;
+}
+
+.number-input-field {
+    background-color: var(--dark-4);
+    height: 30px;
+    border-radius: 5px;
+    padding-top: 6px;
 }
 /* #endregion */
 /* ====================================================================== */
@@ -1319,6 +1336,36 @@ tag-checkbox ul li label {
     width: 300px;
 }
 
+.comment-add-button {
+    color: var(--light-1);
+    background-color: var(--dark-2);
+    border: 1px solid var(--dark-2);
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+}
+
+.comment-add-button:hover {
+    background-color: var(--expression-2);
+    border: 1px solid var(--expression-2);
+}
+
+.comment-add-button i {
+    position: relative;
+    top: 3px;
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.comment-add-button-container {
+    width: 70%;
+    background-color: var(--medium-4);
+    border: 1px solid var(--medium-3);
+    border-radius: 5px;
+}
+
+.comment-add-form-container {
+}
+
 .comment-bubble {
     min-height: 155px;
     position: relative;
@@ -1336,12 +1383,12 @@ tag-checkbox ul li label {
 }
 
 .tail-left {
-    left: 300px;
+    right: -40px;
 }
 
 .comment-avatar-img {
     max-width: 75px;
-    height: 100px;
+    max-height: 100px;
 }
 
 /* #endregion */
@@ -1373,17 +1420,34 @@ tag-checkbox ul li label {
 
 .user-profile-col-left {
     width: 100%;
-    background-color: var(--medium-3);
-    color: var(--dark-3);
+    background-color: var(--dark-3);
+    color: var(--light-1);
 }
 
 .user-profile-col-right {
 }
 
 .stripeform-container {
-    max-width: 400px;
-    background-color: var(--dark-3);
-    color: var(--light-1);
+    background-color: var(--expression-5);
+    color: var(--dark-1);
+    border-radius: 0 5px 0 5px;
+}
+
+.user-profile-avatar-img {
+    position: relative;
+    top: 5px;
+    z-index: 5;
+    max-width: 75px;
+    height: 100px;
+}
+
+.user-profile-avatar-wrapper {
+    position: relative;
+    left: 60;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--expression-7);
 }
 
 /* #endregion */

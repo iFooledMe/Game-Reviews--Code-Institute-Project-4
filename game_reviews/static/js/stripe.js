@@ -1,4 +1,4 @@
-// This entire script is taken from: 
+// This entire script is taken from:
 // Django Lessons @ https://www.youtube.com/watch?time_continue=110&v=Bq5lR5WQNOw&feature=emb_logo
 
 function card(stripe_publishable_key, customer_email) {
@@ -38,45 +38,57 @@ function card(stripe_publishable_key, customer_email) {
 
         //Handle form submission.
         var form = document.getElementById('payment-form');
-        form.addEventListener('submit', function(event) {
+        form.addEventListener('submit', function (event) {
             event.preventDefault();
 
-            stripe.createToken(card).then(function(result) {
+            stripe.createToken(card).then(function (result) {
                 if (result.error) {
                     //inform the user if there was an error
                     var errorElement = document.getElementById('card-errors');
                     errorElement.textContent = result.error.message;
                 }
-                // <--- Create payment method start 
+                // <--- Create payment method start
                 else {
-                    stripe.createPaymentMethod( {
-                        type: 'card',
-                        card: card,
-                        billing_details: {
-                            email: customer_email,
-                        },
-                    }).then(function(payment_method_result) {
-                        if (payment_method_result.error) {
-                            var errorElement = document.getElementById('card-errors');
-                            errorElement.textContent = payment_method_result.error.message;
-                        }
-                        else {
-                            var form = document.getElementById('payment-form');
-                            var hiddenInput = document.createElement('input')
+                    stripe
+                        .createPaymentMethod({
+                            type: 'card',
+                            card: card,
+                            billing_details: {
+                                email: customer_email,
+                            },
+                        })
+                        .then(function (payment_method_result) {
+                            if (payment_method_result.error) {
+                                var errorElement = document.getElementById(
+                                    'card-errors'
+                                );
+                                errorElement.textContent =
+                                    payment_method_result.error.message;
+                            } else {
+                                var form = document.getElementById(
+                                    'payment-form'
+                                );
+                                var hiddenInput = document.createElement(
+                                    'input'
+                                );
 
-                            hiddenInput.setAttribute('type', 'hidden');
-                            hiddenInput.setAttribute('name', 'payment_method_id');
-                            hiddenInput.setAttribute('value', payment_method_result.paymentMethod.id);
+                                hiddenInput.setAttribute('type', 'hidden');
+                                hiddenInput.setAttribute(
+                                    'name',
+                                    'payment_method_id'
+                                );
+                                hiddenInput.setAttribute(
+                                    'value',
+                                    payment_method_result.paymentMethod.id
+                                );
 
-                            form.appendChild(hiddenInput);
+                                form.appendChild(hiddenInput);
 
-                            form.submit();
-                        }
-                    });
-                };
+                                form.submit();
+                            }
+                        });
+                }
             }); // Create Payment Method end --->
-        
         }); // form.addEventListener end
-
     }); //Dom Content Loaded
 }

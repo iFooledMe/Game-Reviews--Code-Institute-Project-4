@@ -84,6 +84,8 @@ def game_details_view(request):
             userid = request.user.id
             session_user_comment_scores = UserCommentsScore.objects.filter(
                 game__id=gameid, user__id=userid)
+            if not session_user_comment_scores.exists():
+                session_user_comment_scores = 'none'
             all_user_comment_scores = UserCommentsScore.objects.filter(
                 game__id=gameid).exclude(user__id=userid)
         else:

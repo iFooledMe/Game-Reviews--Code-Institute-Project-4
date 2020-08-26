@@ -13,15 +13,51 @@
 <div class="row no-gutters user-profile-content-container">	
 
 	<!-- #region left-column -->
-	<div class="col-12 col-md-6 mr-3 px-4 mt-4 user-profile-col-left">
-					<!-- #region Info table -->
-		<div class="d-flex flex-column pt-2">
+	<div class="col-12 col-md-6  mt-4 ">
+		
+		<!-- #region Upgrade -->
+		<div class="stripeform-container p-4 mt-2 mb-4">
+			{% if user.userprofile.is_premium %}
+				<div class="d-flex flex-row justify-content-between">
+					<div class="w-100">Your membership:</div>
+					<div class="w-100">
+						Premium (until 2020-12-24) [HARDCODED!!!!]
+					</div>
+				</div>
+			{% else %}
+				<div class="d-flex flex-row justify-content-between">
+					<div class="w-100">Your membership:</div>
+					<div class="w-100">Basic</div>
+				</div>
+				<div class="d-flex flex-column mt-3">
+					<div>				
+						Upgrade to premium membership let you enjoy this site
+						without any ads! Join Today!
+					</div>
+					<div class="mt-3">
+						<strong>only $2.95 a year!</strong>
+					</div>	
+				</div>
+				<div class="row mt-3">
+					{% include 'stripe.html' %}
+				</div>
+			{% endif %}
+		</div>
+		
+
+
+
+
+		<!-- #endregion -->
+		
+		<!-- #region User Info -->
+		<div class="d-flex flex-column p-4 user-profile-col-left">
 			<div>
 				<h5>
 					Your account settings
 				</h5>
 			</div>
-			<div class="d-flex flex-row justify-content-between">
+			<div class="d-flex flex-row justify-content-between mt-2">
 				<div class="w-100">First name:</div>
 				<div class="w-100">
 					{% if user.firstname %}
@@ -31,7 +67,7 @@
 					{% endif %}
 				</div>
 			</div>
-			<div class="d-flex flex-row justify-content-between">
+			<div class="d-flex flex-row justify-content-between mt-2">
 				<div class="w-100">Last name:</div>
 				<div class="w-100">
 					{% if user.lastname %}
@@ -41,7 +77,7 @@
 					{% endif %}
 				</div>
 			</div>
-			<div class="d-flex flex-row justify-content-between">
+			<div class="d-flex flex-row justify-content-between mt-2">
 				<div class="w-100">E-mail:</div>
 				<div class="w-100">
 					{% if user.email %}
@@ -51,34 +87,41 @@
 					{% endif %}
 				</div>
 			</div>
-			<div class="d-flex flex-row justify-content-between mt-5">
-				<div class="w-100">Membership:</div>
+						<div class="d-flex flex-row justify-content-between mt-2">
+				<div class="w-100">Username:</div>
 				<div class="w-100">
-					{% if user.userprofile.is_premium %}
-						Premium (until 2020-12-24)
+					{{ user.username }}
+				</div>
+			</div>
+			<div class="d-flex flex-row justify-content-between mt-4">
+				<div class="w-100">Alternative Alias:</div>
+				<div class="w-100">
+					{% if user.userprofile.chat_alias %}
+						{{ user.userprofile.chat_alias }}
 					{% else %}
-						Basic
+						No allias name set
 					{% endif %}
 				</div>
 			</div>
-			{% if not user.userprofile.is_premium %}
-				<div class="d-flex flex-column p-4 mt-2 stripeform-container ">
-					<div>				
-						Upgrade to premium membership let you enjoy this site
-						without any ads! Join Today!
-					</div>
-					<div class="mt-3">
-						<strong>only $2.95 a year!</strong>
-					</div>
-					<div class="mt-3">
-						{% include 'stripe.html' %}
-					</div>
-						
-					
+			<div class="d-flex flex-row justify-content-between mt-2">
+				<div class="w-100">Avatar image:</div>
+				<div class="w-100 mx-auto">
+					{% if user.userprofile.avatar %}
+						<div class="user-profile-avatar-wrapper text-center">
+							<img 	class="img-fluid user-profile-avatar-img" 
+									src="{{ MEDIA_URL }}{{ user.userprofile.avatar.image }}" 
+									alt="{{ user.userprofile.avatar }} avatar image">
+						</div>
+						<div>
+							{{ user.userprofile.avatar }}
+						</div>
+					{% else %}
+						No avatar set
+					{% endif %}
 				</div>
-			{% endif %}
-			<!-- #endregion -->  
-		</div>	   
+			</div>     
+		</div>
+		<!-- #endregion -->	   
 	</div>
 	<!-- #endregion -->
 

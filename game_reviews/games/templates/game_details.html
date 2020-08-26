@@ -250,50 +250,84 @@
 				</div>
 				<!-- #endregion -->
 				<!-- #region Comments & user scores -->
-				<div class="comments-user-score-container mt-3 mt-md-4">
+				<div class="comments-user-score-container mt-3 mt-md-4 pb-5">
 					<!-- #region Current user -->
-					<div class="comments-header ml-3 pt-3">
-						<h6>Your comment and score for this game</h6>
-					</div>
-					{% for comment_score in session_user_comment_scores %}
-						<div class="comments-container d-flex flex-row justify-content-between my-3 mx-3">
-							<div class="d-flex flex-column text-center comment-box-info mx-auto">
-								<div class="txt-small">{{ comment_score.updated}}</div>
-								<div> 
-								{% if comment_score.user.userprofile.chat_alias %}
-									<span class="txt-small">You as </span>
-									<span class="username-txt">{{ comment_score.user.userprofile.chat_alias }}</span>
-								{% else %}
-									{{ comment_score.user.username }}
-								{% endif %}
+					{% if user.is_authenticated  %}
+						{% if session_user_comment_scores != 'none'%}
+							<div class="comments-header ml-3 pt-3">
+								<h6>Your comment and score for this game</h6>
+							</div>
+							{% for comment_score in session_user_comment_scores %}
+								<div class="comments-container d-flex flex-row justify-content-between my-3 mx-3">
+									<div class="d-flex flex-column text-center comment-box-info mx-auto">
+										<div class="txt-small">{{ comment_score.updated}}</div>
+										<div> 
+										{% if comment_score.user.userprofile.chat_alias %}
+											<span class="txt-small">You as </span>
+											<span class="username-txt">{{ comment_score.user.userprofile.chat_alias }}</span>
+										{% else %}
+											{{ comment_score.user.username }}
+										{% endif %}
+										</div>
+										<div>
+											<img 	class="comment-avatar-img"
+													src="{{ MEDIA_URL }}{{ comment_score.user.userprofile.avatar.image }}" 
+													alt="{{ comment_score.user.userprofile.avatar.image }} - user avatar image">	
+										</div>
+										<div>
+											Your score: {{ comment_score.user_score}} / 10
+										</div>
+									</div>
+
+									<div class="comment-box-comment">
+
+										<div class="comment-bubble p-2">
+											<img class="speech-bubble-tail tail-right" src="{% static 'img/speechbubble_tail_right.png'%}" alt="Retro Joystick">
+											{{ comment_score.comment}}
+										</div>
+									</div>
 								</div>
-								<div>
-									<img 	class="comment-avatar-img"
-											src="{{ MEDIA_URL }}{{ comment_score.user.userprofile.avatar.image }}" 
-											alt="{{ comment_score.user.userprofile.avatar.image }} - user avatar image">	
-								</div>
-								<div>
-									Your score: {{ comment_score.user_score}} / 10
+							{% endfor %}		
+						{% else %}
+							<div class="comments-header mx-3 pt-3 pb-1 text-center">
+								<div class="d-flex flex-row justify-content-between">
+									<div class="d-flex flex-column align-items-stretch pl-4">
+										<div class="h-50 text-center">
+											Avg. User score
+										</div>
+										<div class="h-50 text-center">
+											#Comments:<br>{{ all_user_comment_scores.count }}
+										</div>
+									</div>	
+									<div class="comment-add-button-container pt-2">
+										<h6><span class="username-txt txt-large">{{ user }}</span>,<br> You have not added any<br>comment or score for this game</h6>
+										<button class="btn btn-sm btn-light comment-add-button mt-3" 
+												type="button" 
+												data-toggle="collapse" 
+												data-target="#collapseExample" 
+												aria-expanded="false" 
+												aria-controls="collapseExample">
+											<i class="far fa-comment-alt"></i> Wish to add one now? 
+										</button>
+									</div>
 								</div>
 							</div>
-
-							<div class="comment-box-comment">
-
-								<div class="comment-bubble p-2">
-									<img class="speech-bubble-tail tail-right" src="{% static 'img/speechbubble_tail_right.png'%}" alt="Retro Joystick">
-									{{ comment_score.comment}}
+							<div class="collapse" id="collapseExample">
+  								<div class="p-3 comment-add-form-container">
+									form goes here
 								</div>
 							</div>
-						</div>
-					{% endfor %}
+						{% endif %}
+					{% endif %}
 					<!-- #endregion -->
 					<!-- #region Other users -->
-					<div class="comments-header ml-3 pt-3">
+					<hr>
+					<div class="comments-header ml-3 pt-1 pb-4">
 						<h6>Other members comments and score</h6>
 					</div>
 
 					{% for comment_score in all_user_comment_scores %}
-						<div class="comments-container d-flex flex-row justify-content-between my-3 mx-3">
+					<div class="d-flex flex-row justify-content-between mb-5 mx-3">
 						<!-- #region bubble right -->
 						{% if forloop.counter|divisibleby:2 %}
 							<div class="d-flex flex-column text-center comment-box-info mx-auto">
@@ -311,7 +345,7 @@
 											alt="{{ comment_score.user.userprofile.avatar.image }} - user avatar image">	
 								</div>
 								<div>
-									User score: {{ comment_score.user_score}} / 10
+									Gave score: {{ comment_score.user_score}} / 10
 								</div>
 							</div>
 						
@@ -341,19 +375,19 @@
 								{% endif %}
 								</div>
 								<div>
-									<img 	class="comment-avatar-img"
+									<img 	class="img-fluid comment-avatar-img"
 											src="{{ MEDIA_URL }}{{ comment_score.user.userprofile.avatar.image }}" 
 											alt="{{ comment_score.user.userprofile.avatar.image }} - user avatar image">	
 								</div>
 								<div>
-									User score: {{ comment_score.user_score}} / 10
+									Gave score: {{ comment_score.user_score}} / 10
 								</div>
 							</div>
 						
 						
 						{% endif %}
 						<!-- #endregion -->
-						</div>
+					</div>
 					{% endfor %}
 					<!-- #endregion -->	
 				</div>
