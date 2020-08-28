@@ -297,11 +297,11 @@
 														aria-controls="edit-comment-form">
 													<i class="far fa-edit"></i> Edit
 												</button>
-												<a href="#" class="btn btn-sm btn-light  mt-1" role="button" aria-pressed="true">
+												<a href="{% url 'delete_comment' %}?gameid={{ game.id }}" class="btn btn-sm btn-light  mt-1" role="button" aria-pressed="true">
 													<i class="far fa-trash-alt"></i> Delete
 												</a>
-												<a href="#" class="btn btn-sm btn-light  mt-1" role="button" aria-pressed="true">
-													<i class="far fa-trash-alt"></i> Delete
+												<a href="{% url 'userprofile' %}" class="btn btn-sm btn-light  mt-1" role="button" aria-pressed="true">
+													To dashboard <i class="fas fa-angle-right"></i>
 												</a>
 											</div>
 										</div>

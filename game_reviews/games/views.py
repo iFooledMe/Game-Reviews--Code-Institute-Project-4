@@ -128,7 +128,6 @@ def game_details_view(request, game_id):
 
 
 def add_comment(request):
-    print('add_comment triggered')
     new_comment_form = NewCommentForm(request.POST)
     gameid = request.GET.get('gameid', 'none')
     userid = request.user.id
@@ -151,16 +150,33 @@ def add_comment(request):
 
 
 def edit_comment(request):
-    print('add_comment triggered')
     gameid = request.GET.get('gameid', 'none')
     userid = request.user.id
     comment_instance = UserCommentsScore.objects.get(
         game__id=gameid, user__id=userid)
     edit_comment_form = NewCommentForm(request.POST, instance=comment_instance)
     if edit_comment_form.is_valid():
-        edit_comment = edit_comment_form.save(commit=False)
-        edit_comment.save()
+        edit_comment_form.save()
         return redirect('game_details', game_id=gameid)
+    return redirect('game_details', game_id=gameid)
+
+# endregion
+# ============================================================================/
+
+# region ==== Delete comment =====================================================/
+
+
+def delete_comment(request):
+
+    gameid = request.GET.get('gameid', 'none')
+    userid = request.user.id
+    UserCommentsScore.objects.get(
+        game__id=gameid, user__id=userid).delete()
+    #edit_comment_form = NewCommentForm(request.POST, instance=comment_instance)
+    # if edit_comment_form.is_valid():
+    #edit_comment = edit_comment_form.save(commit=False)
+    # edit_comment.save()
+    # return redirect('game_details', game_id=gameid)
     return redirect('game_details', game_id=gameid)
 
 # endregion
