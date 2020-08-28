@@ -2,6 +2,7 @@ from django import forms
 from django.db import models
 from django.forms import ModelForm
 from .models import UserCommentsScore
+from django.contrib.auth.models import User
 
 
 class NewCommentForm(forms.ModelForm):
@@ -46,4 +47,37 @@ class EditCommentForm(forms.ModelForm):
         labels = {
             'comment': '',
             'user_score': 'Your score 1-10(best) - In the field below',
+        }
+
+
+class EditUserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        label = False
+        fields = ['first_name', 'last_name', 'email', 'username']
+        widgets = {
+            'first_name': forms.TextInput(
+                attrs={'class': 'form-control mt-2',
+
+                       }
+            ),
+            'last_name': forms.TextInput(
+                attrs={'class': 'form-control',
+
+                       }
+            ),
+            'email': forms.TextInput(
+                attrs={'class': 'form-control',
+
+                       }
+            ),
+            'username': forms.TextInput(
+                attrs={'class': 'form-control',
+
+                       }
+            ),
+        }
+        labels = {
+            'first_name': 'Lastname',
+            'last_name': 'Firstname',
         }

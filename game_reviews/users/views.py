@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.db.models import Sum
 from django.conf import settings
 import stripe
-
+from .forms import EditUserForm
 from .models import UserProfile, UserCommentsScore
 
 
@@ -35,8 +35,31 @@ def user_profile_view(request):
         return render(request, "user_profile.html", context)
     return redirect('game_list_view')
 
+# ====================================================
+
+
+def user_profile_edit(request):
+    if request.method == 'POST':
+        user_form = EditUserForm(request.POST, instance=request.user)
+        if user_form.is_valid():
+            user_form.save()
+            return redirect('userprofile')
+    else:
+        user_form = EditUserForm(instance=request.user)
+        context = {
+            'user_form': user_form,
+        }
+        return render(request, "edit_profile.html", context)
+
+# ======================================================
+
 
 def pay_thankyou_view(request):
+    if request.user.is_authenticated:
+
+        return ""
+
+    return redirect('game_list_view')
 
     payment_intent_secret = request.POST['payment_intent_secret']
     payment_intent_id = request.POST['payment_intent_id']

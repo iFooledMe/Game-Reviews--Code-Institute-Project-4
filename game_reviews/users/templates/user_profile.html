@@ -92,6 +92,16 @@
                     {% else %} No avatar set {% endif %}
                 </div>
             </div>
+            <div>
+                <a
+                    href="{% url 'userprofile_edit' %}"
+                    class="btn btn-sm btn-light go-to-button hover-me"
+                    role="button"
+                >
+                    Edit settings
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
         </div>
         <!-- #endregion -->
     </div>
