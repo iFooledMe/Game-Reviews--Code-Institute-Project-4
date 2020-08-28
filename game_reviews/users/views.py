@@ -5,28 +5,35 @@ from django.db.models import Sum
 from django.conf import settings
 import stripe
 
-from .models import UserProfile
+from .models import UserProfile, UserCommentsScore
 
 
 def user_profile_view(request):
 
-    stripe.api_key = settings.STRIPE_SECRET_KEY
+    if request.user.is_authenticated:
+        userid = request.user.id
+        session_user_comment_scores = UserCommentsScore.objects.filter(
+            user__id=userid)
 
-    # Creates Stripe payment intent
-    payment_intent = stripe.PaymentIntent.create(
-        amount='295',
-        currency='usd',
-        payment_method_types=['card']
-    )
+        stripe.api_key = settings.STRIPE_SECRET_KEY
 
-    # payment_intent.client_secret used on client side for javascript to render the card
-    context = {
-        'secret_key': payment_intent.client_secret,
-        'stripe_publishable_key': settings.STRIPE_PUBLISHABLE_KEY,
-        'payment_intent_id': payment_intent.id,
-    }
+        # Creates Stripe payment intent
+        payment_intent = stripe.PaymentIntent.create(
+            amount='295',
+            currency='usd',
+            payment_method_types=['card']
+        )
 
-    return render(request, "user_profile.html", context)
+        # payment_intent.client_secret used on client side for javascript to render the card
+        context = {
+            'comments': session_user_comment_scores,
+            'secret_key': payment_intent.client_secret,
+            'stripe_publishable_key': settings.STRIPE_PUBLISHABLE_KEY,
+            'payment_intent_id': payment_intent.id,
+        }
+
+        return render(request, "user_profile.html", context)
+    return redirect('game_list_view')
 
 
 def pay_thankyou_view(request):

@@ -282,13 +282,42 @@
 											{% endif %}
 										</div>
 									</div>
-
 									<div class="comment-box-comment">
-
 										<div class="comment-bubble p-2">
 											<img class="speech-bubble-tail tail-right" src="{% static 'img/speechbubble_tail_right.png'%}" alt="Retro Joystick">
 											{{ comment_score.comment}}
 										</div>
+										<div class="d-flex flex-row">
+											<div>
+												<button class="btn btn-sm btn-light  mt-1" 
+														type="button" 
+														data-toggle="collapse" 
+														data-target="#edit-comment-form" 
+														aria-expanded="false" 
+														aria-controls="edit-comment-form">
+													<i class="far fa-edit"></i> Edit
+												</button>
+												<a href="#" class="btn btn-sm btn-light  mt-1" role="button" aria-pressed="true">
+													<i class="far fa-trash-alt"></i> Delete
+												</a>
+												<a href="#" class="btn btn-sm btn-light  mt-1" role="button" aria-pressed="true">
+													<i class="far fa-trash-alt"></i> Delete
+												</a>
+											</div>
+										</div>
+									</div>									
+								</div>
+								<div class="collapse" id="edit-comment-form">
+									<div class="comment-add-form-container">																							
+										<form method="POST" action="{% url 'add_comment' %}?gameid={{ game.id }}">
+											{% csrf_token %}
+											<div class="form-group">																							
+												{{ edit_comment_form }}
+											</div>
+											<div class="form-group">													
+												<button type="submit" class="btn btn-sm btn-light comment-add-button">Submit changes</button>
+											</div>
+										</form>																									
 									</div>
 								</div>
 							{% endfor %}		
