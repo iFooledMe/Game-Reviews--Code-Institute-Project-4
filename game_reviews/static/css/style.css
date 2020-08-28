@@ -707,7 +707,7 @@ tag-checkbox ul li label {
 /* #endregion */
 /* ====================================================================== */
 
-/* #region ==== G A M E S  L I S T ====================================== */
+/* #region ==== G A M E S  L I S T  ===================================== */
 /* ====================================================================== */
 
 /* #region **** GAME CONTAINER FRAME **** */
@@ -751,10 +751,18 @@ tag-checkbox ul li label {
     border-radius: 0px 5px 0px 0px;
 }
 
+.game-info-row-1-sm {
+    height: 30px;
+}
+
 /* Date, publisher, platforms, tags */
 .game-info-row-2 {
     height: var(--row-2-date-h);
     padding-left: 10px;
+}
+
+.game-info-row-2-sm {
+    height: 150px;
 }
 
 /* Score, reviews */
@@ -787,6 +795,12 @@ tag-checkbox ul li label {
     border-radius: 5px 0 0 0;
 }
 
+.thumb-wrapper-sm img {
+    max-width: 122px;
+    max-height: 150px;
+    border-radius: 0 0 0 0;
+}
+
 .pegi-overlay {
     position: absolute;
     left: 0px;
@@ -817,9 +831,19 @@ tag-checkbox ul li label {
     letter-spacing: 4px;
 }
 
+.game-title-sm {
+    font-size: 1.3rem;
+    letter-spacing: 4px;
+}
+
 .title-wrapper {
     position: relative;
     bottom: 26px;
+}
+
+.title-wrapper-sm {
+    position: relative;
+    bottom: 13px;
 }
 
 .game-title-initial-cap {
@@ -870,6 +894,10 @@ tag-checkbox ul li label {
     width: 100px;
 }
 
+.score-wrapper-sm {
+    width: 90px;
+}
+
 .score {
     z-index: 10;
     position: relative;
@@ -885,6 +913,13 @@ tag-checkbox ul li label {
     background-color: var(--score-bg-color);
 }
 
+.score-sm {
+    left: -5px;
+    top: 25px;
+    width: 100px;
+    height: 100px;
+}
+
 .score-text {
     position: relative;
     top: 10px;
@@ -893,9 +928,18 @@ tag-checkbox ul li label {
     color: var(--score-txt-color);
 }
 
+.score-text-sm {
+    top: 0px;
+}
+
 .score-text-digits {
     font-weight: 700;
     font-size: 4em;
+}
+
+.score-text-digits-sm {
+    font-weight: 700;
+    font-size: 3.8em;
 }
 
 /* #endregion */
@@ -1156,6 +1200,31 @@ tag-checkbox ul li label {
 }
 
 .details-button span {
+    position: relative;
+    top: 3px;
+}
+
+.details-button-sm {
+    position: relative;
+    bottom: -16px;
+    left: 24px;
+    z-index: 2;
+    width: 200px;
+    height: 25px;
+    border: none;
+    border-radius: 5px 0px 5px 0px;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-left: 3px;
+    font-size: 80%;
+    font-weight: bold;
+    text-align: center;
+    background-color: var(--game-descr-details-button-bg-color);
+    color: var(--game-descr-details-button-txt-color);
+}
+
+.details-button-sm span {
     position: relative;
     top: 3px;
 }

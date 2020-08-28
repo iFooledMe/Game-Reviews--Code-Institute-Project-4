@@ -7,6 +7,109 @@
 {% block games_list %}
 {% for game in games  %}
 
+<!-- #region Game container large screens-->
+<div class="d-block d-md-none">
+	<div class="container-fluid w-100 game-container-expanded px-3 mx-0">
+		<!-- #region ==== INFO BOX ================================================================ -->
+		<div class="flex-grow-1 game-info-box">		
+			<!-- #region ==== Row 1 - Title ======================================================= -->
+			<div class="game-info-row-1 game-info-row-1-sm shadow-bottom-right game-title game-title-sm">
+				<div class="invisible">
+					<h2>{{ game.title }}</h2>
+				</div>
+				<div class="title-wrapper-sm">
+					<span class="game-title-initial-cap">{{ game.title|slice:"1" }}</span>{{game.title|slice:"1:"}}
+				</div>
+			</div>
+			<!-- #endregion -->
+			<div class="game-info-row-2-sm shadow-bottom-right">
+				<div class="d-flex flex-row justify-content-between">
+					<div class="game-thumb-wrapper thumb-wrapper-sm">
+						{% if  game.thumb_img %}
+							<img class="img-fluid game-thumb-large-img" src="{{ MEDIA_URL }}{{ game.thumb_img }}" alt="{{ game.title }} - Cover image">
+						{% else %}
+							<img class="img-fluid" src="{% static "img/img_placeholder_244x300.jpg"%}" alt="Empty placeholder - Game cover image is missing">
+						{% endif %}
+					</div>
+					<div class="score-wrapper-sm">	
+						<div class="score score-sm shadow-bottom-right">
+							<span class="score-text score-text-sm score-text-digits-sm">{{ game.avg_score.normalize }}</span><br>
+						</div>
+					</div>
+					<div class="flex-grow-1 px-3 py-2">	
+						<div class="d-flex flex-column align-items-stretch">
+							<div class="txt-medium">
+								<strong>{{ game.release_date }}</strong>
+							</div>
+							<div class="txt-small">
+								<span>
+									{% for platform in game.platforms.all %}
+									{% if platform.show_icon %}
+										{{ platform.icon | safe }}
+									{% elif platform.show_img %}
+										<img class="platform-icon-image" src="{{ platform.img.url }}" alt="">
+									{% endif %}
+										{{ platform.short_name}}
+									{% endfor %}
+								</span>
+							</div>
+							<div class="tags-container mr-2">
+								<div class="text-left">
+									{% for tag in game.genre_tags.all %}
+									<span class="ml-1 shadow-faint-small tag tag-genre">
+										{% if tag.show_name %}
+											{{ tag.short_name }}
+										{% endif %}
+										{% if tag.show_icon %}
+											{{ tag.icon | safe }}
+										{% endif %}
+									</span>
+									{% endfor %}
+								</div>
+								<div class="ml-1 text-left">
+									{% for tag in game.theme_tags.all %}
+										<span class="ml-2 shadow-faint-small tag tag-theme">
+											{% if tag.show_name %}
+												{{ tag.short_name }}
+											{% endif %}
+											{% if tag.show_icon %}
+												{{ tag.icon | safe }}
+											{% endif %}
+										</span>
+									{% endfor %}
+								</div>
+								<div class="ml-1 text-left">
+									{% for tag in game.misc_tags.all %}
+										<span class="ml-2 shadow-faint-small tag tag-misc">
+											{% if tag.show_name %}
+												{{ tag.short_name }}
+											{% endif %}
+											{% if tag.show_icon %}
+												{{ tag.icon | safe }}
+											{% endif %}
+										</span>
+									{% endfor %}
+								</div>
+								<div class="d-flex flex-column align-items-end">
+
+										<a href="{% url 'game_details' game_id=game.id %}" class="details-button-sm hover-me" role="button">
+											<span class="details-txt"> Game Details <i class="fas fa-caret-right icon-rightarrow"></i></span>
+										</a>
+									
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- #endregion -->
+	</div>
+</div>
+<!-- #endregion -->
+
+<!-- #region Game container large screens-->
+<div class="d-none d-md-block">
 	<div class="container-fluid w-100 game-container-expanded px-3 mx-0">
 		
 		<div class="d-flex flex-row align-items-stretch">
@@ -26,7 +129,7 @@
 			<!-- #endregion -->
 
 			<!-- #region ==== INFO BOX ================================================================ -->
-			<div class="flex-grow-1 game-info-box"">
+			<div class="flex-grow-1 game-info-box">
 				
 				<!-- #region ==== Row 1 - Title ======================================================= -->
 				<div class="game-info-row-1 shadow-bottom-right game-title">
@@ -309,6 +412,7 @@
 		</div>
 		<!-- #endregion -->
 	</div>
-
+</div>
+<!-- #endregion -->
 {% endfor %}
 {% endblock %}
