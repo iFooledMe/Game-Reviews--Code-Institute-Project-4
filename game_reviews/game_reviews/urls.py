@@ -27,6 +27,7 @@ from users.views import user_profile_view, pay_thankyou_view
 urlpatterns = [
     path('', views.game_list_view, name='game_list'),
     path('game_details', views.game_details_view, name='game_details'),
+    path('add_comment', views.add_comment, name='add_comment'),
     path('login', LoginView.as_view(), name='login'),
     path('logout', LogoutView.as_view(), name='logout'),
     path('signup', SignupView.as_view(), name='signup'),

@@ -113,6 +113,7 @@ def game_details_view(request):
 
 
 def add_comment(request):
+    print('add_comment triggered')
     new_comment_form = NewCommentForm(request.POST)
     gameid = request.GET.get('gameid', 'none')
     userid = request.user.id
@@ -125,7 +126,7 @@ def add_comment(request):
             new_comment.user = request.user
             new_comment.game = game_instance
             new_comment.save()
-            return redirect(reverse('game_details', kwargs={"game_id": gameid}))
+            return redirect('game_details', game_id=gameid)
     return redirect('game_details', game_id=gameid)
 
 # endregion
