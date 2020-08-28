@@ -253,7 +253,7 @@
 					<!-- #region Is_authenticated -->
 					{% if user.is_authenticated  %}
 						<!-- #region Have commented -->
-						{% if session_user_comment_scores != 'none'%}
+						{% if have_commented %}
 							<div class="comments-header ml-3 pt-3">
 								<h6>Your comment and score for this game</h6>
 							</div>

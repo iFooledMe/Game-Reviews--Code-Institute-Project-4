@@ -13,7 +13,7 @@ from .models import Game, GenreTag, ThemeTag, MiscTag
 from .forms import GameSortShowForms, GameFilterGenreForm
 from reviews.models import Review
 from users.models import UserCommentsScore
-from users.forms import NewCommentForm
+from users.forms import NewCommentForm,  EditCommentForm
 # endregion
 # ============================================================================/
 
@@ -86,18 +86,31 @@ def game_details_view(request, game_id):
             userid = request.user.id
             all_user_comment_scores = UserCommentsScore.objects.filter(
                 game__id=gameid).exclude(user__id=userid).order_by('-updated')
-            session_user_comment_scores = UserCommentsScore.objects.filter(
-                game__id=gameid, user__id=userid)
-            if not session_user_comment_scores.exists():
-                session_user_comment_scores = 'none'
-            new_comment_form = NewCommentForm()
-            context = {
-                'this_game': game,
-                'all_user_comment_scores': all_user_comment_scores,
-                'session_user_comment_scores': session_user_comment_scores,
-                'new_comment_form': new_comment_form,
-            }
-            return render(request, "game_details.html", context)
+            try:
+                session_user_comment_scores = UserCommentsScore.objects.filter(
+                    game__id=gameid, user__id=userid)
+                have_commented = True
+                user_comment = UserCommentsScore.objects.get(
+                    game__id=gameid, user__id=userid)
+                edit_comment_form = EditCommentForm(instance=user_comment)
+                context = {
+                    'this_game': game,
+                    'all_user_comment_scores': all_user_comment_scores,
+                    'session_user_comment_scores': session_user_comment_scores,
+                    'have_commented': have_commented,
+                    'edit_comment_form': edit_comment_form,
+                }
+                return render(request, "game_details.html", context)
+            except:
+                new_comment_form = NewCommentForm()
+                have_commented = False
+                context = {
+                    'this_game': game,
+                    'all_user_comment_scores': all_user_comment_scores,
+                    'have_commented': have_commented,
+                    'new_comment_form': new_comment_form,
+                }
+                return render(request, "game_details.html", context)
         # Non Authenticated User
         all_user_comment_scores = UserCommentsScore.objects.filter(
             game__id=gameid).order_by('-updated')
