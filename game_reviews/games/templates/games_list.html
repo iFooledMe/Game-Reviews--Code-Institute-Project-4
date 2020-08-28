@@ -242,7 +242,7 @@
 								data-scrollto="top-of-game-{{ game.id }}">
 							...Read more <i class="fas fa-caret-down icon-downarrow"></i>
 						</button>
-						<a href="{% url 'game_details' %}?gameid={{ game.id }}" class="details-button" role="button">
+						<a href="{% url 'game_details' game_id=game.id %}" class="details-button" role="button">
 							<span class="details-txt"> Game Details <i class="fas fa-caret-right icon-rightarrow"></i></span>
 						</a>
 					</div>
@@ -279,7 +279,7 @@
 								data-scrollto="top-of-game-{{ game.id }}">
 							Close <i class="fas fa-caret-up icon-downarrow"></i>
 						</button>
-						<a href="{% url 'game_details' %}?gameid={{ game.id }}" class="details-button" role="button">
+						<a href="{% url 'game_details' game_id=game.id %}" class="details-button" role="button">
 							<span class="details-txt"> Game Details <i class="fas fa-caret-right icon-rightarrow"></i></span>
 						</a>
 					</div>
