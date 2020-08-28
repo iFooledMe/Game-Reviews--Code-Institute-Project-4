@@ -58,7 +58,10 @@ class UserCommentsScore(models.Model):
         null=True, blank=True,
         on_delete=models.CASCADE)
     comment = models.TextField(
-        max_length=300, null=True, blank=True)
+        max_length=300,
+        default='',
+        null=False,
+        blank=False)
     user_score = models.IntegerField(
         default=0,
         validators=[MinValueValidator(0), MaxValueValidator(10)],
