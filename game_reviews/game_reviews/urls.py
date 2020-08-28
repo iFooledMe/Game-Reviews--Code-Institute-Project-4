@@ -29,6 +29,7 @@ urlpatterns = [
     path('game_details/<int:game_id>',
          views.game_details_view, name='game_details'),
     path('add_comment', views.add_comment, name='add_comment'),
+    path('edit_comment', views.edit_comment, name='edit_comment'),
     path('login', LoginView.as_view(), name='login'),
     path('logout', LogoutView.as_view(), name='logout'),
     path('signup', SignupView.as_view(), name='signup'),

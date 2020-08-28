@@ -146,3 +146,22 @@ def add_comment(request):
 
 # endregion
 # ============================================================================/
+
+# region ==== Edit comment =====================================================/
+
+
+def edit_comment(request):
+    print('add_comment triggered')
+    gameid = request.GET.get('gameid', 'none')
+    userid = request.user.id
+    comment_instance = UserCommentsScore.objects.get(
+        game__id=gameid, user__id=userid)
+    edit_comment_form = NewCommentForm(request.POST, instance=comment_instance)
+    if edit_comment_form.is_valid():
+        edit_comment = edit_comment_form.save(commit=False)
+        edit_comment.save()
+        return redirect('game_details', game_id=gameid)
+    return redirect('game_details', game_id=gameid)
+
+# endregion
+# ============================================================================/

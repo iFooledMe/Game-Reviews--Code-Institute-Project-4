@@ -309,7 +309,7 @@
 								</div>
 								<div class="collapse" id="edit-comment-form">
 									<div class="comment-add-form-container">																							
-										<form method="POST" action="{% url 'add_comment' %}?gameid={{ game.id }}">
+										<form method="POST" action="{% url 'edit_comment' %}?gameid={{ game.id }}">
 											{% csrf_token %}
 											<div class="form-group">																							
 												{{ edit_comment_form }}
