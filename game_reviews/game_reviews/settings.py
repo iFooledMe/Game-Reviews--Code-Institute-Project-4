@@ -130,18 +130,19 @@ WSGI_APPLICATION = 'game_reviews.wsgi.application'
 # if 'DATABASE_URL' in os.environ:
 
 
-if os.environ["USE_SQLITE"]:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
-    DATABASES = {
-        'default':  dj_database_url.parse(os.environ.get("DATABASE_URL"))
-    }
+# if os.environ["USE_SQLITE"]:
+#    DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.sqlite3',
+#            'NAME': BASE_DIR / 'db.sqlite3',
+#        }
+#    }
+# else:
+DATABASES = {
+    'default':  dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
 
+AWS_DEFAULT_ACL = 'public-read'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
