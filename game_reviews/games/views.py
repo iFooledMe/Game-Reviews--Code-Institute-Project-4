@@ -17,7 +17,6 @@ from users.forms import NewCommentForm,  EditCommentForm
 # endregion
 # ============================================================================/
 
-
 # region ==== Games List =====================================================/
 
 
@@ -72,7 +71,6 @@ def update_avg_score(games):
 
 # endregion
 # ============================================================================/
-
 
 # region ==== Game Details ===================================================/
 def game_details_view(request, game_id):
