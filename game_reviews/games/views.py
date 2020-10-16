@@ -32,9 +32,10 @@ def game_list_view(request, *args, **kwargs):
     search_show_form = GameSortShowForms()
     genre_tags_filter = GameFilterGenreForm()
 
-    if request.session.get('hide_topp_info', True):
-        hide_top_info = True
-        print(hide_top_info)
+    if 'hide_top_info' in request.session:
+        hide_top_info = request.session.get('hide_top_info')
+    else:
+        hide_top_info = False
 
     context = {
         'games': games,
@@ -129,12 +130,10 @@ def game_details_view(request, game_id):
 
 
 def hide_top_info(request):
-    request.session['hide_topp_info'] = True
+    request.session['hide_top_info'] = True
     return redirect(game_list_view)
-
 # endregion
 # ============================================================================/
-
 
 # region ==== Add comment ====================================================/
 

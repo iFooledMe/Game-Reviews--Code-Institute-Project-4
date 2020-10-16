@@ -610,7 +610,6 @@ txt-xsmall {
     position: relative;
     border-radius: 3px;
     padding-top: 50px;
-    padding-right: 10%;
     text-transform: uppercase;
     font-family: 'Titillium Web', sans-serif;
 
@@ -630,6 +629,11 @@ txt-xsmall {
 .top-info-txt-3 {
     padding-right: 10%;
     font-size: 2.2em;
+}
+
+.top-info-txt-4 {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--light-1);
 }
 
 .top-info-close {
