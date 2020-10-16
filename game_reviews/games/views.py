@@ -32,10 +32,15 @@ def game_list_view(request, *args, **kwargs):
     search_show_form = GameSortShowForms()
     genre_tags_filter = GameFilterGenreForm()
 
+    if request.session.get('hide_topp_info', True):
+        hide_top_info = True
+        print(hide_top_info)
+
     context = {
         'games': games,
         'search_show_form': search_show_form,
         'genre_tags_filter': genre_tags_filter,
+        'hide_top_info': hide_top_info,
     }
 
     return render(request, "games_list.html", context)
@@ -120,7 +125,18 @@ def game_details_view(request, game_id):
 # endregion
 # ============================================================================/
 
-# region ==== Add comment =====================================================/
+# region ==== Hide Top Info  =================================================/
+
+
+def hide_top_info(request):
+    request.session['hide_topp_info'] = True
+    return redirect(game_list_view)
+
+# endregion
+# ============================================================================/
+
+
+# region ==== Add comment ====================================================/
 
 
 def add_comment(request):
@@ -142,7 +158,7 @@ def add_comment(request):
 # endregion
 # ============================================================================/
 
-# region ==== Edit comment =====================================================/
+# region ==== Edit comment ===================================================/
 
 
 def edit_comment(request):
@@ -159,7 +175,7 @@ def edit_comment(request):
 # endregion
 # ============================================================================/
 
-# region ==== Delete comment =====================================================/
+# region ==== Delete comment =================================================/
 
 
 def delete_comment(request):

@@ -23,6 +23,7 @@ class UserAvatar(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    hide_info = models.BooleanField(default=False)
     is_premium = models.BooleanField(default=False)
     chat_alias = models.CharField(max_length=30, null=True, blank=True)
     avatar = models.ForeignKey(

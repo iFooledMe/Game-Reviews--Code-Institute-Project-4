@@ -28,6 +28,7 @@ urlpatterns = [
     path('', views.game_list_view, name='game_list'),
     path('game_details/<int:game_id>',
          views.game_details_view, name='game_details'),
+    path('hide_top_info', views.hide_top_info, name='hide_top_info'),
     path('add_comment', views.add_comment, name='add_comment'),
     path('edit_comment', views.edit_comment, name='edit_comment'),
     path('delete_comment', views.delete_comment, name='delete_comment'),
