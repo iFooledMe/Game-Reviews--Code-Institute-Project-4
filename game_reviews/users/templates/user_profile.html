@@ -81,18 +81,22 @@
                 <div class="w-100">Avatar image:</div>
                 <div class="w-100 mx-auto text-center">
                     {% if user.userprofile.avatar %}
-                    <a class="change-avatar-button"
+                    <a
+                        class="change-avatar-button"
                         data-action="open"
-                        role="button">
+                        role="button"
+                    >
                         <div class="user-profile-avatar-wrapper">
                             <img
                                 class="img-fluid user-profile-avatar-img"
                                 src="{{ MEDIA_URL }}{{ user.userprofile.avatar.image }}"
-                                alt="{{ user.userprofile.avatar }} avatar image"/>
+                                alt="{{ user.userprofile.avatar }} avatar image"
+                            />
                         </div>
                         <div class="text-left">
-                            <p>{{ user.userprofile.avatar }}
-                                <br>
+                            <p>
+                                {{ user.userprofile.avatar }}
+                                <br />
                                 <span class="txt-small">
                                     Click on the avatar image to change it
                                 </span>
@@ -100,14 +104,17 @@
                         </div>
                     </a>
                     {% else %}
-                    <a class="change-avatar-button"
+                    <a
+                        class="change-avatar-button"
                         data-action="open"
-                        role="button">
+                        role="button"
+                    >
                         <div class="user-profile-avatar-wrapper text-center">
                             <img
                                 class="img-fluid user-profile-avatar-img"
                                 src="{% static 'img/ingognito.png'%}"
-                                alt="Retro Joystick"/>
+                                alt="Incognito user avatar"
+                            />
                         </div>
                         <div class="text-left">
                             <p>Ingognito</p>

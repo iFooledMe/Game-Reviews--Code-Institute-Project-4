@@ -270,9 +270,15 @@
 										{% endif %}
 										</div>
 										<div>
-											<img 	class="comment-avatar-img"
-													src="{{ MEDIA_URL }}{{ comment_score.user.userprofile.avatar.image }}" 
-													alt="{{ comment_score.user.userprofile.avatar.image }} - user avatar image">	
+											{% if user.userprofile.avatar %}
+												<img 	class="img-fluid comment-avatar-img"
+														src="{{ MEDIA_URL }}{{ comment_score.user.userprofile.avatar.image }}" 
+														alt="{{ comment_score.user.userprofile.avatar.image }} - user avatar image">	
+											{% else %}
+											  	<img class="img-fluid comment-avatar-img"
+												src="{% static 'img/ingognito.png'%}"
+												alt="Incognito user avatar"/>
+											{% endif %}
 										</div>
 										<div>
 											{% if comment_score.user_score > 0 %}
