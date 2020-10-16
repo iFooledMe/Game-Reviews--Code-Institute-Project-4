@@ -65,13 +65,13 @@ def user_profile_edit(request):
 
 def change_avatar(request, avatar_id):
     avatarid = avatar_id
+    profile = UserProfile.objects.get(user=request.user.id)
     if request.user.is_authenticated:
         if avatarid == 0:
-            UserProfile.avatar = None
-            return redirect('userprofile')
-        avatar = UserAvatar.objects.get(id=avatarid)
-        profile = UserProfile.objects.get(user=request.user)
-        profile.avatar = avatar
+            profile.avatar = None
+        else:
+            avatar = UserAvatar.objects.get(id=avatarid)
+            profile.avatar = avatar
         profile.save()
         return redirect('userprofile')
     return redirect('game_list_view')
