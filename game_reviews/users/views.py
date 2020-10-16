@@ -6,45 +6,44 @@ from django.conf import settings
 import stripe
 from .forms import EditUserForm
 from .models import UserProfile, UserCommentsScore, UserAvatar
-from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # region ==== USER PROFILE ==================================================
 
 
+@login_required
 def user_profile_view(request):
+    userid = request.user.id
+    session_user_comment_scores = UserCommentsScore.objects.filter(
+        user__id=userid)
+    avatars = UserAvatar.objects.all()
 
-    if request.user.is_authenticated:
-        userid = request.user.id
-        session_user_comment_scores = UserCommentsScore.objects.filter(
-            user__id=userid)
-        avatars = UserAvatar.objects.all()
+    stripe.api_key = settings.STRIPE_SECRET_KEY
 
-        stripe.api_key = settings.STRIPE_SECRET_KEY
+    # Creates Stripe payment intent
+    payment_intent = stripe.PaymentIntent.create(
+        amount='295',
+        currency='usd',
+        payment_method_types=['card']
+    )
 
-        # Creates Stripe payment intent
-        payment_intent = stripe.PaymentIntent.create(
-            amount='295',
-            currency='usd',
-            payment_method_types=['card']
-        )
+    # payment_intent.client_secret used on client side for javascript to render the card
+    context = {
+        'comments': session_user_comment_scores,
+        'avatars': avatars,
+        'secret_key': payment_intent.client_secret,
+        'stripe_publishable_key': settings.STRIPE_PUBLISHABLE_KEY,
+        'payment_intent_id': payment_intent.id,
+    }
 
-        # payment_intent.client_secret used on client side for javascript to render the card
-        context = {
-            'comments': session_user_comment_scores,
-            'avatars': avatars,
-            'secret_key': payment_intent.client_secret,
-            'stripe_publishable_key': settings.STRIPE_PUBLISHABLE_KEY,
-            'payment_intent_id': payment_intent.id,
-        }
-
-        return render(request, "user_profile.html", context)
-    return redirect('game_list_view')
+    return render(request, "user_profile.html", context)
 # endregion
 # ===========================================================================
 
 # region ==== EDIT USER PROFILE =============================================
 
 
+@login_required
 def user_profile_edit(request):
     if request.method == 'POST':
         user_form = EditUserForm(request.POST, instance=request.user)
@@ -63,18 +62,17 @@ def user_profile_edit(request):
 # region ==== CHANGE AVATAR =================================================
 
 
+@login_required
 def change_avatar(request, avatar_id):
     avatarid = avatar_id
     profile = UserProfile.objects.get(user=request.user.id)
-    if request.user.is_authenticated:
-        if avatarid == 0:
-            profile.avatar = None
-        else:
-            avatar = UserAvatar.objects.get(id=avatarid)
-            profile.avatar = avatar
-        profile.save()
-        return redirect('userprofile')
-    return redirect('game_list_view')
+    if avatarid == 0:
+        profile.avatar = None
+    else:
+        avatar = UserAvatar.objects.get(id=avatarid)
+        profile.avatar = avatar
+    profile.save()
+    return redirect('userprofile')
 # endregion
 # ===========================================================================
 
