@@ -33,6 +33,10 @@
     "game_reviews/users/tests.py": true,
     "game_reviews/admin": true,
     "game_reviews/env.py": true,
-    "game_reviews/requirements.txt": true
+    "game_reviews/requirements.txt": true,
+    "game_reviews/__pycache__": true,
+    "Procfile": true,
+    "Dockerfile": true,
+    "game_reviews/custom_storages.py": true
   }
 }

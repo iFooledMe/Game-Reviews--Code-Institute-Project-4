@@ -254,8 +254,8 @@
 					{% if user.is_authenticated  %}
 						<!-- #region Have commented -->
 						{% if have_commented %}
-							<div class="comments-header ml-3 pt-3">
-								<h6>Your comment and score for this game</h6>
+							<div class="comments-header text-center ml-3 pt-3">
+								<h3>Your comment and score</h3>
 							</div>
 							{% for comment_score in session_user_comment_scores %}
 								<div class="comments-container d-flex flex-row justify-content-between my-3 mx-3">
@@ -266,7 +266,8 @@
 											<span class="txt-small">You as </span>
 											<span class="username-txt">{{ comment_score.user.userprofile.chat_alias }}</span>
 										{% else %}
-											{{ comment_score.user.username }}
+											<span class="txt-small">You as </span>
+											<span class="username-txt">{{ comment_score.user.username }}</span>
 										{% endif %}
 										</div>
 										<div>
@@ -369,13 +370,13 @@
 					<!-- #region OTHER USERS -->
 					<hr>
 					<div class="comments-header text-center ml-3 pt-1 pb-5">
-						<h6>Other members comments and score</h6>
+						<h3>Other members comments and score</h3>
 						<div class="d-flex flex-row justify-content-between">
 							<div class="w-50 text-center">
-								Avg. User score
+								Avg. User score: <span class="highlight-txt-size1 ml-2">{{ avg_user_score }}</span>
 							</div>
 							<div class="w-50 text-center">
-								#Comments: {{ all_user_comment_scores.count }}
+								#Comments: <span class="highlight-txt-size1 ml-2">{{ all_user_comment_scores.count }}</span>
 							</div>
 						</div>	
 					</div>
@@ -406,7 +407,11 @@
 									{% endif %}	
 								</div>
 								<div>
-									Gave score: {{ comment_score.user_score}} / 10
+									{% if comment_score.user_score > 0 %}
+										Gave score: {{ comment_score.user_score}} / 10
+									{% else %}
+										No score
+									{% endif %}
 								</div>
 							</div>
 						
@@ -441,11 +446,13 @@
 											alt="{{ comment_score.user.userprofile.avatar.image }} - user avatar image">	
 								</div>
 								<div>
-									Gave score: {{ comment_score.user_score}} / 10
+									{% if comment_score.user_score > 0 %}
+										Gave score: {{ comment_score.user_score}} / 10
+									{% else %}
+										No score
+									{% endif %}
 								</div>
 							</div>
-						
-						
 						{% endif %}
 						<!-- #endregion -->
 					</div>

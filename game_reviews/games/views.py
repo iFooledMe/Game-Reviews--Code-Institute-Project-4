@@ -4,7 +4,7 @@ import collections
 from decimal import *
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
-from django.db.models import Sum
+from django.db.models import Sum, Avg
 from django.contrib.auth import authenticate
 from django.urls import reverse
 
@@ -101,6 +101,7 @@ def game_details_view(request, game_id):
                     'session_user_comment_scores': session_user_comment_scores,
                     'have_commented': have_commented,
                     'edit_comment_form': edit_comment_form,
+                    'avg_user_score': calc_avg_user_score(game_id),
                 }
                 return render(request, "game_details.html", context)
             except:
@@ -111,17 +112,28 @@ def game_details_view(request, game_id):
                     'all_user_comment_scores': all_user_comment_scores,
                     'have_commented': have_commented,
                     'new_comment_form': new_comment_form,
+                    'avg_user_score': calc_avg_user_score(game_id),
                 }
                 return render(request, "game_details.html", context)
         # Non Authenticated User
         all_user_comment_scores = UserCommentsScore.objects.filter(
             game__id=gameid).order_by('-updated')
+
         context = {
             'this_game': game,
             'all_user_comment_scores': all_user_comment_scores,
+            'avg_user_score': calc_avg_user_score(game_id),
         }
         return render(request, "game_details.html", context)
     return redirect(game_list_view)
+
+
+def calc_avg_user_score(gameid):
+    all_user_comment_scores_exlude_zero = UserCommentsScore.objects.filter(
+        game__id=gameid).exclude(user_score__lte=0)
+    aggregate_score = all_user_comment_scores_exlude_zero.aggregate(
+        Avg('user_score'))
+    return aggregate_score.get('user_score__avg')
 
 # endregion
 # ============================================================================/
