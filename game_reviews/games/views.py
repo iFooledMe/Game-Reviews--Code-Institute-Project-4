@@ -133,7 +133,7 @@ def calc_avg_user_score(gameid):
         game__id=gameid).exclude(user_score__lte=0)
     aggregate_score = all_user_comment_scores_exlude_zero.aggregate(
         Avg('user_score'))
-    return aggregate_score.get('user_score__avg')
+    return int(aggregate_score.get('user_score__avg') * 10)
 
 # endregion
 # ============================================================================/
