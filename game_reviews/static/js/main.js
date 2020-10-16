@@ -7,10 +7,6 @@ $(document).ready(function () {
         var target_open_2 = '.' + $(this).data('targetopentwo');
         var target_close_1 = '.' + $(this).data('targetcloseone');
         var target_close_2 = '.' + $(this).data('targetclosetwo');
-        console.log('Close: ' + id + ' ' + target_close_1);
-        console.log('Close: ' + id + ' ' + target_close_2);
-        console.log('Open: ' + id + ' ' + target_open_1);
-        console.log('Open: ' + id + ' ' + target_open_2);
 
         if (target_close_1 != '.undefined') {
             $(id + ' ' + target_close_1).slideUp('slow');
@@ -39,6 +35,20 @@ $(document).ready(function () {
 
     // #region ==== Initialize Bootstrap Tooltip ============================================= /
     $('[data-toggle="tooltip"]').tooltip();
+    // #endregion
+    // ======================================================================================= /
+
+    // #region ==== Change Avatar window open/close ========================================== /
+    $('.change-avatar-button').click(function () {
+        var action = $(this).data('action');
+        if (action == 'open') {
+            $('.select-avatar-window').css('display', 'block');
+        } else if (action == 'close') {
+            $('.select-avatar-window').css('display', 'none');
+        } else {
+            $('.select-avatar-window').css('display', 'none');
+        }
+    });
     // #endregion
     // ======================================================================================= /
 });

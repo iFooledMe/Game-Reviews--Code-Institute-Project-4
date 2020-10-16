@@ -30,6 +30,9 @@
     "game_reviews/users/migrations": true,
     "game_reviews/users/__init__.py": true,
     "game_reviews/users/apps.py": true,
-    "game_reviews/users/tests.py": true
+    "game_reviews/users/tests.py": true,
+    "game_reviews/admin": true,
+    "game_reviews/env.py": true,
+    "game_reviews/requirements.txt": true
   }
 }

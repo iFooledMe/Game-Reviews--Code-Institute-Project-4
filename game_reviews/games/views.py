@@ -74,9 +74,7 @@ def update_avg_score(games):
 
 # region ==== Game Details ===================================================/
 def game_details_view(request, game_id):
-    #gameid = request.GET.get('gameid', 'none')
     gameid = game_id
-    print(gameid)
     if gameid != 'none':
         game = Game.objects.filter(id=gameid)
         # Authenticated User

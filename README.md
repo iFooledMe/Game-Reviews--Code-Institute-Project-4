@@ -189,6 +189,9 @@ freepik @ https://www.freepik.com/free-photo/close-up-blurred-guy-holding-contro
 User Avatars
 Alex Gallego @ https://www.coroflot.com/alexgallego/Poker-player-game-avatars
 
+Incognito Avatar Image
+vecktorstock.com @ https://cdn1.vectorstock.com/i/1000x1000/50/30/user-icon-male-person-symbol-profile-avatar-vector-20715030.jpg
+
 ### Code
 
 Extend user profile

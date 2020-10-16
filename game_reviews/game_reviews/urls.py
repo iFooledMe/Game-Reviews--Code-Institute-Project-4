@@ -21,7 +21,7 @@ from django.conf.urls import url, include
 
 from allauth.account.views import LoginView, SignupView, LogoutView
 from games import views
-from users.views import user_profile_view, pay_thankyou_view, user_profile_edit
+from users.views import user_profile_view, pay_thankyou_view, user_profile_edit, change_avatar
 
 
 urlpatterns = [
@@ -36,6 +36,8 @@ urlpatterns = [
     path('signup', SignupView.as_view(), name='signup'),
     path('userprofile', user_profile_view, name='userprofile'),
     path('userprofile_edit', user_profile_edit, name='userprofile_edit'),
+    path('changeavatar/<int:avatar_id>',
+         change_avatar, name='change_avatar'),
     path('pay_thankyou', pay_thankyou_view, name='pay_thankyou'),
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),

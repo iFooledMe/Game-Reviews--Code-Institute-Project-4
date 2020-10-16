@@ -61,8 +61,8 @@
             <div class="d-flex flex-row justify-content-between mt-2">
                 <div class="w-100">E-mail:</div>
                 <div class="w-100">
-                    {% if user.email %} {{ user.email }} {% else %} No e-mail
-                    name is registered {% endif %}
+                    {% if user.email %} {{ user.email }} {% else %} No e-mail is
+                    registered {% endif %}
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-between mt-2">
@@ -79,23 +79,51 @@
             </div>
             <div class="d-flex flex-row justify-content-between mt-2">
                 <div class="w-100">Avatar image:</div>
-                <div class="w-100 mx-auto">
+                <div class="w-100 mx-auto text-center">
                     {% if user.userprofile.avatar %}
-                    <div class="user-profile-avatar-wrapper text-center">
-                        <img
-                            class="img-fluid user-profile-avatar-img"
-                            src="{{ MEDIA_URL }}{{ user.userprofile.avatar.image }}"
-                            alt="{{ user.userprofile.avatar }} avatar image"
-                        />
-                    </div>
-                    <div>{{ user.userprofile.avatar }}</div>
-                    {% else %} No avatar set {% endif %}
+                    <a class="change-avatar-button"
+                        data-action="open"
+                        role="button">
+                        <div class="user-profile-avatar-wrapper">
+                            <img
+                                class="img-fluid user-profile-avatar-img"
+                                src="{{ MEDIA_URL }}{{ user.userprofile.avatar.image }}"
+                                alt="{{ user.userprofile.avatar }} avatar image"/>
+                        </div>
+                        <div class="text-left">
+                            <p>{{ user.userprofile.avatar }}
+                                <br>
+                                <span class="txt-small">
+                                    Click on the avatar image to change it
+                                </span>
+                            </p>
+                        </div>
+                    </a>
+                    {% else %}
+                    <a class="change-avatar-button"
+                        data-action="open"
+                        role="button">
+                        <div class="user-profile-avatar-wrapper text-center">
+                            <img
+                                class="img-fluid user-profile-avatar-img"
+                                src="{% static 'img/ingognito.png'%}"
+                                alt="Retro Joystick"/>
+                        </div>
+                        <div class="text-left">
+                            <p>Ingognito</p>
+                            <p class="txt-small">
+                                Click on the avatar image to change it
+                            </p>
+                        </div>
+                    </a>
+                    {% endif %}
                 </div>
             </div>
-            <div>
+            <div class="w-100 mx-0 mt-3">
                 <a
                     href="{% url 'userprofile_edit' %}"
                     class="btn btn-sm btn-light go-to-button hover-me"
+                    id="edit-profile-button"
                     role="button"
                 >
                     Edit settings
@@ -106,7 +134,6 @@
         <!-- #endregion -->
     </div>
     <!-- #endregion -->
-
     <!-- #region right-column -->
     <div class="col-12 col-md-6 m-0 p-0 user-profile-col-right">
         <div class="d-flex flex-column mt-4 ml-0 w-100 h-100">
@@ -150,7 +177,61 @@
             </div>
         </div>
         <!-- #endregion -->
-
-        {% endblock %}
     </div>
 </div>
+<!-- #endregion -->
+
+<!-- #region Avatar window -->
+<div class="select-avatar-window p-3 mb-5">
+    <!-- #region Title Row -->
+    <div class="select-avatar-title">
+        <div class="float-left">
+            <h4>Select an avatar image</h4>
+            <p>Click on a avatar image to select it</p>
+        </div>
+        <div class="float-right">
+            <a
+                class="btn btn-sm btn-light go-to-button hover-me change-avatar-button"
+                data-action="close"
+                role="button"
+            >
+                <h5>Close <i class="fas fa-times"></i></h5>
+            </a>
+        </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region Avatar Images -->
+    <div class="d-flex flex-wrap w-100 mx-auto avatar-images-wrapper">
+        <a
+            id="change-avatar-close"
+            href="{% url 'change_avatar' avatar_id=0 %}"
+        >
+            <div class="user-profile-avatar-wrapper text-center mx-2 my-3">
+                <img
+                    class="img-fluid user-profile-avatar-img"
+                    src="{% static 'img/ingognito.png'%}"
+                    alt="Ingognito - No avatar"
+                />
+                <p class="text-center">Ingognito</p>
+            </div>
+        </a>
+        {% for avatar in avatars %}
+        <a
+            id="change-avatar-close"
+            href="{% url 'change_avatar' avatar_id=avatar.id %}"
+        >
+            <div class="user-profile-avatar-wrapper text-center mx-2 my-3">
+                <img
+                    class="img-fluid user-profile-avatar-img"
+                    src="{{ MEDIA_URL }}{{ avatar.image }}"
+                    alt="Avatar image - {{ avatar.description }}"
+                />
+                <p class="text-center">{{ avatar.description }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <!-- #endregion -->
+</div>
+<!-- #endregion -->
+{% endblock %}
