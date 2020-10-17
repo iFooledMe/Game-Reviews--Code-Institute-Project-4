@@ -16,9 +16,9 @@ GAME_TIME_CHOICES = [
     ('Show all time', 'Show all time'),
     ('Show last week', 'Show last week'),
     ('Show last month', 'Show last month'),
-    ('Show last 3 months', 'how last 3 months'),
-    ('Show last 6 months', 'how last 6 months'),
-    ('Show last year', 'how last year'),
+    ('Show last 3 months', 'Show last 3 months'),
+    ('Show last 6 months', 'Show last 6 months'),
+    ('Show last year', 'Show last year'),
 ]
 
 GAME_VIEW_CHOISES = [

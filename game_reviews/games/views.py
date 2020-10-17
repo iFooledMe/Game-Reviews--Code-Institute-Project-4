@@ -1,6 +1,7 @@
 
 # region ==== Imports ========================================================/
 import collections
+from datetime import date, datetime, timedelta
 from decimal import *
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
@@ -19,12 +20,22 @@ from users.forms import NewCommentForm,  EditCommentForm
 
 # region ==== Games List =====================================================/
 
+# region --- MAIN FUNCTION ------------?--
+
 
 def game_list_view(request, *args, **kwargs):
     order_by_in = request.GET.get('sort', 'none')
     get_order_by(request, order_by_in)
-    print(request.session.get('order_by_in'))
-    games = Game.objects.all().order_by(request.session.get('order_by_in'))
+    time_filter_in = request.GET.get('time', 'none')
+    get_time_filter_start_date(request, time_filter_in)
+    # games = Game.objects.all().order_by(request.session.get('order_by_in'))
+    #start_date = get_time_filter_start_date(request, time_filter_in)
+    end_date = date.today()
+    print(end_date)
+    start_date = end_date - \
+        timedelta(days=get_time_filter_start_date(request, time_filter_in))
+    print(start_date)
+    games = Game.objects.filter(release_date__range=[start_date, date.today()])
     update_avg_score(games)
     search_show_form = GameSortShowForms()
     genre_tags_filter = GameFilterGenreForm()
@@ -42,8 +53,10 @@ def game_list_view(request, *args, **kwargs):
     }
 
     return render(request, "games_list.html", context)
+# endregion ----
+# -----------------------------------------
 
-# region --- Get sort parameter
+# region --- Get sort parameter ----------
 
 
 def get_order_by(request, order_by_in):
@@ -65,7 +78,38 @@ def set_order_parameter(order_by_in):
     else:
         return '-release_date'
 # endregion ----
-# ------------------------------
+# -----------------------------------------
+
+# region --- Get date filter start date ---
+
+
+def get_time_filter_start_date(request, time_filter_in):
+    if time_filter_in != 'none':
+        request.session['time_filter_days'] = get_days(time_filter_in)
+    if 'time_filter_days' not in request.session:
+        request.session['time_filter_days'] = 36500
+
+    return request.session.get('time_filter_days')
+
+
+def get_days(time_filter_in):
+    print(time_filter_in)
+    if time_filter_in == 'Show last week':
+        return 7
+    elif time_filter_in == 'Show last month':
+        return 30
+    elif time_filter_in == 'Show last 3 months':
+        return 90
+    elif time_filter_in == 'Show last 6 months':
+        return 180
+    elif time_filter_in == 'Show last year':
+        return 365
+    else:
+        return 36500
+# endregion ----
+# ------------------------------------------
+
+# region --- Calculate Score --------------
 
 
 def update_avg_score(games):
@@ -80,12 +124,17 @@ def update_avg_score(games):
         max = scores_max.get('max_score__sum')
         avg_score = round((sum / max) * 100, 0)
         Game.objects.filter(pk=game.id).update(avg_score=avg_score)
-
+# endregion ----
+# ------------------------------------------
 
 # endregion
 # ============================================================================/
 
 # region ==== Game Details ===================================================/
+
+# region --- MAIN FUNCTION ----------------
+
+
 def game_details_view(request, game_id):
     gameid = game_id
     if gameid != 'none':
@@ -133,6 +182,10 @@ def game_details_view(request, game_id):
         }
         return render(request, "game_details.html", context)
     return redirect(game_list_view)
+# endregion
+# ------------------------------------------
+
+# region --- Calculate Score --------------
 
 
 def calc_avg_user_score(gameid):
@@ -141,6 +194,8 @@ def calc_avg_user_score(gameid):
     aggregate_score = all_user_comment_scores_exlude_zero.aggregate(
         Avg('user_score'))
     return int(aggregate_score.get('user_score__avg') * 10)
+# endregion
+# ------------------------------------------
 
 # endregion
 # ============================================================================/
@@ -202,9 +257,9 @@ def delete_comment(request):
     userid = request.user.id
     UserCommentsScore.objects.get(
         game__id=gameid, user__id=userid).delete()
-    #edit_comment_form = NewCommentForm(request.POST, instance=comment_instance)
+    # edit_comment_form = NewCommentForm(request.POST, instance=comment_instance)
     # if edit_comment_form.is_valid():
-    #edit_comment = edit_comment_form.save(commit=False)
+    # edit_comment = edit_comment_form.save(commit=False)
     # edit_comment.save()
     # return redirect('game_details', game_id=gameid)
     return redirect('game_details', game_id=gameid)
