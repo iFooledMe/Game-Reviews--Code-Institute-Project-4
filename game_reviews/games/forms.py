@@ -30,6 +30,11 @@ GAME_VIEW_CHOISES = [
 # GENRE_TAGS = [tuple((tag.long_name, tag.long_name))
 #              for tag in GenreTag.objects.all()]
 
+GENRE_TAGS = [
+    {'1', '2'},
+    {'3', '4'},
+]
+
 
 class GameSortShowForms(forms.Form):
     sort = forms.MultipleChoiceField(
@@ -57,12 +62,6 @@ class GameSortShowForms(forms.Form):
         ),
         choices=GAME_VIEW_CHOISES,
     )
-
-
-GENRE_TAGS = [
-    {'1', '2'},
-    {'3', '4'},
-]
 
 
 class GameFilterGenreForm(forms.Form):

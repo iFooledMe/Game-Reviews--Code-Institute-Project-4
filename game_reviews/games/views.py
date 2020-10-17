@@ -21,13 +21,10 @@ from users.forms import NewCommentForm,  EditCommentForm
 
 
 def game_list_view(request, *args, **kwargs):
-    sort_in = request.GET.get('sort', 'none')
-
-    sort_out = '-release_date'
-    if sort_in != 'none':
-        sort_out = order_by(sort_in)
-
-    games = Game.objects.all().order_by(sort_out)
+    order_by_in = request.GET.get('sort', 'none')
+    get_order_by(request, order_by_in)
+    print(request.session.get('order_by_in'))
+    games = Game.objects.all().order_by(request.session.get('order_by_in'))
     update_avg_score(games)
     search_show_form = GameSortShowForms()
     genre_tags_filter = GameFilterGenreForm()
@@ -46,19 +43,29 @@ def game_list_view(request, *args, **kwargs):
 
     return render(request, "games_list.html", context)
 
+# region --- Get sort parameter
 
-def order_by(sort_in):
 
-    if sort_in == 'Order by date (Desc)':
+def get_order_by(request, order_by_in):
+    if order_by_in != 'none':
+        request.session['order_by_in'] = set_order_parameter(order_by_in)
+    if 'order_by_in' not in request.session:
+        request.session['order_by_in'] = '-release_date'
+
+
+def set_order_parameter(order_by_in):
+    if order_by_in == 'Order by date (Desc)':
         return 'release_date'
-    elif sort_in == 'Order by date (Asc)':
+    elif order_by_in == 'Order by date (Asc)':
         return '-release_date'
-    elif sort_in == 'Order by score (Desc)':
+    elif order_by_in == 'Order by score (Desc)':
         return 'avg_score'
-    elif sort_in == 'Order by score (Asc)':
+    elif order_by_in == 'Order by score (Asc)':
         return '-avg_score'
     else:
-        return 'release_date'
+        return '-release_date'
+# endregion ----
+# ------------------------------
 
 
 def update_avg_score(games):
