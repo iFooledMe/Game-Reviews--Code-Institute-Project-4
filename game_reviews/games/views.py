@@ -47,6 +47,16 @@ def game_list_view(request, *args, **kwargs):
 # endregion ----
 # -----------------------------------------
 
+# region --- Reset filters ----------------
+
+
+def reset_filters(request):
+    del request.session['order_by_in']
+    del request.session['time_filter_days']
+    return redirect(game_list_view)
+# endregion ----
+# -----------------------------------------
+
 # region --- Get Games (filtered) ---------
 
 

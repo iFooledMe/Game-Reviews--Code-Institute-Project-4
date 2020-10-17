@@ -10,7 +10,7 @@
 <div class="d-block d-md-none">
 	<div class="container-fluid w-100 game-container-expanded px-3 mx-0">
 		<!-- #region ==== INFO BOX ================================================================ -->
-		<div class="flex-grow-1 game-info-box">		
+		<div class="flex-grow-1 game-info-box">
 			<!-- #region ==== Row 1 - Title ======================================================= -->
 			<div class="game-info-row-1 game-info-row-1-sm shadow-bottom-right game-title game-title-sm">
 				<div class="invisible">
@@ -26,17 +26,19 @@
 				<div class="d-flex flex-row justify-content-between">
 					<div class="game-thumb-wrapper thumb-wrapper-sm">
 						{% if  game.thumb_img %}
-							<img class="img-fluid game-thumb-large-img" src="{{ MEDIA_URL }}{{ game.thumb_img }}" alt="{{ game.title }} - Cover image">
+						<img class="img-fluid game-thumb-large-img" src="{{ MEDIA_URL }}{{ game.thumb_img }}"
+							alt="{{ game.title }} - Cover image">
 						{% else %}
-							<img class="img-fluid" src="{% static "img/img_placeholder_244x300.jpg"%}" alt="Empty placeholder - Game cover image is missing">
+						<img class="img-fluid" src="{% static "img/img_placeholder_244x300.jpg"%}"
+							alt="Empty placeholder - Game cover image is missing">
 						{% endif %}
 					</div>
-					<div class="score-wrapper-sm">	
+					<div class="score-wrapper-sm">
 						<div class="score score-sm shadow-bottom-right">
 							<span class="score-text score-text-sm score-text-digits-sm">{{ game.avg_score.normalize }}</span><br>
 						</div>
 					</div>
-					<div class="flex-grow-1 px-3 py-2">	
+					<div class="flex-grow-1 px-3 py-2">
 						<div class="d-flex flex-column align-items-stretch">
 							<div class="txt-medium">
 								<strong>{{ game.release_date }}</strong>
@@ -45,11 +47,11 @@
 								<span>
 									{% for platform in game.platforms.all %}
 									{% if platform.show_icon %}
-										{{ platform.icon | safe }}
+									{{ platform.icon | safe }}
 									{% elif platform.show_img %}
-										<img class="platform-icon-image" src="{{ platform.img.url }}" alt="">
+									<img class="platform-icon-image" src="{{ platform.img.url }}" alt="">
 									{% endif %}
-										{{ platform.short_name}}
+									{{ platform.short_name}}
 									{% endfor %}
 								</span>
 							</div>
@@ -58,47 +60,47 @@
 									{% for tag in game.genre_tags.all %}
 									<span class="ml-1 shadow-faint-small tag tag-genre">
 										{% if tag.show_name %}
-											{{ tag.short_name }}
+										{{ tag.short_name }}
 										{% endif %}
 										{% if tag.show_icon %}
-											{{ tag.icon | safe }}
+										{{ tag.icon | safe }}
 										{% endif %}
 									</span>
 									{% endfor %}
 								</div>
 								<div class="ml-1 text-left">
 									{% for tag in game.theme_tags.all %}
-										<span class="ml-2 shadow-faint-small tag tag-theme">
-											{% if tag.show_name %}
-												{{ tag.short_name }}
-											{% endif %}
-											{% if tag.show_icon %}
-												{{ tag.icon | safe }}
-											{% endif %}
-										</span>
+									<span class="ml-2 shadow-faint-small tag tag-theme">
+										{% if tag.show_name %}
+										{{ tag.short_name }}
+										{% endif %}
+										{% if tag.show_icon %}
+										{{ tag.icon | safe }}
+										{% endif %}
+									</span>
 									{% endfor %}
 								</div>
 								<div class="ml-1 text-left">
 									{% for tag in game.misc_tags.all %}
-										<span class="ml-2 shadow-faint-small tag tag-misc">
-											{% if tag.show_name %}
-												{{ tag.short_name }}
-											{% endif %}
-											{% if tag.show_icon %}
-												{{ tag.icon | safe }}
-											{% endif %}
-										</span>
+									<span class="ml-2 shadow-faint-small tag tag-misc">
+										{% if tag.show_name %}
+										{{ tag.short_name }}
+										{% endif %}
+										{% if tag.show_icon %}
+										{{ tag.icon | safe }}
+										{% endif %}
+									</span>
 									{% endfor %}
 								</div>
 								<!-- #endregion -->
 								<!-- #region Details button -->
 								<div class="d-flex flex-column align-items-end">
-										<a href="{% url 'game_details' game_id=game.id %}" class="details-button-sm hover-me" role="button">
-											<span class="details-txt"> Game Details <i class="fas fa-caret-right icon-rightarrow"></i></span>
-										</a>
+									<a href="{% url 'game_details' game_id=game.id %}" class="details-button-sm hover-me" role="button">
+										<span class="details-txt"> Game Details <i class="fas fa-caret-right icon-rightarrow"></i></span>
+									</a>
 								</div>
 								<!-- #endregion -->
-							</div>	
+							</div>
 						</div>
 					</div>
 				</div>
@@ -108,17 +110,18 @@
 	</div>
 </div>
 <!-- #endregion -->
+
 <!-- #region Game container large screens-->
 <div class="d-none d-md-block">
 	<div class="container-fluid w-100 game-container-expanded px-3 mx-0">
-		
+
 		<div class="d-flex flex-row align-items-stretch">
 			<!-- #region ==== THUMB BOX =============================================================== -->
 			<div class="game-thumb-wrapper">
 				{% if  game.thumb_img %}
-					<img class="img-fluid game-thumb-large-img" src="{{ MEDIA_URL }}{{ game.thumb_img }}" alt="{{ game.title }} - Cover image">
+				<img class="img-fluid game-thumb-large-img" src="{{ MEDIA_URL }}{{ game.thumb_img }}" alt="{{ game.title }} - Cover image">
 				{% else %}
-					<img src="{% static "img/img_placeholder_244x300.jpg"%}" alt="Empty placeholder - Game cover image is missing">
+				<img src="{% static "img/img_placeholder_244x300.jpg"%}" alt="Empty placeholder - Game cover image is missing">
 				{% endif %}
 				<div class="pegi-overlay">
 					<a href="https://pegi.info/what-do-the-labels-mean" target="_blank">
@@ -129,7 +132,7 @@
 			<!-- #endregion -->
 			<!-- #region ==== INFO BOX ================================================================ -->
 			<div class="flex-grow-1 game-info-box">
-				
+
 				<!-- #region ==== Row 1 - Title ======================================================= -->
 				<div class="game-info-row-1 shadow-bottom-right game-title">
 					<div class="invisible">
@@ -153,43 +156,43 @@
 							<span>
 								{% for platform in game.platforms.all %}
 								{% if platform.show_icon %}
-									{{ platform.icon | safe }}
+								{{ platform.icon | safe }}
 								{% elif platform.show_img %}
-									<img class="platform-icon-image" src="{{ platform.img.url }}" alt="">
+								<img class="platform-icon-image" src="{{ platform.img.url }}" alt="">
 								{% endif %}
-									{{ platform.short_name}}
+								{{ platform.short_name}}
 								{% endfor %}
 							</span>
 						</div>
 						<!-- #endregion -->
 						<!-- #region ++++ Dev / Publ ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 						<div class="d-none d-md-block txt-small">
-						<span>
-							{% if game.developer %}
-								{% if game.developer.web_url %}
-									<a href="{{ game.developer.web_url }}" target="_blank">Dev: {{ game.developer.short_name }}</a>
-								{% else %}
-									Dev: {{ game.developer.short_name }}</a>
-								{% endif %}
-							{% endif %}
-						</span>
 							<span>
-								{% if game.developer and game.publisher %}
-									<br>
+								{% if game.developer %}
+								{% if game.developer.web_url %}
+								<a href="{{ game.developer.web_url }}" target="_blank">Dev: {{ game.developer.short_name }}</a>
+								{% else %}
+								Dev: {{ game.developer.short_name }}</a>
+								{% endif %}
 								{% endif %}
 							</span>
-						<span>
-							{% if game.publisher %}
-								{% if game.publisher.web_url %}
-									<a href="{{ game.publisher.web_url }}" target="_blank">Publ: {{ game.publisher.short_name }}</a>
-								{% else %}
-									Publ: {{ game.publisher.short_name }}</a>
+							<span>
+								{% if game.developer and game.publisher %}
+								<br>
 								{% endif %}
-							{% endif %}
-						</span>
+							</span>
+							<span>
+								{% if game.publisher %}
+								{% if game.publisher.web_url %}
+								<a href="{{ game.publisher.web_url }}" target="_blank">Publ: {{ game.publisher.short_name }}</a>
+								{% else %}
+								Publ: {{ game.publisher.short_name }}</a>
+								{% endif %}
+								{% endif %}
+							</span>
 						</div>
 						<!-- #endregion -->
-					
+
 					</div>
 					<!-- #region ++++++++ Tags ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 					<div class="tags-container mr-2">
@@ -197,36 +200,36 @@
 							{% for tag in game.genre_tags.all %}
 							<span class="ml-1 shadow-faint-small tag tag-genre">
 								{% if tag.show_name %}
-									{{ tag.short_name }}
+								{{ tag.short_name }}
 								{% endif %}
 								{% if tag.show_icon %}
-									{{ tag.icon | safe }}
+								{{ tag.icon | safe }}
 								{% endif %}
 							</span>
 							{% endfor %}
 						</div>
 						<div class="ml-1 text-right">
 							{% for tag in game.theme_tags.all %}
-								<span class="ml-2 shadow-faint-small tag tag-theme">
-									{% if tag.show_name %}
-										{{ tag.short_name }}
-									{% endif %}
-									{% if tag.show_icon %}
-										{{ tag.icon | safe }}
-									{% endif %}
-								</span>
+							<span class="ml-2 shadow-faint-small tag tag-theme">
+								{% if tag.show_name %}
+								{{ tag.short_name }}
+								{% endif %}
+								{% if tag.show_icon %}
+								{{ tag.icon | safe }}
+								{% endif %}
+							</span>
 							{% endfor %}
 						</div>
 						<div class="ml-1 text-right">
 							{% for tag in game.misc_tags.all %}
-								<span class="ml-2 shadow-faint-small tag tag-misc">
-									{% if tag.show_name %}
-										{{ tag.short_name }}
-									{% endif %}
-									{% if tag.show_icon %}
-										{{ tag.icon | safe }}
-									{% endif %}
-								</span>
+							<span class="ml-2 shadow-faint-small tag tag-misc">
+								{% if tag.show_name %}
+								{{ tag.short_name }}
+								{% endif %}
+								{% if tag.show_icon %}
+								{{ tag.icon | safe }}
+								{% endif %}
+							</span>
 							{% endfor %}
 						</div>
 					</div>
@@ -238,85 +241,85 @@
 					<!-- #region ++++++++ Row 3 back-cover +++++++++++++++++++++++++++++++++++++++++++++ -->
 					<div class="row-3-backcover"></div>
 					<!-- #endregion -->
-					<!-- #region ++++++++ Score ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->				
-					<div class="score-wrapper">	
+					<!-- #region ++++++++ Score ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+					<div class="score-wrapper">
 						<div class="score shadow-bottom-right">
 							<span class="score-text score-text-digits">{{ game.avg_score.normalize }}</span><br>
 						</div>
 					</div>
 					<!-- #endregion -->
 					<!-- #region ++++++++ Reviews ++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-					<div id="reviews_game_{{ game.id }}">	
-						<!-- #region - Compact view - -->	
+					<div id="reviews_game_{{ game.id }}">
+						<!-- #region - Compact view - -->
 						<div class="reviews-container rc-compact">
 							<div class="d-flex flex-column mr-2 shadow-bottom-right reviews-quotes">
 								{% for review in game.review_set.all %}
-									{% if forloop.counter <= 2 %}		
-										<div class="reviews-text-box">
-											<a href="{{ review.review_url }}" target="_blank">	
-												<span class="review-quote-src">
-													{{ review.review_site.site_short_name }} - 
-													{{ review.score.normalize }}/{{ review.max_score.normalize }}
-												</span>
-												"{{ review.short_quote }}
-											</a>
-											<div class="reviews-end-dots">..."</div>
-										</div>
-									{% endif %}	
-								{% endfor %}	
+								{% if forloop.counter <= 2 %}
+								<div class="reviews-text-box">
+									<a href="{{ review.review_url }}" target="_blank">
+										<span class="review-quote-src">
+											{{ review.review_site.site_short_name }} -
+											{{ review.score.normalize }}/{{ review.max_score.normalize }}
+										</span>
+										"{{ review.short_quote }}
+									</a>
+									<div class="reviews-end-dots">..."</div>
+								</div>
+								{% endif %}
+								{% endfor %}
 							</div>
 							<!-- #region ++++++++ Button +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 							<div class="expand-button-wrapper mr-2">
-								<button class="expand-button shadow-bottom-right" 
-										data-id="reviews_game_{{ game.id }}" 
-										data-targetopenone="rc-expanded" 
-										data-targetcloseone="rc-compact">
+								<button class="expand-button shadow-bottom-right"
+									data-id="reviews_game_{{ game.id }}"
+									data-targetopenone="rc-expanded"
+									data-targetcloseone="rc-compact">
 									More Reviews <i class="fas fa-caret-down icon-downarrow"></i>
 								</button>
 							</div>
 							<!-- #endregion -->
 						</div>
-						<!-- #endregion -->	
-						<!-- #region - Expanded view - -->	
+						<!-- #endregion -->
+						<!-- #region - Expanded view - -->
 						<div class="reviews-container rc-expanded" id="game_{{ game.id }}">
 							<div class="d-flex flex-column mr-2 shadow-bottom-right reviews-quotes">
 								{% for review in game.review_set.all  %}
-									{% if forloop.counter %}		
-										<div class="reviews-text-box">
-											<a href="{{ review.review_url }}" target="_blank">	
-												<span class="review-quote-src">
-													{{ review.review_site.site_short_name }} - 
-													{{ review.score.normalize }}/{{ review.max_score.normalize }}
-												</span>
-												"{{ review.short_quote }}
-											</a>
-											<div class="reviews-end-dots">..."</div>
-										</div>
-									{% endif %}	
-								{% endfor %}	
+								{% if forloop.counter %}
+								<div class="reviews-text-box">
+									<a href="{{ review.review_url }}" target="_blank">
+										<span class="review-quote-src">
+											{{ review.review_site.site_short_name }} -
+											{{ review.score.normalize }}/{{ review.max_score.normalize }}
+										</span>
+										"{{ review.short_quote }}
+									</a>
+									<div class="reviews-end-dots">..."</div>
+								</div>
+								{% endif %}
+								{% endfor %}
 							</div>
 							<!-- #region ++++++++ Button +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 							<div class="expand-button-wrapper mr-2">
-								<button class="expand-button shadow-bottom-right" 
-										data-id="reviews_game_{{ game.id }}" 
-										data-targetopenone="rc-compact" 
-										data-targetcloseone="rc-expanded">
+								<button class="expand-button shadow-bottom-right"
+									data-id="reviews_game_{{ game.id }}"
+									data-targetopenone="rc-compact"
+									data-targetcloseone="rc-expanded">
 									Close <i class="fas fa-caret-up icon-downarrow"></i>
 								</button>
 							</div>
 							<!-- #endregion -->
-						</div>						
-					</div>	
+						</div>
+					</div>
 					<!-- #endregion -->
 				</div>
 				<!-- #endregion -->
 				<!-- #endregion -->
 				<!-- #region ==== Row 4 - Description ================================================= -->
-				<div class="game-info-row-4" id="description_game_{{ game.id }}">		
+				<div class="game-info-row-4" id="description_game_{{ game.id }}">
 					<!-- #region *** Description Compact *** -->
 					<!-- #region Compact content -->
 					<div class="dw-compact">
-						<div class="descr-background">	
+						<div class="descr-background">
 							<div class="d-flex flex-column align-content-stretch descr-wrapper dw-compact">
 								<div class="descr-row-1">
 									<span class="descr-source">
@@ -332,16 +335,16 @@
 						</div>
 					</div>
 					<div class="descr-bottom-cover"></div>
-					<!-- #endregion -->				
+					<!-- #endregion -->
 					<!-- #region Compact buttons -->
 					<div class="footer-buttons-container rm-btn-compact">
-						<button class="expand-button read-more-button shadow-inside-up hover-me" 
-								data-id="description_game_{{ game.id }}" 		
-								data-targetcloseone="dw-compact"
-								data-targetcloseTwo="rm-btn-compact"
-								data-targetopenone="dw-expanded" 
-								data-targetopenTwo="rm-btn-expanded"
-								data-scrollto="top-of-game-{{ game.id }}">
+						<button class="expand-button read-more-button shadow-inside-up hover-me"
+							data-id="description_game_{{ game.id }}"
+							data-targetcloseone="dw-compact"
+							data-targetcloseTwo="rm-btn-compact"
+							data-targetopenone="dw-expanded"
+							data-targetopenTwo="rm-btn-expanded"
+							data-scrollto="top-of-game-{{ game.id }}">
 							...Read more <i class="fas fa-caret-down icon-downarrow"></i>
 						</button>
 						<a href="{% url 'game_details' game_id=game.id %}" class="details-button" role="button">
@@ -349,7 +352,7 @@
 						</a>
 					</div>
 					<!-- #endregion-->
-					<!-- #endregion -->	
+					<!-- #endregion -->
 					<!-- #region *** Description Expanded *** -->
 					<!-- #region Expanded content -->
 					<div class="dw-expanded">
@@ -371,27 +374,27 @@
 					<!-- #endregion -->
 					<!-- #region Expanded buttons -->
 					<div class="footer-buttons-container rm-btn-expanded">
-						<button class="expand-button read-more-button shadow-inside-up hover-me" 
-								data-id="description_game_{{ game.id }}" 
-								data-targetcloseone="dw-expanded"
-								data-targetcloseTwo="rm-btn-expanded"
-								data-targetopenone="dw-compact" 
-								data-targetopenTwo="rm-btn-compact"
-								data-scrollto="top-of-game-{{ game.id }}">
+						<button class="expand-button read-more-button shadow-inside-up hover-me"
+							data-id="description_game_{{ game.id }}"
+							data-targetcloseone="dw-expanded"
+							data-targetcloseTwo="rm-btn-expanded"
+							data-targetopenone="dw-compact"
+							data-targetopenTwo="rm-btn-compact"
+							data-scrollto="top-of-game-{{ game.id }}">
 							Close <i class="fas fa-caret-up icon-downarrow"></i>
 						</button>
 						<a href="{% url 'game_details' game_id=game.id %}" class="details-button" role="button">
 							<span class="details-txt"> Game Details <i class="fas fa-caret-right icon-rightarrow"></i></span>
 						</a>
 					</div>
-					<!-- #endregion-->						
-					
+					<!-- #endregion-->
+
 
 					<!-- #endregion -->
-				</div>	
+				</div>
 				<!-- #endregion -->
 			</div>
-			<!-- #endregion -->
+
 		</div>
 		<!-- #region ======== GAME FOOTER ============================================================= -->
 		<div class="d-flex flex-row shadow-inside-up game-footer-box">
@@ -401,16 +404,29 @@
 			<!-- #region Stores -->
 			<div class="d-flex flex-grow-1 stores">
 
-			
+
 			</div>
 			<!-- #endregion -->
-			<!-- #region Details/Read more buttons -->
-
-			<!-- #endregion -->	
 		</div>
 		<!-- #endregion -->
 	</div>
 </div>
 <!-- #endregion -->
+
+{% empty %}
+<div class="container-fluid w-100 game-container-expanded mx-auto text-center pt-5 no-search-result">
+	<h2>No search result!</h2>
+	<h5>No games are matching applied filters or text search</h5>
+	<div class="w-75 mx-0 mt-5 mx-auto">
+		<a href="{% url 'reset_filters' %}"
+			class="btn btn-sm btn-light go-to-button hover-me"
+			id="edit-profile-button"
+			role="button">
+			Reset all filters <i class="fas fa-undo-alt pl-2"></i>
+		</a>
+	</div>
+</div>
+
+
 {% endfor %}
 {% endblock %}

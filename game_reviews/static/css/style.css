@@ -1276,9 +1276,21 @@ tag-checkbox ul li label {
     background-color: var(--game-descr-more-button-bg-color-hover);
     color: var(--game-descr-more-button-txt-color-hover);
 }
-
 /* #endregion */
 
+/* #region ---- No search/filter result --- */
+.no-search-result h2 {
+    font-family: 'Titillium Web', sans-serif;
+    color: var(--expression-3);
+    text-transform: uppercase;
+}
+
+.no-search-result h5 {
+    font-family: 'Titillium Web', sans-serif;
+    text-transform: uppercase;
+}
+
+/* #endregion */
 /* #endregion */
 /* #endregion */
 /* ====================================================================== */
