@@ -25,17 +25,8 @@ from users.forms import NewCommentForm,  EditCommentForm
 
 def game_list_view(request, *args, **kwargs):
     order_by_in = request.GET.get('sort', 'none')
-    get_order_by(request, order_by_in)
     time_filter_in = request.GET.get('time', 'none')
-    get_time_filter_start_date(request, time_filter_in)
-    # games = Game.objects.all().order_by(request.session.get('order_by_in'))
-    #start_date = get_time_filter_start_date(request, time_filter_in)
-    end_date = date.today()
-    print(end_date)
-    start_date = end_date - \
-        timedelta(days=get_time_filter_start_date(request, time_filter_in))
-    print(start_date)
-    games = Game.objects.filter(release_date__range=[start_date, date.today()])
+    games = get_games(request, order_by_in, time_filter_in)
     update_avg_score(games)
     search_show_form = GameSortShowForms()
     genre_tags_filter = GameFilterGenreForm()
@@ -53,6 +44,26 @@ def game_list_view(request, *args, **kwargs):
     }
 
     return render(request, "games_list.html", context)
+# endregion ----
+# -----------------------------------------
+
+# region --- Get Games (filtered) ---------
+
+
+def get_games(request, order_by_in, time_filter_in):
+
+    # Date filter parameters
+    end_date = date.today()
+    start_date = end_date - \
+        timedelta(days=get_time_filter_start_date(request, time_filter_in))
+
+    # Set sort parameter
+    get_order_by(request, order_by_in)
+
+    games = Game.objects.filter(
+        release_date__range=[start_date, date.today()]).order_by(request.session.get('order_by_in'))
+
+    return games
 # endregion ----
 # -----------------------------------------
 
