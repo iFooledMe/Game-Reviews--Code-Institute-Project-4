@@ -57,6 +57,7 @@ def game_list_view(request, *args, **kwargs):
 def reset_filters(request):
     del request.session['order_by_in']
     del request.session['time_filter_days']
+    del request.session['genre_filter']
     return redirect(game_list_view)
 # endregion ----
 # -----------------------------------------
@@ -66,17 +67,21 @@ def reset_filters(request):
 
 def get_games(request, order_by_in, time_filter_in, genre_filter_in):
 
-    # Date filter parameters
+    # Get/Set date filter
     end_date = date.today()
     start_date = end_date - \
         timedelta(days=get_time_filter_start_date(request, time_filter_in))
-
-    # Set sort parameter
-    get_order_by(request, order_by_in)
-
     games = Game.objects.filter(
-        release_date__range=[start_date, date.today()]
-    ).order_by(request.session.get('order_by_in'))
+        release_date__range=[start_date, date.today()])
+
+    # Get/Set genre-tag filter
+    set_genre_filter(request, genre_filter_in)
+    games = games.filter(
+        genre_tags__pk__in=request.session.get('genre_filter'))
+
+    # Set / get sort order
+    get_order_by(request, order_by_in)
+    games = games.order_by(request.session.get('order_by_in'))
 
     return games
 # endregion ----
@@ -132,6 +137,16 @@ def get_days(time_filter_in):
         return 365
     else:
         return 36500
+# endregion ----
+# ------------------------------------------
+
+# region --- Get genre filter parameters ---
+
+
+def set_genre_filter(request, genre_filter_in):
+    if genre_filter_in != 'none':
+        request.session['genre_filter'] = genre_filter_in
+
 # endregion ----
 # ------------------------------------------
 
