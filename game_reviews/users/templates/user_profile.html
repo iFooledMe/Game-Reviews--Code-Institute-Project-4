@@ -2,7 +2,8 @@
 
 <!-- #region Title -->
 <div
-    class="row no-gutters mx-auto mt-5 px-3 py-auto pt-2 user-profile-title titillium-font-upper">
+    class="row no-gutters mx-auto mt-5 px-3 py-auto pt-2 user-profile-title titillium-font-upper"
+>
     <h3>Dashboard - Signed in as: <span>{{ user }}</span></h3>
 </div>
 <!-- #endregion -->
@@ -14,7 +15,9 @@
         <!-- #region Upgrade -->
         <div class="stripeform-container p-4 mb-4 titillium-font">
             {% if user.userprofile.is_premium %}
-            <div class="d-flex flex-row justify-content-between titillium-font-upper">
+            <div
+                class="d-flex flex-row justify-content-between titillium-font-upper"
+            >
                 <div class="w-100">Your membership:</div>
                 <div class="w-100">
                     Premium (until 2020-12-24) [HARDCODED!!!!]
@@ -44,7 +47,8 @@
 
         <!-- #region User Info -->
         <div
-            class="d-flex flex-column p-4 user-profile-col-left titillium-font">
+            class="d-flex flex-column p-4 user-profile-col-left titillium-font"
+        >
             <div class="titillium-font-upper">
                 <h5>Your account settings</h5>
             </div>
@@ -73,14 +77,6 @@
                 <div class="w-100">Username:</div>
                 <div class="w-100">{{ user.username }}</div>
             </div>
-            <div class="d-flex flex-row justify-content-between mt-4">
-                <div class="w-100">Alternative Alias:</div>
-                <div class="w-100">
-                    {% if user.userprofile.chat_alias %}
-                    {{user.userprofile.chat_alias}} {% else %} No allias name
-                    set {% endif %}
-                </div>
-            </div>
             <div class="d-flex flex-row justify-content-between mt-2">
                 <div class="w-100">Avatar image:</div>
                 <div class="w-100 mx-auto text-center">
@@ -88,12 +84,14 @@
                     <a
                         class="change-avatar-button"
                         data-action="open"
-                        role="button">
+                        role="button"
+                    >
                         <div class="user-profile-avatar-wrapper">
                             <img
                                 class="img-fluid user-profile-avatar-img"
                                 src="{{ MEDIA_URL }}{{ user.userprofile.avatar.image }}"
-                                alt="{{ user.userprofile.avatar }} avatar image" />
+                                alt="{{ user.userprofile.avatar }} avatar image"
+                            />
                         </div>
                         <div class="text-left">
                             <p>
@@ -109,12 +107,14 @@
                     <a
                         class="change-avatar-button"
                         data-action="open"
-                        role="button">
+                        role="button"
+                    >
                         <div class="user-profile-avatar-wrapper text-center">
                             <img
                                 class="img-fluid user-profile-avatar-img"
                                 src="{% static 'img/ingognito.png'%}"
-                                alt="Incognito user avatar" />
+                                alt="Incognito user avatar"
+                            />
                         </div>
                         <div class="text-left">
                             <p>Ingognito</p>
@@ -131,7 +131,8 @@
                     href="{% url 'userprofile_edit' %}"
                     class="btn btn-sm btn-light go-to-button hover-me"
                     id="edit-profile-button"
-                    role="button">
+                    role="button"
+                >
                     Edit settings
                     <i class="fas fa-chevron-right"></i>
                 </a>
@@ -149,7 +150,8 @@
                 </div>
                 {% for comment in comments %}
                 <div
-                    class="d-flex flex-column mb-2 px-3 py-1 activity-content-box">
+                    class="d-flex flex-column mb-2 px-3 py-1 activity-content-box"
+                >
                     <div class="d-flex flex-row justify-content-between">
                         <div class="username-txt flex-grow-0">
                             {{ comment.game.title }}
@@ -158,7 +160,8 @@
                             <a
                                 href="{% url 'game_details' game_id=comment.game.id %}"
                                 class="btn btn-sm btn-light go-to-button go-to-button-pos hover-me"
-                                role="button">
+                                role="button"
+                            >
                                 Go there to edit
                                 <i class="fas fa-chevron-right"></i>
                             </a>
@@ -199,7 +202,8 @@
             <a
                 class="btn btn-sm btn-light go-to-button change-avatar-button"
                 data-action="close"
-                role="button">
+                role="button"
+            >
                 <h5>Close <i class="fas fa-times"></i></h5>
             </a>
         </div>
@@ -209,24 +213,28 @@
     <div class="d-flex flex-wrap w-100 mx-auto avatar-images-wrapper">
         <a
             id="change-avatar-close"
-            href="{% url 'change_avatar' avatar_id=0 %}">
+            href="{% url 'change_avatar' avatar_id=0 %}"
+        >
             <div class="user-profile-avatar-wrapper text-center mx-2 my-3">
                 <img
                     class="img-fluid user-profile-avatar-img"
                     src="{% static 'img/ingognito.png'%}"
-                    alt="Ingognito - No avatar" />
+                    alt="Ingognito - No avatar"
+                />
                 <p class="text-center">Ingognito</p>
             </div>
         </a>
         {% for avatar in avatars %}
         <a
             id="change-avatar-close"
-            href="{% url 'change_avatar' avatar_id=avatar.id %}">
+            href="{% url 'change_avatar' avatar_id=avatar.id %}"
+        >
             <div class="user-profile-avatar-wrapper text-center mx-2 my-3">
                 <img
                     class="img-fluid user-profile-avatar-img"
                     src="{{ MEDIA_URL }}{{ avatar.image }}"
-                    alt="Avatar image - {{ avatar.description }}" />
+                    alt="Avatar image - {{ avatar.description }}"
+                />
                 <p class="text-center">{{ avatar.description }}</p>
             </div>
         </a>
