@@ -251,6 +251,17 @@ txt-xsmall {
     font-weight: 700;
 }
 
+.titillium-font-upper {
+    font-family: 'Titillium Web', sans-serif !important;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.titillium-font {
+    font-family: 'Titillium Web', sans-serif;
+    letter-spacing: 2px;
+}
+
 /* #endregion */
 
 /* #region *** Shadow effects *** */
@@ -374,10 +385,22 @@ txt-xsmall {
 }
 /* #endregion */
 
+/* #region **** Buttons *** */
+.go-to-button {
+    border-radius: 0 5px 0 5px;
+}
+
+.go-to-button-light {
+    background-color: var(--expression-6);
+    border-radius: 0 5px 0 5px;
+}
+
+/* #endregion */
+
 /* #region **** Hover effects *** */
 .hover-me:hover {
     background-color: var(--link-mouse-over-bg-color);
-    color: var(--link-mouse-over-txt-color);
+    color: var(--link-mouse-over-txt-color) !important;
     text-decoration: none;
 }
 
@@ -581,11 +604,13 @@ txt-xsmall {
 /* #region ==== S T R I P E S  P A Y ==================================== */
 .credit-card-form-wrapper {
     background-color: var(--expression-4);
-    width: 400px;
+    width: 100%;
 }
 
 .premium-button {
-    width: 400px !important;
+    display: block;
+    background-color: var(--expression-7) !important;
+    width: 100% !important;
 }
 
 .number-input-field {
@@ -1530,9 +1555,6 @@ tag-checkbox ul li label {
     width: 100%;
     background-color: var(--dark-3);
     color: var(--light-1);
-}
-
-.user-profile-col-right {
 }
 
 .stripeform-container {

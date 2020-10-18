@@ -7,11 +7,11 @@
 <!-- #endregion -->
 
 <!-- #region Content -->
-<div class="row no-gutters user-profile-content-container">
+<div class="row no-gutters user-profile-content-container titillium-font">
     <!-- #region left-column -->
     <div class="col-12 col-md-6 mt-4">
         <!-- #region Upgrade -->
-        <div class="stripeform-container p-4 mt-2 mb-4">
+        <div class="stripeform-container p-4 mb-4">
             {% if user.userprofile.is_premium %}
             <div class="d-flex flex-row justify-content-between">
                 <div class="w-100">Your membership:</div>
@@ -33,7 +33,7 @@
                     <strong>only $2.95 a year!</strong>
                 </div>
             </div>
-            <div class="row mt-3">{% include 'stripe.html' %}</div>
+            <div class="row mt-3 w-100 ml-1">{% include 'stripe.html' %}</div>
             {% endif %}
         </div>
 
@@ -42,11 +42,16 @@
         <!-- #region User Info -->
         <div class="d-flex flex-column p-4 user-profile-col-left">
             <div>
-                <h5>Your account settings</h5>
+                <h5 class="titillium-font-upper">Your account settings</h5>
             </div>
             <form action="{% url 'userprofile_edit' %}" method="POST">
                 {% csrf_token %} {{ user_form }}
-                <div><button type="submit">Submit</button></div>
+                <div>
+                    <button class="btn btn-sm btn-light go-to-button hover-me w-100 titillium-font-upper"
+                        type="submit">
+                        Submit
+                    </button>
+                </div>
             </form>
         </div>
         <!-- #endregion -->
@@ -57,11 +62,12 @@
     <div class="col-12 col-md-6 m-0 p-0 user-profile-col-right">
         <div class="d-flex flex-column mt-4 ml-0 w-100 h-100">
             <div class="ml-0 ml-md-5 mb-3 p-3 activity-container">
-                <div><h4>Your comments and scores</h4></div>
+                <div>
+                    <h4>Your comments and scores</h4>
+                </div>
                 {% for comment in comments %}
                 <div
-                    class="d-flex flex-column mb-2 px-3 py-1 activity-content-box"
-                >
+                    class="d-flex flex-column mb-2 px-3 py-1 activity-content-box">
                     <div class="d-flex flex-row justify-content-between">
                         <div class="username-txt flex-grow-0">
                             {{ comment.game.title }}
@@ -70,8 +76,7 @@
                             <a
                                 href="{% url 'game_details' game_id=comment.game.id %}"
                                 class="btn btn-sm btn-light go-to-button hover-me"
-                                role="button"
-                            >
+                                role="button">
                                 Go there to edit
                                 <i class="fas fa-chevron-right"></i>
                             </a>

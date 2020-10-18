@@ -57,7 +57,7 @@ class EditUserForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'email', 'username']
         widgets = {
             'first_name': forms.TextInput(
-                attrs={'class': 'form-control mt-2',
+                attrs={'class': 'form-control',
 
                        }
             ),

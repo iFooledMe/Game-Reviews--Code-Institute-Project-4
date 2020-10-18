@@ -1549,12 +1549,6 @@ tag-checkbox ul li label {
     background-color: var(--expression-6);
     border-radius: 5px;
 }
-
-.go-to-button {
-    background-color: var(--expression-5);
-    border: none;
-    border-radius: 0 5px 0 5px;
-}
 /* #endregion */
 
 /* #region --- Select Avatar window --- */
