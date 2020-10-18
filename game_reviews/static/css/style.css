@@ -1471,6 +1471,7 @@ tag-checkbox ul li label {
     position: relative;
     background-color: var(--medium-5);
     border-radius: 5px;
+    word-break: break-all;
 }
 
 .speech-bubble-tail {

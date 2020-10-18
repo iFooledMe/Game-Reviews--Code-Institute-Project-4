@@ -26,11 +26,15 @@ from users.forms import NewCommentForm,  EditCommentForm
 def game_list_view(request, *args, **kwargs):
     order_by_in = request.GET.get('sort', 'none')
     time_filter_in = request.GET.get('time', 'none')
-    games = get_games(request, order_by_in, time_filter_in)
+    genre_filter_in = request.GET.getlist('genre_filter', 'none')
+    games = get_games(
+        request,
+        order_by_in,
+        time_filter_in,
+        genre_filter_in)
     update_avg_score(games)
     search_show_form = GameSortShowForms()
     genre_tags_filter = GameFilterGenreForm()
-
     if 'hide_top_info' in request.session:
         hide_top_info = request.session.get('hide_top_info')
     else:
@@ -60,7 +64,7 @@ def reset_filters(request):
 # region --- Get Games (filtered) ---------
 
 
-def get_games(request, order_by_in, time_filter_in):
+def get_games(request, order_by_in, time_filter_in, genre_filter_in):
 
     # Date filter parameters
     end_date = date.today()
@@ -71,7 +75,8 @@ def get_games(request, order_by_in, time_filter_in):
     get_order_by(request, order_by_in)
 
     games = Game.objects.filter(
-        release_date__range=[start_date, date.today()]).order_by(request.session.get('order_by_in'))
+        release_date__range=[start_date, date.today()]
+    ).order_by(request.session.get('order_by_in'))
 
     return games
 # endregion ----

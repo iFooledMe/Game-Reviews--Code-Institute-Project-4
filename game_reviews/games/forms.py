@@ -27,13 +27,8 @@ GAME_VIEW_CHOISES = [
     ('Show expanded list', 'Show expanded list'),
 ]
 
-# GENRE_TAGS = [tuple((tag.long_name, tag.long_name))
-#              for tag in GenreTag.objects.all()]
-
-GENRE_TAGS = [
-    {'1', '2'},
-    {'3', '4'},
-]
+GENRE_TAGS = [tuple((tag.id, tag.long_name))
+              for tag in GenreTag.objects.all()]
 
 
 class GameSortShowForms(forms.Form):
@@ -44,7 +39,7 @@ class GameSortShowForms(forms.Form):
                 'class': 'form-control-sm w-100 SortShowForm-auto-submit',
             }
         ),
-        choices=GAME_SORT_CHOICES,
+        choices=GAME_SORT_CHOICES, initial='3',
     )
 
     time = forms.MultipleChoiceField(
@@ -65,19 +60,19 @@ class GameSortShowForms(forms.Form):
 
 
 class GameFilterGenreForm(forms.Form):
-    filter = forms.MultipleChoiceField(
+    genre_filter = forms.MultipleChoiceField(
         label=True,
         widget=forms.CheckboxSelectMultiple(
-            attrs={'class': 'form-check.input'}
+            attrs={'class': ''}
         ),
         choices=GENRE_TAGS,
     )
 
     def as_plain(self):
-        "Returns this form rendered as HTML <tr>s -- excluding the <table></table>."
+        # Returns this form rendered as HTML <tr>s -- excluding the <table></table>
         return self._html_output(
             normal_row='%(label)s%(errors)s%(field)s%(help_text)s',
             error_row='%s',
-            row_ender=' ',
+            row_ender='',
             help_text_html='<br /><span class="helptext">%s</span>',
             errors_on_separate_row=False)
