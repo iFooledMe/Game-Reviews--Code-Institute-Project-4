@@ -1,7 +1,8 @@
 {% extends 'base.html' %} {% load static %} {% block main_content %}
 
 <!-- #region Title -->
-<div class="row no-gutters mx-auto mt-5 px-3 py-auto pt-2 user-profile-title">
+<div
+    class="row no-gutters mx-auto mt-5 px-3 py-auto pt-2 user-profile-title titillium-font-upper">
     <h3>Dashboard - Signed in as: <span>{{ user }}</span></h3>
 </div>
 <!-- #endregion -->
@@ -36,18 +37,25 @@
             <div class="row mt-3 w-100 ml-1">{% include 'stripe.html' %}</div>
             {% endif %}
         </div>
-
         <!-- #endregion -->
-
         <!-- #region User Info -->
         <div class="d-flex flex-column p-4 user-profile-col-left">
             <div>
-                <h5 class="titillium-font-upper">Your account settings</h5>
+                <div class="float-left">
+                    <h5 class="titillium-font-upper">Your account settings</h5>
+                </div>
+                <div class="float-right text-right">
+                    <a href="{% url 'userprofile' %}"
+                        class="btn btn-sm btn-light txt-light btn-transparent">
+                        <p>Back / Close <i class="fas fa-times"></i></p>
+                    </a>
+                </div>
             </div>
             <form action="{% url 'userprofile_edit' %}" method="POST">
                 {% csrf_token %} {{ user_form }}
-                <div>
-                    <button class="btn btn-sm btn-light go-to-button hover-me w-100 titillium-font-upper"
+                <div class="mt-3">
+                    <button
+                        class="btn btn-sm btn-light go-to-button hover-me w-100 titillium-font-upper"
                         type="submit">
                         Submit
                     </button>
@@ -57,7 +65,6 @@
         <!-- #endregion -->
     </div>
     <!-- #endregion -->
-
     <!-- #region right-column -->
     <div class="col-12 col-md-6 m-0 p-0 user-profile-col-right">
         <div class="d-flex flex-column mt-4 ml-0 w-100 h-100">
@@ -75,7 +82,7 @@
                         <div>
                             <a
                                 href="{% url 'game_details' game_id=comment.game.id %}"
-                                class="btn btn-sm btn-light go-to-button hover-me"
+                                class="btn btn-sm btn-light go-to-button go-to-button-pos hover-me"
                                 role="button">
                                 Go there to edit
                                 <i class="fas fa-chevron-right"></i>
@@ -101,7 +108,6 @@
             </div>
         </div>
         <!-- #endregion -->
-
         {% endblock %}
     </div>
 </div>

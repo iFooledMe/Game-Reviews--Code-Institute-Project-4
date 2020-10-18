@@ -13,9 +13,8 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def user_profile_view(request):
-    userid = request.user.id
     session_user_comment_scores = UserCommentsScore.objects.filter(
-        user__id=userid)
+        user__id=request.user.id)
     avatars = UserAvatar.objects.all()
 
     stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -51,9 +50,25 @@ def user_profile_edit(request):
             user_form.save()
             return redirect('userprofile')
     else:
+        # Creates Stripe payment intent
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+
+        payment_intent = stripe.PaymentIntent.create(
+            amount='295',
+            currency='usd',
+            payment_method_types=['card']
+        )
+
+        session_user_comment_scores = UserCommentsScore.objects.filter(
+            user__id=request.user.id)
+
         user_form = EditUserForm(instance=request.user)
         context = {
             'user_form': user_form,
+            'comments': session_user_comment_scores,
+            'secret_key': payment_intent.client_secret,
+            'stripe_publishable_key': settings.STRIPE_PUBLISHABLE_KEY,
+            'payment_intent_id': payment_intent.id,
         }
         return render(request, "edit_profile.html", context)
 # endregion

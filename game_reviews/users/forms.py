@@ -53,31 +53,31 @@ class EditCommentForm(forms.ModelForm):
 class EditUserForm(forms.ModelForm):
     class Meta:
         model = User
-        label = False
+        label = True
         fields = ['first_name', 'last_name', 'email', 'username']
         widgets = {
             'first_name': forms.TextInput(
-                attrs={'class': 'form-control',
+                attrs={'class': 'form-control mb-3',
 
                        }
             ),
             'last_name': forms.TextInput(
-                attrs={'class': 'form-control',
+                attrs={'class': 'form-control mb-3',
 
                        }
             ),
             'email': forms.TextInput(
-                attrs={'class': 'form-control',
+                attrs={'class': 'form-control mb-3',
 
                        }
             ),
             'username': forms.TextInput(
-                attrs={'class': 'form-control',
+                attrs={'class': 'form-control ',
 
                        }
             ),
         }
         labels = {
-            'first_name': 'Lastname',
-            'last_name': 'Firstname',
+            'first_name': 'Last name',
+            'last_name': 'First name',
         }
