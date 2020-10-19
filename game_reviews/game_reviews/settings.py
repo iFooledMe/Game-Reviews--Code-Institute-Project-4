@@ -126,12 +126,23 @@ WSGI_APPLICATION = 'game_reviews.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+if os.environ["USE_LOCAL_DB"] == "1":
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'game_reviews_local',
+            'USER': 'iFooledMe',
+            'PASSWORD': os.environ.get('LOCAL_DB_PASSWORD'),
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
+else:
+    DATABASES = {
+        'default':  dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
 
-DATABASES = {
-    'default':  dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
-
-AWS_DEFAULT_ACL = 'public-read'
+#AWS_DEFAULT_ACL = 'public-read'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

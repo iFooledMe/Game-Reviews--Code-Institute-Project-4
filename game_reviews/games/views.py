@@ -74,11 +74,6 @@ def get_games(request, order_by_in, time_filter_in, genre_filter_in):
     games = Game.objects.filter(
         release_date__range=[start_date, date.today()])
 
-    # Get/Set genre-tag filter
-    set_genre_filter(request, genre_filter_in)
-    games = games.filter(
-        genre_tags__pk__in=request.session.get('genre_filter'))
-
     # Set / get sort order
     get_order_by(request, order_by_in)
     games = games.order_by(request.session.get('order_by_in'))
@@ -143,9 +138,8 @@ def get_days(time_filter_in):
 # region --- Get genre filter parameters ---
 
 
-def set_genre_filter(request, genre_filter_in):
-    if genre_filter_in != 'none':
-        request.session['genre_filter'] = genre_filter_in
+def genre_filter(request, genre_filter_in):
+    return ""
 
 # endregion ----
 # ------------------------------------------
