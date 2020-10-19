@@ -50,6 +50,9 @@ class GameSortShowForms(forms.Form):
         choices=GAME_TIME_CHOICES,
     )
 
+    # The form Works fine but removed for this version of the application 
+    # since there is not enough time to add the functions for it
+    '''
     view = forms.MultipleChoiceField(
         label=False,
         widget=forms.Select(
@@ -57,13 +60,14 @@ class GameSortShowForms(forms.Form):
         ),
         choices=GAME_VIEW_CHOISES,
     )
+    '''
 
 
 class GameFilterGenreForm(forms.Form):
     genre_filter = forms.MultipleChoiceField(
         label=True,
         widget=forms.CheckboxSelectMultiple(
-            attrs={'class': ''}
+            attrs={'class': 'genre-filter-checkbox z-index-20'}
         ),
         choices=GENRE_TAGS,
     )

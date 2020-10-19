@@ -24,18 +24,16 @@ from .models import Game, GenreTag, MiscTag, ThemeTag
 
 
 def game_list_view(request, *args, **kwargs):
+    genre_all = 'true'
     order_by = request.GET.get('sort', 'none')
     time_filter = request.GET.get('time', 'none')
     genre_all = request.GET.getlist('genre_all', 'none')
     genre_filter = request.GET.getlist('genre_filter', 'none')
-    print(genre_all)
-    print(order_by)
-    print(time_filter)
-    print(genre_filter)
     games = get_games(
         request,
         order_by,
         time_filter,
+        genre_all,
         genre_filter)
     update_avg_score(games)
     search_show_form = GameSortShowForms()
@@ -48,6 +46,7 @@ def game_list_view(request, *args, **kwargs):
     context = {
         'games': games,
         'search_show_form': search_show_form,
+        'genre_all': genre_all,
         'genre_tags_filter': genre_tags_filter,
         'hide_top_info': hide_top_info,
     }
@@ -73,7 +72,7 @@ def reset_filters(request):
 # region --- Get Games (filtered) ---------
 
 
-def get_games(request, order_by_in, time_filter_in, genre_filter_in):
+def get_games(request, order_by_in, time_filter_in, genre_all, genre_filter_in):
 
     # Set date filter
     start_date = date.today() - \
@@ -82,7 +81,7 @@ def get_games(request, order_by_in, time_filter_in, genre_filter_in):
         release_date__range=[start_date, date.today()])
 
     # Set genre filter
-    games = set_genre_filter(request, games, genre_filter_in)
+    games = set_genre_filter(request, games, genre_all, genre_filter_in)
 
     # Set sort order
     get_order_by(request, order_by_in)
@@ -122,8 +121,8 @@ def get_days(time_filter_in):
 # region - Get genre filter parameters -
 
 
-def set_genre_filter(request, games, genre_filter_in):
-    if genre_filter_in == 'none':
+def set_genre_filter(request, games, genre_all, genre_filter_in):
+    if genre_filter_in == 'none' or genre_all == '1':
         return games
     else:
         request.session['genre_filter'] = genre_filter_in

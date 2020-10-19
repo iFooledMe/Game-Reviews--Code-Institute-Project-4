@@ -1,4 +1,10 @@
 $(document).ready(function () {
+
+    // #region ==== Run functions =============================================================/
+    set_genre_filters();
+    // #endregion
+    // ======================================================================================= /
+
     // #region ==== Close/Expand Button - Close specified element class(data-target) ==========/
     // in specified element id (data-id)
     $('.expand-button').click(function () {
@@ -30,6 +36,41 @@ $(document).ready(function () {
     $('.SortShowForm-auto-submit').change(function () {
         $('#SortShowForm').submit();
     });
+    // #endregion
+    // ======================================================================================= /
+
+    // #region ==== Genre Tags on change ======================================================/
+    
+    // Set all or none genre filters DEPENDING ON GENRE_ALL checkbox
+    function set_genre_filters() {
+        if ($('#genre_all').prop('checked')) {
+            console.log('1');
+            $(".genre-filter-checkbox").prop("checked", true);
+        } else {
+            console.log('0');
+            $(".genre-filter-checkbox").prop("checked", false);
+        }
+    }
+
+    // On GENRE_ALL click
+    $('#genre_all').click(function (){
+        set_genre_filters();
+    });
+
+    // Set genre_all on/off DEPENDING ON GENRE-FILTER-CHECKBOX
+    function set_genre_all_filter() {
+        if ($('.genre-filter-checkbox').prop('checked')) {
+            console.log('1');
+            $("#genre_all").prop("checked", false);
+        } 
+    }
+
+    // On GENRE-FILTER-CHECKBOX click
+    $('.genre-filter-checkbox').click(function (){
+        set_genre_all_filter();
+    });
+
+
     // #endregion
     // ======================================================================================= /
 

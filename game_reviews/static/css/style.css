@@ -344,6 +344,16 @@ txt-xsmall {
     top: -1px;
 }
 
+.z-index-10 {
+    position: relative;
+    z-index: 10;
+}
+
+.z-index-20 {
+    position: relative;
+    z-index: 20;
+}
+
 /* #endregion */
 
 /* #region **** Clean Modal *** */
