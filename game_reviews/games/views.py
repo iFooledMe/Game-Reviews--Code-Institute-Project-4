@@ -2,18 +2,19 @@
 import collections
 from datetime import date, datetime, timedelta
 from decimal import *
-from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
-from django.db.models import Sum, Avg
+
 from django.contrib.auth import authenticate
+from django.db.models import Avg, Sum
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.shortcuts import redirect, render
 from django.urls import reverse
-
-
-from .models import Game, GenreTag, ThemeTag, MiscTag
-from .forms import GameSortShowForms, GameFilterGenreForm
 from reviews.models import Review
+from users.forms import EditCommentForm, NewCommentForm
 from users.models import UserCommentsScore
-from users.forms import NewCommentForm,  EditCommentForm
+
+from .forms import GameFilterGenreForm, GameSortShowForms
+from .models import Game, GenreTag, MiscTag, ThemeTag
+
 # endregion
 # ============================================================================/
 
@@ -23,14 +24,19 @@ from users.forms import NewCommentForm,  EditCommentForm
 
 
 def game_list_view(request, *args, **kwargs):
-    order_by_in = request.GET.get('sort', 'none')
-    time_filter_in = request.GET.get('time', 'none')
-    genre_filter_in = request.GET.getlist('genre_filter', 'none')
+    order_by = request.GET.get('sort', 'none')
+    time_filter = request.GET.get('time', 'none')
+    genre_all = request.GET.getlist('genre_all', 'none')
+    genre_filter = request.GET.getlist('genre_filter', 'none')
+    print(genre_all)
+    print(order_by)
+    print(time_filter)
+    print(genre_filter)
     games = get_games(
         request,
-        order_by_in,
-        time_filter_in,
-        genre_filter_in)
+        order_by,
+        time_filter,
+        genre_filter)
     update_avg_score(games)
     search_show_form = GameSortShowForms()
     genre_tags_filter = GameFilterGenreForm()
@@ -54,9 +60,12 @@ def game_list_view(request, *args, **kwargs):
 
 
 def reset_filters(request):
-    del request.session['order_by_in']
-    del request.session['time_filter_days']
-    del request.session['genre_filter']
+    if 'order_by_in' in request.session:
+        del request.session['order_by_in']
+    if 'time_filter_days' in request.session:
+        del request.session['time_filter_days']
+    if 'genre_filter' in request.session:
+        del request.session['genre_filter']
     return redirect(game_list_view)
 # endregion ----
 # -----------------------------------------
@@ -66,22 +75,65 @@ def reset_filters(request):
 
 def get_games(request, order_by_in, time_filter_in, genre_filter_in):
 
-    # Get/Set date filter
-    end_date = date.today()
-    start_date = end_date - \
+    # Set date filter
+    start_date = date.today() - \
         timedelta(days=get_time_filter_start_date(request, time_filter_in))
     games = Game.objects.filter(
         release_date__range=[start_date, date.today()])
 
-    # Set / get sort order
+    # Set genre filter
+    games = set_genre_filter(request, games, genre_filter_in)
+
+    # Set sort order
     get_order_by(request, order_by_in)
     games = games.order_by(request.session.get('order_by_in'))
 
     return games
-# endregion ----
-# -----------------------------------------
 
-# region --- Get sort parameter ----------
+# region - Get date filter start date -
+
+
+def get_time_filter_start_date(request, time_filter_in):
+    if time_filter_in != 'none':
+        request.session['time_filter_days'] = get_days(time_filter_in)
+    if 'time_filter_days' not in request.session:
+        request.session['time_filter_days'] = 36500
+    return request.session.get('time_filter_days')
+
+
+def get_days(time_filter_in):
+    print(time_filter_in)
+    if time_filter_in == 'Show last week':
+        return 7
+    elif time_filter_in == 'Show last month':
+        return 30
+    elif time_filter_in == 'Show last 3 months':
+        return 90
+    elif time_filter_in == 'Show last 6 months':
+        return 180
+    elif time_filter_in == 'Show last year':
+        return 365
+    elif time_filter_in == 'Show all time':
+        return 36500
+    else:
+        return 36500
+# endregion ----
+
+# region - Get genre filter parameters -
+
+
+def set_genre_filter(request, games, genre_filter_in):
+    if genre_filter_in == 'none':
+        return games
+    else:
+        request.session['genre_filter'] = genre_filter_in
+        print(request.session.get('genre_filter'))
+        return games.filter(genre_tags__pk__in=request.session.get('genre_filter'))
+
+        
+# endregion ----
+
+# region - Get sort parameter -
 
 
 def get_order_by(request, order_by_in):
@@ -103,45 +155,9 @@ def set_order_parameter(order_by_in):
     else:
         return '-release_date'
 # endregion ----
+
+# endregion ----
 # -----------------------------------------
-
-# region --- Get date filter start date ---
-
-
-def get_time_filter_start_date(request, time_filter_in):
-    if time_filter_in != 'none':
-        request.session['time_filter_days'] = get_days(time_filter_in)
-    if 'time_filter_days' not in request.session:
-        request.session['time_filter_days'] = 36500
-
-    return request.session.get('time_filter_days')
-
-
-def get_days(time_filter_in):
-    print(time_filter_in)
-    if time_filter_in == 'Show last week':
-        return 7
-    elif time_filter_in == 'Show last month':
-        return 30
-    elif time_filter_in == 'Show last 3 months':
-        return 90
-    elif time_filter_in == 'Show last 6 months':
-        return 180
-    elif time_filter_in == 'Show last year':
-        return 365
-    else:
-        return 36500
-# endregion ----
-# ------------------------------------------
-
-# region --- Get genre filter parameters ---
-
-
-def genre_filter(request, genre_filter_in):
-    return ""
-
-# endregion ----
-# ------------------------------------------
 
 # region --- Calculate Score --------------
 

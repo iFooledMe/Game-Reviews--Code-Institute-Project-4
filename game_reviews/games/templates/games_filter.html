@@ -47,26 +47,40 @@
 			</div>
 			<form action="{% url 'game_list' %}" method="get">
 				{% csrf_token %}
-				<div class="d-flex flex-wrap">
-					<div class="modal-body">
-						{% for tag in genre_tags_filter %}
-						<span class="tag-checkbox">{{ tag }}</span>
-						{% endfor %}
+				<div class="modal-body">
+					<div class="d-flex flex-wrap">
+						<!-- #region - Genre Tags -->
+						<div class="d-flex flex-column">
+							<div class="all-checkbox-wrapper">
+								<ul class="all-checkbox-list">
+									<li>
+										<input type="checkbox" id="genre_all" name="genre_all" value="True">
+										<label for="genre_all">All genres</label>
+									</li>
+								</ul>
+							</div>
+							<div>
+								{% for tag in genre_tags_filter %}
+								<span class="tag-checkbox">{{ tag }}</span>
+								{% endfor %}
+							</div>
+						</div>
+						<!-- #endregion -->
 					</div>
 				</div>
 				<div class="modal-footer mx-auto">
-					<button
-						type="button"
-						class="btn btn-sm btn-secondary"
-						data-dismiss="modal">
-						Close
-					</button>
-					<button type="submit" class="btn btn-sm btn-primary">
-						Apply filter
-					</button>
-				</div>
+				<button
+					type="button"
+					class="btn btn-sm btn-secondary"
+					data-dismiss="modal">
+					Close
+				</button>
+				<button type="submit" class="btn btn-sm btn-primary">
+					Apply filter
+				</button>
 			</form>
 		</div>
 	</div>
+</div>
 </div>
 <!-- #endregion -->

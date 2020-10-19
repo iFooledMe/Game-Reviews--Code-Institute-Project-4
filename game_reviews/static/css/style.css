@@ -757,6 +757,18 @@ tag-checkbox ul li label {
     margin-left: 10px;
 }
 
+.all-checkbox-wrapper {
+    position: relative;
+    top: 10px;
+}
+
+.all-checkbox-list {
+    font-weight: 700;
+    letter-spacing: 1px;
+    list-style-type: none;
+    text-transform: uppercase;
+}
+
 /* #endregion */
 /* ====================================================================== */
 
