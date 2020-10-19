@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
-    # Crispy forms
+    # Crispy forms & Widget Tweak
     'crispy_forms',
+    'widget_tweaks',
 
     # Stripe
     'stripe',

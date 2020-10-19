@@ -55,20 +55,6 @@ def game_list_view(request, *args, **kwargs):
 # endregion ----
 # -----------------------------------------
 
-# region --- Reset filters ----------------
-
-
-def reset_filters(request):
-    if 'order_by_in' in request.session:
-        del request.session['order_by_in']
-    if 'time_filter_days' in request.session:
-        del request.session['time_filter_days']
-    if 'genre_filter' in request.session:
-        del request.session['genre_filter']
-    return redirect(game_list_view)
-# endregion ----
-# -----------------------------------------
-
 # region --- Get Games (filtered) ---------
 
 
@@ -126,10 +112,29 @@ def set_genre_filter(request, games, genre_all, genre_filter_in):
         return games
     else:
         request.session['genre_filter'] = genre_filter_in
-        print(request.session.get('genre_filter'))
-        return games.filter(genre_tags__pk__in=request.session.get('genre_filter'))
+        print('-------------------')
+        print('Genre_filter_in:')
+        print(genre_filter_in)
+        print('-------------------')
+        games_contain_doubles = games.filter(genre_tags__pk__in=genre_filter_in)
 
-        
+        list_of_ids = []
+        for game in games:
+            list_of_ids.append(game.id)
+        print('List_of_ids:')
+        print(list_of_ids)
+        print('-------------------')
+
+        no_doubles = [x for n, x in enumerate(list_of_ids) if x not in list_of_ids[:n]]
+        print('no_doubles:')
+        print(no_doubles)
+        print('-------------------')
+
+
+        games = games.filter(genre_tags__pk__in=list_of_ids)
+
+        return games
+
 # endregion ----
 
 # region - Get sort parameter -
@@ -155,6 +160,20 @@ def set_order_parameter(order_by_in):
         return '-release_date'
 # endregion ----
 
+# endregion ----
+# -----------------------------------------
+
+# region --- Reset filters ----------------
+
+
+def reset_filters(request):
+    if 'order_by_in' in request.session:
+        del request.session['order_by_in']
+    if 'time_filter_days' in request.session:
+        del request.session['time_filter_days']
+    if 'genre_filter' in request.session:
+        del request.session['genre_filter']
+    return redirect(game_list_view)
 # endregion ----
 # -----------------------------------------
 

@@ -1,3 +1,4 @@
+{% load widget_tweaks %}{% load crispy_forms_filters %}
 <form class="form-inline" id="SortShowForm" method="GET" action=".">
 	{% csrf_token %}
 	<div class="row w-100 mx-auto filter-row">
@@ -54,14 +55,14 @@
 							<div class="all-checkbox-wrapper z-index-10">
 								<ul class="all-checkbox-list">
 									<li>
-										<input type="checkbox" id="genre_all" name="genre_all" value="1" checked>
+										<input type="checkbox" id="genre_all" name="genre_all" value="1">
 										<label for="genre_all">All genres</label>
 									</li>
 								</ul>
 							</div>
-							<div>
-								{% for tag in genre_tags_filter %}
-								<span class="tag-checkbox" id="genre-tag-{{ forloop.counter }}">{{ tag }}</span>
+							<div class="tag-checkbox" id="genre-tag-{{ forloop.counter }}">
+								{% for render_field in genre_tags_filter %}
+								{{ render_field }}
 								{% endfor %}
 							</div>
 						</div>
