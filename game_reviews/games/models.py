@@ -51,6 +51,7 @@ class GenreTag(models.Model):
     long_name = models.CharField(max_length=40)
     short_name = models.CharField(max_length=40, null=True, blank=True)
     show_name = models.BooleanField(default=True, null=True, blank=True)
+    is_important = models.BooleanField(default=True, null=True, blank=True)
     icon = models.CharField(max_length=50, null=True, blank=True)
     show_icon = models.BooleanField(default=False)
     tag_category = models.CharField(max_length=40, default='genre')

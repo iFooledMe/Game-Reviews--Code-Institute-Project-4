@@ -8,5 +8,5 @@ env.py
 .venv/*
 .venv
 /.venv
-
-latest.dump
+*.sqlite3
+db.sqlite3

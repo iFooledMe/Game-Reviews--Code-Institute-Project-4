@@ -1,3 +1,4 @@
+  
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.conf import settings
@@ -10,7 +11,6 @@ from users.views import user_profile_view, pay_thankyou_view, user_profile_edit,
 
 
 urlpatterns = [
-    
     path('', views.game_list_view, name='game_list'),
     path('reset_filters', views.reset_filters, name='reset_filters'),
     path('game_details/<int:game_id>',

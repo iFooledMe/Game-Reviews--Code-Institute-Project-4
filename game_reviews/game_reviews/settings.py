@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['game-reviews-1.herokuapp.com', 'localhost', '127.0.0.1']
 
@@ -130,12 +130,8 @@ WSGI_APPLICATION = 'game_reviews.wsgi.application'
 if os.environ["USE_LOCAL_DB"] == "1":
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'game_reviews_local',
-            'USER': 'iFooledMe',
-            'PASSWORD': os.environ.get('LOCAL_DB_PASSWORD'),
-            'HOST': 'localhost',
-            'PORT': '5432',
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
 else:
@@ -143,7 +139,7 @@ else:
         'default':  dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
 
-#AWS_DEFAULT_ACL = 'public-read'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -193,7 +189,7 @@ STATIC_ROOT = os.path.join(BASE_DIR)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-
+AWS_DEFAULT_ACL = 'public-read'
 if os.environ["USE_AWS"] == "1":
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
