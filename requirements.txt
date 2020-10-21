@@ -1,3 +1,4 @@
+appdirs==1.4.4
 asgiref==3.2.10
 astroid==2.4.2
 certifi==2020.6.20
@@ -6,12 +7,15 @@ chardet==3.0.4
 colorama==0.4.4
 cryptography==3.1.1
 defusedxml==0.6.0
+distlib==0.3.1
 dj-database-url==0.5.0
 Django==3.1.2
 django-allauth==0.43.0
 django-crispy-forms==1.9.2
+django-heroku==0.3.1
 django-storages==1.10.1
 django-widget-tweaks==1.4.8
+filelock==3.0.12
 flake8==3.8.4
 idna==2.10
 isort==5.6.4
@@ -20,6 +24,7 @@ mccabe==0.6.1
 oauthlib==3.1.0
 pep8==1.7.1
 Pillow==8.0.0
+pipenv==2020.8.13
 psycopg2==2.8.6
 pycodestyle==2.6.0
 pycparser==2.20
@@ -36,4 +41,7 @@ stripe==2.55.0
 toml==0.10.1
 unicorn==1.0.2
 urllib3==1.25.11
+virtualenv==20.0.35
+virtualenv-clone==0.5.4
+whitenoise==5.2.0
 wrapt==1.12.1
