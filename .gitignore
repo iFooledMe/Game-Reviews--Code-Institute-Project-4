@@ -8,6 +8,4 @@ __pycache__/
 /.vscode
 settings.json
 env.py
-.venv/*
-.venv
-/.venv
+
