@@ -17,6 +17,7 @@ django-storages==1.10.1
 django-widget-tweaks==1.4.8
 filelock==3.0.12
 flake8==3.8.4
+gunicorn==20.0.4
 idna==2.10
 isort==5.6.4
 lazy-object-proxy==1.4.3
@@ -39,7 +40,6 @@ six==1.15.0
 sqlparse==0.4.1
 stripe==2.55.0
 toml==0.10.1
-unicorn==1.0.2
 urllib3==1.25.11
 virtualenv==20.0.35
 virtualenv-clone==0.5.4
