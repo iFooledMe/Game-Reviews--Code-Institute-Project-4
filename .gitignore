@@ -1,5 +1,8 @@
-*.pyc
-__pycache__
+core.Microsoft*
+core.mongo*
+core.python*
+__pycache__/
+*.py[cod]
 .vscode/*
 .vscode
 /.vscode
@@ -8,5 +11,3 @@ env.py
 .venv/*
 .venv
 /.venv
-*.sqlite3
-db.sqlite3

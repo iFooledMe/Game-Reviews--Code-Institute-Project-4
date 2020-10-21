@@ -1,0 +1,112 @@
+{% load static %}
+
+<!-- #region ==== LOGOTYPE ================================================================================== -->
+<div class="col-4 col-sm-4 col-md-3 logo-container">
+	<a href="{% url 'game_list' %}">
+		<div class="logo-top shadow-bottom-right">
+			<span class="logo-text-container"><span class="large-g ">G</span>AME</span>
+		</div>
+		<div class="logo-bottom">
+			review
+		</div>
+	</a>
+</div>
+<!-- #endregion -->
+
+<!-- #region ==== SLOGAN ==================================================================================== -->
+<div class="d-none d-md-block col-md-2 ">
+	<div class="slogan">
+		What are you...<br>
+		<img class="game-control-img " src="{% static 'img/joystick.png'%}" alt="Retro Joystick"><br>
+		...playing today?<br>
+	</div>
+</div>
+<!-- #endregion -->
+
+<!-- #region ==== SEARCH, USER, NAVBAR ====================================================================== -->
+<div class="col-8 col-md-7 ">
+
+	<!-- #region *** Top - Search & User *** -->
+	<div class="row no-gutters w-100 pl-1 d-flex justify-content-between align-self-center nav-top ">
+		<!-- #region Search -->
+		<div class="top-search-form">
+			<input type="text" placeholder="Search...">
+			<a href="#"><i class="fas fa-search top-search-img"></i></a>
+		</div>
+		<!-- #endregion -->
+		<!-- #region User info -->
+		<div>
+			{% if user.is_authenticated  %}
+				<div class="dropdown user-info mt-2">
+						<a 	class="btn btn-sm btn-light user-info-dropdown dropdown-toggle" 
+							href="#" 
+							role="button" 
+							id="dropdownMenuLink" 
+							data-toggle="dropdown" 
+							aria-haspopup="true" 
+							aria-expanded="false">
+							<i class="fas fa-user-astronaut"></i> 
+							<span class="d-none d-lg-inline">{{ user }}</span> 
+						</a>
+						<div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="dropdownMenuLink">
+							<div class="hover-me"><a class="dropdown-item txt-small" href="{% url 'userprofile' %}">Your dashboard <i class="fas fa-chevron-right icon-rightarrow icon-size-smaller"></i></a></div>
+							<div class="hover-me"><a class="dropdown-item txt-small" href="{% url 'logout' %}">Logout <i class="fas fa-chevron-right icon-rightarrow icon-size-smaller"></i></a></div>
+						</div>
+				</div>
+			{% else %}
+				<div class="user-info mt-2">
+					<a href="{% url 'login' %}">
+						<i class="fas fa-user-slash"></i>
+						<span class="d-none d-lg-inline">Log in</span> 
+					</a>
+				</div>
+			{% endif %}
+		</div>
+		<!-- #endregion -->
+	</div>
+	<!-- #endregion -->
+
+	<!-- #region *** Bottom - Navbar *** -->
+	<!-- #region Large navbar -->
+	<div class="w-100 d-none d-md-flex flex-row justify-content-around align-self-center shadow-bottom-right nav-bottom">			
+		<div class="d-flex flex-column justify-content-center nav-link-wrapper hover-me">
+		 	<a class="align-self-center" href="{% url 'game_list' %}">Home</a>
+		</div>
+		<div class="d-flex flex-column justify-content-center nav-link-wrapper hover-me">
+		 	<a class="align-self-center" href="#">Forums</a>
+		</div>
+		<div class="d-flex flex-column justify-content-center nav-link-wrapper hover-me">
+		 	<a class="align-self-center" href="#">About</a>
+		</div>
+		{% if not user.is_authenticated  %}
+		<div class="d-flex flex-column justify-content-center nav-link-wrapper hover-me">
+			<a class="align-self-center" href="{% url 'login' %}">Log In</a>			
+		</div>
+		<div class="d-flex flex-column justify-content-center nav-link-wrapper hover-me">
+			<a class="align-self-center" href="{% url 'signup' %}">Sign Up</a>			
+		</div>
+		
+		{% endif %}
+	</div>
+	<!-- #endregion -->
+	<!-- #region Compact navbar -->
+	<div class="w-100 d-flex d-md-none flex-row justify-content-end align-self-center shadow-bottom-right nav-bottom">			
+		<div class="d-flex flex-column justify-content-center nav-link-wrapper nav-link-wrapper-compact hover-me">
+			<a 	class="align-self-center " 
+				data-toggle="collapse" 
+				href="#collapse-menu" 
+				role="button" 
+				aria-expanded="false" 
+				aria-controls="collapseMenu">
+    			Menu <i class="far fa-caret-square-down nav-icon"></i>
+  			</a>
+		</div>
+	</div>
+	<!-- #endregion -->
+	<!-- #endregion -->
+</div>
+<!-- #endregion -->
+
+
+
+
