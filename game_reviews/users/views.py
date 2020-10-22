@@ -93,9 +93,9 @@ def change_avatar(request, avatar_id):
 
 # region ==== PAY THANKYOU ===================================================
 
-
+@login_required
 def pay_thankyou_view(request):
-    if request.user.is_authenticated:
+    if request.method == 'POST':
         payment_intent_secret = request.POST['payment_intent_secret']
         payment_intent_id = request.POST['payment_intent_id']
         payment_method_id = request.POST['payment_method_id']
@@ -146,6 +146,7 @@ def pay_thankyou_view(request):
         else:
             context = {}
             return render(request, "pay_thankyou.html", context)
-
+    return redirect('userprofile')
 # endregion
 # ============================================================================
+
