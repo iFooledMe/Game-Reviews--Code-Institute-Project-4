@@ -151,6 +151,10 @@ def pay_thankyou_view(request):
 # ============================================================================
 
 # region ==== ERROR HANDLING =================================================
+def error_400_view(request, exception):
+    context = {}
+    return render(request, "400.html", context)
+
 def error_404_view(request, exception):
     context = {}
     return render(request, "404.html", context)

@@ -1,25 +1,22 @@
-
-
-<div>
-	<h3>Error! Error! Error</h3>
-	<h4>Something gone really, really bad with the server. Propably my fault. Sorry!</h4>
-</div>
-
 {% extends 'base.html' %} {% load static %} 
 
-{% block page_title %}404 Error! Page not found{% endblock  %}
+{% block page_title %}400 Error! Bad request{% endblock  %}
 
 {% block main_content %}
 
 <div class="container-fluid w-100 game-container-expanded mx-auto text-center pt-5 mt-5 no-search-result">
 	<h2>Error! Error! Error!</h2>
-	<h5>Something gone really, really bad with the server. Propably my fault. Sorry!</h5>
+	<h5>
+		A bad request has happened, If you don't understand exactly what that means and why?<br>
+		Don't worry, we have no clue either and that is propably why you see this message now.<br>
+		Sorry, our bad!
+	</h5>
 	<div class="w-75 mx-0 mt-5 mx-auto ">
 		<a href="{% url 'reset_filters' %}"
 			class="btn btn-sm btn-light go-to-button hover-me"
 			id="edit-profile-button"
 			role="button">
-			<i class="fas fa-angle-left"></i><span class="ml-2 titillium-font-upper">Click here and see if the home page works?</span>
+			<i class="fas fa-angle-left"></i><span class="ml-2 titillium-font-upper">Test if the home page works (but propably not, sorry!)</span>
 		</a>
 	</div>
 </div>
