@@ -12,9 +12,9 @@ from users.views import user_profile_view, user_profile_edit, change_avatar, pay
 urlpatterns = [
      path('', include('games.urls')),
      path('', include('users.urls')),
-     path('login', LoginView.as_view(), name='login'),
-	path('logout', LogoutView.as_view(), name='logout'),
-	path('signup', SignupView.as_view(), name='signup'),
+     path('login/', LoginView.as_view(), name='login'),
+	path('logout/', LogoutView.as_view(), name='logout'),
+	path('signup/', SignupView.as_view(), name='signup'),
      path('accounts/', include('allauth.urls')),
      path('admin/', admin.site.urls),
 ]

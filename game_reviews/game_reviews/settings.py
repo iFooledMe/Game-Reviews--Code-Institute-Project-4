@@ -16,7 +16,10 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.environ["DEBUG_MODE"] == '1':
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = ['game-reviews-1.herokuapp.com', '127.0.0.1', 'localhost']
 
@@ -202,7 +205,6 @@ STATIC_ROOT = os.path.join(BASE_DIR)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-AWS_DEFAULT_ACL = 'public-read'
 if os.environ["USE_AWS"] == "1":
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
@@ -228,5 +230,3 @@ if os.environ["USE_AWS"] == "1":
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
 
-import django_heroku
-django_heroku.settings(locals())
