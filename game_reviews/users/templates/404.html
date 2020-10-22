@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% load static %} 
+
+{% block page_title %}404 Error! Page not found{% endblock  %}
+
+{% block main_content %}
+
+<div class="container-fluid w-100 game-container-expanded mx-auto text-center pt-5 mt-5 no-search-result">
+	<h2>Error! Error! Error!</h2>
+	<h5>The page you are trying to access simply do not exist, Sorry!</h5>
+	<div class="w-75 mx-0 mt-5 mx-auto ">
+		<a href="{% url 'reset_filters' %}"
+			class="btn btn-sm btn-light go-to-button hover-me"
+			id="edit-profile-button"
+			role="button">
+			<i class="fas fa-angle-left"></i><span class="ml-2 titillium-font-upper">Go to home page</span>
+		</a>
+	</div>
+</div>
+
+{% endblock %}

@@ -2,12 +2,11 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
-from django.conf.urls import url, include
+from django.conf.urls import url, include, handler404, handler500
 
 from allauth.account.views import LoginView, SignupView, LogoutView
 from games.views import 	game_list_view, reset_filters, game_details_view, hide_top_info, add_comment, edit_comment,delete_comment
 from users.views import user_profile_view, user_profile_edit, change_avatar, pay_thankyou_view
-
 
 urlpatterns = [
      path('', include('games.urls')),
@@ -25,3 +24,5 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
 
+handler404 = 'users.views.error_404_view'
+ 

@@ -22,7 +22,7 @@ else:
     DEBUG = False
 
 ALLOWED_HOSTS = ['game-reviews-1.herokuapp.com', '127.0.0.1', 'localhost']
-
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
 # Application definition
 
