@@ -192,6 +192,12 @@ Alex Gallego @ https://www.coroflot.com/alexgallego/Poker-player-game-avatars
 Incognito Avatar Image
 vecktorstock.com @ https://cdn1.vectorstock.com/i/1000x1000/50/30/user-icon-male-person-symbol-profile-avatar-vector-20715030.jpg
 
+The Witcher in the Djungle
+@ https://www.zastavki.com/pictures/originals/2014/Games_Jungle_in_the_game_The_Witcher_086356_.png
+
+Let's Talk Video Game Reviews
+@ http://gamecrusaders.com/article/lets-talk-video-game-reviews/
+
 ### Code
 
 Extend user profile

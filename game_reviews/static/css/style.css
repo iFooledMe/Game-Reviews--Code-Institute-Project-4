@@ -19,6 +19,7 @@
     --expression-6: #d1e0d1; /*Pastel green - Light */
     --expression-7: #f5faf5;
     --expression-8: #f7e2d2;
+    --expression-9: #00286a;
     --dark-1: #383c42; /* Headers, Game description background etc. */
     --dark-2: #3e444f; /*various dark backgrounds, darker and more grayish than main color dark-1*/
     --dark-3: #616b7d;
@@ -431,6 +432,17 @@ txt-xsmall {
 
 /* #endregion */
 
+/* #region **** Background colors */
+.semi-transp-backgr-dark {
+    background-color: rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.bg-dark-blue {
+    background-color: var(--expression-9);
+}
+/*endregion
+/*#endregion
 /* #endregion */
 /* ====================================================================== */
 
@@ -1700,6 +1712,75 @@ tag-checkbox ul li label {
 /* #endregion */
 /* ====================================================================== */
 
+/* #region ==== A B O U T  P A G E ====================================== */
+
+.about-container {
+    position: relative;
+    margin-top: 100px;
+}
+
+
+.about-container h1 {
+    font-family: 'Titillium Web', sans-serif;
+    color: var(--expression-1);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.about-container h5 {
+    display: block;
+    font-family: 'Titillium Web', sans-serif;
+    text-transform: uppercase;
+    color: var(--light-1);
+}
+
+.about-slogan {
+    font-size: 3em;
+    font-family: 'Titillium Web', sans-serif;
+    text-transform: uppercase;
+    color: var(--expression-3);
+}
+
+.about-group-container {
+    position: relative;
+    z-index: 100;
+}
+
+.about-group-header  {
+    position: absolute;
+    top: 20px;
+}
+
+.about-group-text-bottom  {
+    position: absolute;
+    bottom: 20px;
+}
+
+.intro-img-container {
+    position: relative;
+    z-index: 1;
+}
+
+.info-img-container {
+   width: 100%;
+}
+
+.about-reviews-text-container {
+    background-color: var(--expression-9);
+}
+
+.more-info h3 {
+    font-size: 2em;
+    font-family: 'Titillium Web', sans-serif;
+    text-transform: uppercase;
+    color: var(--medium-2);
+    letter-spacing: 5px;
+}
+
+/* #endregion 
+/* ====================================================================== */
+/* ====================================================================== */
+
 /* #region ==== A D  C O N T A I N E R S ================================ */
 
 .main-right-container {
@@ -1754,6 +1835,39 @@ tag-checkbox ul li label {
     .logo-text-container {
         left: 5px;
         bottom: 0px;
+    }
+    
+    .about-container h1 {
+        font-size: 2em;
+    }
+
+    .about-container h5 {
+        font-size: 1em;
+    }
+}
+
+/* **** 400px and down **** */
+@media (max-width: 400px) {
+    .logo-top {
+        font-size: 150%;
+    }
+
+    .large-g {
+        bottom: 0px;
+        font-size: 185%;
+    }
+
+    .logo-bottom {
+        font-size: 150%;
+    }
+
+    .logo-text-container {
+        left: 5px;
+        bottom: 0px;
+    }
+
+    .about-container h5 {
+        display: none;
     }
 }
 

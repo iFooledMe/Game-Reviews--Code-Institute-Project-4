@@ -7,10 +7,12 @@ from django.conf.urls import url, include, handler404, handler500
 from allauth.account.views import LoginView, SignupView, LogoutView
 from games.views import 	game_list_view, reset_filters, game_details_view, hide_top_info, add_comment, edit_comment,delete_comment
 from users.views import user_profile_view, user_profile_edit, change_avatar, pay_thankyou_view
+from about.views import about_view
 
 urlpatterns = [
      path('', include('games.urls')),
      path('', include('users.urls')),
+     path('about/', include('about.urls')),
      path('login/', LoginView.as_view(), name='login'),
 	path('logout/', LogoutView.as_view(), name='logout'),
 	path('signup/', SignupView.as_view(), name='signup'),
