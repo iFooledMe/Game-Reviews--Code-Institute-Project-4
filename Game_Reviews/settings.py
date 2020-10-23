@@ -21,7 +21,7 @@ if os.environ["DEBUG_MODE"] == '1':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['game-reviews-1.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['gamereviews-app.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
