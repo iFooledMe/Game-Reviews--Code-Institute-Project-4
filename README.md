@@ -10,7 +10,7 @@
 
 This project aims to build a computer and console- games reviews database. In its essence it will hold a list of recent games being released for PC, Xbox- and Playstation-consoles. Each game will have it's score presented, calculated from average review scores from popular gaming sites around the world. It will also hold a short summary of the game content, tags to describe genre and themes etc. Release date, developer, publisher, short quotes from the game sites and links to those review sites. Also links to sites where the games can be bought.
 
-See this as a sort of portal for gamers where they can get quick and easy information about the most recent games (In time older games can be added to the db a well), and from where they navigate further to each of the real game review sites if interested or to a site where they actually can buy the game. It is a complementary service for gamers wishing to get some overview of what is available and what is to come.
+See this as a sort of portal for gamers where they can get quick and easy information about the most recent games (In time older games can be added to the db a well), and from where they navigate further to each of the real game review sites if interested or to a site where they actually can buy the game. It is service for gamers wishing to get some overview of what is available and what is to come.
 
 Besides the Meta score derived from professional reviews, a user can also add their own score for a game and also further add their own comments to a game in a specific game details page. The score shown in the list will be filtered either purely based on the professional scores by default (possibly also purely on the users own scores, or all together). Each game should have it's own discussion board where users can share their scores, views and experience from that particular game.
 
@@ -25,7 +25,7 @@ The home/index page contains a list of games. In a compact view the user can get
 ----------------------------------------------------------------
 <img src="static/img/readme_files/filters.jpg">
 
-A set of ordering and feltering options are available. For the moment order by score or release date, filter by release date and by Genre tags.
+A set of ordering and filtering options are available. For the moment order by score or release date, filter by release date and by Genre tags.
 
 ----------------------------------------------------------------
 <img src="static/img/readme_files/mobile_view.jpg">
@@ -104,7 +104,8 @@ As a user I wish to:
 -   JAVASCRIPT (JQuery 3.5.1, popper 1.16.0, bootstrap 4.5.0)
 -   Python 3.8.5
 -   Postgres Db (deployed on Heroku)
--   Amazon AWS for media storage
+-   Amazon AWS S3 bucket for media- and static storage
+-   Stripe API for payment services
 -   Google Fonts
 -   Font Awesome
 -   GitHub for version control
@@ -119,16 +120,50 @@ You also need somewhere to store media files. I use S3 from Amazon AWS.
 
 ## DEPLOYMENT
 
-If you wish to deploy this project of your own take the following steps.
+### Clone this project to your own working directory:
+In this repository (as you’re reading this readme in it :-) on the top right click the green “Code” button
+Copy the given url by clicking on the copy icon (or open it up with GitHub Desktop if you have it installed)
+In your local IDE open Git Bash (or whatever terminal you use to work with Git)
+Change the current working directory to the location where you want the clone to be created
+In the terminal type “git clone” and the paste the url you just copied
+Press Enter. Your local clone will be created in the working directory you’re currently in
 
-Clone this project to your own working directory:
+### Set up your local IDE
+You need the latest version of Python 3 installed and then you need to run command “pip install -r requirements.txt” to install all the necessary packages.
+You also need to set up a Stripes payment account and a Amazon AWS S3 bucket. Create a env.py file and give it the following information:
+os.environ["SECRET_KEY"] = Django secret key
+os.environ["STRIPE_PUBLISHABLE_KEY"] = Stripe publishable key
+os.environ["STRIPE_SECRET_KEY"] = Stripe secret key
+os.environ["STRIPE_PLAN_ANNUALY_PROD_ID"] = Stripe product id
+os.environ["STRIPE_PLAN_ANNUALY_PRICE_ID"] = Stripe annually price id
+os.environ["DATABASE_URL"] = Heroku postgreSQL databas URI
+os.environ["USE_LOCAL_DB"] = '1' [1=PostgreSQL on localhost, 2=SQLite on localhost, any other value Heroku postgreSQL.
+os.environ["LOCAL_DB_PASSWORD"] = Password PostgreSQL on localhost
+os.environ["AWS_ACCESS_KEY_ID"] = AWS User access key
+os.environ["AWS_SECRET_ACCESS_KEY"] = AWS User secret key
+os.environ["USE_AWS"] = '1'
+os.environ["EMAIL_HOST_PASS"] = Password to chosen email SMTP server
+os.environ["EMAIL_HOST_USER"] = User name for chosen email SMTP server
+os.environ["USE_CONSOLE_MAIL"] = '1' [1=For development,  Any other = External SMTP
+os.environ["DEBUG_MODE"] = '0' [1=Debug mode, Any other = Debug set to false]
+You are now ready to work with this project on your local machine.
 
-1. In this repository (as you’re reading this readme in it :-) on the top right click the green “Code” button
-2. Copy the given url by clicking on the copy icon (or open it up with GitHub Desktop if you have it installed)
-3. In your local IDE open Git Bash (or whatever terminal you use to work with Git)
-4. Change the current working directory to the location where you want the clone to be created
-5. In the terminal type “git clone” and the paste the url you just copied
-   Press Enter. Your local clone will be created in the working directory you’re currently in
+### Deploy on Heroku
+1. First you need to create an account on Heroku
+2. Create a new app (Chose region depending on where you live)
+3. In your new app create a Heroku PostgreSQL in “Resources”
+4. Set the config variables (in accordance with the env.py file described above under “Settings”
+5. You can either deploy the project by connecting Heroku to your GitHub repository (follow the instructions on Heroku site)
+Or use the Heroku CLI (Install the Heroku CLI from here)
+6. Once Heroku CLI is installed, login to Heroku by typing “heroku login” in the CLI and you will be redirected to a web browser window where you log in.
+7. Then use Git to clone (app name) source code to your local machine (even if it is already cloned this must be done again). Type: “$ heroku git:clone -a (name of repository you are using)” in the CLI
+8. Make this new dir (name of repository) your working directory with command "cd (name of repository)"
+9. Make some small change to the code you just cloned in order to be able to push it to Git
+10. Stage all files for commit to Git with the command “git add .” + enter
+11. Commit to Git with “commit -m (Some commit message)“ + enter
+12. Finally in the CLI type "git push heroku master"
+...In a while after a lot of stuff flying past you on the screen has stopped flying past you, the project should be deployed
+
 
 ## TESTING
 

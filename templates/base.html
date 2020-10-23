@@ -44,7 +44,6 @@
 					<div class="collapse collapse-menu w-100 shadow-bottom-right" id="collapse-menu">
 						<div class="d-flex flex-column w-100 justify-content-end text-right">
 							<div class="hover-me"><a class="nav-link-wrapper pr-2" href="{% url 'game_list' %}">Home</a></div>
-							<div class="hover-me"><a class="nav-link-wrapper pr-2" href="#">Forums</a></div>
 							<div class="hover-me"><a class="nav-link-wrapper pr-2" href="{% url 'about' %}">About</a></div>
 							{% if not user.is_authenticated  %}			
 							<div class="hover-me"><a class="nav-link-wrapper pr-2" href="{% url 'login' %}">Sign In</a></div>
