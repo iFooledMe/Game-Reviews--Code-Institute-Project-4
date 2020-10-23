@@ -14,82 +14,57 @@ Besides the Meta score derived from professional reviews, a user can also add th
 
 ## FEATURES
 
-### List of games (Expanded view)
+### LIST OF GAMES
 
--   Game title
--   Thumbnail image
--   Release date
--   Developer / Publisher
--   Genre, theme tags
--   Pegi info image with link
--   Score (average% from game site reviews)
--   Platforms
--   Expandable game site quotes window (three random on top)
--   Short game description (expandable to show more)
--   Links (thumbnails) to buy sites (i.e Amazon)
--   Link to game details page
--   Collapse button
--   Add to favorites button
+<img src="static/img/readme_files/games_list.jpg">
 
-### List of games (Minimized view)
+The home/index page contains a list of games. In a compact view the user can get some quick oversight information. Both "More Reviews" and "Read more" expands the view to show more information. The overall score presented is the total average score for the game based on all the collected professional reviews.
 
--   Game title
--   Small thumbnail
--   Score
--   Platforms
--   Genre, theme tags
--   Link to game details page
--   expand button
+----------------------------------------------------------------
+<img src="static/img/readme_files/filters.jpg">
 
-### Sorting and filtering
+A set of ordering and feltering options are available. For the moment order by score or release date, filter by release date and by Genre tags.
 
-Sort by (dropdown)
+----------------------------------------------------------------
+<img src="static/img/readme_files/mobile_view.jpg">
 
--   Release date (Asc and desc) (Desc default)
--   Avg score (Asc and desc)
+The more compact list of games look like this on mobile devices.
 
-Show (dropdown)
+----------------------------------------------------------------
 
--   Most recent (10 or 20 games) (Default)
--   All time
--   Last month
--   Last 3 month
--   Last 6 month
--   Last year
+### GAME DETAILS
 
-List size (Dropdown)
+<img src="static/img/readme_files/game_details.jpg">
 
--   Only top three expanded (default)
--   All expanded
--   Minimized
+Each game has it's own details page (accesable from the games list clicking the "Games details" button). Here the user can get more of the same (information about the game) and see other users comments and scores for the given game. Logged in users can also add their own comment and score. The overall user score presented is the total average of scores users have given the game (users not giving a score excluded)
 
-Filter
 
--   A modal (or something like that) with checkboxes for all genre, theme tags (Ordered in some logical way) (No checked as default)
+----------------------------------------------------------------
 
-### Game details
+### USER PROFILE
 
-A specific details page for each game.
-Except for details described in list of games above
+<img src="static/img/readme_files/user_login.jpg">
 
--   Detailed description
--   Full game site quotes
--   Users own scores and comments (discussion)
+Users signed in (authenticated with Django-Allauth) are presented with a simple menu in the top right corner. The users can from here access their personal user profile page or sign out.
 
-### User authentication
+<img src="static/img/readme_files/user_profile.jpg">
 
--   Register (Google)
--   Login (Google)
--   Logout
--   Personal page (Details like email, user/screen name, avatar picture, list of favorite games, replies to discussion posts made by user)
+In the user profile page the users can see and access all of the comments and scores they submited for various games. The user profile also contains the normal account settings where the user can add/adit their personal information and also change their avatar picture as their representation in comments.
 
-### Payment feature
+<img src="static/img/readme_files/select_avatar.jpg">
 
-For user wishing to become premium members (No adds and possibly some other content)
+In here the user can also become a premium member (it is planned to skip the ads for future versions). A click on the upgrade button reveal a previous hidden element with the credit card form.
 
-### Advertising containers
+<img src="static/img/readme_files/pay_form.jpg">
 
-Top, right and possibly mixed in content
+Succesfull payment redirects the user to a thank you page...
+
+<img src="static/img/readme_files/pay_thankyou.jpg">
+
+... and the payment service is handled by stripe.
+
+<img src="static/img/readme_files/payment_success.jpg">
+
 
 ## USER STORIES
 

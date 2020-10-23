@@ -186,7 +186,6 @@ def update_avg_score(games):
             game__id=game.id).aggregate(Sum('score'))
         scores_max = Review.objects.filter(
             game__id=game.id).aggregate(Sum('max_score'))
-
         sum = scores_sum.get('score__sum')
         max = scores_max.get('max_score__sum')
         avg_score = round((sum / max) * 100, 0)

@@ -222,10 +222,7 @@
 
 						<div id="review_{{review.review_site.id}}" class="collapse" aria-labelledby="review_{{review.review_site.id}}" data-parent="#accordionExample">
 						<div class="card-body details-review-text mb-1">
-							"{{ review.short_quote|safe }}
-							<br><br>
 							{{ review.long_quote|safe }}"
-
 							<div class="mt-3 text-right review_author">
 								{{ review.author }} - {{ review.review_site.site_short_name }}, {{ review.review_date }}
 							<div class="text-right mt-4">
