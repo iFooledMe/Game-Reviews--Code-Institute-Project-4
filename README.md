@@ -1,5 +1,7 @@
 # GAME REVIEWS
 
+<img src="static/img/joystick.png">
+
 ## A game database - Game reviews meta scores
 
 ### A Code Institute student project
