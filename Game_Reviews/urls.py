@@ -3,6 +3,7 @@ from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import url, include, handler404, handler500
+from django.conf.urls.static import static
 
 from allauth.account.views import LoginView, SignupView, LogoutView
 from games.views import 	game_list_view, reset_filters, game_details_view, hide_top_info, add_comment, edit_comment,delete_comment
@@ -18,7 +19,7 @@ urlpatterns = [
 	path('signup/', SignupView.as_view(), name='signup'),
      path('accounts/', include('allauth.urls')),
      path('admin/', admin.site.urls),
-]
+] 
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,

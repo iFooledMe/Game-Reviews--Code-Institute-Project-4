@@ -1,0 +1,16 @@
+README.rst
+setup.cfg
+setup.py
+localstripe/__init__.py
+localstripe/__main__.py
+localstripe/errors.py
+localstripe/localstripe-v3.js
+localstripe/resources.py
+localstripe/server.py
+localstripe/webhooks.py
+localstripe.egg-info/PKG-INFO
+localstripe.egg-info/SOURCES.txt
+localstripe.egg-info/dependency_links.txt
+localstripe.egg-info/entry_points.txt
+localstripe.egg-info/requires.txt
+localstripe.egg-info/top_level.txt
