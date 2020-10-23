@@ -315,7 +315,35 @@ Result:
 6. Ok all browsers.
 
 
-#### 
+#### Get links to the reviews and info source where I can read more
+
+1. Game info source link
+2. Game review pages
+
+Result: 
+
+1. Ok all browsers, 
+2. Ok all browsers.
+
+#### Expanded game information
+
+1. Ok all browsers,
+
+#### Expanded reviews box for more information
+
+1. Ok all browsers
+
+#### Add, Edit and delete own user comment on a game:
+
+
+1. Create
+2. Edit
+3. delete
+
+Result: 
+1. Ok all browsers, 
+2. Ok all browsers.
+3. Ok all browsers.
 
 ## UX
 
