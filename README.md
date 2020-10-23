@@ -121,12 +121,12 @@ You also need somewhere to store media files. I use S3 from Amazon AWS.
 ## DEPLOYMENT
 
 ### Clone this project to your own working directory:
-In this repository (as you’re reading this readme in it :-) on the top right click the green “Code” button
-Copy the given url by clicking on the copy icon (or open it up with GitHub Desktop if you have it installed)
-In your local IDE open Git Bash (or whatever terminal you use to work with Git)
-Change the current working directory to the location where you want the clone to be created
-In the terminal type “git clone” and the paste the url you just copied
-Press Enter. Your local clone will be created in the working directory you’re currently in
+1. In this repository (as you’re reading this readme in it :-) on the top right click the green “Code” button
+2. Copy the given url by clicking on the copy icon (or open it up with GitHub Desktop if you have it installed)
+3. In your local IDE open Git Bash (or whatever terminal you use to work with Git)
+4. Change the current working directory to the location where you want the clone to be created
+5. In the terminal type “git clone” and the paste the url you just copied
+6. Press Enter. Your local clone will be created in the working directory you’re currently in
 
 ### Set up your local IDE
 You need the latest version of Python 3 installed and then you need to run command “pip install -r requirements.txt” to install all the necessary packages.
