@@ -105,7 +105,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 if os.environ["USE_LOCAL_DB"] == "1":
     DATABASES = {
         'default': {

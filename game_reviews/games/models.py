@@ -151,9 +151,9 @@ class Game(models.Model):
     avg_score = models.DecimalField(
         max_digits=4, decimal_places=2, null=True, blank=True)
     platforms = models.ManyToManyField(Platform, blank=True)
-    genre_tags = models.ManyToManyField(GenreTag, blank=True)
-    theme_tags = models.ManyToManyField(ThemeTag, blank=True)
-    misc_tags = models.ManyToManyField(MiscTag, blank=True)
+    genretags = models.ManyToManyField(GenreTag, blank=True)
+    themetags = models.ManyToManyField(ThemeTag, blank=True)
+    misctags = models.ManyToManyField(MiscTag, blank=True)
     stores = models.ManyToManyField(Store, blank=True)
 
     def __str__(self):
