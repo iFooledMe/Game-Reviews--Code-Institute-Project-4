@@ -189,8 +189,7 @@ def update_avg_score(games):
 
         sum = scores_sum.get('score__sum')
         max = scores_max.get('max_score__sum')
-        avg_score = 50
-        #avg_score = round((sum / max) * 100, 0)
+        avg_score = round((sum / max) * 100, 0)
         Game.objects.filter(pk=game.id).update(avg_score=avg_score)
 # endregion ----
 # ------------------------------------------
@@ -207,6 +206,7 @@ def game_details_view(request, game_id):
     gameid = game_id
     if gameid != 'none':
         game = Game.objects.filter(id=gameid)
+        update_avg_score(game)
         # Authenticated User
         if request.user.is_authenticated:
             userid = request.user.id
@@ -261,8 +261,7 @@ def calc_avg_user_score(gameid):
         game__id=gameid).exclude(user_score__lte=0)
     aggregate_score = all_user_comment_scores_exlude_zero.aggregate(
         Avg('user_score'))
-    return 50
-    #return int(aggregate_score.get('user_score__avg') * 10)
+    return int(aggregate_score.get('user_score__avg') * 10)
 # endregion
 # ------------------------------------------
 
