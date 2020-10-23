@@ -1,4 +1,4 @@
-#!d:\repos\game-reviews--code-institute-project-4\.venv\scripts\python.exe
+#!d:\repos\game_reviews\.venv\scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

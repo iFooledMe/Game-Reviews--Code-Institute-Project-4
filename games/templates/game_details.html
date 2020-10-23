@@ -1,0 +1,476 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- #region ==== G A M E S  D E T A I L S  ================================================== / -->
+{% block main_content %}
+{% for game in this_game  %}
+
+<div class="row no-gutters mx-auto mt-5 px-3 game-details-title">
+		<div class="invisible">
+			<h2>{{ game.title }}</h2>
+		</div>
+		<div class="title-wrapper">
+			<span class="game-title-initial-cap">{{ game.title|slice:"1" }}</span>{{game.title|slice:"1:"}}
+		</div>
+</div>
+<div class="row no-gutters game-details-content-container">	
+	<!-- #region left-column -->
+	<div class="col-12 col-md-6 m-0 p-0">
+		<div class="d-flex flex-column mt-3 ml-0 w-100 h-100">
+			<!-- #region Image -->
+			<div class="game-img-large-container">
+				{% if  game.large_cover_img %}
+					<img class="img-fluid" src="{{ MEDIA_URL }}{{ game.large_cover_img }}" alt="{{ game.title }} - Cover image">
+				{% else %}
+					<img src="{% static "img/img_placeholder_600x300.jpg"%}" alt="Empty placeholder - Game cover image is missing">
+				{% endif %}
+			</div>
+			<!-- #endregion -->
+			<div class="mt-3 relative-container">
+				<!-- #region Score -->
+				<div class="score-wrapper score-details">	
+					<div class="score shadow-bottom-right">
+						<span class="score-text score-text-digits">{{ game.avg_score.normalize }}</span>
+					</div>
+				</div>
+			<!-- #endregion -->
+				<table class="table table-sm table-borderless details-table">
+					<!-- #region Date -->
+					<tr>
+						<td>
+							<h6>Released</h6>
+						</td>
+						<td class="details-info-text">
+							{{ game.release_date }}
+						</td>
+						<!-- #endregion -->
+					<!-- #region Tags (Rowspan) -->
+						<td rowspan="7" class="details-info-text justify-content-right">
+							<div class="my-2">
+								{% for tag in game.genre_tags.all %}
+								<a 	href="#"
+									data-toggle="tooltip" 
+									data-placement="top" 
+									title="{{ tag.long_name }}">
+									<div class="mr-1 mb-1 shadow-faint-small tag tag-genre details-tag">
+										{% if tag.show_name %}
+											{{ tag.short_name }}
+										{% endif %}
+										{% if tag.show_icon %}
+											{{ tag.icon | safe }}
+										{% endif %}
+									</div>
+								</a>
+								{% endfor %}
+							</div>
+							<div class="my-2">
+								{% for tag in game.theme_tags.all %}
+								<a 	href="#"
+									data-toggle="tooltip" 
+									data-placement="top" 
+									title="{{ tag.long_name }}">
+									<div class="mr-1 mb-1 text-right shadow-faint-small tag tag-theme details-tag ">
+										{% if tag.show_name %}
+											{{ tag.short_name }}
+										{% endif %}
+										{% if tag.show_icon %}
+											{{ tag.icon | safe }}
+										{% endif %}
+									</div>
+								</a>
+								{% endfor %}
+							</div>
+							<div class="my-2">
+								{% for tag in game.misc_tags.all %}
+									{% if tag.tag_sub_category != 'pegi' %}
+								<a 	href="#"
+								data-toggle="tooltip" 
+								data-placement="top" 
+								title="{{ tag.long_name }}">
+									<div class="mr-1 mb-1 shadow-faint-small tag tag-misc details-tag ">
+										{% if tag.show_name %}
+											{{ tag.short_name }}
+										{% endif %}
+										{% if tag.show_icon %}
+											{{ tag.icon | safe }}
+										{% endif %}
+									</div>
+								</a>
+									{% endif %}
+								{% endfor %}
+							</div>
+							<div class="my-2">
+								{% for tag in game.misc_tags.all %}
+									{% if tag.tag_sub_category == 'pegi' %}
+								<a 	href="https://pegi.info/what-do-the-labels-mean"
+									target="_blank"
+									data-toggle="tooltip" 
+									data-placement="top" 
+									title="{{ tag.long_name }}">
+									<div class="mr-1 mb-1 shadow-faint-small tag tag-misc details-tag hover-me">
+										{% if tag.show_name %}
+											{{ tag.short_name }}
+										{% endif %}
+										{% if tag.show_icon %}
+											{{ tag.icon | safe }}
+										{% endif %}
+									</div>
+								</a>
+									{% endif %}
+								{% endfor %}
+							</div>
+						</td>
+					</tr>
+					<!-- #endregion-->
+					<!-- #region Platforms -->
+					<tr>
+						<td>
+							<h6>Play on</h6>
+						</td>
+						<td class="details-info-text">
+						{% for platform in game.platforms.all %}
+							{% if platform.show_icon %}
+								{{ platform.icon | safe }}
+							{% elif platform.show_img %}
+								<img class="platform-icon-image" src="{{ platform.img.url }}" alt="">
+							{% endif %}
+								{{ platform.long_name}}
+							<br>
+						{% endfor %}
+						</td>
+					</tr>
+					<!-- #endregion-->
+					<!-- #region Developer -->
+					<tr>
+						<td>
+							<h6>Developer</h6>
+						</td>
+						<td class="details-info-text">
+							{% if game.developer %}
+								{% if game.developer.web_url %}
+									<a href="{{ game.developer.web_url }}" target="_blank">{{ game.developer.long_name }}</a>
+								{% else %}
+									{{ game.developer.long_name }}</a>
+								{% endif %}
+							{% else %}
+								-
+							{% endif %}
+						</td>
+					</tr>
+					<!-- #endregion -->
+					<!-- #region Publisher-->
+					<tr>
+						<td>
+							<h6>Publisher</h6>
+						</td>
+						<td class="details-info-text">
+							{% if game.publisher %}
+								{% if game.publisher.web_url %}
+									<a href="{{ game.publisher.web_url }}" target="_blank">{{ game.publisher.long_name }}</a>
+								{% else %}
+									{{ game.publisher.long_name }}</a>
+								{% endif %}
+							{% else %}
+								-
+							{% endif %}
+						</td>
+					</tr>
+					<!-- #endregion -->
+				</table>
+			</div>
+				<!-- #region Description-->
+				<div class="details-description-box w-100 text-justify px-3 pt-2 pb-3">
+					<span class="descr-quote-sign">"</span>
+					<span class="descr-capital">{{ game.description|slice:"1" }}</span>
+					<span class="descr-bodytext">{{ game.description|slice:"1:" }}</span>
+					<span class="descr-quote-sign">"</span>
+					<div class="text-right mt-4">
+						<span class="details-descr-source px-4 py-2 hover-me">
+							<a href="{{ game.description_src_url }}" target="_blank"><span class="text-medeium-large ">READ MORE</span><i class="fas fa-chevron-right px-2"></i> Source: {{ game.description_src }}</a>
+						</span>
+					</div>
+				</div>
+				<!-- #endregion -->
+		</div>
+	</div>
+	<!-- #endregion -->
+	<!-- #region right-column -->
+	<div class="col-12 col-md-6 m-0 p-0">
+		<div class="d-flex flex-column mt-3 ml-0 w-100 h-100">
+			<div class="ml-0 ml-md-5 mb-3">	
+				<!-- #region Reviews -->
+				<div class="accordion" id="accordionExample">
+					{% for review in game.review_set.all %}
+					<div class="card details-review_card">
+						<div class="card-header details-review-header hover-me" id="headingOne">
+							<button class="btn text-left pb-2" type="button" data-toggle="collapse" data-target="#review_{{review.review_site.id}}" aria-expanded="true" aria-controls="review_{{review.review_site.id}}">
+								<span class="float-left">
+									<table>
+										<tr>
+											<td class="details-review-table-score-col">{{ review.score.normalize }}/{{ review.max_score.normalize }}</td>
+											<td><span class="mr-3 content-up-1">|</span></td>
+											<td>{{ review.review_site.site_short_name }} </td>
+										</tr>
+									</table>
+								</span>
+
+								<span class="float-right text-right">
+									<i class="fas fa-chevron-down details-review-icon"></i>
+								</span>
+							</button>
+						</div>
+
+						<div id="review_{{review.review_site.id}}" class="collapse" aria-labelledby="review_{{review.review_site.id}}" data-parent="#accordionExample">
+						<div class="card-body details-review-text mb-1">
+							"{{ review.short_quote|safe }}
+							<br><br>
+							{{ review.long_quote|safe }}"
+
+							<div class="mt-3 text-right review_author">
+								{{ review.author }} - {{ review.review_site.site_short_name }}, {{ review.review_date }}
+							<div class="text-right mt-4">
+								<span class="details-descr-source px-4 py-2 hover-me">
+									<a class="txt-dark" href="{{ review.review_url }}" target="_blank">
+										<span class="text-medeium-large">READ MORE</span><i class="fas fa-chevron-right px-2"></i>
+										Source: {{ review.review_site.site_url_name }}
+									</a>
+								</span>
+							</div>
+							</div>
+						</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+				<!-- #endregion -->
+				<!-- #region Comments & user scores -->
+				<div class="comments-user-score-container mt-3 mt-md-4 pb-5">
+					<!-- #region CURRENT USER -->
+					<!-- #region Is_authenticated -->
+					{% if user.is_authenticated  %}
+						<!-- #region Have commented -->
+						{% if have_commented %}
+							<div class="comments-header text-center ml-3 pt-3">
+								<h3>Your comment and score</h3>
+							</div>
+							{% for comment_score in session_user_comment_scores %}
+								<div class="comments-container d-flex flex-row justify-content-between my-3 mx-3">
+									<div class="d-flex flex-column text-center comment-box-info mx-auto">
+										<div class="txt-small">{{ comment_score.updated}}</div>
+										<div> 
+										{% if comment_score.user.userprofile.chat_alias %}
+											<span class="txt-small">You as </span>
+											<span class="username-txt">{{ comment_score.user.userprofile.chat_alias }}</span>
+										{% else %}
+											<span class="txt-small">You as </span>
+											<span class="username-txt">{{ comment_score.user.username }}</span>
+										{% endif %}
+										</div>
+										<div>
+											{% if user.userprofile.avatar %}
+												<img 	class="img-fluid comment-avatar-img"
+														src="{{ MEDIA_URL }}{{ comment_score.user.userprofile.avatar.image }}" 
+														alt="{{ comment_score.user.userprofile.avatar.image }} - user avatar image">	
+											{% else %}
+											  	<img class="img-fluid comment-avatar-img"
+												src="{% static 'img/ingognito.png'%}"
+												alt="Incognito user avatar"/>
+											{% endif %}
+										</div>
+										<div>
+											{% if comment_score.user_score > 0 %}
+											Your score: {{ comment_score.user_score}} / 10
+											{% else %}
+											Score not set
+											{% endif %}
+										</div>
+									</div>
+									<div class="comment-box-comment">
+										<div class="comment-bubble p-2">
+											<img class="speech-bubble-tail tail-right" src="{% static 'img/speechbubble_tail_right.png'%}" alt="Retro Joystick">
+											{{ comment_score.comment}}
+										</div>
+										<div class="d-flex flex-row">
+											<div>
+												<button class="btn btn-sm btn-light  mt-1" 
+														type="button" 
+														data-toggle="collapse" 
+														data-target="#edit-comment-form" 
+														aria-expanded="false" 
+														aria-controls="edit-comment-form">
+													<i class="far fa-edit"></i> Edit
+												</button>
+												<a href="{% url 'delete_comment' %}?gameid={{ game.id }}" class="btn btn-sm btn-light  mt-1" role="button" aria-pressed="true">
+													<i class="far fa-trash-alt"></i> Delete
+												</a>
+												<a href="{% url 'userprofile' %}" class="btn btn-sm btn-light  mt-1" role="button" aria-pressed="true">
+													To dashboard <i class="fas fa-angle-right"></i>
+												</a>
+											</div>
+										</div>
+									</div>									
+								</div>
+								<div class="collapse" id="edit-comment-form">
+									<div class="comment-add-form-container">																							
+										<form method="POST" action="{% url 'edit_comment' %}?gameid={{ game.id }}">
+											{% csrf_token %}
+											<div class="form-group">																							
+												{{ edit_comment_form }}
+											</div>
+											<div class="form-group">													
+												<button type="submit" class="btn btn-sm btn-light comment-add-button">Submit changes</button>
+											</div>
+										</form>																									
+									</div>
+								</div>
+							{% endfor %}		
+						<!-- #endregion -->
+						<!-- #region Have not commented -->
+						{% else %}
+							<div class="comments-header mx-3 pt-3 pb-1 text-center">
+								<div class="d-flex flex-row justify-content-between">
+									<div class="comment-add-button-container mx-auto pt-2">
+										<h6><span class="username-txt txt-large">{{ user }}</span>,<br> You have not added any<br>comment or score for this game</h6>
+										<button class="btn btn-sm btn-light comment-add-button mt-3" 
+												type="button" 
+												data-toggle="collapse" 
+												data-target="#new-comment-form" 
+												aria-expanded="false" 
+												aria-controls="new-comment-form">
+											<i class="far fa-comment-alt"></i> Wish to add one now? 
+										</button>
+									</div>
+								</div>
+								<div class="collapse" id="new-comment-form">
+									<div class="comment-add-form-container">																							
+										<form method="POST" action="{% url 'add_comment' %}?gameid={{ game.id }}">
+											{% csrf_token %}
+											<div class="form-group">																							
+												{{ new_comment_form }}
+											</div>
+											<div class="form-group">													
+												<button type="submit" class="btn btn-sm btn-light comment-add-button">Submit</button>
+											</div>
+										</form>																									
+									</div>
+								</div>
+							</div>
+						{% endif %}
+						<!-- #endregion -->
+					<!-- #endregion -->
+					{% else %}
+					<!-- #region Not authenticated -->
+					{% endif %}
+					<!-- #endregion -->
+					<!-- #endregion -->
+					<!-- #region OTHER USERS -->
+					<hr>
+					<div class="comments-header text-center ml-3 pt-1 pb-5">
+						<h3>Other members comments and score</h3>
+						<div class="d-flex flex-row justify-content-between">
+							<div class="w-50 text-center">
+								Avg. User score: <span class="highlight-txt-size1 ml-2">{{ avg_user_score }}</span> / 100
+							</div>
+							<div class="w-50 text-center">
+								#Comments: <span class="highlight-txt-size1 ml-2">{{ all_user_comment_scores.count }}</span>
+							</div>
+						</div>	
+					</div>
+
+
+					{% for comment_score in all_user_comment_scores %}
+					<div class="d-flex flex-row justify-content-between mb-5 mx-3">
+						<!-- #region bubble right -->
+						{% if forloop.counter|divisibleby:2 %}
+							<div class="d-flex flex-column text-center comment-box-info mx-auto">
+								<div class="txt-small">{{ comment_score.updated}}</div>
+								<div class="username-txt"> 
+								{% if comment_score.user.userprofile.chat_alias %}
+									{{ comment_score.user.userprofile.chat_alias }}
+								{% else %}
+									{{ comment_score.user.username }}
+								{% endif %}
+								</div>
+								<div>
+									{% if comment_score.user.userprofile.avatar %}
+										<img 	class="comment-avatar-img"
+										src="{{ MEDIA_URL }}{{ comment_score.user.userprofile.avatar.image }}" 
+										alt="{{ comment_score.user.userprofile.avatar.image }} - user avatar image">	
+									{% else %}
+										<img class="img-fluid comment-avatar-img"
+										src="{% static 'img/ingognito.png'%}"
+										alt="Incognito user avatar"/>
+									{% endif %}	
+								</div>
+								<div>
+									{% if comment_score.user_score > 0 %}
+										Gave score: {{ comment_score.user_score}} / 10
+									{% else %}
+										No score
+									{% endif %}
+								</div>
+							</div>
+						
+							<div class="comment-box-comment">
+								<div class="comment-bubble p-2">
+									<img class="speech-bubble-tail tail-right" src="{% static 'img/speechbubble_tail_right.png'%}" alt="Retro Joystick">
+									{{ comment_score.comment}}
+								</div>
+							</div>
+						<!-- #endregion -->
+						<!-- #region bubble left -->
+						{% else %}
+							<div class="comment-box-comment">
+								<div class="comment-bubble p-2">
+									<img class="speech-bubble-tail tail-left" src="{% static 'img/speechbubble_tail_left.png'%}" alt="Retro Joystick">
+									{{ comment_score.comment}}
+								</div>
+							</div>
+
+							<div class="d-flex flex-column text-center comment-box-info mx-auto">
+								<div class="txt-small">{{ comment_score.updated}}</div>
+								<div class="username-txt"> 
+								{% if comment_score.user.userprofile.chat_alias %}
+									{{ comment_score.user.userprofile.chat_alias }}
+								{% else %}
+									{{ comment_score.user.username }}
+								{% endif %}
+								</div>
+								<div>
+									{% if comment_score.user.userprofile.avatar %}
+										<img 	class="comment-avatar-img"
+										src="{{ MEDIA_URL }}{{ comment_score.user.userprofile.avatar.image }}" 
+										alt="{{ comment_score.user.userprofile.avatar.image }} - user avatar image">	
+									{% else %}
+										<img class="img-fluid comment-avatar-img"
+										src="{% static 'img/ingognito.png'%}"
+										alt="Incognito user avatar"/>
+									{% endif %}	
+								</div>
+								<div>
+									{% if comment_score.user_score > 0 %}
+										Gave score: {{ comment_score.user_score}} / 10
+									{% else %}
+										No score
+									{% endif %}
+								</div>
+							</div>
+						{% endif %}
+						<!-- #endregion -->
+					</div>
+					{% endfor %}
+					<!-- #endregion -->	
+				</div>
+				<!-- #endregion -->
+			</div>
+		</div>
+	</div>
+	<!-- #endregion -->
+
+</div>
+{% endfor %}
+
+
+{% endblock %}
+<!-- #endregion -->
+
