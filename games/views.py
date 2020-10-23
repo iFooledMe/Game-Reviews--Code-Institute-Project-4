@@ -259,9 +259,12 @@ def game_details_view(request, game_id):
 def calc_avg_user_score(gameid):
     all_user_comment_scores_exlude_zero = UserCommentsScore.objects.filter(
         game__id=gameid).exclude(user_score__lte=0)
-    aggregate_score = all_user_comment_scores_exlude_zero.aggregate(
-        Avg('user_score'))
-    return int(aggregate_score.get('user_score__avg') * 10)
+    if all_user_comment_scores_exlude_zero.count() > 0:
+        aggregate_score = all_user_comment_scores_exlude_zero.aggregate(
+            Avg('user_score'))
+        return int(aggregate_score.get('user_score__avg') * 10)
+    else:
+        return 0
 # endregion
 # ------------------------------------------
 

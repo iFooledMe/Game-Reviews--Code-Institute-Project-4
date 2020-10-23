@@ -5,6 +5,20 @@ from .models import UserCommentsScore
 from django.contrib.auth.models import User
 
 
+USER_SCORE_CHOICES = [
+    ('0', 'No score'),
+    ('1', '1'),
+    ('2', '2'),
+    ('3', '3'),
+    ('4', '4'),
+    ('5', '5'),
+    ('6', '6'),
+    ('7', '7'),
+    ('8', '8'),
+    ('9', '9'),
+    ('10', '10'),
+]
+
 class NewCommentForm(forms.ModelForm):
     class Meta:
         model = UserCommentsScore
@@ -12,21 +26,18 @@ class NewCommentForm(forms.ModelForm):
         fields = ['comment', 'user_score']
         widgets = {
             'comment': forms.Textarea(
-                attrs={'class': 'form-control mt-2',
-                       'placeholder': 'Write your comment (max 300 characters)'
-                       }
+                attrs={'class': 'form-control mt-2'}
             ),
-            'user_score': forms.NumberInput(
-                attrs={'class': 'form-control',
-                       }
-            ),
+            'user_score': forms.Select(
+                choices=USER_SCORE_CHOICES,
+                attrs={'class': 'form-control'}
+            ),   
         }
         labels = {
             'comment': '',
-            'user_score': 'Your score 1-10(best) - In the field below',
+            'user_score': 'Your score 1-10(best)',
         }
-
-
+            
 class EditCommentForm(forms.ModelForm):
     class Meta:
         model = UserCommentsScore
@@ -34,15 +45,12 @@ class EditCommentForm(forms.ModelForm):
         fields = ['comment', 'user_score']
         widgets = {
             'comment': forms.Textarea(
-                attrs={'class': 'form-control mt-2',
-
-                       }
+                attrs={'class': 'form-control mt-2'}
             ),
-            'user_score': forms.NumberInput(
-                attrs={'class': 'form-control',
-
-                       }
-            ),
+            'user_score': forms.Select(
+                choices=USER_SCORE_CHOICES,
+                attrs={'class': 'form-control'}
+            ),   
         }
         labels = {
             'comment': '',
