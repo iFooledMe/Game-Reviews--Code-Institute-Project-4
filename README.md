@@ -167,15 +167,155 @@ Or use the Heroku CLI (Install the Heroku CLI from here)
 
 ## TESTING
 
-The test is done manualy in the following browsers:
-
+## TESTING
+The test is done manually in the following browsers:
 -   Google Chrome 84.0.4147.89 (on PC Windows 10)
 -   Microsoft Edge Chromium 84.0.522.44 (on PC Windows 10)
 -   Firefox 78.0.2 (on PC Windows 10)
 -   Safari (on iPad pro 10.5 iOS 13.6.1)
--   The testing is done from the perspective of each user story (presented above) in regards of functionality and responsivity.
+If any of these browsers cause any issues it is mentioned specific under each userstory below. Otherwise all tests have followed the same procedure 
+ 
+The testing is done from the perspective of each user story (presented above) in regards of functionality and responsiveness to various screen sizes.
 
-<img src="test.png">
+### In general
+
+- On the games_list page: Bad responsivity on smaller mobile devices (User neeed to side scroll a bit) - No time for measurement at this time. 
+
+### User account
+
+
+#### Register a new account
+
+Test procedure
+
+1. Click on sign-up link in nav-menu
+2. Sign-up form page opens
+3. Error messages for faulty input
+4. Account created on successful submit
+
+Result: 
+
+1. Ok functionality all browsers, Custom form not applied
+2. Ok functionality all browsers. Custom form not applied.
+3. Ok functionality all browsers. Custom form not applied.
+4. Ok functionality all browsers. Custom form not applied.
+
+
+Measures: 
+
+The issue with the custom forms not applying needs to be fixed, but since they function as normal, for this release there is no time
+
+#### Sign in to existing user account
+
+Test procedure:
+
+1. From the main nav-menu the user clicks on "sign in" link
+2. Sign-in form opens
+3. Error messages for faulty input
+4. On successfull submision of the form the user gets redirected to home page. T
+5. The username and the special user dropdown menu in the top right corner is visible
+6. sign-up and sign-in links or no longer visible in the nav-menu
+7. User profile page is accesable
+8. User can add/change user settings and select a new avatar image
+9. New game comments show on user profile page
+
+Result: 
+
+1. Ok functionality all browsers, Custom form not applied
+2. Ok functionality all browsers. Custom form not applied.
+3. Ok functionality all browsers. Custom form not applied.
+4. Ok functionality all browsers. 
+5. Ok functionality all browsers.
+6. Ok functionality all browsers.
+7. Ok functionality all browsers.
+8. Ok functionality all browsers. Issue with server error when the user try to change the username to an already existing username.
+9. Ok functionality all browsers.
+
+
+Measures: 
+
+The issue with the custom forms not applying needs to be fixed, but since they function as normal, for this release there is no time
+The same goes for change username issue in point 8
+
+#### Sign out of existing user account
+
+Test procedure
+
+1. From the special user dropdown menu in the top right corner the user clicks the option "logout"
+2. A separate page with a logout button opens
+3. The User clicks the logout button and is redirected to the home page.
+4. The username and the special user dropdown menu in the top right corner is no longer visible
+5. sign-up and sign-in links is now visible visible in the nav-menu
+
+Result: 
+
+1. Ok functionality all browsers, 
+2. Ok functionality all browsers. Custom form not applied 
+3. Ok functionality all browsers. 
+4. Ok functionality all browsers. 
+5. Ok functionality all browsers. 
+
+
+Measures: 
+
+The issue with the custom forms not applying needs to be fixed, but since they function as normal, for this release there is no time
+
+### Games Information
+
+#### Get a overview (list) of games (name, release date score, genre, theme, developer/publisher, short critics quotes, game description)
+
+Test procedure
+
+1. The list of games is loading correctly?
+2. All intended information is visible?
+3. All links are working?
+4. All look as intended?
+
+Result: 
+
+1. Ok all browsers, 
+2. Ok all browsers.
+3. Ok all browsers.
+4. Ok all browsers. Small issue on smallest screens where some side scrolling is needed.
+
+Measures:
+
+No measures for this release.
+
+#### Be able to sort my games list (by release date or score)
+
+1. By date desc
+2. By date asc
+3. by score desc
+4. by score asc
+
+Result: 
+
+1. Ok all browsers, 
+2. Ok all browsers.
+3. Ok all browsers.
+4. Ok all browsers.
+
+#### Be able to filter list by release date intervals
+
+1. All time
+2. Last week
+3. Last months
+4. Last 3 months
+5. last 6 months
+6. last year
+
+Result: 
+
+1. Ok all browsers, 
+2. Ok all browsers.
+3. Ok all browsers.
+4. Ok all browsers.
+5. Ok all browsers.
+6. Ok all browsers.
+
+
+#### 
 
 ## UX
 
@@ -189,31 +329,26 @@ In order to get this traffic, the site of course needs to add value to the user.
 
 ### Media
 
-Stadia image (as icon)
-https://simpleicons.org/icons/stadia.svg
+#### Joystick
+@ https://www.pinclipart.com/pindetail/xhJmw_clip-art-black-and-white-download-file-gnome/
 
-Joystick
-https://www.pinclipart.com/pindetail/xhJmw_clip-art-black-and-white-download-file-gnome/
+#### Landing image
+@ freepik @ https://www.freepik.com/free-photo/close-up-blurred-guy-holding-controller_5121535.htm#page=1&query=game%20controller&position=18
 
-Landing image
-freepik @ https://www.freepik.com/free-photo/close-up-blurred-guy-holding-controller_5121535.htm#page=1&query=game%20controller&position=18
+#### User Avatars
+@ Alex Gallego @ https://www.coroflot.com/alexgallego/Poker-player-game-avatars
 
-User Avatars
-Alex Gallego @ https://www.coroflot.com/alexgallego/Poker-player-game-avatars
-
-Incognito Avatar Image
+#### Incognito Avatar Image
 vecktorstock.com @ https://cdn1.vectorstock.com/i/1000x1000/50/30/user-icon-male-person-symbol-profile-avatar-vector-20715030.jpg
 
-The Witcher in the Djungle
+#### The Witcher in the Djungle
 @ https://www.zastavki.com/pictures/originals/2014/Games_Jungle_in_the_game_The_Witcher_086356_.png
 
-Let's Talk Video Game Reviews
-@ http://gamecrusaders.com/article/lets-talk-video-game-reviews/
 
 ### Code
 
-Extend user profile
-https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
+#### Extend user profile
+@ https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
 
-Stripe payment
-Django Lessons @ https://www.youtube.com/watch?time_continue=110&v=Bq5lR5WQNOw&feature=emb_logo
+#### Stripe payment
+@ https://www.youtube.com/watch?time_continue=110&v=Bq5lR5WQNOw&feature=emb_logo

@@ -5,22 +5,6 @@
 		{% csrf_token %} {% for form in search_show_form %}
 		<div class="col-12 col-sm-6 col-md-3 mb-1 mx-auto">{{ form }}</div>
 		{% endfor %}
-		<div
-			class="col-12 col-sm-6 col-md-3 relative-container"
-			id="list-filter">
-			<button
-				type="button"
-				class="btn btn-sm filter-button"
-				data-toggle="modal"
-				data-target="#filterModal">
-				<div class="d-flex flex-row justify-content-between">
-					<div>Filter</div>
-					<div>
-						<i class="fas fa-chevron-down filter-button-icon"></i>
-					</div>
-				</div>
-			</button>
-		</div>
 	</div>
 </form>
 <!-- #region ==== Filter Modal ============================ -->
