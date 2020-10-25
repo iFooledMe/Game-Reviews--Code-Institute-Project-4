@@ -6,6 +6,27 @@
 
 ### A Code Institute student project
 
+#### To the assessment team at Code Institute:
+As you can see I have one small change to the code in the settings.py regarding the AWS S3 bucket settings (and of course this update to the README).
+
+The explanation for this is that a few days before the submission deadline strange things started to happen:
+
+1. The database migrations were corrupt and trying to reset the database, by removing the database and all migration files (except __init__.py) did not work.
+2. Several times I rebuilt the project from a new clean django project (and created new clean apps) and migrated it all again.
+3. At first it seemed to work, but at some point the corrupt migrations did come back (I have still no idea why this was happening, since it all should be completely clean from any previous migrations at that point). So I tried to repeat this process several times, everytime with the same result that the corruptions did pop up again. 
+4. Somewhere in this process something happened to the AWS S3 bucket connection. The settings that previously did work just fine no longer worked, resulting in an error when trying to deploy on Heroku (Collectstatic did not work)
+5. Also in this process all of my custom Allauth forms did stop to work (the custom templates sits in the correct structure within the main templates folder just as before when they did work, but the overrides do not apply)
+
+Most of my time the last couple of days before the submission has been spent trying to solve these issues. I did call out for help (I refer to Neil regarding this) and at last in the morning the same day for submission I could have a tutor call. We then managed to solve the issues with the corrupt migrations, and the tutor (Michael Park) said it was one of the weirdest issues he’s ever seen in this context. Unfortunately there was no more time to solve the other issues regarding point 4 and 5 above. I did reach out for help, but it was friday afternoon and no more tutoring was possible (again I refer to the mail conversations I have had with Neil regarding this). 
+
+At last yesterday evening I managed to set up the AWS bucket settings so that the deployed project could be run with the debug mode of (before that any attempt to run the app on heroku with debug set to off resulted in none of the static or media files loading).
+
+Sorry for this a bit late addition where correct AWS settings where committed! (Other than that and this addition to the README I have not touched anything else, as you can see).
+
+This also means that most of my time the last days before the submission was spent on trying to solve all of this, and less on the actual project itself. I think and hope I still managed to fix most of the issues according to the assessment protocol from you, but if there are some of these still remaining, please bear all of this in mind when looking at the project again. The big guys Django, AWS S3 and Allauth really did beat the ¤#&#¤ out of me this time! 
+
+<img src="static/img/readme_files/smiley.png">
+
 ## SUMMARY
 
 This project aims to build a computer and console- games reviews database. In its essence it will hold a list of recent games being released for PC, Xbox- and Playstation-consoles. Each game will have it's score presented, calculated from average review scores from popular gaming sites around the world. It will also hold a short summary of the game content, tags to describe genre and themes etc. Release date, developer, publisher, short quotes from the game sites and links to those review sites. Also links to sites where the games can be bought.
