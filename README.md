@@ -152,21 +152,21 @@ You also need somewhere to store media files. I use S3 from Amazon AWS.
 ### Set up your local IDE
 You need the latest version of Python 3 installed and then you need to run command “pip install -r requirements.txt” to install all the necessary packages.
 You also need to set up a Stripes payment account and a Amazon AWS S3 bucket. Create a env.py file and give it the following information:
-os.environ["SECRET_KEY"] = Django secret key
-os.environ["STRIPE_PUBLISHABLE_KEY"] = Stripe publishable key
-os.environ["STRIPE_SECRET_KEY"] = Stripe secret key
-os.environ["STRIPE_PLAN_ANNUALY_PROD_ID"] = Stripe product id
-os.environ["STRIPE_PLAN_ANNUALY_PRICE_ID"] = Stripe annually price id
-os.environ["DATABASE_URL"] = Heroku postgreSQL databas URI
-os.environ["USE_LOCAL_DB"] = '1' [1=PostgreSQL on localhost, 2=SQLite on localhost, any other value Heroku postgreSQL.
-os.environ["LOCAL_DB_PASSWORD"] = Password PostgreSQL on localhost
-os.environ["AWS_ACCESS_KEY_ID"] = AWS User access key
-os.environ["AWS_SECRET_ACCESS_KEY"] = AWS User secret key
-os.environ["USE_AWS"] = '1'
-os.environ["EMAIL_HOST_PASS"] = Password to chosen email SMTP server
-os.environ["EMAIL_HOST_USER"] = User name for chosen email SMTP server
-os.environ["USE_CONSOLE_MAIL"] = '1' [1=For development,  Any other = External SMTP
-os.environ["DEBUG_MODE"] = '0' [1=Debug mode, Any other = Debug set to false]
+- os.environ["SECRET_KEY"] = Django secret key
+- os.environ["STRIPE_PUBLISHABLE_KEY"] = Stripe publishable key
+- os.environ["STRIPE_SECRET_KEY"] = Stripe secret key
+- os.environ["STRIPE_PLAN_ANNUALY_PROD_ID"] = Stripe product id
+- os.environ["STRIPE_PLAN_ANNUALY_PRICE_ID"] = Stripe annually price id
+- os.environ["DATABASE_URL"] = Heroku postgreSQL databas URI
+- os.environ["USE_LOCAL_DB"] = '1' [1=PostgreSQL on localhost, 2=SQLite on localhost, any other value Heroku postgreSQL
+- os.environ["LOCAL_DB_PASSWORD"] = Password PostgreSQL on localhost
+- os.environ["AWS_ACCESS_KEY_ID"] = AWS User access key
+- os.environ["AWS_SECRET_ACCESS_KEY"] = AWS User secret key
+- os.environ["USE_AWS"] = '1'
+- os.environ["EMAIL_HOST_PASS"] = Password to chosen email SMTP server
+- os.environ["EMAIL_HOST_USER"] = User name for chosen email SMTP server
+- os.environ["USE_CONSOLE_MAIL"] = '1' [1=For development,  Any other = External SMTP
+- os.environ["DEBUG_MODE"] = '0' [1=Debug mode, Any other = Debug set to false]
 You are now ready to work with this project on your local machine.
 
 ### Deploy on Heroku
