@@ -8,7 +8,7 @@
 
 ## SUMMARY
 
-This project aims to build a computer and console- games reviews database. In its essence it will hold a list of recent games being released for PC, Xbox and Playstation-consoles. Each game will have it's score presented, calculated from average review scores from popular gaming review sites around the world. It will also hold a short summary of the game content, tags to describe genre and themes etc, release date, developer, publisher, short quotes from the game sites and links to the review sites where the user of course can read it all. 
+This project aims to build a computer and console- games reviews database. In its essence it will hold a list of recent games being released for PC, Xbox and Playstation. Each game will have it's score presented, calculated from average review scores from popular gaming review sites around the world. It will also hold a short summary of the game content, tags to describe genre and themes etc, release date, developer, publisher, short quotes from the game sites and links to the review sites where the user of course can read it all. 
 
 See this as a sort of portal for gamers where they can get quick and easy information about the most recent games (In time older games can be added to the db a well), and from where they navigate further to each of the real game review sites if interested, or to a site where they actually can buy the game. It is a service for gamers wishing to get some overview of what is available and what is to come.
 
