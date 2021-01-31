@@ -164,9 +164,6 @@ Or use the Heroku CLI (Install the Heroku CLI from here)
 12. Finally in the CLI type "git push heroku master"
 ...In a while after a lot of stuff flying past you on the screen has stopped flying past you, the project should be deployed
 
-
-## TESTING
-
 ## TESTING
 The test is done manually in the following browsers:
 -   Google Chrome 84.0.4147.89 (on PC Windows 10)
